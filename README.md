@@ -26,3 +26,9 @@ python -m http.server 8000
 ## Chceš přispět?
 
 Pokud chceš projekt podpořit, pošli pár korun na účet: `2081256014/3030`
+
+## O projektu
+
+- **Autor:** Šmachy - DaLuk
+- **Verze:** 0.1
+- **Datum poslední aktualizace:** 15.5.2026
