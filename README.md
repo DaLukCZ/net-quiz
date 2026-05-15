@@ -1,4 +1,4 @@
-# Moodle Quiz
+# Moodle Quiz - Sítě
 
 - jednoduché kvízové rozhraní v prohlížeči
 - plně napsané vlastním kódem (`fully vibecoded`)
