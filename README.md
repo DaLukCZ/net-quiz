@@ -3,7 +3,7 @@
 - jednoduché kvízové rozhraní v prohlížeči
 - plně napsané vlastním kódem (`fully vibecoded`)
 - otázky zatím nejsou kompletní a nemusí být na 100 % správné
-- neexistuje záruka, že půjdou v testu stejné otázky
+- neexistuje záruka, že v testu jsou nebo budou stejné otázky
 - použij to na vlastní zodpovědnost
 - žádná odpovědnost za Fko nebo jiný průšvih
 
