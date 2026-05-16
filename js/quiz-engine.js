@@ -44,7 +44,9 @@ App.QuizEngine = (() => {
       case 'text': {
         const expected = question.correct ?? question.answers?.[0]?.text;
         if (expected === undefined || expected === null) return false;
-        return String(answer).trim().toLowerCase() === String(expected).trim().toLowerCase();
+        const normalized = String(answer).trim().toLowerCase();
+        const candidates = Array.isArray(expected) ? expected : [expected];
+        return candidates.some(e => String(e).trim().toLowerCase() === normalized);
       }
       case 'open':
         return true;

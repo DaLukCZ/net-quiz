@@ -45,6 +45,7 @@ App.Components = (() => {
           <input type="radio" name="sq" value="${i}" class="sr-only" ${sessionAnswer === i ? 'checked' : ''} ${revealed ? 'disabled' : ''}>
           ${letterBadge(i, state)}
           <span class="flex-1 text-sm leading-relaxed pt-0.5 ${state === 'correct' ? 'font-semibold text-emerald-700 dark:text-emerald-300' : state === 'wrong' ? 'text-red-700 dark:text-red-300' : ''}">${U.escapeHtml(a.text)}</span>
+          ${!revealed ? `<kbd class="shrink-0 inline-flex items-center justify-center w-5 h-5 text-xs font-mono border border-slate-200 dark:border-gray-700 text-slate-300 dark:text-slate-600 rounded bg-white dark:bg-gray-800 group-hover:text-slate-500 group-hover:border-slate-400 transition-colors">${i + 1}</kbd>` : ''}
           ${state === 'correct' ? `<span class="shrink-0 text-emerald-500">${ICON.check}</span>` : ''}
           ${state === 'wrong'   ? `<span class="shrink-0 text-red-400">${ICON.cross}</span>` : ''}
         </label>`;
@@ -114,6 +115,7 @@ App.Components = (() => {
           <input type="radio" name="bq" value="${val}" class="sr-only" ${String(sessionAnswer) === val ? 'checked' : ''} ${revealed ? 'disabled' : ''}>
           ${icon}
           <span class="font-semibold text-sm">${label}</span>
+          ${!revealed ? `<kbd class="ml-auto inline-flex items-center justify-center w-5 h-5 text-xs font-mono border border-slate-200 dark:border-gray-700 text-slate-300 dark:text-slate-600 rounded bg-white dark:bg-gray-800 group-hover:text-slate-500 group-hover:border-slate-400 transition-colors">${val === 'true' ? 1 : 2}</kbd>` : ''}
           ${state === 'correct' ? `<span class="ml-auto text-emerald-500">${ICON.check}</span>` : ''}
           ${state === 'wrong'   ? `<span class="ml-auto text-red-400">${ICON.cross}</span>` : ''}
         </label>`;

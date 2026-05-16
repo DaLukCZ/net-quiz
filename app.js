@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   R.onEnter('stats',      renderStats);
   R.onEnter('json-editor',renderJsonEditor);
   R.onEnter('settings',   renderSettings);
+  R.onEnter('materials',  () => {});
 
   document.getElementById('sidebarToggle')?.addEventListener('click', () => {
     document.getElementById('sidebar')?.classList.toggle('hidden');
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('darkModeToggle')?.addEventListener('click', toggleDarkMode);
 
   App.Editor.init();
+  App.Materials.init();
 
   // Načti otázky z questions.json
   try {
@@ -118,7 +120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (display) display.textContent = settings.defaultCount;
       const fresh = slider.cloneNode(true);
       slider.parentNode.replaceChild(fresh, slider);
-      fresh.addEventListener('input', () => { if (display) display.textContent = fresh.value; });
+      fresh.addEventListener('input', () => { if (display) display.textContent = fresh.value; _updateFilterCount(); });
     }
 
     U.setToggle(U.el('toggle-randomize'), settings.randomize);
@@ -137,7 +139,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       catsContainer.innerHTML = `<label class="cursor-pointer"><input type="checkbox" class="sr-only cat-filter" value="" checked><span class="cat-chip inline-block px-3 py-1.5 rounded-full text-sm border-2 border-orange-500 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 font-medium transition-all">Vše</span></label>` +
         cats.map(c => `<label class="cursor-pointer"><input type="checkbox" class="sr-only cat-filter" value="${U.escapeHtml(c.id)}"><span class="cat-chip inline-block px-3 py-1.5 rounded-full text-sm border-2 border-slate-200 dark:border-gray-700 text-slate-600 dark:text-slate-400 transition-all">${U.escapeHtml(c.label)}</span></label>`).join('');
       catsContainer.querySelectorAll('.cat-filter').forEach(cb => {
-        cb.addEventListener('change', () => _syncCategoryChips(catsContainer));
+        cb.addEventListener('change', () => { _syncCategoryChips(catsContainer); _updateFilterCount(); });
       });
     }
 
@@ -146,10 +148,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       const fresh = cb.cloneNode(true);
       cb.parentNode.replaceChild(fresh, cb);
       _syncDiffChip(fresh);
-      fresh.addEventListener('change', () => _syncDiffChip(fresh));
+      fresh.addEventListener('change', () => { _syncDiffChip(fresh); _updateFilterCount(); });
+    });
+
+    document.querySelectorAll('.srs-filter').forEach(cb => {
+      _syncDiffChip(cb);
+      const fresh = cb.cloneNode(true);
+      cb.parentNode.replaceChild(fresh, cb);
+      _syncDiffChip(fresh);
+      fresh.addEventListener('change', () => { _syncDiffChip(fresh); _updateFilterCount(); });
     });
 
     _rebindBtn('startQuizBtn', startQuiz);
+    _updateFilterCount();
   }
 
   function _updateModeCards() {
@@ -184,6 +195,43 @@ document.addEventListener('DOMContentLoaded', async () => {
     chip.style.fontWeight = cb.checked ? '600' : '400';
   }
 
+  function _updateFilterCount() {
+    const el = U.el('filterCountDisplay');
+    const db = St.getDB();
+    if (!el || !db?.questions) return;
+
+    const count    = Number(U.el('setup-count')?.value || 20);
+    const selCats  = Array.from(document.querySelectorAll('.cat-filter:checked')).map(c => c.value).filter(Boolean);
+    const selDiffs = Array.from(document.querySelectorAll('.diff-filter:checked')).map(c => c.value);
+    const selSRS   = Array.from(document.querySelectorAll('.srs-filter:checked')).map(c => c.value);
+
+    let pool = [...db.questions];
+    if (selCats.length)  pool = pool.filter(q => selCats.includes(q.category));
+    if (selDiffs.length) pool = pool.filter(q => !q.difficulty || selDiffs.includes(q.difficulty));
+    if (selSRS.includes('unseen') || selSRS.includes('weak')) {
+      pool = pool.filter(q => {
+        const s = App.SRS.getState(q.id);
+        const unseen = !s || s.timesSeen === 0;
+        const weak   = s && s.timesSeen > 0 && s.timesCorrect / s.timesSeen < 0.5;
+        return (selSRS.includes('unseen') && unseen) || (selSRS.includes('weak') && weak);
+      });
+    }
+    if (selSRS.includes('bookmarked')) {
+      const bm = new Set(App.DB.getBookmarks());
+      pool = pool.filter(q => bm.has(q.id));
+    }
+
+    const total = pool.length;
+    const used  = Math.min(count, total);
+    if (total === 0) {
+      el.textContent = 'Žádné otázky neodpovídají filtru';
+      el.className = 'text-center text-xs text-red-400 dark:text-red-500 -mt-3';
+    } else {
+      el.textContent = `${used} z ${total} otázek`;
+      el.className = 'text-center text-xs text-slate-400 dark:text-slate-500 -mt-3';
+    }
+  }
+
   function startQuiz() {
     const db = St.getDB();
     if (!db?.questions?.length) { U.showToast('Nejsou dostupné žádné otázky.', 'error'); return; }
@@ -195,10 +243,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const selCats  = Array.from(document.querySelectorAll('.cat-filter:checked')).map(c => c.value).filter(Boolean);
     const selDiffs = Array.from(document.querySelectorAll('.diff-filter:checked')).map(c => c.value);
+    const selSRS   = Array.from(document.querySelectorAll('.srs-filter:checked')).map(c => c.value);
 
     let pool = [...db.questions];
     if (selCats.length)  pool = pool.filter(q => selCats.includes(q.category));
     if (selDiffs.length) pool = pool.filter(q => !q.difficulty || selDiffs.includes(q.difficulty));
+    if (selSRS.includes('unseen') || selSRS.includes('weak')) {
+      pool = pool.filter(q => {
+        const s = App.SRS.getState(q.id);
+        const unseen = !s || s.timesSeen === 0;
+        const weak   = s && s.timesSeen > 0 && s.timesCorrect / s.timesSeen < 0.5;
+        return (selSRS.includes('unseen') && unseen) || (selSRS.includes('weak') && weak);
+      });
+    }
+    if (selSRS.includes('bookmarked')) {
+      const bm = new Set(App.DB.getBookmarks());
+      pool = pool.filter(q => bm.has(q.id));
+    }
     if (!pool.length) { U.showToast('Žádné otázky pro zvolené filtry.', 'warning'); return; }
 
     if (randomize) pool = U.shuffle(pool);
@@ -232,6 +293,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     _rebindBtn('confirmAnswerBtn', () => _confirmAnswer());
     _rebindBtn('skipBtn',          () => { QE.skip(); _handleNext(); });
     _rebindBtn('flagBtn',          () => { QE.toggleFlag(); _renderFlagBtn(); _renderNavGrid(); });
+    _rebindBtn('starBtn',          () => { App.DB.toggleBookmark(QE.getQuestion()?.id); _renderStarBtn(); });
     _rebindBtn('quizPauseBtn',     () => _handlePause());
     _rebindBtn('quizEndBtn',       () => { if (confirm('Ukončit test a zobrazit výsledky?')) _finishQuiz(); });
   }
@@ -279,6 +341,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     _renderFlagBtn();
+    _renderStarBtn();
     _updateActionButtons();
   }
 
@@ -389,6 +452,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     btn.classList.toggle('text-slate-300', !flagged);
   }
 
+  function _renderStarBtn() {
+    const btn = U.el('starBtn');
+    if (!btn) return;
+    const starred = App.DB.isBookmarked(QE.getQuestion()?.id);
+    btn.classList.toggle('text-yellow-500', !!starred);
+    btn.classList.toggle('text-slate-300',  !starred);
+    const svg = btn.querySelector('svg');
+    if (svg) svg.setAttribute('fill', starred ? 'currentColor' : 'none');
+  }
+
   function _renderNavGrid() {
     const grid = U.el('quizNavGrid');
     if (!grid) return;
@@ -456,10 +529,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     App.Stats.render(history, db);
 
     _rebindBtn('clearHistoryBtn', () => {
-      if (!confirm('Smazat historii testů? Akce je nevratná.')) return;
+      if (!confirm('Smazat historii testů a výkon dle kategorií? Akce je nevratná.')) return;
       App.DB.clearQuizResults();
+      App.DB.clearSRSStates();
+      App.SRS.reset();
       renderStats();
-      U.showToast('Historie smazána', 'info');
+      U.showToast('Historie a statistiky smazány', 'info');
     });
   }
 
@@ -543,9 +618,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (db) U.downloadJSON(db, 'questions_export.json');
     });
     _rebindBtn('clearStatsBtn', () => {
-      if (!confirm('Smazat historii a statistiky?')) return;
+      if (!confirm('Smazat historii a statistiky (včetně výkonu dle kategorií)? Akce je nevratná.')) return;
       App.DB.clearQuizResults();
-      U.showToast('Data smazána', 'info');
+      App.DB.clearSRSStates();
+      App.SRS.reset();
+      U.showToast('Historie a statistiky smazány', 'info');
     });
   }
 
@@ -900,6 +977,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     if (e.key === 'ArrowLeft') U.el('prevQuestionBtn')?.click();
     if (e.key === 'f' || e.key === 'F') U.el('flagBtn')?.click();
+    if (e.key === 'b' || e.key === 'B') U.el('starBtn')?.click();
     if (e.key === 's' || e.key === 'S') U.el('skipBtn')?.click();
     if (!QE.isRevealed()) {
       const num = parseInt(e.key, 10);
@@ -911,6 +989,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       }
     }
+  });
+
+  // Escape key closes open modals
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (!document.getElementById('questionModal')?.classList.contains('hidden'))
+      document.getElementById('questionModalBackdrop')?.click();
+    else if (!document.getElementById('deleteModal')?.classList.contains('hidden'))
+      document.getElementById('deleteModalCancel')?.click();
+    else if (!document.getElementById('importJsonModal')?.classList.contains('hidden'))
+      document.getElementById('importJsonClose')?.click();
   });
 
   // ── Helpers ──────────────────────────────────────────────────

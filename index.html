@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NetQuiz — Počítačové sítě</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -15,13 +17,13 @@
         extend: {
           fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
           animation: {
-            'fade-in':    'fadeIn 0.22s ease-out',
-            'slide-up':   'slideUp 0.25s ease-out',
+            'fade-in': 'fadeIn 0.22s ease-out',
+            'slide-up': 'slideUp 0.25s ease-out',
             'score-reveal': 'scoreReveal 0.5s cubic-bezier(0.34,1.56,0.64,1)',
           },
           keyframes: {
-            fadeIn:      { '0%': { opacity: '0', transform: 'translateY(6px)' },  '100%': { opacity: '1', transform: 'translateY(0)' } },
-            slideUp:     { '0%': { opacity: '0', transform: 'translateY(16px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            fadeIn: { '0%': { opacity: '0', transform: 'translateY(6px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            slideUp: { '0%': { opacity: '0', transform: 'translateY(16px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
             scoreReveal: { '0%': { transform: 'scale(0.5)', opacity: '0' }, '70%': { transform: 'scale(1.1)', opacity: '1' }, '100%': { transform: 'scale(1)', opacity: '1' } },
           }
         }
@@ -29,135 +31,290 @@
     }
   </script>
   <style>
-    * { box-sizing: border-box; }
-    body { font-family: 'Inter', system-ui, sans-serif; }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
 
     /* Custom scrollbar */
-    ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
-    .dark ::-webkit-scrollbar-thumb { background: #374151; }
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #d1d5db;
+      border-radius: 4px;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+      background: #374151;
+    }
 
     /* Smooth dark mode transition */
-    html { transition: color 0.2s, background-color 0.2s; }
+    html {
+      transition: color 0.2s, background-color 0.2s;
+    }
 
     /* Answer hover slide */
-    .answer-option { transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease; }
-    .answer-option:not(.pointer-events-none):hover { transform: translateX(3px); }
+    .answer-option {
+      transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .answer-option:not(.pointer-events-none):hover {
+      transform: translateX(3px);
+    }
 
     /* Progress bar animation */
-    .progress-fill { transition: width 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .progress-fill {
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
     /* Toggle button */
-    .toggle-knob { transition: transform 0.2s ease; }
+    .toggle-knob {
+      transition: transform 0.2s ease;
+    }
 
     /* Glassmorphism topbar */
-    #topbar { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    #topbar {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
 
     /* Table rows */
-    .table-row { transition: background-color 0.12s ease; }
+    .table-row {
+      transition: background-color 0.12s ease;
+    }
 
     /* Drag reorder */
-    .dragging { opacity: 0.45; }
-    .drag-over { border-top: 2px solid #f97316 !important; }
-    .drag-handle { cursor: grab; }
-    .drag-handle:active { cursor: grabbing; }
+    .dragging {
+      opacity: 0.45;
+    }
+
+    .drag-over {
+      border-top: 2px solid #f97316 !important;
+    }
+
+    .drag-handle {
+      cursor: grab;
+    }
+
+    .drag-handle:active {
+      cursor: grabbing;
+    }
 
     /* Modal animation */
-    #questionModal > div:last-child,
-    #deleteModal > div:last-child { animation: slideUp 0.2s ease-out; }
+    #questionModal>div:last-child,
+    #deleteModal>div:last-child {
+      animation: slideUp 0.2s ease-out;
+    }
 
     /* Stagger fade-in for dashboard stat cards */
     @keyframes staggerIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .stagger-1 { animation: staggerIn 0.3s ease-out 0.05s both; }
-    .stagger-2 { animation: staggerIn 0.3s ease-out 0.10s both; }
-    .stagger-3 { animation: staggerIn 0.3s ease-out 0.15s both; }
-    .stagger-4 { animation: staggerIn 0.3s ease-out 0.20s both; }
+
+    .stagger-1 {
+      animation: staggerIn 0.3s ease-out 0.05s both;
+    }
+
+    .stagger-2 {
+      animation: staggerIn 0.3s ease-out 0.10s both;
+    }
+
+    .stagger-3 {
+      animation: staggerIn 0.3s ease-out 0.15s both;
+    }
+
+    .stagger-4 {
+      animation: staggerIn 0.3s ease-out 0.20s both;
+    }
 
     /* Wrong answer shake */
     @keyframes shake {
-      0%,100% { transform: translateX(0); }
-      20%      { transform: translateX(-6px); }
-      40%      { transform: translateX(6px); }
-      60%      { transform: translateX(-4px); }
-      80%      { transform: translateX(4px); }
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-6px);
+      }
+
+      40% {
+        transform: translateX(6px);
+      }
+
+      60% {
+        transform: translateX(-4px);
+      }
+
+      80% {
+        transform: translateX(4px);
+      }
     }
-    .answer-shake { animation: shake 0.35s ease-in-out; }
+
+    .answer-shake {
+      animation: shake 0.35s ease-in-out;
+    }
 
     /* Correct answer pulse */
     @keyframes correctPulse {
-      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
-      70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
-      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
     }
-    .answer-correct-pulse { animation: correctPulse 0.5s ease-out; }
+
+    .answer-correct-pulse {
+      animation: correctPulse 0.5s ease-out;
+    }
 
     /* Score counter bounce */
     @keyframes scoreReveal {
-      0%   { transform: scale(0.5); opacity: 0; }
-      70%  { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(1); opacity: 1; }
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+
+      70% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
-    .score-reveal { animation: scoreReveal 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+
+    .score-reveal {
+      animation: scoreReveal 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 
     /* Question card slide */
     @keyframes questionSlide {
-      from { opacity: 0; transform: translateX(20px); }
-      to   { opacity: 1; transform: translateX(0); }
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-    .question-slide { animation: questionSlide 0.2s ease-out; }
+
+    .question-slide {
+      animation: questionSlide 0.2s ease-out;
+    }
 
     /* Category pill hover */
-    .cat-pill { transition: transform 0.15s ease, box-shadow 0.15s ease; }
-    .cat-pill:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .cat-pill {
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .cat-pill:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
 
     /* Progress bar glow */
-    #quizProgressBar { box-shadow: 0 0 8px rgba(249,115,22,0.4); }
+    #quizProgressBar {
+      box-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
+    }
   </style>
 </head>
+
 <body class="bg-slate-50 dark:bg-gray-950 text-slate-800 dark:text-slate-100 min-h-screen">
 
   <!-- ═══════════════════════════════════════════════════════════
        TOPBAR
   ═══════════════════════════════════════════════════════════ -->
-  <header id="topbar" class="bg-white/90 dark:bg-gray-900/90 sticky top-0 z-50 border-b border-slate-200 dark:border-gray-800 h-14 flex items-center px-4 gap-3">
-    <button id="sidebarToggle" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle sidebar">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+  <header id="topbar"
+    class="bg-white/90 dark:bg-gray-900/90 sticky top-0 z-50 border-b border-slate-200 dark:border-gray-800 h-14 flex items-center px-4 gap-3">
+    <button id="sidebarToggle" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors"
+      aria-label="Toggle sidebar">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
     </button>
 
     <!-- Logo -->
-    <a href="#" data-view="dashboard" class="flex items-center gap-2 font-bold text-lg text-orange-600 dark:text-orange-400 shrink-0">
-      <div class="w-7 h-7 bg-orange-500 rounded-lg flex items-center justify-center text-white text-xs font-black shadow-sm">N</div>
+    <a href="#" data-view="dashboard"
+      class="flex items-center gap-2 font-bold text-lg text-orange-600 dark:text-orange-400 shrink-0">
+      <div
+        class="w-7 h-7 bg-orange-500 rounded-lg flex items-center justify-center text-white text-xs font-black shadow-sm">
+        N</div>
       <span class="hidden sm:block">NetQuiz</span>
     </a>
 
     <!-- Breadcrumb -->
     <div class="flex items-center gap-1.5 flex-1 text-sm min-w-0">
       <span class="text-slate-300 dark:text-gray-600 hidden sm:block">/</span>
-      <span id="breadcrumb" class="font-semibold text-slate-700 dark:text-slate-200 truncate hidden sm:block">Dashboard</span>
+      <span id="breadcrumb"
+        class="font-semibold text-slate-700 dark:text-slate-200 truncate hidden sm:block">Dashboard</span>
     </div>
 
     <!-- Topbar right -->
     <div class="flex items-center gap-1.5 shrink-0">
       <!-- Timer pill (shown only in quiz) -->
-      <div id="topbarTimer" class="hidden items-center gap-1.5 bg-slate-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm font-mono font-semibold text-slate-700 dark:text-slate-200">
-        <svg class="w-3.5 h-3.5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <div id="topbarTimer"
+        class="hidden items-center gap-1.5 bg-slate-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm font-mono font-semibold text-slate-700 dark:text-slate-200">
+        <svg class="w-3.5 h-3.5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
         <span id="topbarTimerDisplay">00:00</span>
       </div>
       <!-- Dark mode -->
-      <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle dark mode">
-        <svg id="darkIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-        <svg id="lightIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors"
+        aria-label="Toggle dark mode">
+        <svg id="darkIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+        <svg id="lightIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
       </button>
       <!-- User chip -->
       <div id="topbarUser" class="hidden items-center gap-1.5 pl-1 border-l border-slate-200 dark:border-gray-700 ml-1">
-        <span id="topbarUserName" class="text-xs font-semibold text-slate-600 dark:text-slate-300 hidden sm:block max-w-[120px] truncate"></span>
-        <span id="topbarAdminBadge" class="hidden text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 px-1.5 py-0.5 rounded-full font-semibold">Admin</span>
-        <button id="topbarLogoutBtn" class="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors text-slate-400 hover:text-slate-700" title="Odhlásit se">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        <span id="topbarUserName"
+          class="text-xs font-semibold text-slate-600 dark:text-slate-300 hidden sm:block max-w-[120px] truncate"></span>
+        <span id="topbarAdminBadge"
+          class="hidden text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 px-1.5 py-0.5 rounded-full font-semibold">Admin</span>
+        <button id="topbarLogoutBtn"
+          class="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors text-slate-400 hover:text-slate-700"
+          title="Odhlásit se">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
         </button>
       </div>
     </div>
@@ -167,62 +324,123 @@
     <!-- ═══════════════════════════════════════════════════════
          SIDEBAR
     ═══════════════════════════════════════════════════════ -->
-    <aside id="sidebar" class="w-60 shrink-0 bg-white dark:bg-gray-900 border-r border-slate-200 dark:border-gray-800 min-h-[calc(100vh-3.5rem)] flex flex-col z-40 fixed top-14 bottom-0 left-0 overflow-y-auto">
+    <aside id="sidebar"
+      class="w-60 shrink-0 bg-white dark:bg-gray-900 border-r border-slate-200 dark:border-gray-800 min-h-[calc(100vh-3.5rem)] flex flex-col z-40 fixed top-14 bottom-0 left-0 overflow-y-auto">
       <!-- Subject info -->
       <div class="p-4 border-b border-slate-100 dark:border-gray-800">
-        <div class="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-0.5">Předmět</div>
+        <div class="text-xs text-orange-600 dark:text-orange-400 font-semibold uppercase tracking-wide mb-0.5">Předmět
+        </div>
         <div id="subjectTitle" class="font-bold text-sm leading-snug">Počítačové sítě</div>
         <div id="subjectMeta" class="text-xs text-slate-400 dark:text-slate-500 mt-0.5">Načítám…</div>
       </div>
 
       <!-- Nav -->
       <nav class="flex-1 p-3 space-y-0.5">
-        <button data-view="dashboard" class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
-          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <button data-view="dashboard"
+          class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
+          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
           Dashboard
         </button>
 
-        <div class="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Kvíz</div>
+        <div class="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+          Kvíz</div>
 
-        <button data-view="quiz-setup" class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
-          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <button data-view="quiz-setup"
+          class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
+          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
           Spustit kvíz
         </button>
 
-        <button data-view="adaptive" class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
-          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m1.636-6.364l.707.707M12 21v-1M17.657 6.343l-.707.707M6.343 17.657l-.707.707m.707-11.314l-.707-.707M17.657 17.657l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
-          Adaptivni uceni
+        <button data-view="adaptive"
+          class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
+          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m1.636-6.364l.707.707M12 21v-1M17.657 6.343l-.707.707M6.343 17.657l-.707.707m.707-11.314l-.707-.707M17.657 17.657l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+          </svg>
+          Adaptivní ucení
         </button>
 
-        <div class="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Správa</div>
+        <div class="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+          Správa</div>
 
-        <button data-view="editor" data-admin-only class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group hidden">
-          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        <button data-view="editor" data-admin-only
+          class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group hidden">
+          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
           Správa otázek
         </button>
 
-        <button data-view="stats" class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
-          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <button data-view="stats"
+          class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
+          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
           Statistiky
         </button>
 
-        <button data-view="json-editor" data-admin-only class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group hidden">
-          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        <button data-view="json-editor" data-admin-only
+          class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group hidden">
+          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
           JSON Editor
         </button>
 
-        <div class="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Systém</div>
+        <div class="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+          Systém</div>
 
-        <button data-view="settings" class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
-          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <button data-view="settings"
+          class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
+          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
           Nastavení
+        </button>
+
+        <div class="pt-3 pb-1 px-3 text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+          Výuka</div>
+
+        <button data-view="materials"
+          class="nav-item w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors group">
+          <svg class="w-4 h-4 text-slate-400 group-hover:text-orange-500 transition-colors shrink-0" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          Studijní materiály
         </button>
       </nav>
 
       <!-- Bottom: change subject + stats + user -->
       <div class="p-4 border-t border-slate-100 dark:border-gray-800 space-y-2">
-        <button data-view="subjects" class="w-full text-left text-xs text-slate-400 hover:text-orange-500 transition-colors flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+        <button data-view="subjects"
+          class="w-full text-left text-xs text-slate-400 hover:text-orange-500 transition-colors flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          </svg>
           Změnit předmět
         </button>
         <div id="sidebarStats" class="text-xs text-slate-400 dark:text-slate-500 space-y-0.5">
@@ -237,38 +455,65 @@
     <main id="mainContent" class="flex-1 ml-60 min-w-0 min-h-[calc(100vh-3.5rem)]">
 
       <!-- ─── LOGIN VIEW ──────────────────────────────────────── -->
-      <div id="view-login" class="view-section hidden flex items-center justify-center min-h-[calc(100vh-3.5rem)] p-4 animate-fade-in">
+      <div id="view-login"
+        class="view-section hidden flex items-center justify-center min-h-[calc(100vh-3.5rem)] p-4 animate-fade-in">
         <div class="w-full max-w-md">
           <div class="text-center mb-8">
-            <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center text-white text-3xl font-black shadow-lg mx-auto mb-4">N</div>
+            <div
+              class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center text-white text-3xl font-black shadow-lg mx-auto mb-4">
+              N</div>
             <h1 class="text-2xl font-black">NetQuiz</h1>
             <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Přihlaste se nebo vytvořte účet</p>
           </div>
           <!-- Tabs -->
           <div class="flex bg-slate-100 dark:bg-gray-800 p-1 rounded-xl mb-6">
-            <button id="loginTabBtn" class="flex-1 py-2 rounded-lg text-sm font-semibold transition-colors bg-white dark:bg-gray-900 shadow-sm">Přihlásit se</button>
-            <button id="registerTabBtn" class="flex-1 py-2 rounded-lg text-sm font-semibold transition-colors text-slate-500">Registrovat</button>
+            <button id="loginTabBtn"
+              class="flex-1 py-2 rounded-lg text-sm font-semibold transition-colors bg-white dark:bg-gray-900 shadow-sm">Přihlásit
+              se</button>
+            <button id="registerTabBtn"
+              class="flex-1 py-2 rounded-lg text-sm font-semibold transition-colors text-slate-500">Registrovat</button>
           </div>
           <!-- Login -->
           <div id="loginForm" class="space-y-4">
             <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">E-mail</label>
-              <input id="loginEmail" type="email" placeholder="vas@email.cz" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"></div>
+              <input id="loginEmail" type="email" placeholder="vas@email.cz"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+            </div>
             <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Heslo</label>
-              <input id="loginPassword" type="password" placeholder="••••••••" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"></div>
-            <div id="loginError" class="hidden text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-4 py-3 rounded-xl"></div>
-            <button id="loginSubmitBtn" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition-colors shadow-sm">Přihlásit se</button>
+              <input id="loginPassword" type="password" placeholder="••••••••"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+            </div>
+            <div id="loginError"
+              class="hidden text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-4 py-3 rounded-xl">
+            </div>
+            <button id="loginSubmitBtn"
+              class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition-colors shadow-sm">Přihlásit
+              se</button>
           </div>
           <!-- Register -->
           <div id="registerForm" class="hidden space-y-4">
             <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Jméno</label>
-              <input id="registerName" type="text" placeholder="Vaše jméno" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"></div>
+              <input id="registerName" type="text" placeholder="Vaše jméno"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+            </div>
             <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">E-mail</label>
-              <input id="registerEmail" type="email" placeholder="vas@email.cz" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"></div>
-            <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Heslo (min. 6 znaků)</label>
-              <input id="registerPassword" type="password" placeholder="••••••••" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"></div>
-            <div id="registerError" class="hidden text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-4 py-3 rounded-xl"></div>
-            <div id="registerSuccess" class="hidden text-sm text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-4 py-3 rounded-xl"></div>
-            <button id="registerSubmitBtn" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition-colors shadow-sm">Vytvořit účet</button>
+              <input id="registerEmail" type="email" placeholder="vas@email.cz"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+            </div>
+            <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Heslo (min. 6
+                znaků)</label>
+              <input id="registerPassword" type="password" placeholder="••••••••"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+            </div>
+            <div id="registerError"
+              class="hidden text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-4 py-3 rounded-xl">
+            </div>
+            <div id="registerSuccess"
+              class="hidden text-sm text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-4 py-3 rounded-xl">
+            </div>
+            <button id="registerSubmitBtn"
+              class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition-colors shadow-sm">Vytvořit
+              účet</button>
           </div>
         </div>
       </div>
@@ -280,8 +525,11 @@
             <h1 class="text-2xl font-bold">Výběr předmětu</h1>
             <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Vyber předmět, který chceš procvičovat.</p>
           </div>
-          <button id="createSubjectBtn" class="hidden items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-2.5 rounded-xl transition-colors shadow-sm text-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <button id="createSubjectBtn"
+            class="hidden items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-2.5 rounded-xl transition-colors shadow-sm text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
             Nový předmět
           </button>
         </div>
@@ -289,19 +537,32 @@
           <div class="text-slate-400 text-sm col-span-full text-center py-12">Načítám předměty…</div>
         </div>
         <!-- Admin: create subject form -->
-        <div id="createSubjectForm" class="hidden bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-6 max-w-md">
+        <div id="createSubjectForm"
+          class="hidden bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-6 max-w-md">
           <h2 class="font-bold text-base mb-4">Nový předmět</h2>
           <div class="space-y-4">
-            <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Název *</label>
-              <input id="newSubjectTitle" type="text" placeholder="např. Počítačové sítě" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"></div>
-            <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Slug (URL identifikátor)</label>
-              <input id="newSubjectSlug" type="text" placeholder="pocitacove-site" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"></div>
+            <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Název
+                *</label>
+              <input id="newSubjectTitle" type="text" placeholder="např. Počítačové sítě"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+            </div>
+            <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Slug (URL
+                identifikátor)</label>
+              <input id="newSubjectSlug" type="text" placeholder="pocitacove-site"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+            </div>
             <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Popis</label>
-              <input id="newSubjectDesc" type="text" placeholder="Krátký popis předmětu" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"></div>
-            <div id="createSubjectError" class="hidden text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-4 py-3 rounded-xl"></div>
+              <input id="newSubjectDesc" type="text" placeholder="Krátký popis předmětu"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+            </div>
+            <div id="createSubjectError"
+              class="hidden text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-4 py-3 rounded-xl">
+            </div>
             <div class="flex gap-3">
-              <button id="createSubjectSubmit" class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2.5 rounded-xl transition-colors text-sm">Vytvořit</button>
-              <button id="createSubjectCancel" class="border border-slate-200 dark:border-gray-700 px-6 py-2.5 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Zrušit</button>
+              <button id="createSubjectSubmit"
+                class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2.5 rounded-xl transition-colors text-sm">Vytvořit</button>
+              <button id="createSubjectCancel"
+                class="border border-slate-200 dark:border-gray-700 px-6 py-2.5 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Zrušit</button>
             </div>
           </div>
         </div>
@@ -314,21 +575,36 @@
           <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-gray-800">
             <h3 class="font-bold text-base">Importovat questions.json</h3>
             <button id="importJsonClose" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
           </div>
           <div class="p-6 space-y-4">
-            <p class="text-sm text-slate-500 dark:text-slate-400">Vlož obsah <code class="bg-slate-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-xs">questions.json</code> nebo ho nahraj ze souboru. Otázky budou přidány ke stávajícím.</p>
-            <button id="importJsonFileBtn" class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-gray-700 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Vlož obsah <code
+                class="bg-slate-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-xs">questions.json</code> nebo ho nahraj
+              ze souboru. Otázky budou přidány ke stávajícím.</p>
+            <button id="importJsonFileBtn"
+              class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-gray-700 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+              </svg>
               Nahrát soubor
             </button>
-            <textarea id="importJsonText" rows="8" placeholder='{"meta":{},"categories":[...],"questions":[...]}' class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
-            <div id="importJsonError" class="hidden text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-4 py-3 rounded-xl"></div>
-            <div id="importJsonSuccess" class="hidden text-sm text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-4 py-3 rounded-xl"></div>
+            <textarea id="importJsonText" rows="8" placeholder='{"meta":{},"categories":[...],"questions":[...]}'
+              class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
+            <div id="importJsonError"
+              class="hidden text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-4 py-3 rounded-xl">
+            </div>
+            <div id="importJsonSuccess"
+              class="hidden text-sm text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-4 py-3 rounded-xl">
+            </div>
             <div class="flex gap-3">
-              <button id="importJsonSubmit" class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2.5 rounded-xl transition-colors text-sm">Importovat</button>
-              <button id="importJsonCloseBtn" class="border border-slate-200 dark:border-gray-700 px-6 py-2.5 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Zavřít</button>
+              <button id="importJsonSubmit"
+                class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2.5 rounded-xl transition-colors text-sm">Importovat</button>
+              <button id="importJsonCloseBtn"
+                class="border border-slate-200 dark:border-gray-700 px-6 py-2.5 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Zavřít</button>
             </div>
           </div>
         </div>
@@ -337,7 +613,8 @@
       <!-- ─── DASHBOARD ──────────────────────────────────────── -->
       <div id="view-dashboard" class="view-section p-6 animate-fade-in">
         <!-- Hero banner -->
-        <div class="bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl p-8 text-white mb-6 relative overflow-hidden shadow-lg">
+        <div
+          class="bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl p-8 text-white mb-6 relative overflow-hidden shadow-lg">
           <div class="absolute inset-0 pointer-events-none select-none opacity-10">
             <div class="absolute -top-8 -right-8 w-56 h-56 rounded-full bg-white"></div>
             <div class="absolute -bottom-12 -left-4 w-40 h-40 rounded-full bg-white"></div>
@@ -345,30 +622,41 @@
           <div class="relative z-10">
             <p class="text-sm font-medium opacity-80 mb-1">Vítej v</p>
             <h1 class="text-3xl font-black mb-2" id="dashboardTitle">Počítačové sítě</h1>
-            <p class="opacity-80 text-sm mb-6 max-w-lg">Procvičuj otázky ze všech kategorií, sleduj svůj pokrok a připrav se na zkoušku.</p>
+            <p class="opacity-80 text-sm mb-6 max-w-lg">Procvičuj otázky ze všech kategorií, sleduj svůj pokrok a
+              připrav se na zkoušku.</p>
             <div class="flex flex-wrap gap-3">
-              <button data-view="quiz-setup" class="bg-white text-orange-600 font-bold px-5 py-2.5 rounded-xl hover:bg-orange-50 transition-colors shadow text-sm">▶ Spustit kvíz</button>
-              <button data-view="adaptive" class="bg-white/20 hover:bg-white/30 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm border border-white/30">Adaptivni uceni</button>
-              <button data-view="editor" class="bg-orange-600/40 hover:bg-orange-600/60 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">Správa otázek</button>
+              <button data-view="quiz-setup"
+                class="bg-white text-orange-600 font-bold px-5 py-2.5 rounded-xl hover:bg-orange-50 transition-colors shadow text-sm">▶
+                Spustit kvíz</button>
+              <button data-view="adaptive"
+                class="bg-white/20 hover:bg-white/30 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm border border-white/30">Adaptivní
+                učení</button>
+              <button data-view="editor"
+                class="bg-orange-600/40 hover:bg-orange-600/60 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">Správa
+                otázek</button>
             </div>
           </div>
         </div>
 
         <!-- Stats grid -->
         <div class="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
-          <div class="stagger-1 bg-white dark:bg-gray-900 rounded-2xl p-5 border border-slate-200 dark:border-gray-800 shadow-sm">
+          <div
+            class="stagger-1 bg-white dark:bg-gray-900 rounded-2xl p-5 border border-slate-200 dark:border-gray-800 shadow-sm">
             <div class="text-2xl font-black text-orange-600 dark:text-orange-400" id="statTotalQ">0</div>
             <div class="text-xs text-slate-400 mt-1 uppercase tracking-wide font-medium">Celkem otázek</div>
           </div>
-          <div class="stagger-2 bg-white dark:bg-gray-900 rounded-2xl p-5 border border-slate-200 dark:border-gray-800 shadow-sm">
+          <div
+            class="stagger-2 bg-white dark:bg-gray-900 rounded-2xl p-5 border border-slate-200 dark:border-gray-800 shadow-sm">
             <div class="text-2xl font-black text-emerald-600 dark:text-emerald-400" id="statCategories">0</div>
             <div class="text-xs text-slate-400 mt-1 uppercase tracking-wide font-medium">Kategorií</div>
           </div>
-          <div class="stagger-3 bg-white dark:bg-gray-900 rounded-2xl p-5 border border-slate-200 dark:border-gray-800 shadow-sm">
+          <div
+            class="stagger-3 bg-white dark:bg-gray-900 rounded-2xl p-5 border border-slate-200 dark:border-gray-800 shadow-sm">
             <div class="text-2xl font-black text-violet-600 dark:text-violet-400" id="statAttempts">0</div>
             <div class="text-xs text-slate-400 mt-1 uppercase tracking-wide font-medium">Absolvovaných testů</div>
           </div>
-          <div class="stagger-4 bg-white dark:bg-gray-900 rounded-2xl p-5 border border-slate-200 dark:border-gray-800 shadow-sm">
+          <div
+            class="stagger-4 bg-white dark:bg-gray-900 rounded-2xl p-5 border border-slate-200 dark:border-gray-800 shadow-sm">
             <div class="text-2xl font-black text-blue-600 dark:text-blue-400" id="statBestScore">—</div>
             <div class="text-xs text-slate-400 mt-1 uppercase tracking-wide font-medium">Nejlepší skóre</div>
           </div>
@@ -388,7 +676,10 @@
             <h2 class="font-bold text-base mb-4">Poslední výsledky</h2>
             <div id="recentResults">
               <div class="text-center py-8 text-slate-400">
-                <svg class="w-10 h-10 mx-auto mb-2 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <svg class="w-10 h-10 mx-auto mb-2 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
                 <p class="text-sm font-medium">Zatím žádné výsledky</p>
               </div>
             </div>
@@ -398,84 +689,108 @@
 
       <!-- ─── QUIZ SETUP ──────────────────────────────────────── -->
       <div id="view-quiz-setup" class="view-section hidden p-6 animate-fade-in">
-        <div class="max-w-xl mx-auto">
+        <div class="max-w-5xl mx-auto">
           <h1 class="text-2xl font-bold mb-1">Nastavení kvízu</h1>
           <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Nastav parametry a spusť kvíz.</p>
 
-          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6 space-y-6">
-            <!-- Mode selector -->
-            <div>
-              <label class="text-sm font-semibold block mb-3">Režim</label>
-              <div class="grid grid-cols-2 gap-3">
-                <label class="mode-option cursor-pointer">
-                  <input type="radio" name="quizMode" value="study" class="sr-only" checked>
-                  <div class="mode-card border-2 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-xl p-4 transition-all">
-                    <div class="font-semibold text-orange-700 dark:text-orange-300 text-sm mb-1">📚 Studijní</div>
-                    <div class="text-xs text-slate-500 dark:text-slate-400">Okamžitá zpětná vazba</div>
-                  </div>
-                </label>
-                <label class="mode-option cursor-pointer">
-                  <input type="radio" name="quizMode" value="exam" class="sr-only">
-                  <div class="mode-card border-2 border-slate-200 dark:border-gray-700 rounded-xl p-4 transition-all">
-                    <div class="font-semibold text-slate-700 dark:text-slate-300 text-sm mb-1">🎓 Zkouška</div>
-                    <div class="text-xs text-slate-500 dark:text-slate-400">Výsledky na konci</div>
-                  </div>
-                </label>
+          <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-6 items-start">
+            <!-- Left: options -->
+            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6 space-y-6">
+              <!-- Mode selector -->
+              <div>
+                <label class="text-sm font-semibold block mb-3">Režim</label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="mode-option cursor-pointer">
+                    <input type="radio" name="quizMode" value="study" class="sr-only" checked>
+                    <div class="mode-card border-2 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-xl p-4 transition-all">
+                      <div class="font-semibold text-orange-700 dark:text-orange-300 text-sm mb-1">📚 Studijní</div>
+                      <div class="text-xs text-slate-500 dark:text-slate-400">Okamžitá zpětná vazba</div>
+                    </div>
+                  </label>
+                  <label class="mode-option cursor-pointer">
+                    <input type="radio" name="quizMode" value="exam" class="sr-only">
+                    <div class="mode-card border-2 border-slate-200 dark:border-gray-700 rounded-xl p-4 transition-all">
+                      <div class="font-semibold text-slate-700 dark:text-slate-300 text-sm mb-1">🎓 Zkouška</div>
+                      <div class="text-xs text-slate-500 dark:text-slate-400">Výsledky na konci</div>
+                    </div>
+                  </label>
+                </div>
               </div>
+
+              <!-- Count slider -->
+              <div>
+                <label class="text-sm font-semibold block mb-2">Počet otázek</label>
+                <div class="flex items-center gap-4">
+                  <input id="setup-count" type="range" min="5" max="100" value="20" step="5"
+                    class="flex-1 accent-orange-500 h-2">
+                  <span id="setup-count-display"
+                    class="w-10 text-center font-black text-orange-600 dark:text-orange-400 text-xl tabular-nums">20</span>
+                </div>
+              </div>
+
+              <!-- Difficulty -->
+              <div>
+                <label class="text-sm font-semibold block mb-2">Obtížnost</label>
+                <div class="flex flex-wrap gap-2">
+                  <label class="cursor-pointer"><input type="checkbox" class="sr-only diff-filter" value="easy"><span
+                      class="diff-chip inline-block px-3 py-1.5 rounded-full text-xs border-2 border-emerald-300 text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/20 transition-all font-medium">Lehká</span></label>
+                  <label class="cursor-pointer"><input type="checkbox" class="sr-only diff-filter" value="medium"
+                      checked><span
+                      class="diff-chip inline-block px-3 py-1.5 rounded-full text-xs border-2 border-amber-400 text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/20 transition-all font-semibold">Střední</span></label>
+                  <label class="cursor-pointer"><input type="checkbox" class="sr-only diff-filter" value="hard"><span
+                      class="diff-chip inline-block px-3 py-1.5 rounded-full text-xs border-2 border-red-300 text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 transition-all font-medium">Těžká</span></label>
+                </div>
+              </div>
+
+              <!-- SRS / Bookmark filters -->
+              <div>
+                <label class="text-sm font-semibold block mb-2">Filtr dle výkonu</label>
+                <div class="flex flex-wrap gap-2">
+                  <label class="cursor-pointer"><input type="checkbox" class="sr-only srs-filter" value="unseen"><span class="srs-chip inline-block px-3 py-1.5 rounded-full text-xs border-2 border-slate-300 dark:border-gray-600 text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-gray-800 transition-all font-medium">Neviděné</span></label>
+                  <label class="cursor-pointer"><input type="checkbox" class="sr-only srs-filter" value="weak"><span class="srs-chip inline-block px-3 py-1.5 rounded-full text-xs border-2 border-red-300 text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 transition-all font-medium">Slabé (&lt;50%)</span></label>
+                  <label class="cursor-pointer"><input type="checkbox" class="sr-only srs-filter" value="bookmarked"><span class="srs-chip inline-block px-3 py-1.5 rounded-full text-xs border-2 border-yellow-400 text-yellow-700 dark:text-yellow-300 bg-yellow-50 dark:bg-yellow-900/20 transition-all font-medium">⭐ Hvězdičky</span></label>
+                </div>
+              </div>
+
+              <!-- Toggles -->
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <div class="text-sm font-medium">Náhodné pořadí</div>
+                    <div class="text-xs text-slate-400 mt-0.5">Zamíchá otázky</div>
+                  </div>
+                  <button id="toggle-randomize" role="switch" aria-checked="true"
+                    class="toggle-btn w-10 h-6 bg-orange-500 rounded-full relative focus:outline-none focus:ring-2 focus:ring-orange-300 transition-colors">
+                    <span class="toggle-knob absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-4"></span>
+                  </button>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <div class="text-sm font-medium">Časovač</div>
+                    <div class="text-xs text-slate-400 mt-0.5">Měří čas testu</div>
+                  </div>
+                  <button id="toggle-timer" role="switch" aria-checked="true"
+                    class="toggle-btn w-10 h-6 bg-orange-500 rounded-full relative focus:outline-none focus:ring-2 focus:ring-orange-300 transition-colors">
+                    <span class="toggle-knob absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-4"></span>
+                  </button>
+                </div>
+              </div>
+
+              <button id="startQuizBtn"
+                class="w-full bg-orange-500 hover:bg-orange-600 active:scale-[0.98] text-white font-bold py-3 rounded-xl transition-all shadow-sm text-base">
+                Spustit kvíz →
+              </button>
+              <p id="filterCountDisplay" class="text-center text-xs text-slate-400 dark:text-slate-500 -mt-3"></p>
             </div>
 
-            <!-- Count slider -->
-            <div>
-              <label class="text-sm font-semibold block mb-2">Počet otázek</label>
-              <div class="flex items-center gap-4">
-                <input id="setup-count" type="range" min="5" max="100" value="20" step="5" class="flex-1 accent-orange-500 h-2">
-                <span id="setup-count-display" class="w-10 text-center font-black text-orange-600 dark:text-orange-400 text-xl tabular-nums">20</span>
-              </div>
-            </div>
-
-            <!-- Categories -->
-            <div>
-              <label class="text-sm font-semibold block mb-2">Kategorie <span class="font-normal text-slate-400 text-xs">(prázdný výběr = vše)</span></label>
+            <!-- Right: categories -->
+            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
+              <label class="text-sm font-semibold block mb-3">Kategorie <span
+                  class="font-normal text-slate-400 text-xs">(prázdný výběr = vše)</span></label>
               <div id="setup-categories" class="flex flex-wrap gap-2">
                 <span class="text-slate-400 text-sm">Načítám…</span>
               </div>
             </div>
-
-            <!-- Difficulty -->
-            <div>
-              <label class="text-sm font-semibold block mb-2">Obtížnost</label>
-              <div class="flex flex-wrap gap-2">
-                <label class="cursor-pointer"><input type="checkbox" class="sr-only diff-filter" value="easy"><span class="diff-chip inline-block px-3 py-1.5 rounded-full text-xs border-2 border-emerald-300 text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/20 transition-all font-medium">Lehká</span></label>
-                <label class="cursor-pointer"><input type="checkbox" class="sr-only diff-filter" value="medium" checked><span class="diff-chip inline-block px-3 py-1.5 rounded-full text-xs border-2 border-amber-400 text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/20 transition-all font-semibold">Střední</span></label>
-                <label class="cursor-pointer"><input type="checkbox" class="sr-only diff-filter" value="hard"><span class="diff-chip inline-block px-3 py-1.5 rounded-full text-xs border-2 border-red-300 text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 transition-all font-medium">Těžká</span></label>
-              </div>
-            </div>
-
-            <!-- Toggles -->
-            <div class="space-y-4">
-              <div class="flex items-center justify-between">
-                <div>
-                  <div class="text-sm font-medium">Náhodné pořadí</div>
-                  <div class="text-xs text-slate-400 mt-0.5">Zamíchá otázky</div>
-                </div>
-                <button id="toggle-randomize" role="switch" aria-checked="true" class="toggle-btn w-10 h-6 bg-orange-500 rounded-full relative focus:outline-none focus:ring-2 focus:ring-orange-300 transition-colors">
-                  <span class="toggle-knob absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-4"></span>
-                </button>
-              </div>
-              <div class="flex items-center justify-between">
-                <div>
-                  <div class="text-sm font-medium">Časovač</div>
-                  <div class="text-xs text-slate-400 mt-0.5">Měří čas testu</div>
-                </div>
-                <button id="toggle-timer" role="switch" aria-checked="true" class="toggle-btn w-10 h-6 bg-orange-500 rounded-full relative focus:outline-none focus:ring-2 focus:ring-orange-300 transition-colors">
-                  <span class="toggle-knob absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-4"></span>
-                </button>
-              </div>
-            </div>
-
-            <button id="startQuizBtn" class="w-full bg-orange-500 hover:bg-orange-600 active:scale-[0.98] text-white font-bold py-3 rounded-xl transition-all shadow-sm text-base">
-              Spustit kvíz →
-            </button>
           </div>
         </div>
       </div>
@@ -483,38 +798,63 @@
       <!-- ─── QUIZ VIEW ───────────────────────────────────────── -->
       <div id="view-quiz" class="view-section hidden">
         <!-- Sticky progress bar -->
-        <div class="bg-white dark:bg-gray-900 border-b border-slate-200 dark:border-gray-800 px-6 py-3 flex items-center gap-4 sticky top-14 z-30">
+        <div
+          class="bg-white dark:bg-gray-900 border-b border-slate-200 dark:border-gray-800 px-6 py-3 flex items-center gap-4 sticky top-14 z-30">
           <div class="flex-1">
             <div class="h-1.5 bg-slate-100 dark:bg-gray-800 rounded-full overflow-hidden">
-              <div id="quizProgressBar" class="progress-fill h-full bg-gradient-to-r from-orange-400 to-orange-600 rounded-full" style="width:0%"></div>
+              <div id="quizProgressBar"
+                class="progress-fill h-full bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"
+                style="width:0%"></div>
             </div>
           </div>
-          <span id="quizProgressText" class="text-xs font-semibold text-slate-500 dark:text-slate-400 shrink-0 tabular-nums">0 / 0</span>
-          <button id="quizPauseBtn" title="Pauza" class="shrink-0 p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span id="quizProgressText"
+            class="text-xs font-semibold text-slate-500 dark:text-slate-400 shrink-0 tabular-nums">0 / 0</span>
+          <button id="quizPauseBtn" title="Pauza"
+            class="shrink-0 p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
           </button>
-          <button id="quizEndBtn" class="shrink-0 text-xs text-red-500 hover:text-red-700 font-semibold transition-colors">Ukončit</button>
+          <button id="quizEndBtn"
+            class="shrink-0 text-xs text-red-500 hover:text-red-700 font-semibold transition-colors">Ukončit</button>
         </div>
 
         <div class="p-6 flex gap-6">
           <!-- Question column -->
           <div class="flex-1 min-w-0 max-w-2xl mx-auto">
             <!-- Question card -->
-            <div id="questionCard" class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6 mb-4 animate-fade-in">
+            <div id="questionCard"
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6 mb-4 animate-fade-in">
               <!-- Meta row -->
               <div class="flex items-start gap-3 mb-5">
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center gap-2 mb-2 flex-wrap">
-                    <span id="qCategory" class="text-xs px-2 py-0.5 bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full font-semibold"></span>
+                    <span id="qCategory"
+                      class="text-xs px-2 py-0.5 bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full font-semibold"></span>
                     <span id="qType"></span>
                     <span id="qDifficulty" class="hidden"></span>
-                    <span class="text-xs text-slate-400 ml-auto tabular-nums">Otázka <span id="qNumDisplay">1</span></span>
+                    <span class="text-xs text-slate-400 ml-auto tabular-nums">Otázka <span
+                        id="qNumDisplay">1</span></span>
                   </div>
-                  <h2 id="qText" class="text-base font-semibold leading-relaxed text-slate-800 dark:text-slate-100"></h2>
+                  <h2 id="qText" class="text-base font-semibold leading-relaxed text-slate-800 dark:text-slate-100">
+                  </h2>
                 </div>
                 <!-- Flag -->
-                <button id="flagBtn" title="Označit otázku (F)" class="shrink-0 p-2 rounded-lg hover:bg-amber-50 dark:hover:bg-amber-900/20 text-slate-300 dark:text-slate-600 hover:text-amber-500 transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg>
+                <button id="flagBtn" title="Označit otázku (F)"
+                  class="shrink-0 p-2 rounded-lg hover:bg-amber-50 dark:hover:bg-amber-900/20 text-slate-300 dark:text-slate-600 hover:text-amber-500 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                  </svg>
+                </button>
+                <!-- Star/bookmark -->
+                <button id="starBtn" title="Hvězdička (B)"
+                  class="shrink-0 p-2 rounded-lg hover:bg-yellow-50 dark:hover:bg-yellow-900/20 text-slate-300 dark:text-slate-600 hover:text-yellow-500 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
                 </button>
               </div>
 
@@ -527,32 +867,49 @@
 
             <!-- Navigation buttons -->
             <div class="flex items-center gap-2">
-              <button id="prevQuestionBtn" class="flex items-center gap-1.5 px-4 py-2.5 border border-slate-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              <button id="prevQuestionBtn"
+                class="flex items-center gap-1.5 px-4 py-2.5 border border-slate-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
                 Zpět
               </button>
-              <button id="skipBtn" class="px-4 py-2.5 border border-slate-200 dark:border-gray-700 rounded-xl text-sm text-slate-500 hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors" title="Přeskočit (S)">
+              <button id="skipBtn"
+                class="px-4 py-2.5 border border-slate-200 dark:border-gray-700 rounded-xl text-sm text-slate-500 hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors"
+                title="Přeskočit (S)">
                 Přeskočit
               </button>
               <div class="flex-1"></div>
-              <button id="confirmAnswerBtn" class="hidden px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded-xl text-sm font-bold transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
+              <button id="confirmAnswerBtn"
+                class="hidden px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded-xl text-sm font-bold transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
                 Potvrdit odpověď
               </button>
-              <button id="nextQuestionBtn" class="flex items-center gap-1.5 px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded-xl text-sm font-bold transition-colors shadow-sm">
-                Další <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              <button id="nextQuestionBtn"
+                class="flex items-center gap-1.5 px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded-xl text-sm font-bold transition-colors shadow-sm">
+                Další <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
               </button>
             </div>
           </div>
 
           <!-- Side nav grid (desktop only) -->
           <div class="hidden xl:block w-48 shrink-0">
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-4 sticky top-28">
-              <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">Navigace</div>
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-4 sticky top-28">
+              <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3">
+                Navigace</div>
               <div id="quizNavGrid" class="grid grid-cols-5 gap-1.5"></div>
               <div class="mt-3 pt-3 border-t border-slate-100 dark:border-gray-800 space-y-1.5 text-xs text-slate-400">
-                <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-emerald-100 dark:bg-emerald-900/40 border border-emerald-400 inline-block"></span>Zodpovězeno</div>
-                <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-amber-100 dark:bg-amber-900/40 border border-amber-400 inline-block"></span>Označeno</div>
-                <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-white dark:bg-gray-800 border border-slate-300 dark:border-gray-600 inline-block"></span>Nezodpovězeno</div>
+                <div class="flex items-center gap-2"><span
+                    class="w-3 h-3 rounded bg-emerald-100 dark:bg-emerald-900/40 border border-emerald-400 inline-block"></span>Zodpovězeno
+                </div>
+                <div class="flex items-center gap-2"><span
+                    class="w-3 h-3 rounded bg-amber-100 dark:bg-amber-900/40 border border-amber-400 inline-block"></span>Označeno
+                </div>
+                <div class="flex items-center gap-2"><span
+                    class="w-3 h-3 rounded bg-white dark:bg-gray-800 border border-slate-300 dark:border-gray-600 inline-block"></span>Nezodpovězeno
+                </div>
               </div>
             </div>
           </div>
@@ -562,31 +919,41 @@
       <!-- ─── RESULTS VIEW ────────────────────────────────────── -->
       <div id="view-results" class="view-section hidden p-6 animate-fade-in">
         <div class="max-w-2xl mx-auto">
-          <div id="resultScoreCard" class="rounded-2xl p-8 text-white mb-6 text-center shadow-lg bg-gradient-to-br from-orange-500 to-orange-700">
+          <div id="resultScoreCard"
+            class="rounded-2xl p-8 text-white mb-6 text-center shadow-lg bg-gradient-to-br from-orange-500 to-orange-700">
             <div class="score-reveal text-5xl font-black mb-1" id="resultScore">0%</div>
             <div class="text-lg font-semibold opacity-90 mb-1" id="resultGrade"></div>
             <div class="opacity-70 text-sm" id="resultMeta"></div>
           </div>
 
           <div class="grid grid-cols-3 gap-4 mb-6">
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
               <div class="text-2xl font-black text-emerald-600 dark:text-emerald-400" id="resultCorrect">0</div>
               <div class="text-xs text-slate-400 mt-1 uppercase tracking-wide">Správně</div>
             </div>
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
               <div class="text-2xl font-black text-red-600 dark:text-red-400" id="resultWrong">0</div>
               <div class="text-xs text-slate-400 mt-1 uppercase tracking-wide">Špatně</div>
             </div>
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
               <div class="text-2xl font-black text-slate-500 dark:text-slate-400" id="resultSkipped">0</div>
               <div class="text-xs text-slate-400 mt-1 uppercase tracking-wide">Přeskočeno</div>
             </div>
           </div>
 
           <div class="flex flex-wrap gap-3 mb-6">
-            <button id="retryBtn" class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-5 py-2.5 rounded-xl transition-colors shadow-sm text-sm">Zkusit znovu</button>
-            <button id="retryWrongBtn" class="bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/40 text-red-700 dark:text-red-400 font-semibold px-5 py-2.5 rounded-xl transition-colors border border-red-200 dark:border-red-800 text-sm">Zopakovat špatné</button>
-            <button data-view="dashboard" class="bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 text-slate-700 dark:text-slate-300 font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">← Dashboard</button>
+            <button id="retryBtn"
+              class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-5 py-2.5 rounded-xl transition-colors shadow-sm text-sm">Zkusit
+              znovu</button>
+            <button id="retryWrongBtn"
+              class="bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/40 text-red-700 dark:text-red-400 font-semibold px-5 py-2.5 rounded-xl transition-colors border border-red-200 dark:border-red-800 text-sm">Zopakovat
+              špatné</button>
+            <button data-view="dashboard"
+              class="bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 text-slate-700 dark:text-slate-300 font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">←
+              Dashboard</button>
           </div>
 
           <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
@@ -600,7 +967,8 @@
       <div id="view-adaptive" class="view-section hidden">
 
         <!-- Sticky header bar -->
-        <div class="bg-white dark:bg-gray-900 border-b border-slate-200 dark:border-gray-800 px-6 py-3 flex items-center gap-4 flex-wrap sticky top-14 z-30">
+        <div
+          class="bg-white dark:bg-gray-900 border-b border-slate-200 dark:border-gray-800 px-6 py-3 flex items-center gap-4 flex-wrap sticky top-14 z-30">
           <!-- Mode toggle -->
           <div class="flex items-center gap-1 bg-slate-100 dark:bg-gray-800 rounded-xl p-1 shrink-0">
             <button id="adaptiveModeAdaptive" data-mode="adaptive"
@@ -617,8 +985,10 @@
           <div class="flex items-center gap-4 text-sm flex-1">
             <span class="text-slate-400 text-xs">Sezení:</span>
             <span class="font-semibold"><span id="srsSeenCount">0</span> zobrazenych</span>
-            <span class="text-emerald-600 dark:text-emerald-400 font-semibold hidden sm:inline"><span id="srsCorrectCount">0</span> spravne</span>
-            <span class="text-slate-400 hidden md:inline">Streak: <span id="srsStreakDisplay" class="font-bold text-slate-600 dark:text-slate-300">0</span></span>
+            <span class="text-emerald-600 dark:text-emerald-400 font-semibold hidden sm:inline"><span
+                id="srsCorrectCount">0</span> spravne</span>
+            <span class="text-slate-400 hidden md:inline">Streak: <span id="srsStreakDisplay"
+                class="font-bold text-slate-600 dark:text-slate-300">0</span></span>
           </div>
 
           <button id="adaptiveEndBtn"
@@ -638,17 +1008,20 @@
         <div class="p-6 pt-2 max-w-2xl mx-auto">
 
           <!-- Question card -->
-          <div id="adaptiveQuestionCard" class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6 mb-4 animate-fade-in">
+          <div id="adaptiveQuestionCard"
+            class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6 mb-4 animate-fade-in">
             <!-- Meta row -->
             <div class="flex items-start gap-3 mb-5">
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 mb-2 flex-wrap">
-                  <span id="srsQCategory" class="text-xs px-2 py-0.5 bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full font-semibold"></span>
+                  <span id="srsQCategory"
+                    class="text-xs px-2 py-0.5 bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full font-semibold"></span>
                   <span id="srsQType"></span>
                   <!-- SRS state badge -->
                   <span id="srsStateBadge" class="text-xs px-2 py-0.5 rounded-full font-medium hidden"></span>
                 </div>
-                <h2 id="srsQText" class="text-base font-semibold leading-relaxed text-slate-800 dark:text-slate-100"></h2>
+                <h2 id="srsQText" class="text-base font-semibold leading-relaxed text-slate-800 dark:text-slate-100">
+                </h2>
               </div>
             </div>
 
@@ -660,13 +1033,18 @@
           </div>
 
           <!-- Warning banners (suspicious speed / false confidence) -->
-          <div id="srsWarningBanner" class="hidden mb-3 px-4 py-3 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 text-sm flex items-start gap-2">
-            <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+          <div id="srsWarningBanner"
+            class="hidden mb-3 px-4 py-3 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 text-sm flex items-start gap-2">
+            <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+            </svg>
             <span id="srsWarningText"></span>
           </div>
 
           <!-- Rating panel — shown after reveal -->
-          <div id="srsRatingPanel" class="hidden bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-5 mb-4">
+          <div id="srsRatingPanel"
+            class="hidden bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-5 mb-4">
             <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 text-center mb-4">
               Jak dobre jsi znal tuto otazku?
             </p>
@@ -724,21 +1102,25 @@
 
         <!-- Session end summary (hidden until session ends) -->
         <div id="srsSessionSummary" class="hidden p-6 max-w-2xl mx-auto">
-          <div class="bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl p-8 text-white text-center shadow-lg mb-6">
+          <div
+            class="bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl p-8 text-white text-center shadow-lg mb-6">
             <div class="text-5xl font-black mb-2" id="srsSummaryScore">—</div>
             <div class="text-lg font-semibold opacity-90 mb-1" id="srsSummaryLabel">Sezeni dokonceno</div>
             <div class="opacity-75 text-sm" id="srsSummaryMeta"></div>
           </div>
           <div class="grid grid-cols-3 gap-4 mb-6">
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
               <div class="text-2xl font-black text-emerald-600 dark:text-emerald-400" id="srsSummaryCorrect">0</div>
               <div class="text-xs text-slate-400 mt-1 uppercase tracking-wide">Spravne</div>
             </div>
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
               <div class="text-2xl font-black text-red-500 dark:text-red-400" id="srsSummaryWrong">0</div>
               <div class="text-xs text-slate-400 mt-1 uppercase tracking-wide">Neumelo</div>
             </div>
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 p-4 text-center shadow-sm">
               <div class="text-2xl font-black text-blue-600 dark:text-blue-400" id="srsSummaryDue">0</div>
               <div class="text-xs text-slate-400 mt-1 uppercase tracking-wide">Due zitra</div>
             </div>
@@ -759,16 +1141,23 @@
       <!-- ─── EDITOR VIEW ─────────────────────────────────────── -->
       <div id="view-editor" class="view-section hidden animate-fade-in">
         <!-- Toolbar (sticky) -->
-        <div class="bg-white dark:bg-gray-900 border-b border-slate-200 dark:border-gray-800 px-6 py-3 flex items-center gap-3 flex-wrap sticky top-14 z-30">
+        <div
+          class="bg-white dark:bg-gray-900 border-b border-slate-200 dark:border-gray-800 px-6 py-3 flex items-center gap-3 flex-wrap sticky top-14 z-30">
           <h1 class="font-bold text-base">Správa otázek</h1>
           <div class="flex-1"></div>
           <!-- Search -->
           <div class="relative">
-            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-            <input id="editorSearch" type="search" placeholder="Hledat…" class="pl-8 pr-3 py-2 border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl text-sm w-56 focus:outline-none focus:ring-2 focus:ring-orange-300 dark:focus:ring-orange-700 transition-all">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input id="editorSearch" type="search" placeholder="Hledat…"
+              class="pl-8 pr-3 py-2 border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl text-sm w-56 focus:outline-none focus:ring-2 focus:ring-orange-300 dark:focus:ring-orange-700 transition-all">
           </div>
           <!-- Filters -->
-          <select id="editorTypeFilter" class="border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+          <select id="editorTypeFilter"
+            class="border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
             <option value="">Všechny typy</option>
             <option value="single">Single</option>
             <option value="multi">Multi</option>
@@ -777,29 +1166,44 @@
             <option value="text">Text</option>
             <option value="open">Otevřená</option>
           </select>
-          <select id="editorCatFilter" class="border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
+          <select id="editorCatFilter"
+            class="border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 transition-all">
             <option value="">Všechny kategorie</option>
           </select>
           <!-- Actions -->
-          <button id="editorImportBtn" class="flex items-center gap-1.5 px-3 py-2 border border-slate-200 dark:border-gray-700 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+          <button id="editorImportBtn"
+            class="flex items-center gap-1.5 px-3 py-2 border border-slate-200 dark:border-gray-700 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+            </svg>
             Import
           </button>
-          <button id="editorExportBtn" class="flex items-center gap-1.5 px-3 py-2 border border-slate-200 dark:border-gray-700 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <button id="editorExportBtn"
+            class="flex items-center gap-1.5 px-3 py-2 border border-slate-200 dark:border-gray-700 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
             Export
           </button>
-          <button id="editorAddBtn" class="flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors shadow-sm">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <button id="editorAddBtn"
+            class="flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors shadow-sm">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
             Přidat
           </button>
         </div>
 
         <!-- Bulk action bar -->
-        <div id="editorBulkBar" class="hidden bg-orange-50 dark:bg-orange-900/20 border-b border-orange-200 dark:border-orange-800 px-6 py-3 items-center gap-4">
+        <div id="editorBulkBar"
+          class="hidden bg-orange-50 dark:bg-orange-900/20 border-b border-orange-200 dark:border-orange-800 px-6 py-3 items-center gap-4">
           <span id="editorBulkCount" class="text-sm font-semibold text-orange-700 dark:text-orange-300">0 vybráno</span>
-          <button id="editorBulkDelete" class="text-sm text-red-600 hover:text-red-800 font-medium transition-colors">Smazat vybrané</button>
-          <button id="editorBulkClearSel" class="text-sm text-slate-500 hover:text-slate-700 transition-colors ml-auto">Zrušit výběr</button>
+          <button id="editorBulkDelete"
+            class="text-sm text-red-600 hover:text-red-800 font-medium transition-colors">Smazat vybrané</button>
+          <button id="editorBulkClearSel"
+            class="text-sm text-slate-500 hover:text-slate-700 transition-colors ml-auto">Zrušit výběr</button>
         </div>
 
         <!-- Table -->
@@ -807,29 +1211,49 @@
           <table class="w-full text-sm min-w-[700px]" id="editorTable">
             <thead class="bg-slate-50 dark:bg-gray-900/60 border-b border-slate-200 dark:border-gray-800">
               <tr>
-                <th class="w-10 px-4 py-3"><input type="checkbox" id="editorSelectAll" class="rounded accent-orange-500"></th>
-                <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide cursor-pointer hover:text-orange-600 w-16" data-sort="id">ID <span class="sort-icon">↕</span></th>
-                <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide cursor-pointer hover:text-orange-600 w-24" data-sort="type">Typ <span class="sort-icon">↕</span></th>
-                <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide cursor-pointer hover:text-orange-600 w-28" data-sort="category">Kategorie <span class="sort-icon">↕</span></th>
-                <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide cursor-pointer hover:text-orange-600 w-24" data-sort="difficulty">Obtížnost <span class="sort-icon">↕</span></th>
-                <th class="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Otázka</th>
-                <th class="px-4 py-3 text-right text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide w-28">Akce</th>
+                <th class="w-10 px-4 py-3"><input type="checkbox" id="editorSelectAll"
+                    class="rounded accent-orange-500"></th>
+                <th
+                  class="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide cursor-pointer hover:text-orange-600 w-16"
+                  data-sort="id">ID <span class="sort-icon">↕</span></th>
+                <th
+                  class="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide cursor-pointer hover:text-orange-600 w-24"
+                  data-sort="type">Typ <span class="sort-icon">↕</span></th>
+                <th
+                  class="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide cursor-pointer hover:text-orange-600 w-28"
+                  data-sort="category">Kategorie <span class="sort-icon">↕</span></th>
+                <th
+                  class="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide cursor-pointer hover:text-orange-600 w-24"
+                  data-sort="difficulty">Obtížnost <span class="sort-icon">↕</span></th>
+                <th
+                  class="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+                  Otázka</th>
+                <th
+                  class="px-4 py-3 text-right text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide w-28">
+                  Akce</th>
               </tr>
             </thead>
             <tbody id="editorTableBody" class="divide-y divide-slate-100 dark:divide-gray-800">
-              <tr><td colspan="7" class="px-4 py-12 text-center text-slate-400">Načítám…</td></tr>
+              <tr>
+                <td colspan="7" class="px-4 py-12 text-center text-slate-400">Načítám…</td>
+              </tr>
             </tbody>
           </table>
         </div>
 
         <!-- Pagination -->
-        <div class="bg-white dark:bg-gray-900 border-t border-slate-200 dark:border-gray-800 px-6 py-3 flex items-center gap-3 flex-wrap">
+        <div
+          class="bg-white dark:bg-gray-900 border-t border-slate-200 dark:border-gray-800 px-6 py-3 flex items-center gap-3 flex-wrap">
           <div class="text-xs text-slate-500 dark:text-slate-400" id="editorPagInfo">Zobrazuji 0–0 z 0</div>
           <div class="flex-1"></div>
           <div class="flex items-center gap-1.5">
-            <button id="editorPagPrev" class="px-3 py-1.5 border border-slate-200 dark:border-gray-700 rounded-lg text-xs hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">← Předchozí</button>
+            <button id="editorPagPrev"
+              class="px-3 py-1.5 border border-slate-200 dark:border-gray-700 rounded-lg text-xs hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">←
+              Předchozí</button>
             <div id="editorPagPages" class="flex gap-1"></div>
-            <button id="editorPagNext" class="px-3 py-1.5 border border-slate-200 dark:border-gray-700 rounded-lg text-xs hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">Další →</button>
+            <button id="editorPagNext"
+              class="px-3 py-1.5 border border-slate-200 dark:border-gray-700 rounded-lg text-xs hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">Další
+              →</button>
           </div>
         </div>
       </div>
@@ -861,15 +1285,20 @@
         <div class="grid lg:grid-cols-2 gap-6">
           <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
             <h2 class="font-bold text-base mb-5">Výkon dle kategorií</h2>
-            <div id="statsCategoryBreakdown" class="space-y-4"><p class="text-slate-400 text-sm">Žádná data.</p></div>
+            <div id="statsCategoryBreakdown" class="space-y-4">
+              <p class="text-slate-400 text-sm">Žádná data.</p>
+            </div>
           </div>
 
           <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
             <div class="flex items-center justify-between mb-5">
               <h2 class="font-bold text-base">Historie testů</h2>
-              <button id="clearHistoryBtn" class="text-xs text-red-500 hover:text-red-700 transition-colors font-medium">Vymazat</button>
+              <button id="clearHistoryBtn"
+                class="text-xs text-red-500 hover:text-red-700 transition-colors font-medium">Vymazat</button>
             </div>
-            <div id="statsHistory" class="space-y-2"><p class="text-slate-400 text-sm">Žádná data.</p></div>
+            <div id="statsHistory" class="space-y-2">
+              <p class="text-slate-400 text-sm">Žádná data.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -880,59 +1309,76 @@
           <h1 class="text-2xl font-bold mb-1">JSON Editor</h1>
           <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Přímá editace databáze otázek.</p>
 
-          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm overflow-hidden">
-            <div class="flex items-center justify-between px-5 py-3 border-b border-slate-200 dark:border-gray-800 flex-wrap gap-3">
+          <div
+            class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm overflow-hidden">
+            <div
+              class="flex items-center justify-between px-5 py-3 border-b border-slate-200 dark:border-gray-800 flex-wrap gap-3">
               <div class="flex items-center gap-3">
-                <span id="jsonValidBadge" class="text-xs px-2.5 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 rounded-full font-semibold border border-emerald-200 dark:border-emerald-800">✓ Validní JSON</span>
+                <span id="jsonValidBadge"
+                  class="text-xs px-2.5 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 rounded-full font-semibold border border-emerald-200 dark:border-emerald-800">✓
+                  Validní JSON</span>
                 <span id="jsonCharCount" class="text-xs text-slate-400">0 znaků</span>
               </div>
               <div class="flex gap-2">
-                <button id="jsonFormatBtn" class="px-3 py-1.5 border border-slate-200 dark:border-gray-700 rounded-lg text-xs font-medium hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Formátovat</button>
-                <button id="jsonMinifyBtn" class="px-3 py-1.5 border border-slate-200 dark:border-gray-700 rounded-lg text-xs font-medium hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Minify</button>
-                <button id="jsonApplyBtn" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1.5 rounded-lg text-xs font-bold transition-colors">Použít změny</button>
+                <button id="jsonFormatBtn"
+                  class="px-3 py-1.5 border border-slate-200 dark:border-gray-700 rounded-lg text-xs font-medium hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Formátovat</button>
+                <button id="jsonMinifyBtn"
+                  class="px-3 py-1.5 border border-slate-200 dark:border-gray-700 rounded-lg text-xs font-medium hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Minify</button>
+                <button id="jsonApplyBtn"
+                  class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1.5 rounded-lg text-xs font-bold transition-colors">Použít
+                  změny</button>
               </div>
             </div>
-            <textarea id="jsonEditorArea" class="w-full p-5 font-mono text-xs bg-transparent border-none resize-none focus:outline-none text-slate-700 dark:text-slate-200 leading-relaxed" style="height: calc(100vh - 20rem)" spellcheck="false" autocomplete="off"></textarea>
+            <textarea id="jsonEditorArea"
+              class="w-full p-5 font-mono text-xs bg-transparent border-none resize-none focus:outline-none text-slate-700 dark:text-slate-200 leading-relaxed"
+              style="height: calc(100vh - 20rem)" spellcheck="false" autocomplete="off"></textarea>
           </div>
         </div>
       </div>
 
       <!-- ─── SETTINGS VIEW ───────────────────────────────────── -->
       <div id="view-settings" class="view-section hidden p-6 animate-fade-in">
-        <div class="max-w-xl mx-auto">
+        <div class="max-w-3xl mx-auto">
           <h1 class="text-2xl font-bold mb-1">Nastavení</h1>
           <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Přizpůsob si aplikaci.</p>
 
-          <div class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Appearance -->
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
               <h2 class="font-bold text-sm mb-4 uppercase tracking-wide text-slate-400">Vzhled</h2>
               <div class="flex items-center justify-between">
                 <div>
                   <div class="text-sm font-medium">Tmavý režim</div>
                   <div class="text-xs text-slate-400 mt-0.5">Přepne tmavé téma</div>
                 </div>
-                <button id="settings-dark-toggle" role="switch" class="toggle-btn w-10 h-6 bg-slate-200 rounded-full relative focus:outline-none focus:ring-2 focus:ring-orange-300 transition-colors">
-                  <span class="toggle-knob absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform"></span>
+                <button id="settings-dark-toggle" role="switch"
+                  class="toggle-btn w-10 h-6 bg-slate-200 rounded-full relative focus:outline-none focus:ring-2 focus:ring-orange-300 transition-colors">
+                  <span
+                    class="toggle-knob absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform"></span>
                 </button>
               </div>
             </div>
 
             <!-- Quiz defaults -->
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
               <h2 class="font-bold text-sm mb-4 uppercase tracking-wide text-slate-400">Kvíz</h2>
               <div class="space-y-5">
                 <div>
                   <label class="text-sm font-medium block mb-1.5" for="default-count">Výchozí počet otázek</label>
-                  <input id="default-count" type="number" min="5" max="200" value="20" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+                  <input id="default-count" type="number" min="5" max="200" value="20"
+                    class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
                 </div>
                 <div class="flex items-center justify-between">
                   <div>
                     <div class="text-sm font-medium">Náhodné pořadí</div>
                     <div class="text-xs text-slate-400 mt-0.5">Výchozí pro nové testy</div>
                   </div>
-                  <button id="settings-random-toggle" role="switch" aria-checked="true" class="toggle-btn w-10 h-6 bg-orange-500 rounded-full relative focus:outline-none transition-colors">
-                    <span class="toggle-knob absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-4"></span>
+                  <button id="settings-random-toggle" role="switch" aria-checked="true"
+                    class="toggle-btn w-10 h-6 bg-orange-500 rounded-full relative focus:outline-none transition-colors">
+                    <span
+                      class="toggle-knob absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-4"></span>
                   </button>
                 </div>
                 <div class="flex items-center justify-between">
@@ -940,40 +1386,105 @@
                     <div class="text-sm font-medium">Okamžitá zpětná vazba</div>
                     <div class="text-xs text-slate-400 mt-0.5">Zobrazí správnou odpověď ihned</div>
                   </div>
-                  <button id="settings-feedback-toggle" role="switch" aria-checked="true" class="toggle-btn w-10 h-6 bg-orange-500 rounded-full relative focus:outline-none transition-colors">
-                    <span class="toggle-knob absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-4"></span>
+                  <button id="settings-feedback-toggle" role="switch" aria-checked="true"
+                    class="toggle-btn w-10 h-6 bg-orange-500 rounded-full relative focus:outline-none transition-colors">
+                    <span
+                      class="toggle-knob absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-4"></span>
                   </button>
                 </div>
               </div>
             </div>
 
             <!-- Data -->
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
               <h2 class="font-bold text-sm mb-4 uppercase tracking-wide text-slate-400">Data</h2>
               <div class="space-y-2">
-                <button id="exportDataBtn" class="w-full flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-gray-700 hover:bg-slate-50 dark:hover:bg-gray-800 text-left transition-colors">
-                  <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                  <div><div class="text-sm font-medium">Exportovat databázi otázek</div><div class="text-xs text-slate-400">Stáhne questions_export.json</div></div>
+                <button id="exportDataBtn"
+                  class="w-full flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-gray-700 hover:bg-slate-50 dark:hover:bg-gray-800 text-left transition-colors">
+                  <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  <div>
+                    <div class="text-sm font-medium">Exportovat databázi otázek</div>
+                    <div class="text-xs text-slate-400">Stáhne questions_export.json</div>
+                  </div>
                 </button>
-                <button id="clearStatsBtn" class="w-full flex items-center gap-3 p-3 rounded-xl border border-red-200 dark:border-red-900/50 hover:bg-red-50 dark:hover:bg-red-900/20 text-left transition-colors">
-                  <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                  <div><div class="text-sm font-medium text-red-700 dark:text-red-400">Vymazat historii</div><div class="text-xs text-red-400">Tato akce je nevratná</div></div>
+                <button id="clearStatsBtn"
+                  class="w-full flex items-center gap-3 p-3 rounded-xl border border-red-200 dark:border-red-900/50 hover:bg-red-50 dark:hover:bg-red-900/20 text-left transition-colors">
+                  <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  <div>
+                    <div class="text-sm font-medium text-red-700 dark:text-red-400">Vymazat historii</div>
+                    <div class="text-xs text-red-400">Tato akce je nevratná</div>
+                  </div>
                 </button>
               </div>
             </div>
 
             <!-- Keyboard shortcuts -->
-            <div class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
+            <div
+              class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
               <h2 class="font-bold text-sm mb-4 uppercase tracking-wide text-slate-400">Klávesové zkratky</h2>
               <div class="grid grid-cols-2 gap-2 text-sm">
-                <div class="flex items-center gap-2"><kbd class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">→</kbd><span class="text-slate-600 dark:text-slate-400">Další otázka</span></div>
-                <div class="flex items-center gap-2"><kbd class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">←</kbd><span class="text-slate-600 dark:text-slate-400">Předchozí</span></div>
-                <div class="flex items-center gap-2"><kbd class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">Enter</kbd><span class="text-slate-600 dark:text-slate-400">Potvrdit / Další</span></div>
-                <div class="flex items-center gap-2"><kbd class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">F</kbd><span class="text-slate-600 dark:text-slate-400">Označit otázku</span></div>
-                <div class="flex items-center gap-2"><kbd class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">S</kbd><span class="text-slate-600 dark:text-slate-400">Přeskočit</span></div>
-                <div class="flex items-center gap-2"><kbd class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">1–4</kbd><span class="text-slate-600 dark:text-slate-400">Vybrat odpověď</span></div>
+                <div class="flex items-center gap-2"><kbd
+                    class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">→</kbd><span
+                    class="text-slate-600 dark:text-slate-400">Další otázka</span></div>
+                <div class="flex items-center gap-2"><kbd
+                    class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">←</kbd><span
+                    class="text-slate-600 dark:text-slate-400">Předchozí</span></div>
+                <div class="flex items-center gap-2"><kbd
+                    class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">Enter</kbd><span
+                    class="text-slate-600 dark:text-slate-400">Potvrdit / Další</span></div>
+                <div class="flex items-center gap-2"><kbd
+                    class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">F</kbd><span
+                    class="text-slate-600 dark:text-slate-400">Označit otázku</span></div>
+                <div class="flex items-center gap-2"><kbd
+                    class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">S</kbd><span
+                    class="text-slate-600 dark:text-slate-400">Přeskočit</span></div>
+                <div class="flex items-center gap-2"><kbd
+                    class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">1–4</kbd><span
+                    class="text-slate-600 dark:text-slate-400">Vybrat odpověď</span></div>
+                <div class="flex items-center gap-2"><kbd
+                    class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">B</kbd><span
+                    class="text-slate-600 dark:text-slate-400">Hvězdička</span></div>
+                <div class="flex items-center gap-2"><kbd
+                    class="px-2 py-0.5 bg-slate-100 dark:bg-gray-800 rounded text-xs font-mono font-semibold">Esc</kbd><span
+                    class="text-slate-600 dark:text-slate-400">Zavřít modál</span></div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Studijní materiály ── -->
+      <div id="view-materials" class="view-section hidden flex flex-col animate-fade-in" style="height: calc(100vh - 3.5rem);">
+        <div class="flex items-center gap-1 px-6 pt-5 pb-0 border-b border-slate-200 dark:border-gray-700 shrink-0">
+          <button id="mat-tab-0" onclick="App.Materials.switchTab(0)"
+            class="mat-tab px-4 py-2.5 text-sm font-semibold rounded-t-lg border-b-2 border-orange-500 text-orange-600 dark:text-orange-400 bg-white dark:bg-gray-900 -mb-px transition-colors">
+            📖 Počítačové sítě
+          </button>
+          <button id="mat-tab-1" onclick="App.Materials.switchTab(1)"
+            class="mat-tab px-4 py-2.5 text-sm font-semibold rounded-t-lg border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:border-slate-300 -mb-px transition-colors">
+            📋 Zkušební okruhy
+          </button>
+          <div class="ml-auto flex items-center gap-2 pb-2">
+            <a id="mat-open-btn" href="#" target="_blank"
+              class="flex items-center gap-1.5 text-xs text-slate-400 hover:text-orange-500 transition-colors">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Otevřít v novém okně
+            </a>
+          </div>
+        </div>
+        <div class="flex-1 relative bg-slate-100 dark:bg-gray-900">
+          <iframe id="mat-frame" src="./Počítačové sítě 14.05.26.pdf" class="absolute inset-0 w-full h-full border-0" title="Studijní materiál"></iframe>
+          <div id="mat-fallback" class="hidden absolute inset-0 flex flex-col items-center justify-center gap-4 text-slate-500 dark:text-slate-400">
+            <svg class="w-16 h-16 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <p class="text-sm">Prohlížeč nepodporuje zobrazení PDF přímo.</p>
+            <a id="mat-fallback-link" href="#" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">Stáhnout / otevřít PDF</a>
           </div>
         </div>
       </div>
@@ -990,7 +1501,9 @@
       <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-gray-800 shrink-0">
         <h3 id="modalTitle" class="font-bold text-base">Přidat otázku</h3>
         <button id="modalClose" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
       <div class="flex-1 overflow-y-auto p-6">
@@ -998,7 +1511,8 @@
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Typ *</label>
-              <select id="form-type" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+              <select id="form-type"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
                 <option value="single">Single choice</option>
                 <option value="multi">Multi choice</option>
                 <option value="boolean">Boolean</option>
@@ -1008,14 +1522,17 @@
               </select>
             </div>
             <div>
-              <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Kategorie *</label>
-              <select id="form-category" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"></select>
+              <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Kategorie
+                *</label>
+              <select id="form-category"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"></select>
             </div>
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Obtížnost</label>
-              <select id="form-difficulty" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+              <select id="form-difficulty"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
                 <option value="">Neurčena</option>
                 <option value="easy">Lehká</option>
                 <option value="medium">Střední</option>
@@ -1024,36 +1541,47 @@
             </div>
             <div>
               <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Čas (s)</label>
-              <input id="form-time" type="number" min="5" max="600" placeholder="60" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+              <input id="form-time" type="number" min="5" max="600" placeholder="60"
+                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
             </div>
           </div>
           <div>
             <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Otázka *</label>
-            <textarea id="form-question" rows="3" placeholder="Text otázky…" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
+            <textarea id="form-question" rows="3" placeholder="Text otázky…"
+              class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
           </div>
           <!-- Dynamic answers -->
           <div id="form-answers-section">
             <div class="flex items-center justify-between mb-2">
               <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Odpovědi *</label>
-              <button type="button" id="addAnswerBtn" class="text-xs text-orange-600 hover:text-orange-700 font-semibold transition-colors">+ Přidat</button>
+              <button type="button" id="addAnswerBtn"
+                class="text-xs text-orange-600 hover:text-orange-700 font-semibold transition-colors">+ Přidat</button>
             </div>
             <div id="form-answers-list" class="space-y-2"></div>
           </div>
           <div>
-            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Vysvětlení <span class="normal-case font-normal text-slate-400">(volitelné)</span></label>
-            <textarea id="form-explanation" rows="2" placeholder="Proč je tato odpověď správná…" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
+            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Vysvětlení <span
+                class="normal-case font-normal text-slate-400">(volitelné)</span></label>
+            <textarea id="form-explanation" rows="2" placeholder="Proč je tato odpověď správná…"
+              class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"></textarea>
           </div>
           <div>
-            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Tagy <span class="normal-case font-normal text-slate-400">(oddělené čárkou)</span></label>
-            <input id="form-tags" type="text" placeholder="tcp, osi, vrstvy…" class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Tagy <span
+                class="normal-case font-normal text-slate-400">(oddělené čárkou)</span></label>
+            <input id="form-tags" type="text" placeholder="tcp, osi, vrstvy…"
+              class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
           </div>
-          <div id="formValidation" class="hidden text-red-600 dark:text-red-400 text-sm bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl px-4 py-3"></div>
+          <div id="formValidation"
+            class="hidden text-red-600 dark:text-red-400 text-sm bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl px-4 py-3">
+          </div>
         </form>
       </div>
       <div class="px-6 py-4 border-t border-slate-200 dark:border-gray-800 flex gap-3 shrink-0">
-        <button id="modalCancelBtn" class="px-4 py-2 border border-slate-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Zrušit</button>
+        <button id="modalCancelBtn"
+          class="px-4 py-2 border border-slate-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Zrušit</button>
         <div class="flex-1"></div>
-        <button id="modalSaveBtn" class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-xl text-sm font-bold transition-colors shadow-sm">Uložit</button>
+        <button id="modalSaveBtn"
+          class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-xl text-sm font-bold transition-colors shadow-sm">Uložit</button>
       </div>
     </div>
   </div>
@@ -1065,13 +1593,19 @@
     <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
     <div class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-sm p-6 text-center">
       <div class="w-14 h-14 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
-        <svg class="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+        <svg class="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
       </div>
       <h3 class="font-bold text-base mb-2">Smazat otázku?</h3>
-      <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-2" id="deleteModalText">Tato akce je nevratná.</p>
+      <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-2" id="deleteModalText">Tato akce je
+        nevratná.</p>
       <div class="flex gap-3">
-        <button id="deleteModalCancel" class="flex-1 px-4 py-2.5 border border-slate-200 dark:border-gray-700 rounded-xl font-medium text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Zrušit</button>
-        <button id="deleteModalConfirm" class="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold text-sm transition-colors">Smazat</button>
+        <button id="deleteModalCancel"
+          class="flex-1 px-4 py-2.5 border border-slate-200 dark:border-gray-700 rounded-xl font-medium text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">Zrušit</button>
+        <button id="deleteModalConfirm"
+          class="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold text-sm transition-colors">Smazat</button>
       </div>
     </div>
   </div>
@@ -1081,6 +1615,48 @@
 
   <!-- Hidden file input for import -->
   <input type="file" id="jsonImportInput" accept=".json" class="hidden">
+
+
+  <script>
+    window.App = window.App || {};
+    App.Materials = (() => {
+      const PDFS = [
+        './Počítačové sítě 14.05.26.pdf',
+        './PS zkušební okruhy 04.05.26.pdf',
+      ];
+      let _current = 0;
+
+      function switchTab(idx) {
+        _current = idx;
+        const frame = document.getElementById('mat-frame');
+        const openBtn = document.getElementById('mat-open-btn');
+        const fallbackLink = document.getElementById('mat-fallback-link');
+        if (frame) frame.src = PDFS[idx];
+        if (openBtn) openBtn.href = PDFS[idx];
+        if (fallbackLink) fallbackLink.href = PDFS[idx];
+        document.querySelectorAll('.mat-tab').forEach((btn, i) => {
+          const active = i === idx;
+          btn.classList.toggle('border-orange-500', active);
+          btn.classList.toggle('text-orange-600', active);
+          btn.classList.toggle('dark:text-orange-400', active);
+          btn.classList.toggle('bg-white', active);
+          btn.classList.toggle('dark:bg-gray-900', active);
+          btn.classList.toggle('border-transparent', !active);
+          btn.classList.toggle('text-slate-500', !active);
+          btn.classList.toggle('dark:text-slate-400', !active);
+        });
+      }
+
+      function init() {
+        const openBtn = document.getElementById('mat-open-btn');
+        if (openBtn) openBtn.href = PDFS[0];
+        const fallbackLink = document.getElementById('mat-fallback-link');
+        if (fallbackLink) fallbackLink.href = PDFS[0];
+      }
+
+      return { switchTab, init };
+    })();
+  </script>
 
   <!-- ── Scripts (order matters — no ES modules) ── -->
   <script src="./js/db.js"></script>
@@ -1094,4 +1670,5 @@
   <script src="./js/router.js"></script>
   <script src="./app.js"></script>
 </body>
+
 </html>
