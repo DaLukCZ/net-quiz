@@ -12,29 +12,70 @@ Kvízové rozhraní v prohlížeči pro opakování látky z vysoké školy. Akt
 - **Studijní materiály** — prohlížeč PDF přímo v aplikaci, nahrání vlastního PDF
 - **Statistiky** — přehled pokroku, kategorie, historická skóre
 - **Editor otázek** — přidávání a úprava otázek přímo v aplikaci
-- **Klávesové zkratky** — 1–4 výběr, Enter potvrdit, B hvězdička, ←/→ navigace
 - **Tmavý režim**
 
 > Otázky vznikly částečně pomocí AI analýzou prezentací a externích zdrojů. Nejsou dokončené a nemusí být zcela správné. Nelze zaručit shodu s oficiálními testy.
 
 ## Spuštění
 
-```bash
-python -m http.server 8000
-```
+### Nejjednoduší způsob (Windows)
 
-Pak otevři `http://localhost:8000`.
+1. **Stáhni Python** → https://www.python.org/downloads/
+   - Při instalaci zaškrtni **"Add Python to PATH"**
+   
+2. **Přejdi do složky** `moodle-quiz` a **dvojklikem otevři `spustit.bat`**
+   
+3. V prohlížeči (Chrome, Firefox, Edge) otevři: **`http://localhost:8000`**
 
-> `index.html` neotvírej přes `file://` — prohlížeč zablokuje načítání JSON souborů.
+4. Hotovo! 🎉
+
+### Alternativa — Manuálně (Windows / Mac / Linux)
+
+Pokud ti `spustit.bat` nejde:
+
+1. Otevři **Příkazový řádek** (Cmd / Terminal)
+2. Přejdi do složky:
+   ```
+   cd C:\cesta\k\moodle-quiz
+   ```
+3. Spusť:
+   ```
+   python -m http.server 8000
+   ```
+4. V prohlížeči otevři: **`http://localhost:8000`**
 
 ## Soubory s otázkami
 
-| Soubor | Předmět | Otázek |
+| Soubor | Předmět | Kolik otázek? |
 |--------|---------|--------|
 | `site.json` | Počítačové sítě | 702 |
 | `weby.json` | Webové technologie | 5 |
 
-Vlastní předmět lze přidat přes **Výběr předmětu → Nový předmět** (nahrání JSON nebo stažení šablony).
+### Chceš přidat vlastní předmět?
+
+V aplikaci klikni na **Výběr předmětu → Nový předmět** a nahraj svůj JSON soubor.  
+Nebo si stáhni šablonu přímo z aplikace.
+
+## ❓ Problémy?
+
+**Otevírám `http://localhost:8000`, ale nic se neukáže**
+- Zkus refreshnout stránku (F5)
+- Zkontroluj, že v příkazovém řádku běží server (mělo by být vidět "Serving HTTP...")
+- Zkus jinou adresu: `http://127.0.0.1:8000`
+
+**Chyba "Connection refused" nebo "Server not responding"**
+- Zkontroluj, že `spustit.bat` běží v pozadí (měl by být otevřený terminál)
+- Zkus port 8001 místo 8000: `python -m http.server 8001`
+
+**Python není nainstalován**
+- Stáhni z https://www.python.org/downloads/
+- **DŮLEŽITÉ:** Při instalaci zaškrtni "Add Python to PATH"
+- Restartuj počítač
+- Spusť `spustit.bat` znovu
+
+**Otázky se nenačítají**
+- Zavři prohlížeč a otevři novou kartu
+- Zkus Ctrl+Shift+Delete (vymazat cache)
 
 ## Podpora
 
@@ -43,5 +84,5 @@ Chceš-li projekt podpořit, pošli pár korun: `2081256014/3030`
 ## O projektu
 
 - **Autor:** Šmachy - DaLuk
-- **Verze:** 0.4
+- **Verze:** 0.5
 - **Poslední aktualizace:** 16.5.2026
