@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   R.onEnter('json-editor',renderJsonEditor);
   R.onEnter('settings',   renderSettings);
   R.onEnter('materials',  () => {});
+  R.onEnter('browse',     _renderBrowseView);
 
   document.getElementById('sidebarToggle')?.addEventListener('click', () => {
     document.getElementById('sidebar')?.classList.toggle('hidden');
@@ -113,11 +114,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!db) { R.navigate('dashboard'); return; }
     const settings = St.getSettings();
 
+    const totalQ  = db.questions.length;
     const slider  = U.el('setup-count');
     const display = U.el('setup-count-display');
     if (slider) {
-      slider.value = settings.defaultCount;
-      if (display) display.textContent = settings.defaultCount;
+      slider.max   = totalQ;
+      slider.value = totalQ;
+      if (display) display.textContent = totalQ;
       const fresh = slider.cloneNode(true);
       slider.parentNode.replaceChild(fresh, slider);
       fresh.addEventListener('input', () => { if (display) display.textContent = fresh.value; _updateFilterCount(); });
@@ -129,7 +132,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     _rebindBtn('toggle-timer',     function() { U.setToggle(this, !U.getToggle(this)); });
 
     document.querySelectorAll('.mode-option input').forEach(radio => {
-      radio.addEventListener('change', _updateModeCards);
+      radio.addEventListener('change', () => { _updateModeCards(); _updateFilterCount(); });
     });
     _updateModeCards();
 
@@ -164,14 +167,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function _updateModeCards() {
+    let selectedMode = 'browse';
     document.querySelectorAll('.mode-option').forEach(label => {
       const radio = label.querySelector('input[type="radio"]');
       const card  = label.querySelector('.mode-card');
       if (!card) return;
-      card.className = radio?.checked
+      const active = radio?.checked;
+      if (active && radio.value) selectedMode = radio.value;
+      card.className = active
         ? 'mode-card border-2 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-xl p-4 transition-all'
         : 'mode-card border-2 border-slate-200 dark:border-gray-700 rounded-xl p-4 transition-all';
     });
+    const countSection = U.el('setup-count-section');
+    if (countSection) countSection.classList.toggle('hidden', selectedMode === 'browse');
+    const startBtn = U.el('startQuizBtn');
+    if (startBtn) startBtn.textContent = selectedMode === 'browse' ? 'Procházet →' : 'Spustit test →';
   }
 
   function _syncCategoryChips(container) {
@@ -221,12 +231,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       pool = pool.filter(q => bm.has(q.id));
     }
 
-    const total = pool.length;
-    const used  = Math.min(count, total);
+    const total    = pool.length;
+    const isBrowse = document.querySelector('input[name="quizMode"]:checked')?.value === 'browse';
     if (total === 0) {
       el.textContent = 'Žádné otázky neodpovídají filtru';
       el.className = 'text-center text-xs text-red-400 dark:text-red-500 -mt-3';
+    } else if (isBrowse) {
+      el.textContent = `${total} otázek`;
+      el.className = 'text-center text-xs text-slate-400 dark:text-slate-500 -mt-3';
     } else {
+      const used = Math.min(count, total);
       el.textContent = `${used} z ${total} otázek`;
       el.className = 'text-center text-xs text-slate-400 dark:text-slate-500 -mt-3';
     }
@@ -236,8 +250,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const db = St.getDB();
     if (!db?.questions?.length) { U.showToast('Nejsou dostupné žádné otázky.', 'error'); return; }
 
-    const mode      = document.querySelector('input[name="quizMode"]:checked')?.value || 'study';
-    const count     = Number(U.el('setup-count')?.value || 20);
+    const mode      = document.querySelector('input[name="quizMode"]:checked')?.value || 'browse';
+    const count     = Number(U.el('setup-count')?.value || db.questions.length);
     const randomize = U.getToggle(U.el('toggle-randomize'));
     const showTimer = U.getToggle(U.el('toggle-timer'));
 
@@ -261,6 +275,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       pool = pool.filter(q => bm.has(q.id));
     }
     if (!pool.length) { U.showToast('Žádné otázky pro zvolené filtry.', 'warning'); return; }
+
+    // Browse mode: sort by category, skip count/shuffle, go to browse view
+    if (mode === 'browse') {
+      const catOrder = (db.categories || []).map(c => c.id);
+      pool.sort((a, b) => {
+        const ai = catOrder.indexOf(a.category); const bi = catOrder.indexOf(b.category);
+        return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
+      });
+      startBrowseMode(pool);
+      return;
+    }
 
     if (randomize) pool = U.shuffle(pool);
     let questions = pool.slice(0, Math.min(count, pool.length));
@@ -990,6 +1015,202 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }
   });
+
+  // Browse keyboard shortcuts
+  document.addEventListener('keydown', e => {
+    if (R.getCurrent() !== 'browse') return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'Enter') U.el('browseNextBtn')?.click();
+    if (e.key === 'ArrowLeft')  U.el('browsePrevBtn')?.click();
+    if (!_browseRevealed[_browseIdx]) {
+      const q = _browseQs[_browseIdx];
+      const num = parseInt(e.key, 10);
+      if (!isNaN(num) && num >= 1) {
+        if (q?.type === 'single') document.querySelectorAll('#browseAnswersArea label[data-index]')[num - 1]?.click();
+        if (q?.type === 'boolean') {
+          if (num === 1) document.querySelector('#browseAnswersArea label[data-value="true"]')?.click();
+          if (num === 2) document.querySelector('#browseAnswersArea label[data-value="false"]')?.click();
+        }
+      }
+    }
+  });
+
+  // ── Browse mode ──────────────────────────────────────────────
+
+  let _browseQs       = [];
+  let _browseIdx      = 0;
+  let _browseRevealed = {};
+  let _browseAnswers  = {};
+  let _browseCatStart = {}; // catId → first index
+
+  function startBrowseMode(questionsOverride) {
+    const db = St.getDB();
+    if (!db?.questions?.length) { U.showToast('Nejsou dostupné žádné otázky.', 'error'); return; }
+
+    if (questionsOverride) {
+      // Called from startQuiz with a pre-filtered+sorted pool
+      _browseQs       = questionsOverride;
+      _browseIdx      = 0;
+      _browseRevealed = {};
+      _browseAnswers  = {};
+      _browseCatStart = {};
+      _browseQs.forEach((q, i) => { if (_browseCatStart[q.category] === undefined) _browseCatStart[q.category] = i; });
+      R.navigate('browse');
+    } else {
+      // Called from onEnter (sidebar click) — init only if empty
+      if (!_browseQs.length) {
+        const catOrder = (db.categories || []).map(c => c.id);
+        _browseQs = [...db.questions].sort((a, b) => {
+          const ai = catOrder.indexOf(a.category); const bi = catOrder.indexOf(b.category);
+          return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
+        });
+        _browseCatStart = {};
+        _browseQs.forEach((q, i) => { if (_browseCatStart[q.category] === undefined) _browseCatStart[q.category] = i; });
+      }
+      _renderBrowseView();
+    }
+  }
+
+  function _renderBrowseView() {
+    // Init if arrived via sidebar without startBrowseMode
+    if (!_browseQs.length) { startBrowseMode(); return; }
+    _renderBrowseQuestion();
+    _renderBrowseCatList();
+
+    _rebindBtn('browsePrevBtn', () => { if (_browseIdx > 0) { _browseIdx--; _renderBrowseQuestion(); _renderBrowseCatList(); } });
+    _rebindBtn('browseNextBtn', () => { if (_browseIdx < _browseQs.length - 1) { _browseIdx++; _renderBrowseQuestion(); _renderBrowseCatList(); } });
+    _rebindBtn('browseConfirmBtn', () => { _browseRevealed[_browseIdx] = true; _renderBrowseQuestion(); });
+    _rebindBtn('browseJumpBtn', _browseJump);
+
+    const ji = U.el('browseJumpInput');
+    if (ji) { const f = ji.cloneNode(true); ji.parentNode.replaceChild(f, ji); f.addEventListener('keydown', e => { if (e.key === 'Enter') _browseJump(); }); }
+  }
+
+  function _browseJump() {
+    const n = parseInt(U.el('browseJumpInput')?.value, 10);
+    if (!isNaN(n) && n >= 1 && n <= _browseQs.length) {
+      _browseIdx = n - 1;
+      _renderBrowseQuestion(); _renderBrowseCatList();
+      if (U.el('browseJumpInput')) U.el('browseJumpInput').value = '';
+    }
+  }
+
+  function _renderBrowseQuestion() {
+    const q = _browseQs[_browseIdx];
+    if (!q) return;
+    const db       = St.getDB();
+    const catLabel = db?.categories?.find(c => c.id === q.category)?.label || q.category || '';
+    const revealed = !!_browseRevealed[_browseIdx];
+    const answer   = _browseAnswers[_browseIdx];
+
+    if (U.el('browseCatBadge')) U.el('browseCatBadge').textContent = catLabel;
+    if (U.el('browseQPos'))     U.el('browseQPos').textContent = `Otázka ${_browseIdx + 1} / ${_browseQs.length}`;
+    if (U.el('browseCounter'))  U.el('browseCounter').textContent = `${_browseIdx + 1} / ${_browseQs.length}`;
+
+    const typeEl = U.el('browseQType');
+    if (typeEl) typeEl.innerHTML = `${U.typeLabel(q.type)}<span class="ml-1.5 text-slate-400 dark:text-slate-500">${U.typeHint(q.type) || ''}</span>`;
+
+    const diffEl = U.el('browseQDiff');
+    if (diffEl) {
+      if (q.difficulty) {
+        const cls = { easy: 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300', medium: 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300', hard: 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300' };
+        diffEl.className = `text-xs px-2.5 py-1 rounded-full font-medium ${cls[q.difficulty] || ''}`;
+        diffEl.textContent = { easy: 'Lehká', medium: 'Střední', hard: 'Těžká' }[q.difficulty] || q.difficulty;
+        diffEl.classList.remove('hidden');
+      } else diffEl.classList.add('hidden');
+    }
+
+    if (U.el('browseQText')) U.el('browseQText').textContent = q.question;
+
+    const answersArea = U.el('browseAnswersArea');
+    if (answersArea) { answersArea.innerHTML = C.renderAnswers(q, answer, revealed); _bindBrowseAnswerEvents(answersArea, q); }
+
+    const feedbackArea = U.el('browseFeedbackArea');
+    if (feedbackArea) {
+      if (revealed) {
+        feedbackArea.innerHTML = C.renderFeedback(QE.isCorrect(q, answer), q.explanation, q.type);
+        feedbackArea.classList.remove('hidden');
+      } else { feedbackArea.innerHTML = ''; feedbackArea.classList.add('hidden'); }
+    }
+
+    const confirmBtn = U.el('browseConfirmBtn');
+    if (confirmBtn) {
+      const needsConfirm = !revealed && (q.type === 'multi' || q.type === 'text' || q.type === 'number' || q.type === 'open');
+      confirmBtn.classList.toggle('hidden', !needsConfirm);
+    }
+
+    const prevBtn = U.el('browsePrevBtn');
+    if (prevBtn) prevBtn.disabled = _browseIdx === 0;
+  }
+
+  function _bindBrowseAnswerEvents(container, q) {
+    if (q.type === 'single' || q.type === 'boolean') {
+      container.querySelectorAll('label[data-index], label[data-value]').forEach(label => {
+        label.addEventListener('click', ev => {
+          if (ev.target.tagName === 'INPUT') return;
+          if (_browseRevealed[_browseIdx]) return;
+          const input = label.querySelector('input');
+          if (!input || input.disabled) return;
+          _browseAnswers[_browseIdx]  = q.type === 'boolean' ? label.dataset.value : Number(label.dataset.index);
+          _browseRevealed[_browseIdx] = true;
+          _renderBrowseQuestion();
+        });
+      });
+    } else if (q.type === 'multi') {
+      container.querySelectorAll('label[data-index]').forEach(label => {
+        label.addEventListener('click', ev => {
+          if (ev.target.tagName === 'INPUT') return;
+          if (_browseRevealed[_browseIdx]) return;
+          const i = Number(label.dataset.index);
+          const sel = Array.isArray(_browseAnswers[_browseIdx]) ? [..._browseAnswers[_browseIdx]] : [];
+          const pos = sel.indexOf(i);
+          if (pos !== -1) sel.splice(pos, 1); else sel.push(i);
+          _browseAnswers[_browseIdx] = sel;
+          _renderBrowseQuestion();
+        });
+      });
+    } else if (q.type === 'text') {
+      const inp = container.querySelector('#txtAnswer');
+      if (inp) inp.addEventListener('input', () => { _browseAnswers[_browseIdx] = inp.value; });
+    } else if (q.type === 'number') {
+      const inp = container.querySelector('#numAnswer');
+      if (inp) inp.addEventListener('input', () => { _browseAnswers[_browseIdx] = Number(inp.value); });
+    }
+  }
+
+  function _renderBrowseCatList() {
+    const el = U.el('browseCatList');
+    const db = St.getDB();
+    if (!el || !db) return;
+    const currentCat = _browseQs[_browseIdx]?.category;
+
+    el.innerHTML = (db.categories || [])
+      .filter(c => _browseCatStart[c.id] !== undefined)
+      .map(c => {
+        const firstIdx  = _browseCatStart[c.id];
+        const indices   = _browseQs.reduce((acc, q, i) => { if (q.category === c.id) acc.push(i); return acc; }, []);
+        const total     = indices.length;
+        const answered  = indices.filter(i => _browseRevealed[i]).length;
+        const pct       = total ? Math.round(answered / total * 100) : 0;
+        const isCurrent = c.id === currentCat;
+        return `<button class="w-full text-left px-2 py-2 rounded-lg text-xs transition-colors ${isCurrent ? 'bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 font-semibold' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-gray-800'}" data-cat-first="${firstIdx}">
+          <div class="truncate leading-snug mb-1.5">${U.escapeHtml(c.label)}</div>
+          <div class="flex items-center gap-1.5">
+            <div class="flex-1 h-1 bg-slate-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div class="h-full ${answered === total && total > 0 ? 'bg-emerald-500' : 'bg-orange-400'} rounded-full transition-all" style="width:${pct}%"></div>
+            </div>
+            <span class="text-slate-400 shrink-0 tabular-nums">${answered}/${total}</span>
+          </div>
+        </button>`;
+      }).join('');
+
+    el.querySelectorAll('[data-cat-first]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        _browseIdx = Number(btn.dataset.catFirst);
+        _renderBrowseQuestion(); _renderBrowseCatList();
+      });
+    });
+  }
 
   // Escape key closes open modals
   document.addEventListener('keydown', e => {

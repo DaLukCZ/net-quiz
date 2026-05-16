@@ -13,6 +13,7 @@ App.Router = (() => {
     'json-editor':{ label: 'JSON Editor',     section: 'view-json-editor', noSidebar: false },
     settings:     { label: 'Nastavení',       section: 'view-settings',    noSidebar: false },
     materials:    { label: 'Studijní materiály', section: 'view-materials', noSidebar: false },
+    browse:       { label: 'Procházet otázky',  section: 'view-browse',    noSidebar: false },
   };
 
   let _current = null;
