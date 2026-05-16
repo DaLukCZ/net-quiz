@@ -16,6 +16,18 @@ Kvízové rozhraní v prohlížeči pro opakování látky z vysoké školy. Akt
 
 > Otázky vznikly částečně pomocí AI analýzou prezentací a externích zdrojů. Nejsou dokončené a nemusí být zcela správné. Nelze zaručit shodu s oficiálními testy.
 
+## Stažení z GitHubu
+
+Stáhnout si tento projekt můžeš dvěma způsoby:
+
+1. Klonuj repozitář:
+   ```bash
+   git clone https://github.com/DaLukCZ/net-quiz.git
+   ```
+2. Nebo stáhni ZIP přes tlačítko **Code → Download ZIP** na GitHubu.
+
+Po stažení rozbal složku a otevři POKYNY.txt
+
 ## Spuštění
 
 ### Nejjednoduší způsob (Windows)
@@ -25,7 +37,7 @@ Kvízové rozhraní v prohlížeči pro opakování látky z vysoké školy. Akt
    
 2. **Přejdi do složky** `net-quiz` a **dvojklikem otevři `NetQuiz.bat`**
    
-3. V prohlížeči (Chrome, Firefox, Edge) otevři: **`http://localhost:8000`**
+3. V prohlížeči (Chrome, Firefox, Edge) otevři: **`http://localhost:8000/net-quiz/`**
 
 4. Hotovo! 🎉
 
@@ -36,20 +48,20 @@ Pokud ti `spustit.bat` nejde:
 1. Otevři **Příkazový řádek** (Cmd / Terminal)
 2. Přejdi do složky:
    ```
-   cd C:\cesta\k\moodle-quiz
+   cd C:\cesta\k\net-quiz
    ```
 3. Spusť:
    ```
    python -m http.server 8000
    ```
-4. V prohlížeči otevři: **`http://localhost:8000`**
+6. V prohlížeči otevři: **`http://localhost:8000/net-quiz/`**
 
 ## Soubory s otázkami
 
 | Soubor | Předmět | Kolik otázek? |
 |--------|---------|--------|
-| `site.json` | Počítačové sítě | 702 |
-| `weby.json` | Webové technologie | 5 |
+| `json/site.json` | Počítačové sítě | 702 |
+| `json/weby.json` | Webové technologie | 5 |
 
 ### Chceš přidat vlastní předmět?
 

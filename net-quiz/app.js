@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   App.Materials.init();
 
   const SUBJECTS = [
-    { id: 'site', label: 'Sítě', file: 'site.json' },
-    { id: 'weby', label: 'Weby', file: 'weby.json' },
+    { id: 'site', label: 'Sítě', file: '../json/site.json' },
+    { id: 'weby', label: 'Weby', file: '../json/weby.json' },
   ];
 
   function _getCurrentSubject() {

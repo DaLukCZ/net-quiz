@@ -23,11 +23,12 @@ echo ✓ Python nalezen
 echo.
 echo 🌐 Spouštím server...
 echo.
-echo 📍 Otevři v prohlížeči: http://localhost:8000
+echo 📍 Otevři v prohlížeči: http://localhost:8000/net-quiz/
 echo.
 echo ℹ️  Zavřít server: Zmáčkni Ctrl+C
 echo.
 
+start "" "http://localhost:8000/net-quiz/"
 python -m http.server 8000
 
 pause
