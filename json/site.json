@@ -216,7 +216,7 @@
           "correct": false
         }
       ],
-      "explanation": "Model OSI má 7 vrstev: fyzická, linková, síťová, transportní, relační, prezentační, aplikační.",
+      "explanation": "Model OSI má 7 vrstev: fyzická, linková, síťová, transportní, relační, prezentační a aplikační.",
       "id": "q_00005"
     },
     {
@@ -3166,7 +3166,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "Relační vrstva (session layer)",
+          "text": "Relační vrstva",
           "correct": true
         },
         {
@@ -3259,7 +3259,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "Rámec (frame)",
+          "text": "Rámec",
           "correct": true
         },
         {
@@ -3569,7 +3569,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "Vrstvy 5, 6 a 7 (relační, prezentační, aplikační)",
+          "text": "Vrstvy 5, 6 a 7",
           "correct": true
         },
         {
@@ -4189,7 +4189,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "Třída B, privátní (RFC 1918)",
+          "text": "Třída B, privátní",
           "correct": true
         },
         {
@@ -4251,7 +4251,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "Omezený broadcast — doručen všem v lokální síti",
+          "text": "Omezený broadcast",
           "correct": true
         },
         {
@@ -4270,7 +4270,7 @@
           "correct": false
         }
       ],
-      "explanation": "255.255.255.255 = limited broadcast; routery jej nepřeposílají mimo lokální síť.",
+      "explanation": "255.255.255.255 = limited broadcast; routery jej nepřeposílají mimo lokální síť. Omezený broadcast — doručen všem v lokální síti",
       "id": "q_00111"
     },
     {
@@ -5278,26 +5278,26 @@
       "answers": [
         {
           "id": "a",
-          "text": "64 B",
+          "text": "64 bajtů",
           "correct": true
         },
         {
           "id": "b",
-          "text": "72 B",
+          "text": "72 bajtů",
           "correct": false
         },
         {
           "id": "c",
-          "text": "512 B",
+          "text": "512 bajtů",
           "correct": false
         },
         {
           "id": "d",
-          "text": "128 B",
+          "text": "128 bajtů",
           "correct": false
         }
       ],
-      "explanation": "Minimální rámec Ethernet II = 64 B (14 B header + 46 B data + 4 B FCS).",
+      "explanation": "Minimální rámec Ethernet II = 64 bajtů (14 bajtů header + 46 bajtů data + 4 bajty FCS).",
       "id": "q_00142"
     },
     {
@@ -5309,26 +5309,26 @@
       "answers": [
         {
           "id": "a",
-          "text": "1518 B",
+          "text": "1518 bajtů",
           "correct": true
         },
         {
           "id": "b",
-          "text": "1500 B",
+          "text": "1500 bajtů",
           "correct": false
         },
         {
           "id": "c",
-          "text": "1514 B",
+          "text": "1514 bajtů",
           "correct": false
         },
         {
           "id": "d",
-          "text": "9000 B",
+          "text": "9000 bajtů",
           "correct": false
         }
       ],
-      "explanation": "Maximální Ethernet rámec = 1518 B (1500 B data + 14 B header + 4 B FCS).",
+      "explanation": "Maximální Ethernet rámec = 1518 bajtů (1500 bajtů data + 14 bajtů header + 4 bajty FCS).",
       "id": "q_00143"
     },
     {
@@ -7499,7 +7499,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "4 B (32 bitů CRC)",
+          "text": "4 B",
           "correct": true
         },
         {
@@ -7521,37 +7521,37 @@
       "explanation": "FCS = 4 B CRC-32 — kontrolní součet pro detekci chyb přenosu.",
       "id": "q_00208"
     },
+{
+  "type": "single",
+  "difficulty": "medium",
+  "category": "ethernet",
+  "sourceType": "generated",
+  "question": "Jak se standardně dělí MAC adresa z hlediska struktury?",
+  "answers": [
     {
-      "type": "single",
-      "difficulty": "medium",
-      "category": "ethernet",
-      "sourceType": "generated",
-      "question": "Jaké jsou tři části MAC adresy z hlediska struktury?",
-      "answers": [
-        {
-          "id": "a",
-          "text": "OUI (výrobce, 24 bitů) a přiřazené číslo zařízení (24 bitů)",
-          "correct": true
-        },
-        {
-          "id": "b",
-          "text": "IP prefix (32 bitů) a číslo rozhraní (16 bitů)",
-          "correct": false
-        },
-        {
-          "id": "c",
-          "text": "Třída adresy (8 bitů) a unikátní číslo (40 bitů)",
-          "correct": false
-        },
-        {
-          "id": "d",
-          "text": "Fyzická adresa (32 bitů) a logická adresa (16 bitů)",
-          "correct": false
-        }
-      ],
-      "explanation": "MAC adresa = 48 bitů: prvních 24 = OUI (organizačně přiřazený identifikátor výrobce), druhých 24 = NIC specific.",
-      "id": "q_00209"
+      "id": "a",
+      "text": "Na OUI výrobce (24 bitů) a identifikátor zařízení/NIC (24 bitů)",
+      "correct": true
     },
+    {
+      "id": "b",
+      "text": "Na síťovou část a host část stejně jako IPv4",
+      "correct": false
+    },
+    {
+      "id": "c",
+      "text": "Na fyzickou a logickou adresu",
+      "correct": false
+    },
+    {
+      "id": "d",
+      "text": "Na prefix protokolu a číslo portu",
+      "correct": false
+    }
+  ],
+  "explanation": "MAC adresa má délku 48 bitů. Prvních 24 bitů tvoří OUI identifikující výrobce a posledních 24 bitů je unikátní identifikátor síťového rozhraní.",
+  "id": "q_00209"
+},
     {
       "type": "single",
       "difficulty": "medium",
@@ -7871,22 +7871,22 @@
       "answers": [
         {
           "id": "a",
-          "text": "Bit (L1)",
+          "text": "Bit",
           "correct": true
         },
         {
           "id": "b",
-          "text": "Rámec/Frame (L2)",
+          "text": "Rámec/Frame",
           "correct": true
         },
         {
           "id": "c",
-          "text": "Paket (L3)",
+          "text": "Paket",
           "correct": true
         },
         {
           "id": "d",
-          "text": "Byte (nezařazeno)",
+          "text": "Byte",
           "correct": false
         }
       ],
@@ -10619,7 +10619,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "16 777 214 (přibližně 16 milionů)",
+          "text": "16 777 214",
           "correct": true
         },
         {
@@ -11309,7 +11309,7 @@
         },
         {
           "id": "d",
-          "text": "169.254.0.0/16 (APIPA)",
+          "text": "169.254.0.0/16",
           "correct": false
         }
       ],
@@ -11330,12 +11330,12 @@
         },
         {
           "id": "b",
-          "text": "Layer 3 switch",
+          "text": "Layer 3 switch (pokud existuje)",
           "correct": true
         },
         {
           "id": "c",
-          "text": "Firewall (L3/L4)",
+          "text": "Firewall",
           "correct": true
         },
         {
@@ -11521,7 +11521,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "Rámec kratší než 64 B — typický produkt kolize",
+          "text": "Rámec kratší než 64 B",
           "correct": true
         },
         {
@@ -11552,7 +11552,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "Rámec delší než 1518 B (přesahuje standard MTU 1500 B)",
+          "text": "Rámec delší než 1518 B",
           "correct": true
         },
         {
@@ -11645,7 +11645,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "Relační vrstva (L5, session layer)",
+          "text": "Relační vrstva (L5)",
           "correct": true
         },
         {
@@ -14120,7 +14120,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "4 páry (všechny páry v kabelu Cat 5e)",
+          "text": "4 páry",
           "correct": true
         },
         {
@@ -14151,7 +14151,7 @@
       "answers": [
         {
           "id": "a",
-          "text": "2 páry (páry 2 a 3 v RJ-45)",
+          "text": "2 páry",
           "correct": true
         },
         {

@@ -1288,10 +1288,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (questionsOverride) {
       // Called from startQuiz with a pre-filtered+sorted pool
-      _browseQs = questionsOverride.map(q => {
-        if (q.type !== 'single' && q.type !== 'multi') return q;
-        return { ...q, answers: U.shuffle(q.answers) };
-      });
+      _browseQs = questionsOverride;
       _browseIdx = 0;
       _browseRevealed = {};
       _browseAnswers = {};
@@ -1305,9 +1302,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         _browseQs = [...db.questions].sort((a, b) => {
           const ai = catOrder.indexOf(a.category); const bi = catOrder.indexOf(b.category);
           return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
-        }).map(q => {
-          if (q.type !== 'single' && q.type !== 'multi') return q;
-          return { ...q, answers: U.shuffle(q.answers) };
         });
         _browseCatStart = {};
         _browseQs.forEach((q, i) => { if (_browseCatStart[q.category] === undefined) _browseCatStart[q.category] = i; });
