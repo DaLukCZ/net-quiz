@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "title": "Webové technologie",
+    "version": 1,
+    "questionCount": 5,
+    "uniqueQuestions": true
+  },
+  "categories": [
+    {
+      "id": "html",
+      "label": "HTML"
+    },
+    {
+      "id": "css",
+      "label": "CSS"
+    },
+    {
+      "id": "javascript",
+      "label": "JavaScript"
+    },
+    {
+      "id": "browser",
+      "label": "Prohlížeč"
+    },
+    {
+      "id": "http",
+      "label": "HTTP"
+    }
+  ],
+  "questions": [
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "html",
+      "question": "Který značkovací jazyk se používá pro strukturu webové stránky?",
+      "answers": [
+        { "id": "a", "text": "CSS", "correct": false },
+        { "id": "b", "text": "HTML", "correct": true },
+        { "id": "c", "text": "JSON", "correct": false },
+        { "id": "d", "text": "SQL", "correct": false }
+      ],
+      "explanation": "HTML se používá pro strukturu a obsah webových stránek.",
+      "id": "w_00001"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "css",
+      "question": "Které pravidlo CSS změní barvu textu?",
+      "answers": [
+        { "id": "a", "text": "background-color", "correct": false },
+        { "id": "b", "text": "font-size", "correct": false },
+        { "id": "c", "text": "color", "correct": true },
+        { "id": "d", "text": "display", "correct": false }
+      ],
+      "explanation": "V CSS se pro barvu textu používá vlastnost color.",
+      "id": "w_00002"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "javascript",
+      "question": "Jaký je správný způsob zápisu funkce v JavaScriptu?",
+      "answers": [
+        { "id": "a", "text": "function myFunc() {}", "correct": true },
+        { "id": "b", "text": "func myFunc() {}", "correct": false },
+        { "id": "c", "text": "function: myFunc() {}", "correct": false },
+        { "id": "d", "text": "def myFunc() {}", "correct": false }
+      ],
+      "explanation": "V JavaScriptu se funkce zapisuje pomocí klíčového slova function.",
+      "id": "w_00003"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "browser",
+      "question": "Který soubor zobrazuje prohlížeč při otevření webové stránky?",
+      "answers": [
+        { "id": "a", "text": ".exe", "correct": false },
+        { "id": "b", "text": ".html", "correct": true },
+        { "id": "c", "text": ".docx", "correct": false },
+        { "id": "d", "text": ".mp3", "correct": false }
+      ],
+      "explanation": "Prohlížeč načítá a vykresluje HTML soubory jako webové stránky.",
+      "id": "w_00004"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Co znamená zkratka HTTP?",
+      "answers": [
+        { "id": "a", "text": "HyperText Transfer Protocol", "correct": true },
+        { "id": "b", "text": "High Transfer Text Process", "correct": false },
+        { "id": "c", "text": "Hyperlink Text Transfer Program", "correct": false },
+        { "id": "d", "text": "Home Tool Transfer Page", "correct": false }
+      ],
+      "explanation": "HTTP znamená HyperText Transfer Protocol a je použit pro komunikaci mezi prohlížečem a serverem.",
+      "id": "w_00005"
+    }
+  ]
+}

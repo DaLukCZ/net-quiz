@@ -71,7 +71,7 @@ App.DB = (() => {
     localStorage.removeItem(BOOKMARKS_KEY);
   }
 
-  // ── Questions (in-memory, načteno z questions.json) ──────────
+  // ── Questions (in-memory, načteno z site.json nebo weby.json) ──────────
 
   function upsertQuestion(q) {
     const db = App.State.getDB();

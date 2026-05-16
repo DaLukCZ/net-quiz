@@ -1,48 +1,47 @@
-# Moodle Quiz
+# NetQuiz
 
-Jednoduché kvízové rozhraní v prohlížeči pro opakování témat počítačových sítí. Brzy tam přibudou i webové technologie.
+Kvízové rozhraní v prohlížeči pro opakování látky z vysoké školy. Aktuálně pokrývá počítačové sítě, připraveno na rozšíření o další předměty.
 
-## Co obsahuje
+## Funkce
 
-- rychlý lokální kvíz v čistém JavaScriptu
-- plně napsané vlastním kódem (`fully vibecoded`)
-- aktuální počet otázek: **702**
-- aktuální téma: sítě, v budoucnu plánované i weby
-- otázky nejsou dokončené a nemusí být zcela správné
-- neexistuje záruka shody s oficiálními testy
-- otázky vznikly částečně pomocí AI pro analýzu prezentací, učebních textů a externích zdrojů
+- **Kvíz** — náhodný výběr otázek s nastavením obtížnosti, kategorie a počtu
+- **Procházení** — otázky seřazené po kategoriích, styl autoškoly, volná navigace
+- **Adaptivní učení** — SRS algoritmus zaměřený na slabá místa
+- **Záložky** — hvězdičkování otázek, kvíz jen ze záložkovaných
+- **Více předmětů** — přepínání mezi předměty, podpora vlastních JSON souborů
+- **Studijní materiály** — prohlížeč PDF přímo v aplikaci, nahrání vlastního PDF
+- **Statistiky** — přehled pokroku, kategorie, historická skóre
+- **Editor otázek** — přidávání a úprava otázek přímo v aplikaci
+- **Klávesové zkratky** — 1–4 výběr, Enter potvrdit, B hvězdička, ←/→ navigace
+- **Tmavý režim**
 
-## Budoucí plán
-
-- rozšíření kvízu o webové technologie
+> Otázky vznikly částečně pomocí AI analýzou prezentací a externích zdrojů. Nejsou dokončené a nemusí být zcela správné. Nelze zaručit shodu s oficiálními testy.
 
 ## Spuštění
-
-1. otevři složku projektu v terminálu
-2. spusť jednoduchý lokální server:
 
 ```bash
 python -m http.server 8000
 ```
 
-3. v prohlížeči otevři:
+Pak otevři `http://localhost:8000`.
 
-`http://localhost:8000`
+> `index.html` neotvírej přes `file://` — prohlížeč zablokuje načítání JSON souborů.
 
-> Poznámka: `index.html` neotevírej přes `file://`, protože většina prohlížečů zablokuje načítání `questions.json`.
+## Soubory s otázkami
 
-## Důležité upozornění
+| Soubor | Předmět | Otázek |
+|--------|---------|--------|
+| `site.json` | Počítačové sítě | 702 |
+| `weby.json` | Webové technologie | 5 |
 
-- data v kvízu jsou orientační
-- používáš projekt na vlastní odpovědnost
-- nelze zaručit shodu s oficiálními zkušebními otázkami
+Vlastní předmět lze přidat přes **Výběr předmětu → Nový předmět** (nahrání JSON nebo stažení šablony).
 
 ## Podpora
 
-Chceš-li projekt podpořit, můžeš poslat pár korun na účet: `2081256014/3030`
+Chceš-li projekt podpořit, pošli pár korun: `2081256014/3030`
 
 ## O projektu
 
 - **Autor:** Šmachy - DaLuk
-- **Verze:** 0.3
+- **Verze:** 0.4
 - **Poslední aktualizace:** 16.5.2026

@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NetQuiz — Počítačové sítě</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f97316'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900'%3EN%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -514,7 +515,7 @@
             <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Vyber předmět, který chceš procvičovat.</p>
           </div>
           <button id="createSubjectBtn"
-            class="hidden items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-2.5 rounded-xl transition-colors shadow-sm text-sm">
+            class="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-4 py-2.5 rounded-xl transition-colors shadow-sm text-sm">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
@@ -539,9 +540,16 @@
               <input id="newSubjectSlug" type="text" placeholder="pocitacove-site"
                 class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
             </div>
-            <div><label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">Popis</label>
-              <input id="newSubjectDesc" type="text" placeholder="Krátký popis předmětu"
-                class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+            <div>
+              <label class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5 block">JSON soubor s otázkami <span class="font-normal normal-case">(volitelné)</span></label>
+              <label class="flex items-center gap-3 w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-3 text-sm cursor-pointer hover:border-orange-300 transition-colors">
+                <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+                <span id="newSubjectFileName" class="text-slate-400 truncate">Vybrat soubor…</span>
+                <input id="newSubjectFile" type="file" accept=".json" class="sr-only">
+              </label>
+              <p class="text-xs text-slate-400 mt-1.5">Bez souboru se stáhne prázdná šablona.</p>
             </div>
             <div id="createSubjectError"
               class="hidden text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-4 py-3 rounded-xl">
@@ -561,7 +569,7 @@
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" id="importJsonBackdrop"></div>
         <div class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-lg">
           <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-gray-800">
-            <h3 class="font-bold text-base">Importovat questions.json</h3>
+            <h3 class="font-bold text-base">Importovat otázky</h3>
             <button id="importJsonClose" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -569,9 +577,7 @@
             </button>
           </div>
           <div class="p-6 space-y-4">
-            <p class="text-sm text-slate-500 dark:text-slate-400">Vlož obsah <code
-                class="bg-slate-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-xs">questions.json</code> nebo ho nahraj
-              ze souboru. Otázky budou přidány ke stávajícím.</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Vlož obsah JSON souboru s otázkami nebo ho nahraj ze souboru. Otázky budou přidány ke stávajícím.</p>
             <button id="importJsonFileBtn"
               class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-gray-700 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1387,6 +1393,13 @@
               class="bg-white dark:bg-gray-900 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm p-6">
               <h2 class="font-bold text-sm mb-4 uppercase tracking-wide text-slate-400">Data</h2>
               <div class="space-y-2">
+                <div>
+                  <label class="text-sm font-medium block mb-1.5" for="settings-subject">Výchozí učivo</label>
+                  <select id="settings-subject"
+                    class="w-full border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300">
+                  </select>
+                  <div class="text-xs text-slate-400 mt-1">Vyber učivo, které se načte jako výchozí.</div>
+                </div>
                 <button id="exportDataBtn"
                   class="w-full flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-gray-700 hover:bg-slate-50 dark:hover:bg-gray-800 text-left transition-colors">
                   <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1395,7 +1408,7 @@
                   </svg>
                   <div>
                     <div class="text-sm font-medium">Exportovat databázi otázek</div>
-                    <div class="text-xs text-slate-400">Stáhne questions_export.json</div>
+                    <div class="text-xs text-slate-400">Stáhne export quizu</div>
                   </div>
                 </button>
                 <button id="clearStatsBtn"
@@ -1450,14 +1463,23 @@
       <!-- ── Studijní materiály ── -->
       <div id="view-materials" class="view-section hidden flex flex-col animate-fade-in" style="height: calc(100vh - 3.5rem);">
         <div class="flex items-center gap-1 px-6 pt-5 pb-0 border-b border-slate-200 dark:border-gray-700 shrink-0">
-          <button id="mat-tab-0" onclick="App.Materials.switchTab(0)"
-            class="mat-tab px-4 py-2.5 text-sm font-semibold rounded-t-lg border-b-2 border-orange-500 text-orange-600 dark:text-orange-400 bg-white dark:bg-gray-900 -mb-px transition-colors">
-            📖 Počítačové sítě
-          </button>
-          <button id="mat-tab-1" onclick="App.Materials.switchTab(1)"
-            class="mat-tab px-4 py-2.5 text-sm font-semibold rounded-t-lg border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:border-slate-300 -mb-px transition-colors">
-            📋 Zkušební okruhy
-          </button>
+          <div id="mat-tabs" class="flex items-center gap-1">
+            <button id="mat-tab-0" onclick="App.Materials.switchTab(0)"
+              class="mat-tab px-4 py-2.5 text-sm font-semibold rounded-t-lg border-b-2 border-orange-500 text-orange-600 dark:text-orange-400 bg-white dark:bg-gray-900 -mb-px transition-colors">
+              📖 Počítačové sítě
+            </button>
+            <button id="mat-tab-1" onclick="App.Materials.switchTab(1)"
+              class="mat-tab px-4 py-2.5 text-sm font-semibold rounded-t-lg border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:border-slate-300 -mb-px transition-colors">
+              📋 Zkušební okruhy
+            </button>
+          </div>
+          <label class="cursor-pointer ml-2 px-2.5 py-1.5 text-xs text-slate-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-colors flex items-center gap-1.5 -mb-px" title="Přidat PDF">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Přidat PDF
+            <input type="file" id="mat-file-input" accept=".pdf" class="sr-only" onchange="App.Materials.addUploadedPdf(this)">
+          </label>
           <div class="ml-auto flex items-center gap-2 pb-2">
             <a id="mat-open-btn" href="#" target="_blank"
               class="flex items-center gap-1.5 text-xs text-slate-400 hover:text-orange-500 transition-colors">
@@ -1688,6 +1710,23 @@
         });
       }
 
+      function addUploadedPdf(input) {
+        const file = input.files[0];
+        if (!file) return;
+        const url = URL.createObjectURL(file);
+        const name = file.name.replace(/\.pdf$/i, '');
+        const idx = PDFS.length;
+        PDFS.push(url);
+        const tabContainer = document.getElementById('mat-tabs');
+        const btn = document.createElement('button');
+        btn.className = 'mat-tab px-4 py-2.5 text-sm font-semibold rounded-t-lg border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:border-slate-300 -mb-px transition-colors';
+        btn.textContent = `📄 ${name}`;
+        btn.onclick = () => switchTab(idx);
+        if (tabContainer) tabContainer.appendChild(btn);
+        switchTab(idx);
+        input.value = '';
+      }
+
       function init() {
         const openBtn = document.getElementById('mat-open-btn');
         if (openBtn) openBtn.href = PDFS[0];
@@ -1695,7 +1734,7 @@
         if (fallbackLink) fallbackLink.href = PDFS[0];
       }
 
-      return { switchTab, init };
+      return { switchTab, addUploadedPdf, init };
     })();
   </script>
 

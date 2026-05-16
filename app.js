@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   R.onEnter('settings',   renderSettings);
   R.onEnter('materials',  () => {});
   R.onEnter('browse',     _renderBrowseView);
+  R.onEnter('subjects',   renderSubjects);
 
   document.getElementById('sidebarToggle')?.addEventListener('click', () => {
     document.getElementById('sidebar')?.classList.toggle('hidden');
@@ -32,19 +33,205 @@ document.addEventListener('DOMContentLoaded', async () => {
   App.Editor.init();
   App.Materials.init();
 
-  // Načti otázky z questions.json
-  try {
-    const resp = await fetch('questions.json');
-    const data = await resp.json();
-    St.setDB(data);
-    const qIds = (data.questions || []).map(q => q.id);
-    App.SRS.loadStates(App.DB.loadSRSStates(qIds));
-    _setText('subjectTitle', data.meta?.title || 'NetQuiz');
-    _setText('subjectMeta', `${(data.questions || []).length} otázek · ${(data.categories || []).length} kategorií`);
-    _updateSidebarStats();
-  } catch (e) {
-    console.error('Chyba při načítání otázek:', e);
-    U.showToast('Nepodařilo se načíst questions.json', 'error');
+  const SUBJECTS = [
+    { id: 'site', label: 'Sítě', file: 'site.json' },
+    { id: 'weby', label: 'Weby', file: 'weby.json' },
+  ];
+
+  function _getCurrentSubject() {
+    const subjectKey = St.getSetting('defaultSubject') || 'site';
+    return SUBJECTS.find(s => s.id === subjectKey) || SUBJECTS[0];
+  }
+
+  async function _loadSubject(subjectId) {
+    const customS = _getCustomSubjects().find(s => s.id === subjectId);
+    if (customS) {
+      const data = customS.data;
+      St.setDB(data);
+      App.SRS.loadStates(App.DB.loadSRSStates((data.questions||[]).map(q => q.id)));
+      _setText('subjectTitle', data.meta?.title || customS.label);
+      _setText('subjectMeta', `${(data.questions||[]).length} otázek · ${(data.categories||[]).length} kategorií`);
+      _updateSidebarStats();
+      return true;
+    }
+    const subject = SUBJECTS.find(s => s.id === subjectId) || _getCurrentSubject();
+    try {
+      const resp = await fetch(subject.file);
+      const data = await resp.json();
+      St.setDB(data);
+      const qIds = (data.questions || []).map(q => q.id);
+      App.SRS.loadStates(App.DB.loadSRSStates(qIds));
+      _setText('subjectTitle', data.meta?.title || subject.label);
+      _setText('subjectMeta', `${(data.questions || []).length} otázek · ${(data.categories || []).length} kategorií`);
+      _updateSidebarStats();
+      return true;
+    } catch (e) {
+      console.error(`Chyba při načítání ${subject.file}:`, e);
+      U.showToast(`Nepodařilo se načíst ${subject.file}`, 'error');
+      return false;
+    }
+  }
+
+  function _getCustomSubjects() {
+    try { return JSON.parse(localStorage.getItem('nq_custom_subjects') || '[]'); }
+    catch { return []; }
+  }
+
+  await _loadSubject(St.getSetting('defaultSubject') || 'site');
+
+  async function renderSubjects() {
+    const grid = U.el('subjectsGrid');
+    if (!grid) return;
+    grid.innerHTML = '<div class="text-slate-400 text-sm col-span-full text-center py-12">Načítám předměty…</div>';
+
+    const currentId = St.getSetting('defaultSubject') || 'site';
+    const custom = _getCustomSubjects();
+
+    const builtinCards = await Promise.all(SUBJECTS.map(async (s) => {
+      try {
+        const resp = await fetch(s.file);
+        const data = await resp.json();
+        return { id: s.id, qCount: (data.questions||[]).length, catCount: (data.categories||[]).length,
+                 isActive: s.id === currentId, title: data.meta?.title || s.label, isCustom: false };
+      } catch {
+        return { id: s.id, qCount: '?', catCount: '?', isActive: s.id === currentId, title: s.label, isCustom: false };
+      }
+    }));
+
+    const customCards = custom.map(s => ({
+      id: s.id, isCustom: true, isActive: s.id === currentId,
+      title: s.data?.meta?.title || s.label,
+      qCount: (s.data?.questions||[]).length,
+      catCount: (s.data?.categories||[]).length,
+    }));
+
+    const allCards = [...builtinCards, ...customCards];
+
+    grid.innerHTML = allCards.map(({ id, qCount, catCount, isActive, title, isCustom }) => `
+      <button data-subject="${id}" class="relative text-left p-5 rounded-2xl border-2 transition-all group
+        ${isActive ? 'border-orange-400 bg-orange-50 dark:bg-orange-900/20 shadow-sm'
+                   : 'border-slate-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-orange-300 hover:shadow-sm'}">
+        <div class="flex items-start justify-between mb-3 gap-2">
+          <span class="font-bold text-lg leading-tight">${title}</span>
+          <div class="flex items-center gap-1.5 shrink-0">
+            ${isActive ? '<span class="text-xs font-semibold bg-orange-500 text-white px-2 py-0.5 rounded-full">Aktivní</span>' : ''}
+            ${isCustom ? `<button data-delete-subject="${id}" class="text-slate-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all p-0.5 rounded" title="Smazat předmět">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>` : ''}
+          </div>
+        </div>
+        <p class="text-sm text-slate-500 dark:text-slate-400">${qCount} otázek · ${catCount} kategorií</p>
+      </button>
+    `).join('');
+
+    grid.querySelectorAll('[data-subject]').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        if (e.target.closest('[data-delete-subject]')) return;
+        const id = btn.dataset.subject;
+        if (id === (St.getSetting('defaultSubject') || 'site')) { R.navigate('dashboard'); return; }
+        St.setSetting('defaultSubject', id);
+        await _loadSubject(id);
+        _browseQs = [];
+        R.navigate('dashboard');
+        U.showToast('Předmět přepnut', 'success');
+      });
+    });
+
+    grid.querySelectorAll('[data-delete-subject]').forEach(delBtn => {
+      delBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const id = delBtn.dataset.deleteSubject;
+        const updated = _getCustomSubjects().filter(s => s.id !== id);
+        localStorage.setItem('nq_custom_subjects', JSON.stringify(updated));
+        if ((St.getSetting('defaultSubject') || 'site') === id) {
+          St.setSetting('defaultSubject', 'site');
+          await _loadSubject('site');
+          _browseQs = [];
+        }
+        renderSubjects();
+      });
+    });
+
+    // Wire up create form (idempotent via onclick assignment)
+    const createBtn = U.el('createSubjectBtn');
+    const form = U.el('createSubjectForm');
+    if (createBtn) createBtn.onclick = () => {
+      form?.classList.toggle('hidden');
+      U.el('createSubjectError')?.classList.add('hidden');
+    };
+    const cancelBtn = U.el('createSubjectCancel');
+    if (cancelBtn) cancelBtn.onclick = () => form?.classList.add('hidden');
+
+    const fileInput = document.getElementById('newSubjectFile');
+    const fileLabel = U.el('newSubjectFileName');
+    if (fileInput && fileLabel) {
+      fileInput.onchange = () => {
+        fileLabel.textContent = fileInput.files[0]?.name || 'Vybrat soubor…';
+      };
+    }
+
+    const submitBtn = U.el('createSubjectSubmit');
+    if (submitBtn) submitBtn.onclick = async () => {
+      const title = U.el('newSubjectTitle')?.value?.trim();
+      const slugRaw = U.el('newSubjectSlug')?.value?.trim();
+      const errEl = U.el('createSubjectError');
+      errEl?.classList.add('hidden');
+
+      if (!title) {
+        if (errEl) { errEl.textContent = 'Název je povinný.'; errEl.classList.remove('hidden'); }
+        return;
+      }
+      const id = slugRaw || title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+      const existingCustom = _getCustomSubjects();
+      if (existingCustom.find(s => s.id === id) || SUBJECTS.find(s => s.id === id)) {
+        if (errEl) { errEl.textContent = `ID "${id}" je již použito.`; errEl.classList.remove('hidden'); }
+        return;
+      }
+
+      let data;
+      const file = fileInput?.files?.[0];
+      if (file) {
+        try {
+          const text = await file.text();
+          data = JSON.parse(text);
+          if (!Array.isArray(data.questions)) throw new Error('Chybí pole "questions"');
+          data.meta = { ...(data.meta || {}), title };
+        } catch (e) {
+          if (errEl) { errEl.textContent = 'Neplatný soubor: ' + e.message; errEl.classList.remove('hidden'); }
+          return;
+        }
+      } else {
+        data = { meta: { title, version: 1, questionCount: 0 }, categories: [], questions: [] };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `${id}.json` });
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+        U.showToast(`Šablona "${id}.json" stažena — doplň otázky a nahraj zpět.`, 'info');
+        form?.classList.add('hidden');
+        return;
+      }
+
+      try {
+        existingCustom.push({ id, label: title, data });
+        localStorage.setItem('nq_custom_subjects', JSON.stringify(existingCustom));
+      } catch (e) {
+        if (errEl) { errEl.textContent = 'Chyba ukládání (soubor může být příliš velký): ' + e.message; errEl.classList.remove('hidden'); }
+        return;
+      }
+
+      if (U.el('newSubjectTitle')) U.el('newSubjectTitle').value = '';
+      if (U.el('newSubjectSlug')) U.el('newSubjectSlug').value = '';
+      if (fileInput) { fileInput.value = ''; if (fileLabel) fileLabel.textContent = 'Vybrat soubor…'; }
+      form?.classList.add('hidden');
+
+      St.setSetting('defaultSubject', id);
+      await _loadSubject(id);
+      _browseQs = [];
+      await renderSubjects();
+      U.showToast(`Předmět "${title}" přidán`, 'success');
+    };
   }
 
   R.navigate('dashboard');
@@ -627,6 +814,21 @@ document.addEventListener('DOMContentLoaded', async () => {
       fresh.value = settings.defaultCount;
       fresh.addEventListener('change', () => St.setSetting('defaultCount', Number(fresh.value)));
     }
+
+    const subjectSelect = U.el('settings-subject');
+    if (subjectSelect) {
+      subjectSelect.innerHTML = SUBJECTS.map(s => `<option value="${s.id}">${s.label}</option>`).join('');
+      subjectSelect.value = settings.defaultSubject || 'site';
+      const fresh = subjectSelect.cloneNode(true);
+      subjectSelect.parentNode.replaceChild(fresh, subjectSelect);
+      fresh.addEventListener('change', async () => {
+        const selected = fresh.value;
+        St.setSetting('defaultSubject', selected);
+        await _loadSubject(selected);
+        U.showToast(`Načteno učivo ${SUBJECTS.find(s => s.id === selected)?.label || selected}`, 'success');
+      });
+    }
+
     U.setToggle(U.el('settings-dark-toggle'),     settings.darkMode);
     U.setToggle(U.el('settings-random-toggle'),   settings.randomize);
     U.setToggle(U.el('settings-feedback-toggle'), settings.instantFeedback);

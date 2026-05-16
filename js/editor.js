@@ -111,7 +111,7 @@ App.Editor = (() => {
     U.el('editorImportBtn')?.addEventListener('click', () => U.el('jsonImportInput')?.click());
     U.el('editorExportBtn')?.addEventListener('click', () => {
       const db = App.State.getDB();
-      if (db) U.downloadJSON(db, 'questions.json');
+      if (db) U.downloadJSON(db, 'quiz_export.json');
     });
 
     // File import

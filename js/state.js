@@ -10,6 +10,7 @@ App.State = (() => {
     showTimer:         true,
     darkMode:          false,
     defaultMode:       'study',
+    defaultSubject:    'site',
   };
 
   let _db       = null; // { questions, categories } — načteno z DB při výběru předmětu

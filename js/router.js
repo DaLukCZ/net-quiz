@@ -14,6 +14,7 @@ App.Router = (() => {
     settings:     { label: 'Nastavení',       section: 'view-settings',    noSidebar: false },
     materials:    { label: 'Studijní materiály', section: 'view-materials', noSidebar: false },
     browse:       { label: 'Procházet otázky',  section: 'view-browse',    noSidebar: false },
+    subjects:     { label: 'Výběr předmětu',   section: 'view-subjects',  noSidebar: false },
   };
 
   let _current = null;
