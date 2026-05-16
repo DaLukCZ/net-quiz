@@ -2,6 +2,7 @@
 
 Kvízové rozhraní v prohlížeči pro opakování látky z vysoké školy. Aktuálně pokrývá počítačové sítě, připraveno na rozšíření o další předměty.
 
+
 ## Funkce
 
 - **Kvíz** — náhodný výběr otázek s nastavením obtížnosti, kategorie a počtu
@@ -26,35 +27,26 @@ Stáhnout si tento projekt můžeš dvěma způsoby:
    ```
 2. Nebo stáhni ZIP přes tlačítko **Code → Download ZIP** na GitHubu.
 
-Po stažení rozbal složku a otevři POKYNY.txt
+Po stažení rozbal složku a otevři `net-quiz`.
 
 ## Spuštění
 
-### Nejjednoduší způsob (Windows)
-
 1. **Stáhni Python** → https://www.python.org/downloads/
    - Při instalaci zaškrtni **"Add Python to PATH"**
-   
+   - Restartuj počítač
+
 2. **Přejdi do složky** `net-quiz` a **dvojklikem otevři `NetQuiz.bat`**
-   
+
 3. V prohlížeči (Chrome, Firefox, Edge) otevři: **`http://localhost:8000/net-quiz/`**
 
 4. Hotovo! 🎉
 
-### Alternativa — Manuálně (Windows / Mac / Linux)
 
-Pokud ti `spustit.bat` nejde:
+### Stále problém?
 
-1. Otevři **Příkazový řádek** (Cmd / Terminal)
-2. Přejdi do složky:
-   ```
-   cd C:\cesta\k\net-quiz
-   ```
-3. Spusť:
-   ```
-   python -m http.server 8000
-   ```
-6. V prohlížeči otevři: **`http://localhost:8000/net-quiz/`**
+- Ověř, že v terminálu běží server pomocí `python -m http.server 8000`.
+- Vymaž cache v prohlížeči nebo otevři stránku v anonymním okně.
+- Pokud nic nepomáhá, vrať se k této sekci a ověř krok za krokem.
 
 ## Soubory s otázkami
 
@@ -91,7 +83,7 @@ Nebo si stáhni šablonu přímo z aplikace.
 
 ## Podpora
 
-Chceš-li projekt podpořit, pošli pár korun: `2081256014/3030`
+Chceš-li projekt podpořit, pošli pár korun: **2081256014/3030**
 
 ## O projektu
 

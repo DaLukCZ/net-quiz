@@ -1,9 +1,9 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const U  = App.Utils;
+  const U = App.Utils;
   const QE = App.QuizEngine;
-  const R  = App.Router;
-  const C  = App.Components;
+  const R = App.Router;
+  const C = App.Components;
   const St = App.State;
 
   St.init();
@@ -12,18 +12,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   R.init();
 
-  R.onEnter('dashboard',  renderDashboard);
+  R.onEnter('dashboard', renderDashboard);
   R.onEnter('quiz-setup', renderQuizSetup);
-  R.onEnter('quiz',       () => {});
-  R.onEnter('results',    () => {});
-  R.onEnter('adaptive',   startAdaptiveSession);
-  R.onEnter('editor',     () => App.Editor.render());
-  R.onEnter('stats',      renderStats);
-  R.onEnter('json-editor',renderJsonEditor);
-  R.onEnter('settings',   renderSettings);
-  R.onEnter('materials',  () => {});
-  R.onEnter('browse',     _renderBrowseView);
-  R.onEnter('subjects',   renderSubjects);
+  R.onEnter('quiz', () => { });
+  R.onEnter('results', () => { });
+  R.onEnter('adaptive', startAdaptiveSession);
+  R.onEnter('editor', () => App.Editor.render());
+  R.onEnter('stats', renderStats);
+  R.onEnter('json-editor', renderJsonEditor);
+  R.onEnter('settings', renderSettings);
+  R.onEnter('materials', () => { });
+  R.onEnter('browse', _renderBrowseView);
+  R.onEnter('subjects', renderSubjects);
 
   document.getElementById('sidebarToggle')?.addEventListener('click', () => {
     document.getElementById('sidebar')?.classList.toggle('hidden');
@@ -48,9 +48,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (customS) {
       const data = customS.data;
       St.setDB(data);
-      App.SRS.loadStates(App.DB.loadSRSStates((data.questions||[]).map(q => q.id)));
+      App.SRS.loadStates(App.DB.loadSRSStates((data.questions || []).map(q => q.id)));
       _setText('subjectTitle', data.meta?.title || customS.label);
-      _setText('subjectMeta', `${(data.questions||[]).length} otázek · ${(data.categories||[]).length} kategorií`);
+      _setText('subjectMeta', `${(data.questions || []).length} otázek · ${(data.categories || []).length} kategorií`);
       _updateSidebarStats();
       return true;
     }
@@ -91,8 +91,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       try {
         const resp = await fetch(s.file);
         const data = await resp.json();
-        return { id: s.id, qCount: (data.questions||[]).length, catCount: (data.categories||[]).length,
-                 isActive: s.id === currentId, title: data.meta?.title || s.label, isCustom: false };
+        return {
+          id: s.id, qCount: (data.questions || []).length, catCount: (data.categories || []).length,
+          isActive: s.id === currentId, title: data.meta?.title || s.label, isCustom: false
+        };
       } catch {
         return { id: s.id, qCount: '?', catCount: '?', isActive: s.id === currentId, title: s.label, isCustom: false };
       }
@@ -101,8 +103,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const customCards = custom.map(s => ({
       id: s.id, isCustom: true, isActive: s.id === currentId,
       title: s.data?.meta?.title || s.label,
-      qCount: (s.data?.questions||[]).length,
-      catCount: (s.data?.categories||[]).length,
+      qCount: (s.data?.questions || []).length,
+      catCount: (s.data?.categories || []).length,
     }));
 
     const allCards = [...builtinCards, ...customCards];
@@ -110,7 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     grid.innerHTML = allCards.map(({ id, qCount, catCount, isActive, title, isCustom }) => `
       <button data-subject="${id}" class="relative text-left p-5 rounded-2xl border-2 transition-all group
         ${isActive ? 'border-orange-400 bg-orange-50 dark:bg-orange-900/20 shadow-sm'
-                   : 'border-slate-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-orange-300 hover:shadow-sm'}">
+        : 'border-slate-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-orange-300 hover:shadow-sm'}">
         <div class="flex items-start justify-between mb-3 gap-2">
           <span class="font-bold text-lg leading-tight">${title}</span>
           <div class="flex items-center gap-1.5 shrink-0">
@@ -204,13 +206,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       } else {
         data = { meta: { title, version: 1, questionCount: 0 }, categories: [], questions: [] };
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: `${id}.json` });
-        document.body.appendChild(a); a.click(); document.body.removeChild(a);
-        URL.revokeObjectURL(a.href);
-        U.showToast(`Šablona "${id}.json" stažena — doplň otázky a nahraj zpět.`, 'info');
-        form?.classList.add('hidden');
-        return;
       }
 
       try {
@@ -244,18 +239,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const history = App.DB.getQuizResults(10);
 
-    _setText('statTotalQ',     db.questions?.length ?? 0);
+    _setText('statTotalQ', db.questions?.length ?? 0);
     _setText('statCategories', db.categories?.length ?? 0);
-    _setText('statAttempts',   history.length);
-    _setText('statBestScore',  history.length ? Math.max(...history.map(r => r.scorePercent ?? 0)) + '%' : '—');
+    _setText('statAttempts', history.length);
+    _setText('statBestScore', history.length ? Math.max(...history.map(r => r.scorePercent ?? 0)) + '%' : '—');
     _setText('dashboardTitle', db.meta?.title || 'NetQuiz');
-    _setText('subjectTitle',   db.meta?.title || 'Předmět');
-    _setText('subjectMeta',    `${db.questions?.length ?? 0} otázek · ${db.categories?.length ?? 0} kategorií`);
+    _setText('subjectTitle', db.meta?.title || 'Předmět');
+    _setText('subjectMeta', `${db.questions?.length ?? 0} otázek · ${db.categories?.length ?? 0} kategorií`);
     _updateSidebarStats();
 
     const grid = U.el('categoryGrid');
     if (grid) {
-      const cats   = db.categories || [];
+      const cats = db.categories || [];
       const counts = {};
       (db.questions || []).forEach(q => { counts[q.category] = (counts[q.category] || 0) + 1; });
       grid.innerHTML = cats.length
@@ -273,9 +268,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>`;
       } else {
         recent.innerHTML = history.map(r => {
-          const pct   = r.scorePercent ?? 0;
+          const pct = r.scorePercent ?? 0;
           const color = pct >= 75 ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20' : pct >= 50 ? 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20' : 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20';
-          const date  = r.finishedAt ? new Date(r.finishedAt).toLocaleDateString('cs-CZ') : '—';
+          const date = r.finishedAt ? new Date(r.finishedAt).toLocaleDateString('cs-CZ') : '—';
           return `<div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
             <div class="w-12 h-12 rounded-xl ${color} flex items-center justify-center font-black text-lg shrink-0">${pct}%</div>
             <div class="flex-1"><div class="text-sm font-medium">${r.correct ?? 0} správně z ${r.totalQuestions ?? 0}</div><div class="text-xs text-slate-400">${date} · ${U.formatTime(r.elapsedSeconds ?? 0)}</div></div>
@@ -301,11 +296,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!db) { R.navigate('dashboard'); return; }
     const settings = St.getSettings();
 
-    const totalQ  = db.questions.length;
-    const slider  = U.el('setup-count');
+    const totalQ = db.questions.length;
+    const slider = U.el('setup-count');
     const display = U.el('setup-count-display');
     if (slider) {
-      slider.max   = totalQ;
+      slider.max = totalQ;
       slider.value = totalQ;
       if (display) display.textContent = totalQ;
       const fresh = slider.cloneNode(true);
@@ -314,9 +309,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     U.setToggle(U.el('toggle-randomize'), settings.randomize);
-    U.setToggle(U.el('toggle-timer'),     settings.showTimer);
-    _rebindBtn('toggle-randomize', function() { U.setToggle(this, !U.getToggle(this)); });
-    _rebindBtn('toggle-timer',     function() { U.setToggle(this, !U.getToggle(this)); });
+    U.setToggle(U.el('toggle-timer'), settings.showTimer);
+    _rebindBtn('toggle-randomize', function () { U.setToggle(this, !U.getToggle(this)); });
+    _rebindBtn('toggle-timer', function () { U.setToggle(this, !U.getToggle(this)); });
 
     document.querySelectorAll('.mode-option input').forEach(radio => {
       radio.addEventListener('change', () => { _updateModeCards(); _updateFilterCount(); });
@@ -357,7 +352,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let selectedMode = 'browse';
     document.querySelectorAll('.mode-option').forEach(label => {
       const radio = label.querySelector('input[type="radio"]');
-      const card  = label.querySelector('.mode-card');
+      const card = label.querySelector('.mode-card');
       if (!card) return;
       const active = radio?.checked;
       if (active && radio.value) selectedMode = radio.value;
@@ -388,7 +383,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   function _syncDiffChip(cb) {
     const chip = cb.nextElementSibling;
     if (!chip) return;
-    chip.style.opacity    = cb.checked ? '1' : '0.45';
+    chip.style.opacity = cb.checked ? '1' : '0.45';
     chip.style.fontWeight = cb.checked ? '600' : '400';
   }
 
@@ -397,19 +392,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     const db = St.getDB();
     if (!el || !db?.questions) return;
 
-    const count    = Number(U.el('setup-count')?.value || 20);
-    const selCats  = Array.from(document.querySelectorAll('.cat-filter:checked')).map(c => c.value).filter(Boolean);
+    const count = Number(U.el('setup-count')?.value || 20);
+    const selCats = Array.from(document.querySelectorAll('.cat-filter:checked')).map(c => c.value).filter(Boolean);
     const selDiffs = Array.from(document.querySelectorAll('.diff-filter:checked')).map(c => c.value);
-    const selSRS   = Array.from(document.querySelectorAll('.srs-filter:checked')).map(c => c.value);
+    const selSRS = Array.from(document.querySelectorAll('.srs-filter:checked')).map(c => c.value);
 
     let pool = [...db.questions];
-    if (selCats.length)  pool = pool.filter(q => selCats.includes(q.category));
+    if (selCats.length) pool = pool.filter(q => selCats.includes(q.category));
     if (selDiffs.length) pool = pool.filter(q => !q.difficulty || selDiffs.includes(q.difficulty));
     if (selSRS.includes('unseen') || selSRS.includes('weak')) {
       pool = pool.filter(q => {
         const s = App.SRS.getState(q.id);
         const unseen = !s || s.timesSeen === 0;
-        const weak   = s && s.timesSeen > 0 && s.timesCorrect / s.timesSeen < 0.5;
+        const weak = s && s.timesSeen > 0 && s.timesCorrect / s.timesSeen < 0.5;
         return (selSRS.includes('unseen') && unseen) || (selSRS.includes('weak') && weak);
       });
     }
@@ -418,7 +413,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       pool = pool.filter(q => bm.has(q.id));
     }
 
-    const total    = pool.length;
+    const total = pool.length;
     const isBrowse = document.querySelector('input[name="quizMode"]:checked')?.value === 'browse';
     if (total === 0) {
       el.textContent = 'Žádné otázky neodpovídají filtru';
@@ -437,23 +432,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     const db = St.getDB();
     if (!db?.questions?.length) { U.showToast('Nejsou dostupné žádné otázky.', 'error'); return; }
 
-    const mode      = document.querySelector('input[name="quizMode"]:checked')?.value || 'browse';
-    const count     = Number(U.el('setup-count')?.value || db.questions.length);
+    const mode = document.querySelector('input[name="quizMode"]:checked')?.value || 'browse';
+    const count = Number(U.el('setup-count')?.value || db.questions.length);
     const randomize = U.getToggle(U.el('toggle-randomize'));
     const showTimer = U.getToggle(U.el('toggle-timer'));
 
-    const selCats  = Array.from(document.querySelectorAll('.cat-filter:checked')).map(c => c.value).filter(Boolean);
+    const selCats = Array.from(document.querySelectorAll('.cat-filter:checked')).map(c => c.value).filter(Boolean);
     const selDiffs = Array.from(document.querySelectorAll('.diff-filter:checked')).map(c => c.value);
-    const selSRS   = Array.from(document.querySelectorAll('.srs-filter:checked')).map(c => c.value);
+    const selSRS = Array.from(document.querySelectorAll('.srs-filter:checked')).map(c => c.value);
 
     let pool = [...db.questions];
-    if (selCats.length)  pool = pool.filter(q => selCats.includes(q.category));
+    if (selCats.length) pool = pool.filter(q => selCats.includes(q.category));
     if (selDiffs.length) pool = pool.filter(q => !q.difficulty || selDiffs.includes(q.difficulty));
     if (selSRS.includes('unseen') || selSRS.includes('weak')) {
       pool = pool.filter(q => {
         const s = App.SRS.getState(q.id);
         const unseen = !s || s.timesSeen === 0;
-        const weak   = s && s.timesSeen > 0 && s.timesCorrect / s.timesSeen < 0.5;
+        const weak = s && s.timesSeen > 0 && s.timesCorrect / s.timesSeen < 0.5;
         return (selSRS.includes('unseen') && unseen) || (selSRS.includes('weak') && weak);
       });
     }
@@ -500,25 +495,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     _renderQuestion();
     _renderNavGrid();
     _updateProgress();
-    _rebindBtn('prevQuestionBtn',  () => { if (QE.prev()) { _renderQuestion(); _renderNavGrid(); _updateProgress(); } });
-    _rebindBtn('nextQuestionBtn',  () => _handleNext());
+    _rebindBtn('prevQuestionBtn', () => { if (QE.prev()) { _renderQuestion(); _renderNavGrid(); _updateProgress(); } });
+    _rebindBtn('nextQuestionBtn', () => _handleNext());
     _rebindBtn('confirmAnswerBtn', () => _confirmAnswer());
-    _rebindBtn('skipBtn',          () => { QE.skip(); _handleNext(); });
-    _rebindBtn('flagBtn',          () => { QE.toggleFlag(); _renderFlagBtn(); _renderNavGrid(); });
-    _rebindBtn('starBtn',          () => { App.DB.toggleBookmark(QE.getQuestion()?.id); _renderStarBtn(); });
-    _rebindBtn('quizPauseBtn',     () => _handlePause());
-    _rebindBtn('quizEndBtn',       () => { if (confirm('Ukončit test a zobrazit výsledky?')) _finishQuiz(); });
+    _rebindBtn('skipBtn', () => { QE.skip(); _handleNext(); });
+    _rebindBtn('flagBtn', () => { QE.toggleFlag(); _renderFlagBtn(); _renderNavGrid(); });
+    _rebindBtn('starBtn', () => { App.DB.toggleBookmark(QE.getQuestion()?.id); _renderStarBtn(); });
+    _rebindBtn('quizPauseBtn', () => _handlePause());
+    _rebindBtn('quizEndBtn', () => { if (confirm('Ukončit test a zobrazit výsledky?')) _finishQuiz(); });
   }
 
   function _renderQuestion(skipAnimation = false) {
-    const session  = QE.getSession();
-    const q        = QE.getQuestion();
+    const session = QE.getSession();
+    const q = QE.getQuestion();
     if (!q) return;
-    const idx      = QE.getCurrentIndex();
-    const answer   = QE.getAnswer();
+    const idx = QE.getCurrentIndex();
+    const answer = QE.getAnswer();
     const revealed = QE.isRevealed();
-    const mode     = session.config.mode;
-    const db       = St.getDB();
+    const mode = session.config.mode;
+    const db = St.getDB();
     const catLabel = db?.categories?.find(c => c.id === q.category)?.label || q.category || '';
 
     if (!skipAnimation) {
@@ -585,27 +580,27 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     }
     if (type === 'number') {
-      container.querySelector('#numAnswer')?.addEventListener('input', function() { QE.setAnswer(this.value ? Number(this.value) : undefined); _updateActionButtons(); });
+      container.querySelector('#numAnswer')?.addEventListener('input', function () { QE.setAnswer(this.value ? Number(this.value) : undefined); _updateActionButtons(); });
     }
     if (type === 'text') {
-      container.querySelector('#txtAnswer')?.addEventListener('input', function() { QE.setAnswer(this.value || undefined); _updateActionButtons(); });
+      container.querySelector('#txtAnswer')?.addEventListener('input', function () { QE.setAnswer(this.value || undefined); _updateActionButtons(); });
     }
     if (type === 'open') {
-      container.querySelector('#openAnswer')?.addEventListener('input', function() { QE.setAnswer(this.value || undefined); _updateActionButtons(); });
+      container.querySelector('#openAnswer')?.addEventListener('input', function () { QE.setAnswer(this.value || undefined); _updateActionButtons(); });
     }
   }
 
   function _updateActionButtons() {
-    const session   = QE.getSession();
-    const answer    = QE.getAnswer();
-    const revealed  = QE.isRevealed();
-    const mode      = session?.config?.mode;
-    const idx       = QE.getCurrentIndex();
-    const lastIdx   = (session?.questions?.length ?? 1) - 1;
+    const session = QE.getSession();
+    const answer = QE.getAnswer();
+    const revealed = QE.isRevealed();
+    const mode = session?.config?.mode;
+    const idx = QE.getCurrentIndex();
+    const lastIdx = (session?.questions?.length ?? 1) - 1;
     const hasAnswer = answer !== undefined && answer !== null && answer !== '' && !(Array.isArray(answer) && !answer.length);
 
     const confirmBtn = U.el('confirmAnswerBtn');
-    const nextBtn    = U.el('nextQuestionBtn');
+    const nextBtn = U.el('nextQuestionBtn');
 
     if (mode === 'study' && !revealed) {
       if (confirmBtn) { confirmBtn.classList.remove('hidden'); confirmBtn.disabled = !hasAnswer; }
@@ -640,7 +635,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function _handleNext() {
     const session = QE.getSession();
-    const idx     = QE.getCurrentIndex();
+    const idx = QE.getCurrentIndex();
     if (idx === session.questions.length - 1) { _finishQuiz(); return; }
     if (QE.next()) { _renderQuestion(); _renderNavGrid(); _updateProgress(); }
   }
@@ -669,7 +664,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!btn) return;
     const starred = App.DB.isBookmarked(QE.getQuestion()?.id);
     btn.classList.toggle('text-yellow-500', !!starred);
-    btn.classList.toggle('text-slate-300',  !starred);
+    btn.classList.toggle('text-slate-300', !starred);
     const svg = btn.querySelector('svg');
     if (svg) svg.setAttribute('fill', starred ? 'currentColor' : 'none');
   }
@@ -690,11 +685,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   function _updateProgress() {
     const session = QE.getSession();
     if (!session) return;
-    const total    = session.questions.length;
+    const total = session.questions.length;
     const answered = Object.keys(session.answers).length;
-    const bar  = U.el('quizProgressBar');
+    const bar = U.el('quizProgressBar');
     const text = U.el('quizProgressText');
-    if (bar)  bar.style.width = Math.round((answered / total) * 100) + '%';
+    if (bar) bar.style.width = Math.round((answered / total) * 100) + '%';
     if (text) text.textContent = `${QE.getCurrentIndex() + 1} / ${total}`;
   }
 
@@ -707,17 +702,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function _renderResults(result) {
-    const pct  = result.scorePercent;
+    const pct = result.scorePercent;
     const grad = U.scoreGradient(pct);
     const scoreCard = U.el('resultScoreCard');
     if (scoreCard) scoreCard.className = `rounded-2xl p-8 text-white mb-8 text-center shadow-lg bg-gradient-to-br ${grad}`;
     const scoreEl = U.el('resultScore');
     if (scoreEl) { scoreEl.classList.remove('score-reveal'); void scoreEl.offsetWidth; scoreEl.classList.add('score-reveal'); }
-    _setText('resultScore',  pct + '%');
-    _setText('resultGrade',  U.gradeLabel(pct));
-    _setText('resultMeta',   `${result.totalQuestions} otázek · ${U.formatTime(result.elapsedSeconds)} · ${result.mode === 'exam' ? 'Zkouška' : 'Studium'}`);
+    _setText('resultScore', pct + '%');
+    _setText('resultGrade', U.gradeLabel(pct));
+    _setText('resultMeta', `${result.totalQuestions} otázek · ${U.formatTime(result.elapsedSeconds)} · ${result.mode === 'exam' ? 'Zkouška' : 'Studium'}`);
     _setText('resultCorrect', result.correct);
-    _setText('resultWrong',   result.wrong);
+    _setText('resultWrong', result.wrong);
     _setText('resultSkipped', result.skipped);
 
     const review = U.el('resultReview');
@@ -753,7 +748,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ── JSON editor view ─────────────────────────────────────────
 
   function renderJsonEditor() {
-    const db   = St.getDB();
+    const db = St.getDB();
     const area = U.el('jsonEditorArea');
     if (!area) return;
     const text = db ? JSON.stringify(db, null, 2) : '';
@@ -817,27 +812,35 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const subjectSelect = U.el('settings-subject');
     if (subjectSelect) {
-      subjectSelect.innerHTML = SUBJECTS.map(s => `<option value="${s.id}">${s.label}</option>`).join('');
+      const allSubjects = [...SUBJECTS, ..._getCustomSubjects()];
+      subjectSelect.innerHTML = allSubjects.map(s => `<option value="${s.id}">${s.label}</option>`).join('') +
+        '<option value="__add__">+ Přidat nový učivo…</option>';
       subjectSelect.value = settings.defaultSubject || 'site';
       const fresh = subjectSelect.cloneNode(true);
       subjectSelect.parentNode.replaceChild(fresh, subjectSelect);
       fresh.addEventListener('change', async () => {
         const selected = fresh.value;
+        if (selected === '__add__') {
+          R.navigate('subjects');
+          fresh.value = settings.defaultSubject || 'site';
+          return;
+        }
         St.setSetting('defaultSubject', selected);
         await _loadSubject(selected);
-        U.showToast(`Načteno učivo ${SUBJECTS.find(s => s.id === selected)?.label || selected}`, 'success');
+        const label = allSubjects.find(s => s.id === selected)?.label || selected;
+        U.showToast(`Načteno učivo "${label}"`, 'success');
       });
     }
 
-    U.setToggle(U.el('settings-dark-toggle'),     settings.darkMode);
-    U.setToggle(U.el('settings-random-toggle'),   settings.randomize);
+    U.setToggle(U.el('settings-dark-toggle'), settings.darkMode);
+    U.setToggle(U.el('settings-random-toggle'), settings.randomize);
     U.setToggle(U.el('settings-feedback-toggle'), settings.instantFeedback);
 
     _bindSettingsToggle('settings-dark-toggle', 'darkMode', val => {
       document.documentElement.classList.toggle('dark', val);
       _syncDarkModeUI();
     });
-    _bindSettingsToggle('settings-random-toggle',   'randomize');
+    _bindSettingsToggle('settings-random-toggle', 'randomize');
     _bindSettingsToggle('settings-feedback-toggle', 'instantFeedback');
 
     _rebindBtn('exportDataBtn', () => {
@@ -859,7 +862,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const fresh = btn.cloneNode(true);
     btn.parentNode.replaceChild(fresh, btn);
     U.setToggle(fresh, St.getSetting(settingKey));
-    fresh.addEventListener('click', function() {
+    fresh.addEventListener('click', function () {
       const newVal = !U.getToggle(this);
       U.setToggle(this, newVal);
       St.setSetting(settingKey, newVal);
@@ -892,16 +895,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const db = St.getDB();
     if (!db?.questions?.length) { U.showToast('Nejsou dostupne zadne otazky.', 'error'); return; }
 
-    _adp.pool             = [...db.questions];
+    _adp.pool = [...db.questions];
     _adp.shownThisSession = new Map();
-    _adp.mode             = 'adaptive';
-    _adp.sessionCount     = 0;
-    _adp.sessionCorrect   = 0;
-    _adp.sessionStreak    = 0;
-    _adp.currentQ         = null;
-    _adp.currentAnswer    = null;
-    _adp.revealed         = false;
-    _adp.finished         = false;
+    _adp.mode = 'adaptive';
+    _adp.sessionCount = 0;
+    _adp.sessionCorrect = 0;
+    _adp.sessionStreak = 0;
+    _adp.currentQ = null;
+    _adp.currentAnswer = null;
+    _adp.revealed = false;
+    _adp.finished = false;
 
     ['adaptiveQuestionCard', 'srsStatusChips', 'srsActionBar'].forEach(id => U.el(id)?.classList.remove('hidden'));
     ['srsSessionSummary', 'srsRatingPanel', 'srsWarningBanner'].forEach(id => U.el(id)?.classList.add('hidden'));
@@ -925,7 +928,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     _syncModeToggle();
     _rebindBtn('adaptiveEndBtn', _adaptiveEndSession);
     _rebindBtn('srsConfirmBtn', _adaptiveConfirm);
-    _rebindBtn('srsRevealBtn',  _adaptiveReveal);
+    _rebindBtn('srsRevealBtn', _adaptiveReveal);
     document.querySelectorAll('.rating-btn').forEach(btn => {
       const fresh = btn.cloneNode(true);
       btn.parentNode.replaceChild(fresh, btn);
@@ -956,7 +959,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function _renderAdaptiveQuestion() {
-    const q  = _adp.currentQ;
+    const q = _adp.currentQ;
     const db = St.getDB();
     if (!q) return;
     const catLabel = db?.categories?.find(c => c.id === q.category)?.label || q.category || '';
@@ -1019,15 +1022,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
       });
     }
-    if (type === 'number') { container.querySelector('#numAnswer')?.addEventListener('input', function() { _adp.currentAnswer = this.value ? Number(this.value) : null; _updateAdaptiveActionBar(); }); }
-    if (type === 'text')   { container.querySelector('#txtAnswer')?.addEventListener('input', function() { _adp.currentAnswer = this.value || null; _updateAdaptiveActionBar(); }); }
-    if (type === 'open')   { container.querySelector('#openAnswer')?.addEventListener('input', function() { _adp.currentAnswer = this.value || null; _updateAdaptiveActionBar(); }); }
+    if (type === 'number') { container.querySelector('#numAnswer')?.addEventListener('input', function () { _adp.currentAnswer = this.value ? Number(this.value) : null; _updateAdaptiveActionBar(); }); }
+    if (type === 'text') { container.querySelector('#txtAnswer')?.addEventListener('input', function () { _adp.currentAnswer = this.value || null; _updateAdaptiveActionBar(); }); }
+    if (type === 'open') { container.querySelector('#openAnswer')?.addEventListener('input', function () { _adp.currentAnswer = this.value || null; _updateAdaptiveActionBar(); }); }
   }
 
   function _updateAdaptiveActionBar() {
     const q = _adp.currentQ;
     const confirmed = U.el('srsConfirmBtn');
-    const reveal    = U.el('srsRevealBtn');
+    const reveal = U.el('srsRevealBtn');
     const actionBar = U.el('srsActionBar');
     if (!q || !actionBar) return;
     if (_adp.revealed) { actionBar.classList.add('hidden'); return; }
@@ -1078,7 +1081,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function _showRatingPanel(questionId, wasCorrect) {
     const panel = U.el('srsRatingPanel');
-    const bar   = U.el('srsActionBar');
+    const bar = U.el('srsActionBar');
     if (!panel) return;
     [1, 2, 3, 4, 5].forEach(r => {
       const preview = panel.querySelector(`[data-preview="${r}"]`);
@@ -1096,15 +1099,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function _formatInterval(days) {
     if (days === 1) return 'zitra';
-    if (days < 7)   return `${days} dni`;
-    if (days < 14)  return '1 tyden';
-    if (days < 30)  return `${Math.round(days / 7)} tydny`;
-    if (days < 60)  return '1 mesic';
+    if (days < 7) return `${days} dni`;
+    if (days < 14) return '1 tyden';
+    if (days < 30) return `${Math.round(days / 7)} tydny`;
+    if (days < 60) return '1 mesic';
     return `${Math.round(days / 30)} mesice`;
   }
 
   function _checkAntiPatterns(q) {
-    const state      = App.SRS.getState(q.id);
+    const state = App.SRS.getState(q.id);
     const answerTime = Date.now() - _adp.questionShownAt;
     let warning = null;
     if (App.SRS.isSuspiciouslyFast(answerTime) && q.type !== 'boolean')
@@ -1134,8 +1137,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function _updateSessionCounters() {
-    _setText('srsSeenCount',     _adp.sessionCount);
-    _setText('srsCorrectCount',  _adp.sessionCorrect);
+    _setText('srsSeenCount', _adp.sessionCount);
+    _setText('srsCorrectCount', _adp.sessionCorrect);
     _setText('srsStreakDisplay', _adp.sessionStreak);
   }
 
@@ -1144,16 +1147,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     ['adaptiveQuestionCard', 'srsRatingPanel', 'srsActionBar', 'srsStatusChips', 'srsWarningBanner'].forEach(id => U.el(id)?.classList.add('hidden'));
     U.el('srsSessionSummary')?.classList.remove('hidden');
 
-    const total   = _adp.sessionCount;
+    const total = _adp.sessionCount;
     const correct = _adp.sessionCorrect;
-    const wrong   = total - correct;
-    const pct     = total > 0 ? Math.round((correct / total) * 100) : 0;
+    const wrong = total - correct;
+    const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
 
-    _setText('srsSummaryScore',   total > 0 ? pct + '%' : '—');
-    _setText('srsSummaryLabel',   pct >= 80 ? 'Vyborny vykon!' : pct >= 60 ? 'Dobry vykon' : total === 0 ? 'Sezeni dokonceno' : 'Procvic slabe otazky');
-    _setText('srsSummaryMeta',    `${total} otazek · ${correct} spravne · ${wrong} spatne`);
+    _setText('srsSummaryScore', total > 0 ? pct + '%' : '—');
+    _setText('srsSummaryLabel', pct >= 80 ? 'Vyborny vykon!' : pct >= 60 ? 'Dobry vykon' : total === 0 ? 'Sezeni dokonceno' : 'Procvic slabe otazky');
+    _setText('srsSummaryMeta', `${total} otazek · ${correct} spravne · ${wrong} spatne`);
     _setText('srsSummaryCorrect', correct);
-    _setText('srsSummaryWrong',   wrong);
+    _setText('srsSummaryWrong', wrong);
 
     const tomorrowMs = Date.now() + 86_400_000;
     _setText('srsSummaryDue', _adp.pool.filter(q => {
@@ -1223,7 +1226,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (R.getCurrent() !== 'browse') return;
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     if (e.key === 'ArrowRight' || e.key === 'Enter') U.el('browseNextBtn')?.click();
-    if (e.key === 'ArrowLeft')  U.el('browsePrevBtn')?.click();
+    if (e.key === 'ArrowLeft') U.el('browsePrevBtn')?.click();
     if (!_browseRevealed[_browseIdx]) {
       const q = _browseQs[_browseIdx];
       const num = parseInt(e.key, 10);
@@ -1239,10 +1242,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // ── Browse mode ──────────────────────────────────────────────
 
-  let _browseQs       = [];
-  let _browseIdx      = 0;
+  let _browseQs = [];
+  let _browseIdx = 0;
   let _browseRevealed = {};
-  let _browseAnswers  = {};
+  let _browseAnswers = {};
   let _browseCatStart = {}; // catId → first index
 
   function startBrowseMode(questionsOverride) {
@@ -1251,10 +1254,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (questionsOverride) {
       // Called from startQuiz with a pre-filtered+sorted pool
-      _browseQs       = questionsOverride;
-      _browseIdx      = 0;
+      _browseQs = questionsOverride;
+      _browseIdx = 0;
       _browseRevealed = {};
-      _browseAnswers  = {};
+      _browseAnswers = {};
       _browseCatStart = {};
       _browseQs.forEach((q, i) => { if (_browseCatStart[q.category] === undefined) _browseCatStart[q.category] = i; });
       R.navigate('browse');
@@ -1300,14 +1303,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   function _renderBrowseQuestion() {
     const q = _browseQs[_browseIdx];
     if (!q) return;
-    const db       = St.getDB();
+    const db = St.getDB();
     const catLabel = db?.categories?.find(c => c.id === q.category)?.label || q.category || '';
     const revealed = !!_browseRevealed[_browseIdx];
-    const answer   = _browseAnswers[_browseIdx];
+    const answer = _browseAnswers[_browseIdx];
 
     if (U.el('browseCatBadge')) U.el('browseCatBadge').textContent = catLabel;
-    if (U.el('browseQPos'))     U.el('browseQPos').textContent = `Otázka ${_browseIdx + 1} / ${_browseQs.length}`;
-    if (U.el('browseCounter'))  U.el('browseCounter').textContent = `${_browseIdx + 1} / ${_browseQs.length}`;
+    if (U.el('browseQPos')) U.el('browseQPos').textContent = `Otázka ${_browseIdx + 1} / ${_browseQs.length}`;
+    if (U.el('browseCounter')) U.el('browseCounter').textContent = `${_browseIdx + 1} / ${_browseQs.length}`;
 
     const typeEl = U.el('browseQType');
     if (typeEl) typeEl.innerHTML = `${U.typeLabel(q.type)}<span class="ml-1.5 text-slate-400 dark:text-slate-500">${U.typeHint(q.type) || ''}</span>`;
@@ -1353,7 +1356,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           if (_browseRevealed[_browseIdx]) return;
           const input = label.querySelector('input');
           if (!input || input.disabled) return;
-          _browseAnswers[_browseIdx]  = q.type === 'boolean' ? label.dataset.value : Number(label.dataset.index);
+          _browseAnswers[_browseIdx] = q.type === 'boolean' ? label.dataset.value : Number(label.dataset.index);
           _browseRevealed[_browseIdx] = true;
           _renderBrowseQuestion();
         });
@@ -1389,11 +1392,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     el.innerHTML = (db.categories || [])
       .filter(c => _browseCatStart[c.id] !== undefined)
       .map(c => {
-        const firstIdx  = _browseCatStart[c.id];
-        const indices   = _browseQs.reduce((acc, q, i) => { if (q.category === c.id) acc.push(i); return acc; }, []);
-        const total     = indices.length;
-        const answered  = indices.filter(i => _browseRevealed[i]).length;
-        const pct       = total ? Math.round(answered / total * 100) : 0;
+        const firstIdx = _browseCatStart[c.id];
+        const indices = _browseQs.reduce((acc, q, i) => { if (q.category === c.id) acc.push(i); return acc; }, []);
+        const total = indices.length;
+        const answered = indices.filter(i => _browseRevealed[i]).length;
+        const pct = total ? Math.round(answered / total * 100) : 0;
         const isCurrent = c.id === currentCat;
         return `<button class="w-full text-left px-2 py-2 rounded-lg text-xs transition-colors ${isCurrent ? 'bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 font-semibold' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-gray-800'}" data-cat-first="${firstIdx}">
           <div class="truncate leading-snug mb-1.5">${U.escapeHtml(c.label)}</div>

@@ -2,14 +2,14 @@
 window.App = window.App || {};
 
 App.DB = (() => {
-  const SRS_KEY     = 'nq_srs_states';
+  const SRS_KEY = 'nq_srs_states';
   const RESULTS_KEY = 'nq_quiz_results';
 
   function _load(key, fallback) {
     try { return JSON.parse(localStorage.getItem(key) ?? 'null') ?? fallback; } catch { return fallback; }
   }
   function _save(key, val) {
-    try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch { }
   }
 
   // ── SRS states ───────────────────────────────────────────────

@@ -15,7 +15,7 @@ App.QuizEngine = (() => {
         return answer === correctIdx;
       }
       case 'multi': {
-        const sel     = Array.isArray(answer) ? [...answer].sort() : [];
+        const sel = Array.isArray(answer) ? [...answer].sort() : [];
         const correct = question.answers
           .map((a, i) => a.correct ? i : -1)
           .filter(i => i !== -1)
@@ -25,7 +25,7 @@ App.QuizEngine = (() => {
       case 'boolean': {
         let expected;
         if (question.answers && question.answers.length) {
-          const trueA  = question.answers.find(a => a.text === 'true'  || a.text === 'Pravda');
+          const trueA = question.answers.find(a => a.text === 'true' || a.text === 'Pravda');
           const falseA = question.answers.find(a => a.text === 'false' || a.text === 'Nepravda');
           if (trueA || falseA) {
             expected = (trueA && trueA.correct) ? 'true' : 'false';
@@ -57,22 +57,22 @@ App.QuizEngine = (() => {
 
   function start(questions, options = {}) {
     const config = {
-      mode:            options.mode || 'study',
+      mode: options.mode || 'study',
       instantFeedback: options.mode === 'study',
-      showTimer:       options.showTimer !== false,
-      totalQuestions:  questions.length,
+      showTimer: options.showTimer !== false,
+      totalQuestions: questions.length,
     };
 
     _session = {
       config,
       questions,
       currentIndex: 0,
-      answers:  {},
+      answers: {},
       revealed: {},
-      flagged:  new Set(),
-      skipped:  new Set(),
+      flagged: new Set(),
+      skipped: new Set(),
       elapsedSeconds: 0,
-      paused:   false,
+      paused: false,
       finished: false,
       startedAt: Date.now(),
     };
@@ -95,12 +95,12 @@ App.QuizEngine = (() => {
   function onTimer(fn) { _timerCallback = fn; }
   function _notifyTimer() { if (_timerCallback) _timerCallback(_session.elapsedSeconds); }
 
-  function getSession()      { return _session; }
-  function getQuestion(i)    { return _session ? _session.questions[i ?? _session.currentIndex] : null; }
+  function getSession() { return _session; }
+  function getQuestion(i) { return _session ? _session.questions[i ?? _session.currentIndex] : null; }
   function getCurrentIndex() { return _session ? _session.currentIndex : 0; }
-  function getAnswer(i)      { return _session ? _session.answers[i ?? _session.currentIndex] : undefined; }
-  function isRevealed(i)     { return _session ? !!_session.revealed[i ?? _session.currentIndex] : false; }
-  function isFlagged(i)      { return _session ? _session.flagged.has(i ?? _session.currentIndex) : false; }
+  function getAnswer(i) { return _session ? _session.answers[i ?? _session.currentIndex] : undefined; }
+  function isRevealed(i) { return _session ? !!_session.revealed[i ?? _session.currentIndex] : false; }
+  function isFlagged(i) { return _session ? _session.flagged.has(i ?? _session.currentIndex) : false; }
 
   function setAnswer(answer) {
     if (!_session || _session.finished) return;
@@ -145,9 +145,9 @@ App.QuizEngine = (() => {
 
   function navStatus(i) {
     if (!_session) return 'default';
-    if (i === _session.currentIndex)   return 'current';
-    if (_session.flagged.has(i))       return 'flagged';
-    if (_session.skipped.has(i))       return 'skipped';
+    if (i === _session.currentIndex) return 'current';
+    if (_session.flagged.has(i)) return 'flagged';
+    if (_session.skipped.has(i)) return 'skipped';
     if (_session.answers[i] !== undefined) {
       if (_session.revealed[i]) {
         return isCorrect(_session.questions[i], _session.answers[i]) ? 'answered' : 'wrong';
@@ -163,19 +163,19 @@ App.QuizEngine = (() => {
     _session.finished = true;
 
     let correctCount = 0;
-    let wrongCount   = 0;
-    let openCount    = 0;
+    let wrongCount = 0;
+    let openCount = 0;
     const skippedCount = _session.skipped.size;
 
     const details = _session.questions.map((q, i) => {
-      const ans     = _session.answers[i];
+      const ans = _session.answers[i];
       const answered = ans !== undefined;
-      const skipped  = _session.skipped.has(i);
-      const correct  = answered && !skipped ? isCorrect(q, ans) : null;
-      const isOpen   = q.type === 'open';
+      const skipped = _session.skipped.has(i);
+      const correct = answered && !skipped ? isCorrect(q, ans) : null;
+      const isOpen = q.type === 'open';
 
       if (isOpen && answered) openCount++;
-      else if (correct === true)  correctCount++;
+      else if (correct === true) correctCount++;
       else if (correct === false) wrongCount++;
 
       return { question: q, answer: ans, correct, skipped, flagged: _session.flagged.has(i), index: i };
@@ -185,16 +185,16 @@ App.QuizEngine = (() => {
     const pct = scoreable > 0 ? Math.round((correctCount / scoreable) * 100) : 0;
 
     return {
-      mode:           _session.config.mode,
+      mode: _session.config.mode,
       totalQuestions: _session.questions.length,
-      scorePercent:   pct,
-      correct:        correctCount,
-      wrong:          wrongCount,
-      skipped:        skippedCount,
-      openAnswered:   openCount,
+      scorePercent: pct,
+      correct: correctCount,
+      wrong: wrongCount,
+      skipped: skippedCount,
+      openAnswered: openCount,
       elapsedSeconds: _session.elapsedSeconds,
       details,
-      finishedAt:     Date.now(),
+      finishedAt: Date.now(),
     };
   }
 

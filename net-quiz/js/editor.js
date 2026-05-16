@@ -157,7 +157,7 @@ App.Editor = (() => {
     let qs = db.questions;
 
     if (state.typeFilter) qs = qs.filter(q => q.type === state.typeFilter);
-    if (state.catFilter)  qs = qs.filter(q => q.category === state.catFilter);
+    if (state.catFilter) qs = qs.filter(q => q.category === state.catFilter);
     if (state.search) {
       const s = state.search;
       qs = qs.filter(q =>
@@ -198,12 +198,12 @@ App.Editor = (() => {
     }
 
     const start = state.page * state.pageSize;
-    const page  = _filtered.slice(start, start + state.pageSize);
+    const page = _filtered.slice(start, start + state.pageSize);
     const catMap = Object.fromEntries(cats.map(c => [c.id, c.label]));
 
     tbody.innerHTML = page.map(q => {
       const catLabel = catMap[q.category] || q.category || '—';
-      const checked  = state.selected.has(q.id);
+      const checked = state.selected.has(q.id);
       return `
         <tr class="table-row hover:bg-slate-50 dark:hover:bg-gray-800/50 transition-colors" data-id="${U.escapeHtml(q.id)}">
           <td class="px-4 py-3"><input type="checkbox" class="row-check rounded accent-orange-500" data-id="${U.escapeHtml(q.id)}" ${checked ? 'checked' : ''}></td>
@@ -254,10 +254,10 @@ App.Editor = (() => {
   }
 
   function _renderPagination() {
-    const total   = _filtered.length;
+    const total = _filtered.length;
     const maxPage = Math.max(0, Math.ceil(total / state.pageSize) - 1);
-    const start   = state.page * state.pageSize + 1;
-    const end     = Math.min((state.page + 1) * state.pageSize, total);
+    const start = state.page * state.pageSize + 1;
+    const end = Math.min((state.page + 1) * state.pageSize, total);
 
     const info = U.el('editorPagInfo');
     if (info) info.textContent = total ? `Zobrazuji ${start}–${end} z ${total}` : 'Žádné výsledky';
@@ -371,8 +371,8 @@ App.Editor = (() => {
   function _updateAnswerSection(existingQ) {
     const type = U.el('form-type')?.value;
     const section = U.el('form-answers-section');
-    const list    = U.el('form-answers-list');
-    const addBtn  = U.el('addAnswerBtn');
+    const list = U.el('form-answers-list');
+    const addBtn = U.el('addAnswerBtn');
     if (!section || !list) return;
 
     const hiddenTypes = ['boolean', 'open'];
@@ -449,13 +449,13 @@ App.Editor = (() => {
     const validation = U.el('formValidation');
     if (validation) validation.classList.add('hidden');
 
-    const type        = U.el('form-type')?.value;
-    const category    = U.el('form-category')?.value;
-    const difficulty  = U.el('form-difficulty')?.value;
-    const timeEst     = U.el('form-time')?.value;
-    const question    = U.el('form-question')?.value?.trim();
+    const type = U.el('form-type')?.value;
+    const category = U.el('form-category')?.value;
+    const difficulty = U.el('form-difficulty')?.value;
+    const timeEst = U.el('form-time')?.value;
+    const question = U.el('form-question')?.value?.trim();
     const explanation = U.el('form-explanation')?.value?.trim();
-    const tagsRaw     = U.el('form-tags')?.value?.trim();
+    const tagsRaw = U.el('form-tags')?.value?.trim();
 
     if (!question) { _showFormError('Otázka nesmí být prázdná.'); return; }
     if (!category) { _showFormError('Vyberte kategorii.'); return; }
@@ -483,13 +483,13 @@ App.Editor = (() => {
     if (!db) return;
 
     const qObj = {
-      id:          state.editingId || undefined,
+      id: state.editingId || undefined,
       type, category,
-      difficulty:  difficulty || undefined,
+      difficulty: difficulty || undefined,
       timeEstimate: timeEst ? Number(timeEst) : undefined,
       question, answers,
       explanation: explanation || undefined,
-      tags:        tags.length ? tags : undefined,
+      tags: tags.length ? tags : undefined,
     };
 
     App.DB.upsertQuestion(qObj);

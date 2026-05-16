@@ -11,11 +11,11 @@ App.Components = (() => {
 
   const ANSWER_BASE = 'answer-option group flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer select-none transition-all duration-150';
   const ANSWER_STATES = {
-    default:  'border-slate-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/10',
+    default: 'border-slate-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/10',
     selected: 'border-orange-500 bg-orange-50 dark:bg-orange-900/20',
-    correct:  'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20 cursor-default',
-    wrong:    'border-red-400 bg-red-50 dark:bg-red-900/20 cursor-default',
-    missed:   'border-amber-400 bg-amber-50 dark:bg-amber-900/20 cursor-default',
+    correct: 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20 cursor-default',
+    wrong: 'border-red-400 bg-red-50 dark:bg-red-900/20 cursor-default',
+    missed: 'border-amber-400 bg-amber-50 dark:bg-amber-900/20 cursor-default',
   };
 
   function answerClass(state) {
@@ -25,7 +25,7 @@ App.Components = (() => {
   function letterBadge(i, state) {
     const letter = String.fromCharCode(65 + i);
     if (state === 'correct') return `<span class="shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold">${letter}</span>`;
-    if (state === 'wrong')   return `<span class="shrink-0 w-6 h-6 rounded-full bg-red-400 text-white flex items-center justify-center text-xs font-bold">${letter}</span>`;
+    if (state === 'wrong') return `<span class="shrink-0 w-6 h-6 rounded-full bg-red-400 text-white flex items-center justify-center text-xs font-bold">${letter}</span>`;
     if (state === 'selected') return `<span class="shrink-0 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center text-xs font-bold">${letter}</span>`;
     return `<span class="shrink-0 w-6 h-6 rounded-full border-2 border-slate-300 dark:border-gray-600 text-slate-400 dark:text-slate-500 flex items-center justify-center text-xs font-bold group-hover:border-orange-400 group-hover:text-orange-500 transition-colors">${letter}</span>`;
   }
@@ -34,7 +34,7 @@ App.Components = (() => {
     return question.answers.map((a, i) => {
       let state = 'default';
       if (revealed) {
-        if (a.correct)              state = 'correct';
+        if (a.correct) state = 'correct';
         else if (sessionAnswer === i) state = 'wrong';
       } else if (sessionAnswer === i) {
         state = 'selected';
@@ -47,7 +47,7 @@ App.Components = (() => {
           <span class="flex-1 text-sm leading-relaxed pt-0.5 ${state === 'correct' ? 'font-semibold text-emerald-700 dark:text-emerald-300' : state === 'wrong' ? 'text-red-700 dark:text-red-300' : ''}">${U.escapeHtml(a.text)}</span>
           ${!revealed ? `<kbd class="shrink-0 inline-flex items-center justify-center w-5 h-5 text-xs font-mono border border-slate-200 dark:border-gray-700 text-slate-300 dark:text-slate-600 rounded bg-white dark:bg-gray-800 group-hover:text-slate-500 group-hover:border-slate-400 transition-colors">${i + 1}</kbd>` : ''}
           ${state === 'correct' ? `<span class="shrink-0 text-emerald-500">${ICON.check}</span>` : ''}
-          ${state === 'wrong'   ? `<span class="shrink-0 text-red-400">${ICON.cross}</span>` : ''}
+          ${state === 'wrong' ? `<span class="shrink-0 text-red-400">${ICON.cross}</span>` : ''}
         </label>`;
     }).join('');
   }
@@ -57,13 +57,13 @@ App.Components = (() => {
     return question.answers.map((a, i) => {
       let state = 'default';
       if (revealed) {
-        if (a.correct && sel.includes(i))  state = 'correct';
-        else if (a.correct)                state = 'missed';
-        else if (sel.includes(i))          state = 'wrong';
+        if (a.correct && sel.includes(i)) state = 'correct';
+        else if (a.correct) state = 'missed';
+        else if (sel.includes(i)) state = 'wrong';
       } else if (sel.includes(i)) {
         state = 'selected';
       }
-      const checked  = sel.includes(i);
+      const checked = sel.includes(i);
       const checkBox = checked
         ? `<span class="shrink-0 w-5 h-5 rounded border-2 border-orange-500 bg-orange-500 flex items-center justify-center text-white">${ICON.check}</span>`
         : `<span class="shrink-0 w-5 h-5 rounded border-2 border-slate-300 dark:border-gray-600 group-hover:border-orange-400 transition-colors"></span>`;
@@ -72,11 +72,11 @@ App.Components = (() => {
         <label class="${answerClass(state)} ${disabled}" data-index="${i}">
           <input type="checkbox" value="${i}" class="sr-only mq" ${checked ? 'checked' : ''} ${revealed ? 'disabled' : ''}>
           ${revealed && (state === 'correct' || state === 'missed')
-            ? `<span class="shrink-0 w-5 h-5 rounded border-2 ${state === 'correct' ? 'border-emerald-500 bg-emerald-500' : 'border-amber-400 bg-amber-400'} flex items-center justify-center text-white">${ICON.check}</span>`
-            : checkBox}
+          ? `<span class="shrink-0 w-5 h-5 rounded border-2 ${state === 'correct' ? 'border-emerald-500 bg-emerald-500' : 'border-amber-400 bg-amber-400'} flex items-center justify-center text-white">${ICON.check}</span>`
+          : checkBox}
           <span class="flex-1 text-sm leading-relaxed pt-0.5 ${state === 'correct' ? 'font-semibold text-emerald-700 dark:text-emerald-300' : state === 'missed' ? 'font-semibold text-amber-700 dark:text-amber-300' : state === 'wrong' ? 'text-red-700 dark:text-red-300' : ''}">${U.escapeHtml(a.text)}</span>
           ${state === 'missed' ? '<span class="shrink-0 text-xs font-semibold text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/40 px-1.5 py-0.5 rounded">správná</span>' : ''}
-          ${state === 'wrong'  ? `<span class="shrink-0 text-red-400">${ICON.cross}</span>` : ''}
+          ${state === 'wrong' ? `<span class="shrink-0 text-red-400">${ICON.cross}</span>` : ''}
         </label>`;
     }).join('');
   }
@@ -85,13 +85,13 @@ App.Components = (() => {
     // Detekuje správnou hodnotu z různých formátů schématu
     let correctVal;
     if (question.answers && question.answers.length) {
-      const trueAns  = question.answers.find(a => a.text === 'true'  || a.text === 'Pravda' || a.text === 'True');
+      const trueAns = question.answers.find(a => a.text === 'true' || a.text === 'Pravda' || a.text === 'True');
       const falseAns = question.answers.find(a => a.text === 'false' || a.text === 'Nepravda' || a.text === 'False');
       if (trueAns || falseAns) {
         correctVal = (trueAns && trueAns.correct) ? 'true' : 'false';
       } else {
         const first = question.answers[0];
-        correctVal  = first && first.correct ? 'true' : 'false';
+        correctVal = first && first.correct ? 'true' : 'false';
       }
     } else {
       correctVal = String(question.correct ?? 'true');
@@ -101,7 +101,7 @@ App.Components = (() => {
       const label = val === 'true' ? 'Pravda' : 'Nepravda';
       let state = 'default';
       if (revealed) {
-        if (val === correctVal)                 state = 'correct';
+        if (val === correctVal) state = 'correct';
         else if (val === String(sessionAnswer)) state = 'wrong';
       } else if (val === String(sessionAnswer)) {
         state = 'selected';
@@ -117,7 +117,7 @@ App.Components = (() => {
           <span class="font-semibold text-sm">${label}</span>
           ${!revealed ? `<kbd class="ml-auto inline-flex items-center justify-center w-5 h-5 text-xs font-mono border border-slate-200 dark:border-gray-700 text-slate-300 dark:text-slate-600 rounded bg-white dark:bg-gray-800 group-hover:text-slate-500 group-hover:border-slate-400 transition-colors">${val === 'true' ? 1 : 2}</kbd>` : ''}
           ${state === 'correct' ? `<span class="ml-auto text-emerald-500">${ICON.check}</span>` : ''}
-          ${state === 'wrong'   ? `<span class="ml-auto text-red-400">${ICON.cross}</span>` : ''}
+          ${state === 'wrong' ? `<span class="ml-auto text-red-400">${ICON.cross}</span>` : ''}
         </label>`;
     }).join('');
   }
@@ -158,13 +158,13 @@ App.Components = (() => {
 
   function renderAnswers(question, sessionAnswer, revealed) {
     switch (question.type) {
-      case 'single':  return renderSingleChoice(question, sessionAnswer, revealed);
-      case 'multi':   return renderMultiChoice(question, sessionAnswer, revealed);
+      case 'single': return renderSingleChoice(question, sessionAnswer, revealed);
+      case 'multi': return renderMultiChoice(question, sessionAnswer, revealed);
       case 'boolean': return renderBoolean(question, sessionAnswer, revealed);
-      case 'number':  return renderNumberInput(question, sessionAnswer, revealed);
-      case 'text':    return renderTextInput(question, sessionAnswer, revealed);
-      case 'open':    return renderOpenInput(question, sessionAnswer, revealed);
-      default:        return `<p class="text-slate-400 text-sm">Neznámý typ otázky: ${U.escapeHtml(question.type)}</p>`;
+      case 'number': return renderNumberInput(question, sessionAnswer, revealed);
+      case 'text': return renderTextInput(question, sessionAnswer, revealed);
+      case 'open': return renderOpenInput(question, sessionAnswer, revealed);
+      default: return `<p class="text-slate-400 text-sm">Neznámý typ otázky: ${U.escapeHtml(question.type)}</p>`;
     }
   }
 
@@ -180,7 +180,7 @@ App.Components = (() => {
     const border = isCorrect
       ? 'border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20'
       : 'border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20';
-    const icon  = isCorrect
+    const icon = isCorrect
       ? `<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0">${ICON.check}</span>`
       : `<span class="w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center shrink-0">${ICON.cross}</span>`;
     const title = isCorrect
@@ -196,12 +196,12 @@ App.Components = (() => {
   function navBtnClass(status) {
     const base = 'w-8 h-8 rounded-lg border text-xs font-bold transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-300';
     const s = {
-      current:  `${base} bg-orange-500 border-orange-600 text-white shadow-sm`,
+      current: `${base} bg-orange-500 border-orange-600 text-white shadow-sm`,
       answered: `${base} bg-emerald-100 dark:bg-emerald-900/40 border-emerald-400 text-emerald-700 dark:text-emerald-300`,
-      flagged:  `${base} bg-amber-100 dark:bg-amber-900/40 border-amber-400 text-amber-700 dark:text-amber-300`,
-      wrong:    `${base} bg-red-100 dark:bg-red-900/40 border-red-400 text-red-700 dark:text-red-300`,
-      skipped:  `${base} bg-slate-100 dark:bg-gray-800 border-slate-300 dark:border-gray-600 text-slate-500 line-through`,
-      default:  `${base} bg-white dark:bg-gray-800 border-slate-200 dark:border-gray-700 text-slate-600 dark:text-slate-400 hover:border-orange-300`,
+      flagged: `${base} bg-amber-100 dark:bg-amber-900/40 border-amber-400 text-amber-700 dark:text-amber-300`,
+      wrong: `${base} bg-red-100 dark:bg-red-900/40 border-red-400 text-red-700 dark:text-red-300`,
+      skipped: `${base} bg-slate-100 dark:bg-gray-800 border-slate-300 dark:border-gray-600 text-slate-500 line-through`,
+      default: `${base} bg-white dark:bg-gray-800 border-slate-200 dark:border-gray-700 text-slate-600 dark:text-slate-400 hover:border-orange-300`,
     };
     return s[status] || s.default;
   }
