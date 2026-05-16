@@ -147,12 +147,20 @@ App.Components = (() => {
   }
 
   function renderOpenInput(question, sessionAnswer, revealed) {
+    const raw = question.answer;
+    const bullets = raw ? (Array.isArray(raw) ? raw : [raw]) : null;
     return `
       <div class="space-y-3">
         <textarea id="openAnswer" rows="4"
           class="w-full border-2 ${revealed ? 'border-slate-200 dark:border-gray-700 opacity-70' : 'border-slate-200 dark:border-gray-700 focus:border-orange-400'} bg-white dark:bg-gray-800 rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors resize-none"
           placeholder="Napište svou odpověď…" ${revealed ? 'disabled' : ''}>${sessionAnswer != null ? U.escapeHtml(String(sessionAnswer)) : ''}</textarea>
-        ${revealed ? '<p class="text-xs text-slate-400 italic">Otevřená otázka — porovnej svou odpověď sám.</p>' : ''}
+        ${revealed && bullets ? `
+          <div class="bg-slate-50 dark:bg-gray-800 rounded-xl p-4 border border-slate-200 dark:border-gray-700">
+            <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2">Modelová odpověď</p>
+            <ul class="space-y-1.5">
+              ${bullets.map(b => `<li class="text-sm text-slate-700 dark:text-slate-300 flex items-start gap-2"><span class="text-orange-500 shrink-0 mt-0.5">•</span><span>${U.escapeHtml(b)}</span></li>`).join('')}
+            </ul>
+          </div>` : ''}
       </div>`;
   }
 
@@ -173,7 +181,7 @@ App.Components = (() => {
       return `
         <div class="rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 p-4">
           <div class="font-semibold text-blue-700 dark:text-blue-300 mb-1 flex items-center gap-2">ℹ Otevřená otázka</div>
-          <p class="text-sm text-blue-600 dark:text-blue-400">Porovnej svou odpověď s referenční odpovědí výše.</p>
+          <p class="text-sm text-blue-600 dark:text-blue-400">Porovnej svou odpověď s modelovou odpovědí výše.</p>
           ${explanation ? `<p class="mt-2 text-sm text-slate-700 dark:text-slate-300 border-t border-blue-200 dark:border-blue-800 pt-2">${U.escapeHtml(explanation)}</p>` : ''}
         </div>`;
     }
@@ -215,14 +223,22 @@ App.Components = (() => {
   }
 
   function resultReviewCard(q, answer, isCorrect, index) {
-    const icon = isCorrect
-      ? `<span class="shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs">${ICON.check}</span>`
-      : `<span class="shrink-0 w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center text-xs">${ICON.cross}</span>`;
-    const border = isCorrect ? 'border-emerald-200 dark:border-emerald-800' : 'border-red-200 dark:border-red-800';
+    const isOpen = q.type === 'open';
+    const icon = isOpen
+      ? `<span class="shrink-0 w-6 h-6 rounded-full bg-blue-400 text-white flex items-center justify-center text-xs font-bold">?</span>`
+      : isCorrect
+        ? `<span class="shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs">${ICON.check}</span>`
+        : `<span class="shrink-0 w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center text-xs">${ICON.cross}</span>`;
+    const border = isOpen
+      ? 'border-blue-200 dark:border-blue-800'
+      : isCorrect ? 'border-emerald-200 dark:border-emerald-800' : 'border-red-200 dark:border-red-800';
+    const modelBullets = isOpen && q.answer
+      ? (Array.isArray(q.answer) ? q.answer : [q.answer])
+      : null;
     return `
-      <div class="border rounded-xl p-4 ${border}">
+      <div class="border rounded-xl p-4 ${border}" data-review-idx="${index}">
         <div class="flex items-start gap-3">
-          ${icon}
+          <span class="review-icon-${index}">${icon}</span>
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2 mb-1 flex-wrap">
               <span class="text-xs text-slate-400">#${index + 1}</span>
@@ -230,6 +246,21 @@ App.Components = (() => {
               ${q.category ? `<span class="text-xs text-orange-600 dark:text-orange-400 font-medium">${U.escapeHtml(q.category)}</span>` : ''}
             </div>
             <p class="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">${U.escapeHtml(q.question)}</p>
+            ${isOpen && answer ? `<p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 bg-slate-50 dark:bg-gray-800 rounded-lg px-2.5 py-1.5 italic">"${U.escapeHtml(String(answer))}"</p>` : ''}
+            ${modelBullets ? `
+              <div class="mt-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg px-3 py-2 border border-blue-100 dark:border-blue-800">
+                <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1">Modelová odpověď</p>
+                <ul class="space-y-0.5">
+                  ${modelBullets.map(b => `<li class="text-xs text-slate-600 dark:text-slate-300 flex gap-1.5"><span class="text-orange-500 shrink-0">•</span>${U.escapeHtml(b)}</li>`).join('')}
+                </ul>
+              </div>` : ''}
+            ${isOpen && answer != null ? `
+              <div class="mt-2.5 open-rate-group" data-idx="${index}">
+                <p class="text-xs text-slate-400 dark:text-slate-500 mb-1.5">Ohodnoť svou odpověď (0–5 bodů):</p>
+                <div class="flex gap-1.5">
+                  ${[0,1,2,3,4,5].map(p => `<button class="open-self-rate flex-1 text-xs font-bold py-1.5 rounded-lg border-2 border-slate-300 dark:border-gray-600 text-slate-500 dark:text-slate-400 hover:border-orange-400 hover:text-orange-600 transition-colors" data-idx="${index}" data-pts="${p}">${p}</button>`).join('')}
+                </div>
+              </div>` : ''}
             ${q.explanation ? `<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 italic">${U.escapeHtml(q.explanation)}</p>` : ''}
           </div>
         </div>

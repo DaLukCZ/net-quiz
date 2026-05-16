@@ -2213,9 +2213,7 @@
       "difficulty": "medium",
       "category": "dns",
       "question": "Jak se nazývá překlad doménových jmen?",
-      "correct": [
-        "dns"
-      ],
+      "correct": ["dns"],
       "id": "q_04611"
     },
     {
@@ -2223,9 +2221,7 @@
       "difficulty": "medium",
       "category": "ethernet",
       "question": "Jak se nazývá zařízení pracující na 3. vrstvě?",
-      "correct": [
-        "router"
-      ],
+      "correct": ["router"],
       "id": "q_04612"
     },
     {
@@ -2233,9 +2229,7 @@
       "difficulty": "medium",
       "category": "wifi",
       "question": "Jak se nazývá bezdrátová lokální síť?",
-      "correct": [
-        "wlan"
-      ],
+      "correct": ["wlan"],
       "id": "q_04613"
     },
     {
@@ -2244,10 +2238,7 @@
       "category": "ethernet",
       "sourceType": "leak",
       "question": "Jak se nazývá přístupová metoda ethernetu?",
-      "correct": [
-        "csma/cd",
-        "csma-cd"
-      ],
+      "correct": ["csma/cd", "csma-cd"],
       "id": "q_04614"
     },
     {
@@ -2256,10 +2247,7 @@
       "category": "wifi",
       "sourceType": "leak",
       "question": "Jak se nazývá přístupová metoda Wi-Fi (IEEE 802.11)?",
-      "correct": [
-        "csma/ca",
-        "csma-ca"
-      ],
+      "correct": ["csma/ca", "csma-ca"],
       "id": "q_04615"
     },
     {
@@ -2268,9 +2256,7 @@
       "category": "protocols",
       "sourceType": "leak",
       "question": "Jak se nazývá protokol pro automatické přidělování ip adres?",
-      "correct": [
-        "dhcp"
-      ],
+      "correct": ["dhcp"],
       "id": "q_04616"
     },
     {
@@ -2279,9 +2265,7 @@
       "category": "protocols",
       "sourceType": "leak",
       "question": "Jak se nazývá protokol překládající ip adresy na MAC adresy?",
-      "correct": [
-        "arp"
-      ],
+      "correct": ["arp"],
       "id": "q_04617"
     },
     {
@@ -2290,10 +2274,7 @@
       "category": "tcp_ip",
       "sourceType": "generated",
       "question": "Jak se nazývá maximální přenosová jednotka sítě?",
-      "correct": [
-        "mtu",
-        "maximum transmission unit"
-      ],
+      "correct": ["mtu", "maximum transmission unit"],
       "id": "q_04618"
     },
     {
@@ -2302,11 +2283,12 @@
       "category": "osi",
       "question": "Popiš OSI model?",
       "answer": [
-        "OSI model má 7 vrstev.",
-        "Fyzická vrstva přenáší bity.",
-        "Linková vrstva používá MAC adresy.",
-        "Síťová vrstva používá IP adresy.",
-        "Transportní vrstva používá TCP a UDP."
+        "OSI model je referenční model síťové komunikace a má 7 vrstev: fyzická, linková, síťová, transportní, relační, prezentační a aplikační. (1/1)",
+        "Má 7 vrstev: fyzická, linková, síťová, transportní, relační, prezentační a aplikační. (0,8/1)",
+        "Uvede správný počet 7 vrstev, ale ve špatném pořadí. (0,6/1)",
+        "Vyjmenuje jen některé vrstvy OSI modelu správně. (0,5/1)",
+        "OSI model je referenční model síťové komunikace rozdělený do 7 vrstev. (0,3/1)",
+        "Zmíní pouze existenci vrstev bez dalších detailů. (0,2/1)"
       ],
       "id": "q_05361"
     },
@@ -8314,13 +8296,7 @@
       "category": "osi",
       "sourceType": "generated",
       "question": "Napište název 3. vrstvy modelu OSI (česky nebo anglicky):",
-      "correct": [
-        "síťová",
-        "síťová vrstva",
-        "network",
-        "network layer",
-        "L3"
-      ],
+      "correct": ["síťová", "síťová vrstva", "network", "network layer", "L3"],
       "id": "q_04619"
     },
     {
@@ -8329,10 +8305,7 @@
       "category": "protocols",
       "sourceType": "generated",
       "question": "Napište zkratku protokolu pro překlad IP adresy na MAC adresu:",
-      "correct": [
-        "ARP",
-        "arp"
-      ],
+      "correct": ["ARP", "arp"],
       "id": "q_04620"
     },
     {
@@ -8341,9 +8314,7 @@
       "category": "subnetting",
       "sourceType": "generated",
       "question": "Napište masku podsítě pro prefix /24:",
-      "correct": [
-        "255.255.255.0"
-      ],
+      "correct": ["255.255.255.0"],
       "id": "q_04621"
     },
     {
@@ -8352,9 +8323,7 @@
       "category": "subnetting",
       "sourceType": "generated",
       "question": "Napište masku podsítě pro prefix /16:",
-      "correct": [
-        "255.255.0.0"
-      ],
+      "correct": ["255.255.0.0"],
       "id": "q_04622"
     },
     {
@@ -8363,9 +8332,7 @@
       "category": "subnetting",
       "sourceType": "generated",
       "question": "Napište masku podsítě pro prefix /8:",
-      "correct": [
-        "255.0.0.0"
-      ],
+      "correct": ["255.0.0.0"],
       "id": "q_04623"
     },
     {
@@ -8374,9 +8341,7 @@
       "category": "subnetting",
       "sourceType": "generated",
       "question": "Napište masku podsítě pro prefix /30:",
-      "correct": [
-        "255.255.255.252"
-      ],
+      "correct": ["255.255.255.252"],
       "id": "q_04624"
     },
     {
@@ -8385,9 +8350,7 @@
       "category": "ipv4",
       "sourceType": "generated",
       "question": "Napište IPv4 loopback adresu:",
-      "correct": [
-        "127.0.0.1"
-      ],
+      "correct": ["127.0.0.1"],
       "id": "q_04625"
     },
     {
@@ -8396,9 +8359,7 @@
       "category": "ipv6",
       "sourceType": "generated",
       "question": "Napište IPv6 loopback adresu:",
-      "correct": [
-        "::1"
-      ],
+      "correct": ["::1"],
       "id": "q_04626"
     },
     {
@@ -8407,10 +8368,7 @@
       "category": "protocols",
       "sourceType": "generated",
       "question": "Napište zkratku protokolu pro synchronizaci času v síti:",
-      "correct": [
-        "NTP",
-        "ntp"
-      ],
+      "correct": ["NTP", "ntp"],
       "id": "q_04627"
     },
     {
@@ -8419,11 +8377,7 @@
       "category": "wifi",
       "sourceType": "leak",
       "question": "Uveďte tři doporučené nepřekrývající se kanály pro 2,4 GHz Wi-Fi v ČR (oddělené čárkami):",
-      "correct": [
-        "1, 7, 13",
-        "1,7,13",
-        "1 7 13"
-      ],
+      "correct": ["1, 7, 13", "1,7,13", "1 7 13"],
       "id": "q_04628"
     },
     {
@@ -10028,10 +9982,7 @@
       "category": "routing",
       "sourceType": "generated",
       "question": "Napište zkratku protokolu pro mapování IP adresy na MAC adresu:",
-      "correct": [
-        "ARP",
-        "arp"
-      ],
+      "correct": ["ARP", "arp"],
       "id": "q_04629"
     },
     {
@@ -10040,10 +9991,7 @@
       "category": "routing",
       "sourceType": "generated",
       "question": "Napište zkratku protokolu pro automatické přidělování IP adres stanicím v síti:",
-      "correct": [
-        "DHCP",
-        "dhcp"
-      ],
+      "correct": ["DHCP", "dhcp"],
       "id": "q_04630"
     },
     {
@@ -10052,10 +10000,7 @@
       "category": "protocols",
       "sourceType": "generated",
       "question": "Napište zkratku protokolu pro přenos webových stránek bez šifrování:",
-      "correct": [
-        "HTTP",
-        "http"
-      ],
+      "correct": ["HTTP", "http"],
       "id": "q_04631"
     },
     {
@@ -10064,10 +10009,7 @@
       "category": "protocols",
       "sourceType": "generated",
       "question": "Napište zkratku protokolu pro přenos webových stránek se šifrováním:",
-      "correct": [
-        "HTTPS",
-        "https"
-      ],
+      "correct": ["HTTPS", "https"],
       "id": "q_04632"
     },
     {
@@ -10076,9 +10018,7 @@
       "category": "subnetting",
       "sourceType": "generated",
       "question": "Napište broadcastovou adresu pro síť 192.168.1.0/24:",
-      "correct": [
-        "192.168.1.255"
-      ],
+      "correct": ["192.168.1.255"],
       "id": "q_04633"
     },
     {
@@ -10087,9 +10027,7 @@
       "category": "subnetting",
       "sourceType": "generated",
       "question": "Napište broadcastovou adresu pro síť 10.0.0.0/8:",
-      "correct": [
-        "10.255.255.255"
-      ],
+      "correct": ["10.255.255.255"],
       "id": "q_04634"
     },
     {
@@ -11429,9 +11367,7 @@
       "category": "routing",
       "sourceType": "generated",
       "question": "Napište číslo portu SSH:",
-      "correct": [
-        "22"
-      ],
+      "correct": ["22"],
       "id": "q_04636"
     },
     {
@@ -11440,9 +11376,7 @@
       "category": "protocols",
       "sourceType": "generated",
       "question": "Napište číslo portu FTP (řídící spojení):",
-      "correct": [
-        "21"
-      ],
+      "correct": ["21"],
       "id": "q_04637"
     },
     {
@@ -11451,9 +11385,7 @@
       "category": "ipv4",
       "sourceType": "generated",
       "question": "Napište broadcastovou adresu pro síť 172.16.0.0/16:",
-      "correct": [
-        "172.16.255.255"
-      ],
+      "correct": ["172.16.255.255"],
       "id": "q_04638"
     },
     {
@@ -11462,9 +11394,7 @@
       "category": "subnetting",
       "sourceType": "generated",
       "question": "Napište adresu sítě pro IP adresu 10.0.1.100 s maskou /27:",
-      "correct": [
-        "10.0.1.96"
-      ],
+      "correct": ["10.0.1.96"],
       "id": "q_04639"
     },
     {
@@ -12726,12 +12656,7 @@
       "category": "ipv6",
       "sourceType": "generated",
       "question": "Napište IPv6 prefix pro link-local adresy:",
-      "correct": [
-        "FE80::/10",
-        "fe80::/10",
-        "FE80::",
-        "fe80::"
-      ],
+      "correct": ["FE80::/10", "fe80::/10", "FE80::", "fe80::"],
       "id": "q_04640"
     },
     {
@@ -12740,10 +12665,7 @@
       "category": "tcp_ip",
       "sourceType": "generated",
       "question": "Napište zkratku pro mechanismus automatické IPv6 konfigurace bez DHCP:",
-      "correct": [
-        "SLAAC",
-        "slaac"
-      ],
+      "correct": ["SLAAC", "slaac"],
       "id": "q_04641"
     },
     {
@@ -12752,9 +12674,7 @@
       "category": "protocols",
       "sourceType": "generated",
       "question": "Napište port SSH:",
-      "correct": [
-        "22"
-      ],
+      "correct": ["22"],
       "id": "q_04642"
     },
     {
@@ -12763,9 +12683,7 @@
       "category": "protocols",
       "sourceType": "generated",
       "question": "Napište port HTTPS:",
-      "correct": [
-        "443"
-      ],
+      "correct": ["443"],
       "id": "q_04643"
     },
     {
@@ -12774,10 +12692,7 @@
       "category": "ethernet",
       "sourceType": "generated",
       "question": "Napište broadcastovou MAC adresu ve formátu XX:XX:XX:XX:XX:XX:",
-      "correct": [
-        "FF:FF:FF:FF:FF:FF",
-        "ff:ff:ff:ff:ff:ff"
-      ],
+      "correct": ["FF:FF:FF:FF:FF:FF", "ff:ff:ff:ff:ff:ff"],
       "id": "q_04644"
     },
     {
@@ -12786,10 +12701,7 @@
       "category": "wifi",
       "sourceType": "generated",
       "question": "Napište zkratku přístupové metody používané v IEEE 802.11 Wi-Fi:",
-      "correct": [
-        "CSMA/CA",
-        "csma/ca"
-      ],
+      "correct": ["CSMA/CA", "csma/ca"],
       "id": "q_04645"
     },
     {
@@ -12798,10 +12710,7 @@
       "category": "routing",
       "sourceType": "generated",
       "question": "Napište název protokolu pro automatické přidělování IPv4 adres stanicím:",
-      "correct": [
-        "DHCP",
-        "dhcp"
-      ],
+      "correct": ["DHCP", "dhcp"],
       "id": "q_04646"
     },
     {
@@ -14506,12 +14415,7 @@
       "category": "number_systems",
       "sourceType": "generated",
       "question": "Převeďte dekadické číslo 255 do hexadecimální soustavy:",
-      "correct": [
-        "FF",
-        "ff",
-        "0xFF",
-        "0xff"
-      ],
+      "correct": ["FF", "ff", "0xFF", "0xff"],
       "id": "q_04647"
     },
     {
@@ -14520,9 +14424,7 @@
       "category": "number_systems",
       "sourceType": "generated",
       "question": "Převeďte binární číslo 11000000 do dekadické soustavy:",
-      "correct": [
-        "192"
-      ],
+      "correct": ["192"],
       "id": "q_04648"
     },
     {
@@ -14531,10 +14433,7 @@
       "category": "wifi",
       "sourceType": "generated",
       "question": "Napište zkratku mechanismu který řeší problém skrytého uzlu ve Wi-Fi (2 zkratky oddělené lomítkem):",
-      "correct": [
-        "RTS/CTS",
-        "rts/cts"
-      ],
+      "correct": ["RTS/CTS", "rts/cts"],
       "id": "q_04649"
     },
     {
@@ -14543,10 +14442,7 @@
       "category": "ipv6",
       "sourceType": "generated",
       "question": "Napište zkratku procesu ověřování unikátnosti IPv6 adresy před jejím použitím:",
-      "correct": [
-        "DAD",
-        "dad"
-      ],
+      "correct": ["DAD", "dad"],
       "id": "q_04650"
     },
     {
@@ -14631,9 +14527,21 @@
       "sourceType": "generated",
       "question": "Co byl NSFNET?",
       "answers": [
-        { "id": "a", "text": "Vojenská síť ministerstva obrany USA", "correct": false },
-        { "id": "b", "text": "Akademická páteřní síť financovaná National Science Foundation", "correct": true },
-        { "id": "c", "text": "Komerční internetový páteřní spoj", "correct": false },
+        {
+          "id": "a",
+          "text": "Vojenská síť ministerstva obrany USA",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Akademická páteřní síť financovaná National Science Foundation",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Komerční internetový páteřní spoj",
+          "correct": false
+        },
         { "id": "d", "text": "Prvotní verze Wi-Fi sítě", "correct": false }
       ],
       "explanation": "NSFNET (National Science Foundation Network) bylo akademické backbone propojující americké univerzity, spuštěno 1986.",
@@ -14662,8 +14570,16 @@
       "question": "Co se stalo 1. ledna 1983 v historii internetu (tzv. Den D)?",
       "answers": [
         { "id": "a", "text": "Byl spuštěn ARPANET", "correct": false },
-        { "id": "b", "text": "ARPANET přešel z protokolu NCP na TCP/IP", "correct": true },
-        { "id": "c", "text": "Byl zahájen provoz World Wide Web", "correct": false },
+        {
+          "id": "b",
+          "text": "ARPANET přešel z protokolu NCP na TCP/IP",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Byl zahájen provoz World Wide Web",
+          "correct": false
+        },
         { "id": "d", "text": "Vznik Ethernetu ve Xerox PARC", "correct": false }
       ],
       "explanation": "1. 1. 1983 (Den D) ARPANET povinně přešel na TCP/IP — datum považované za vznik internetu.",
@@ -14676,10 +14592,26 @@
       "sourceType": "generated",
       "question": "Co je TDMA jako metoda přístupu k médiu?",
       "answers": [
-        { "id": "a", "text": "Přidělování přístupu na základě frekvence", "correct": false },
-        { "id": "b", "text": "Přidělování přístupu na základě pevných časových slotů", "correct": true },
-        { "id": "c", "text": "Přidělování přístupu na základě unikátních kódů", "correct": false },
-        { "id": "d", "text": "Náhodný přístup k médiu s detekcí kolize", "correct": false }
+        {
+          "id": "a",
+          "text": "Přidělování přístupu na základě frekvence",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Přidělování přístupu na základě pevných časových slotů",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Přidělování přístupu na základě unikátních kódů",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Náhodný přístup k médiu s detekcí kolize",
+          "correct": false
+        }
       ],
       "explanation": "TDMA (Time Division Multiple Access) rozděluje přenosový čas na pevné sloty přidělené jednotlivým stanicím.",
       "id": "q_04659"
@@ -14691,9 +14623,21 @@
       "sourceType": "generated",
       "question": "Co je FDMA jako metoda přístupu k médiu?",
       "answers": [
-        { "id": "a", "text": "Přidělování přístupu na základě časových slotů", "correct": false },
-        { "id": "b", "text": "Přidělování přístupu na základě pevných frekvenčních pásem", "correct": true },
-        { "id": "c", "text": "Přidělování přístupu na základě unikátních kódů", "correct": false },
+        {
+          "id": "a",
+          "text": "Přidělování přístupu na základě časových slotů",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Přidělování přístupu na základě pevných frekvenčních pásem",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Přidělování přístupu na základě unikátních kódů",
+          "correct": false
+        },
         { "id": "d", "text": "Náhodný přístup k médiu", "correct": false }
       ],
       "explanation": "FDMA (Frequency Division Multiple Access) rozděluje frekvenční pásmo na subkanály přidělené jednotlivým stanicím.",
@@ -14706,10 +14650,26 @@
       "sourceType": "generated",
       "question": "Co je CDMA jako metoda přístupu k médiu?",
       "answers": [
-        { "id": "a", "text": "Přidělování přístupu na základě časových slotů", "correct": false },
-        { "id": "b", "text": "Přidělování přístupu na základě pevných frekvencí", "correct": false },
-        { "id": "c", "text": "Přidělování přístupu pomocí unikátních ortogonálních kódů", "correct": true },
-        { "id": "d", "text": "Náhodný přístup s detekcí kolize", "correct": false }
+        {
+          "id": "a",
+          "text": "Přidělování přístupu na základě časových slotů",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Přidělování přístupu na základě pevných frekvencí",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Přidělování přístupu pomocí unikátních ortogonálních kódů",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Náhodný přístup s detekcí kolize",
+          "correct": false
+        }
       ],
       "explanation": "CDMA (Code Division Multiple Access) umožňuje stanicím vysílat současně na stejné frekvenci — jsou rozlišovány jedinečným kódem.",
       "id": "q_04661"
@@ -14736,10 +14696,26 @@
       "sourceType": "generated",
       "question": "Co je polling v kontextu centrálního přidělování přístupu k médiu?",
       "answers": [
-        { "id": "a", "text": "Stanice vysílají náhodně a řeší kolize", "correct": false },
-        { "id": "b", "text": "Centrální stanice (master) se postupně dotazuje podřízených stanic, zda chtějí vysílat", "correct": true },
-        { "id": "c", "text": "Žeton se předává v kruhu stanic", "correct": false },
-        { "id": "d", "text": "Frekvenční rozdělení pásma mezi stanice", "correct": false }
+        {
+          "id": "a",
+          "text": "Stanice vysílají náhodně a řeší kolize",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Centrální stanice (master) se postupně dotazuje podřízených stanic, zda chtějí vysílat",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Žeton se předává v kruhu stanic",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Frekvenční rozdělení pásma mezi stanice",
+          "correct": false
+        }
       ],
       "explanation": "Polling (centrální přidělování) — řídící stanice (master) se dotazuje podřízených stanic (slaves) zda mají data. Vysílat smí jen vyzvané stanice.",
       "id": "q_04663"
@@ -14752,9 +14728,21 @@
       "question": "Jaká je nevýhoda statického přidělování přístupu (FDMA/TDMA) při nerovnoměrném provozu?",
       "answers": [
         { "id": "a", "text": "Kolize mezi stanicemi", "correct": false },
-        { "id": "b", "text": "Přidělená kapacita stanicím bez dat je nevyužitá", "correct": true },
-        { "id": "c", "text": "Příliš složitá implementace centrálního řízení", "correct": false },
-        { "id": "d", "text": "Nelze přenášet více než dva kanály současně", "correct": false }
+        {
+          "id": "b",
+          "text": "Přidělená kapacita stanicím bez dat je nevyužitá",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Příliš složitá implementace centrálního řízení",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Nelze přenášet více než dva kanály současně",
+          "correct": false
+        }
       ],
       "explanation": "Při statickém přidělování zůstávají sloty/frekvence neaktivních stanic prázdné — kapacita je plýtvána.",
       "id": "q_04664"
@@ -14766,10 +14754,22 @@
       "sourceType": "generated",
       "question": "Jak se liší centrální přidělování od distribuovaného přidělování přístupu k médiu?",
       "answers": [
-        { "id": "a", "text": "Centrální nemá žádného správce, distribuované má master stanici", "correct": false },
-        { "id": "b", "text": "Centrální používá jednu řídící stanici; distribuované si stanice koordinují přístup samy", "correct": true },
+        {
+          "id": "a",
+          "text": "Centrální nemá žádného správce, distribuované má master stanici",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Centrální používá jednu řídící stanici; distribuované si stanice koordinují přístup samy",
+          "correct": true
+        },
         { "id": "c", "text": "Jsou to synonyma", "correct": false },
-        { "id": "d", "text": "Centrální je jen pro bezdrátové, distribuované jen pro kabelové sítě", "correct": false }
+        {
+          "id": "d",
+          "text": "Centrální je jen pro bezdrátové, distribuované jen pro kabelové sítě",
+          "correct": false
+        }
       ],
       "explanation": "Centrální přidělování (polling, master-slave) řídí přístup jedna stanice; distribuované (CSMA, token passing) si stanice koordinují přístup samy.",
       "id": "q_04665"
@@ -14808,10 +14808,26 @@
       "sourceType": "generated",
       "question": "Jaký princip přístupu k médiu používá Token Ring (IEEE 802.5)?",
       "answers": [
-        { "id": "a", "text": "CSMA/CD — naslouchá a detekuje kolize", "correct": false },
-        { "id": "b", "text": "Předávání žetonu (tokenu) v kruhu — vysílat smí jen držitel žetonu", "correct": true },
-        { "id": "c", "text": "Centrální polling — master se ptá každé stanice", "correct": false },
-        { "id": "d", "text": "FDMA — pevné frekvence pro každou stanici", "correct": false }
+        {
+          "id": "a",
+          "text": "CSMA/CD — naslouchá a detekuje kolize",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Předávání žetonu (tokenu) v kruhu — vysílat smí jen držitel žetonu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Centrální polling — master se ptá každé stanice",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "FDMA — pevné frekvence pro každou stanici",
+          "correct": false
+        }
       ],
       "explanation": "Token Ring (IEEE 802.5) používá předávání žetonu: stanice může vysílat pouze když drží žeton, poté jej předá sousední stanici v kruhu.",
       "id": "q_04669"
@@ -14886,7 +14902,11 @@
         { "id": "a", "text": "Ethernet", "correct": false },
         { "id": "b", "text": "Wi-Fi", "correct": false },
         { "id": "c", "text": "Token Ring", "correct": false },
-        { "id": "d", "text": "Bezdrátové osobní sítě WPAN (Bluetooth, ZigBee)", "correct": true }
+        {
+          "id": "d",
+          "text": "Bezdrátové osobní sítě WPAN (Bluetooth, ZigBee)",
+          "correct": true
+        }
       ],
       "explanation": "IEEE 802.15 pokrývá bezdrátové osobní sítě (WPAN) — zahrnuje Bluetooth (802.15.1) a ZigBee (802.15.4).",
       "id": "q_04674"
@@ -14899,7 +14919,11 @@
       "question": "Co standardizuje IEEE 802.2?",
       "answers": [
         { "id": "a", "text": "Fyzická vrstva Ethernetu", "correct": false },
-        { "id": "b", "text": "LLC (Logical Link Control) — horní podvrstva linkové vrstvy", "correct": true },
+        {
+          "id": "b",
+          "text": "LLC (Logical Link Control) — horní podvrstva linkové vrstvy",
+          "correct": true
+        },
         { "id": "c", "text": "Síťová vrstva IP", "correct": false },
         { "id": "d", "text": "Token Bus", "correct": false }
       ],
@@ -14956,8 +14980,16 @@
       "question": "Co je LLC (Logical Link Control) v modelu IEEE 802?",
       "answers": [
         { "id": "a", "text": "Fyzická vrstva Ethernetu", "correct": false },
-        { "id": "b", "text": "Horní podvrstva linkové vrstvy zajišťující rozhraní k síťové vrstvě", "correct": true },
-        { "id": "c", "text": "Protokol pro přidělování IP adres", "correct": false },
+        {
+          "id": "b",
+          "text": "Horní podvrstva linkové vrstvy zajišťující rozhraní k síťové vrstvě",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Protokol pro přidělování IP adres",
+          "correct": false
+        },
         { "id": "d", "text": "Zabezpečovací protokol Wi-Fi", "correct": false }
       ],
       "explanation": "LLC (IEEE 802.2) je horní podvrstva linkové vrstvy. Spodní podvrstvou je MAC. LLC zajišťuje multiplexing protokolů síťové vrstvy.",
@@ -14970,10 +15002,26 @@
       "sourceType": "generated",
       "question": "Co charakterizuje datagramovou (bezspojovou) síťovou službu?",
       "answers": [
-        { "id": "a", "text": "Před přenosem se zřídí virtuální okruh a pakety jdou po něm", "correct": false },
-        { "id": "b", "text": "Každý paket putuje sítí nezávisle a může jít jinou cestou", "correct": true },
-        { "id": "c", "text": "Šířka pásma je garantována pro každý tok dat", "correct": false },
-        { "id": "d", "text": "Používá pevné okruhy jako telefonní síť", "correct": false }
+        {
+          "id": "a",
+          "text": "Před přenosem se zřídí virtuální okruh a pakety jdou po něm",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Každý paket putuje sítí nezávisle a může jít jinou cestou",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Šířka pásma je garantována pro každý tok dat",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Používá pevné okruhy jako telefonní síť",
+          "correct": false
+        }
       ],
       "explanation": "Datagramová služba (connectionless) — každý paket nese adresu a routery rozhodují o cestě nezávisle. Příklad: IP.",
       "id": "q_04681"
@@ -14985,10 +15033,26 @@
       "sourceType": "generated",
       "question": "Co je virtuální spoj (virtual circuit)?",
       "answers": [
-        { "id": "a", "text": "Fyzicky dedikovaný kabel pro jedno spojení", "correct": false },
-        { "id": "b", "text": "Logická cesta sítí zřízená před přenosem, po níž jdou všechny pakety daného toku", "correct": true },
-        { "id": "c", "text": "Náhodná trasa pro každý paket zvlášť", "correct": false },
-        { "id": "d", "text": "Bezdrátové spojení s pevnou frekvencí", "correct": false }
+        {
+          "id": "a",
+          "text": "Fyzicky dedikovaný kabel pro jedno spojení",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Logická cesta sítí zřízená před přenosem, po níž jdou všechny pakety daného toku",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Náhodná trasa pro každý paket zvlášť",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Bezdrátové spojení s pevnou frekvencí",
+          "correct": false
+        }
       ],
       "explanation": "Virtuální spoj (connection-oriented) — nejprve se naváže logická cesta (VC), pak všechny pakety daného toku jdou po ní. Příklady: ATM, Frame Relay.",
       "id": "q_04682"
@@ -15017,7 +15081,11 @@
       "answers": [
         { "id": "a", "text": "IP", "correct": false },
         { "id": "b", "text": "UDP", "correct": false },
-        { "id": "c", "text": "ATM (Asynchronous Transfer Mode)", "correct": true },
+        {
+          "id": "c",
+          "text": "ATM (Asynchronous Transfer Mode)",
+          "correct": true
+        },
         { "id": "d", "text": "Ethernet", "correct": false }
       ],
       "explanation": "ATM (Asynchronous Transfer Mode) používá virtuální okruhy a přenáší data v buňkách o velikosti 53 bajtů s garantovanou QoS.",
@@ -15030,10 +15098,26 @@
       "sourceType": "generated",
       "question": "Co je PVC v kontextu Frame Relay nebo ATM?",
       "answers": [
-        { "id": "a", "text": "Přepínaný virtuální okruh zřizovaný na vyžádání", "correct": false },
-        { "id": "b", "text": "Trvale nakonfigurovaný virtuální okruh (Permanent Virtual Circuit)", "correct": true },
-        { "id": "c", "text": "Fyzické vedení mezi dvěma uzly", "correct": false },
-        { "id": "d", "text": "Protokol pro řízení kvality služby", "correct": false }
+        {
+          "id": "a",
+          "text": "Přepínaný virtuální okruh zřizovaný na vyžádání",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Trvale nakonfigurovaný virtuální okruh (Permanent Virtual Circuit)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Fyzické vedení mezi dvěma uzly",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Protokol pro řízení kvality služby",
+          "correct": false
+        }
       ],
       "explanation": "PVC (Permanent Virtual Circuit) je trvale nakonfigurovaný virtuální okruh — administrátor ho nastaví a trvá bez ohledu na provoz.",
       "id": "q_04685"
@@ -15045,10 +15129,22 @@
       "sourceType": "generated",
       "question": "Co je SVC v kontextu ATM nebo Frame Relay?",
       "answers": [
-        { "id": "a", "text": "Trvale nakonfigurovaný virtuální okruh", "correct": false },
-        { "id": "b", "text": "Přepínaný virtuální okruh zřizovaný dynamicky na vyžádání (Switched Virtual Circuit)", "correct": true },
+        {
+          "id": "a",
+          "text": "Trvale nakonfigurovaný virtuální okruh",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Přepínaný virtuální okruh zřizovaný dynamicky na vyžádání (Switched Virtual Circuit)",
+          "correct": true
+        },
         { "id": "c", "text": "Fyzické vedení", "correct": false },
-        { "id": "d", "text": "Protokol pro přidělování adres", "correct": false }
+        {
+          "id": "d",
+          "text": "Protokol pro přidělování adres",
+          "correct": false
+        }
       ],
       "explanation": "SVC (Switched Virtual Circuit) je dynamicky zřizovaný virtuální okruh — naváže se při zahájení komunikace a uvolní po skončení.",
       "id": "q_04686"
@@ -15060,9 +15156,21 @@
       "sourceType": "generated",
       "question": "Jaký je hlavní rozdíl mezi PVC a SVC?",
       "answers": [
-        { "id": "a", "text": "PVC je bezdrátový, SVC kabelový", "correct": false },
-        { "id": "b", "text": "PVC je trvale nastaven administrátorem; SVC se zřizuje dynamicky při každém spojení", "correct": true },
-        { "id": "c", "text": "SVC je vždy rychlejší než PVC", "correct": false },
+        {
+          "id": "a",
+          "text": "PVC je bezdrátový, SVC kabelový",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "PVC je trvale nastaven administrátorem; SVC se zřizuje dynamicky při každém spojení",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "SVC je vždy rychlejší než PVC",
+          "correct": false
+        },
         { "id": "d", "text": "Oba pojmy jsou synonyma", "correct": false }
       ],
       "explanation": "PVC (Permanent VC) je trvale konfigurovaný — existuje stále. SVC (Switched VC) se dynamicky navazuje a ruší podobně jako telefonní hovor.",
@@ -15075,9 +15183,21 @@
       "sourceType": "generated",
       "question": "Co je ATM (Asynchronous Transfer Mode)?",
       "answers": [
-        { "id": "a", "text": "Bezdrátový standard pro osobní sítě", "correct": false },
-        { "id": "b", "text": "Technologie přepínání buněk s virtuálními okruhy a garantovanou QoS", "correct": true },
-        { "id": "c", "text": "Protokol pro automatické přidělování IP adres", "correct": false },
+        {
+          "id": "a",
+          "text": "Bezdrátový standard pro osobní sítě",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Technologie přepínání buněk s virtuálními okruhy a garantovanou QoS",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Protokol pro automatické přidělování IP adres",
+          "correct": false
+        },
         { "id": "d", "text": "Asynchronní sériové rozhraní", "correct": false }
       ],
       "explanation": "ATM je technologie s virtuálními okruhy přenášející data v buňkách 53 bajtů. Umožňuje garantovat šířku pásma a zpoždění — vhodné pro hlas, video i data.",
@@ -15105,8 +15225,16 @@
       "sourceType": "generated",
       "question": "Co je X.25?",
       "answers": [
-        { "id": "a", "text": "Moderní bezdrátový standard IEEE", "correct": false },
-        { "id": "b", "text": "Starší standard ITU-T pro paketové přepínání v rozlehlých sítích WAN", "correct": true },
+        {
+          "id": "a",
+          "text": "Moderní bezdrátový standard IEEE",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Starší standard ITU-T pro paketové přepínání v rozlehlých sítích WAN",
+          "correct": true
+        },
         { "id": "c", "text": "Typ koaxiálního kabelu", "correct": false },
         { "id": "d", "text": "Rozšíření záhlaví IPv6", "correct": false }
       ],
@@ -15121,9 +15249,21 @@
       "question": "Co je ARQ (Automatic Repeat reQuest)?",
       "answers": [
         { "id": "a", "text": "Typ routovacího protokolu", "correct": false },
-        { "id": "b", "text": "Mechanismus pro detekci chyb a opakované vysílání rámců při ztrátě nebo poškození", "correct": true },
-        { "id": "c", "text": "Šifrovací algoritmus pro bezdrátové sítě", "correct": false },
-        { "id": "d", "text": "Protokol pro přidělování adres", "correct": false }
+        {
+          "id": "b",
+          "text": "Mechanismus pro detekci chyb a opakované vysílání rámců při ztrátě nebo poškození",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Šifrovací algoritmus pro bezdrátové sítě",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Protokol pro přidělování adres",
+          "correct": false
+        }
       ],
       "explanation": "ARQ (Automatic Repeat reQuest) — přijímač potvrzuje správné rámce, odesílatel opakuje nepotvrzené. Používá se na linkové i transportní vrstvě.",
       "id": "q_04691"
@@ -15135,10 +15275,26 @@
       "sourceType": "generated",
       "question": "Jak funguje metoda Stop-and-Wait ARQ?",
       "answers": [
-        { "id": "a", "text": "Odesílatel vysílá rámce kontinuálně bez čekání na potvrzení", "correct": false },
-        { "id": "b", "text": "Odesílatel odešle jeden rámec a čeká na potvrzení (ACK) před odesláním dalšího", "correct": true },
-        { "id": "c", "text": "Přijímač si sám opakuje poškozené rámce", "correct": false },
-        { "id": "d", "text": "Rámce se číslují a doručují mimo pořadí", "correct": false }
+        {
+          "id": "a",
+          "text": "Odesílatel vysílá rámce kontinuálně bez čekání na potvrzení",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Odesílatel odešle jeden rámec a čeká na potvrzení (ACK) před odesláním dalšího",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Přijímač si sám opakuje poškozené rámce",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Rámce se číslují a doručují mimo pořadí",
+          "correct": false
+        }
       ],
       "explanation": "Stop-and-Wait: odesílatel pošle jeden rámec a zastaví se — vysílá další až po obdržení ACK. Jednoduché, ale neefektivní při velkém zpoždění.",
       "id": "q_04692"
@@ -15151,7 +15307,11 @@
       "question": "Jaká je hlavní nevýhoda metody Stop-and-Wait ARQ?",
       "answers": [
         { "id": "a", "text": "Příliš složitá implementace", "correct": false },
-        { "id": "b", "text": "Nízká efektivita využití linky při velkém Round-Trip Time (RTT)", "correct": true },
+        {
+          "id": "b",
+          "text": "Nízká efektivita využití linky při velkém Round-Trip Time (RTT)",
+          "correct": true
+        },
         { "id": "c", "text": "Velký počet kolizí", "correct": false },
         { "id": "d", "text": "Nelze detekovat chyby", "correct": false }
       ],
@@ -15165,10 +15325,26 @@
       "sourceType": "generated",
       "question": "Jak funguje Go-Back-N ARQ?",
       "answers": [
-        { "id": "a", "text": "Opakuje se pouze chybný nebo ztracený rámec", "correct": false },
-        { "id": "b", "text": "Odesílatel může odeslat N rámců; při chybě se opakuje chybný rámec i všechny následující", "correct": true },
-        { "id": "c", "text": "Každý rámec se potvrzuje samostatně bez okna", "correct": false },
-        { "id": "d", "text": "Přijímač ignoruje chybné rámce a čeká na nové", "correct": false }
+        {
+          "id": "a",
+          "text": "Opakuje se pouze chybný nebo ztracený rámec",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Odesílatel může odeslat N rámců; při chybě se opakuje chybný rámec i všechny následující",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Každý rámec se potvrzuje samostatně bez okna",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Přijímač ignoruje chybné rámce a čeká na nové",
+          "correct": false
+        }
       ],
       "explanation": "Go-Back-N: odesílatel má okno N rámců. Při chybě/timeoutu znovu odešle od chybného rámce všechny — odtud název.",
       "id": "q_04694"
@@ -15180,10 +15356,26 @@
       "sourceType": "generated",
       "question": "Jak funguje Selective Repeat ARQ?",
       "answers": [
-        { "id": "a", "text": "Opakují se chybný rámec i všechny rámce za ním", "correct": false },
-        { "id": "b", "text": "Opakuje se pouze chybný nebo ztracený rámec; ostatní přijaté rámce jsou bufferovány", "correct": true },
-        { "id": "c", "text": "Žádné opakování — spolehlivost zajišťuje vyšší vrstva", "correct": false },
-        { "id": "d", "text": "Každý rámec se odesílá dvakrát preventivně", "correct": false }
+        {
+          "id": "a",
+          "text": "Opakují se chybný rámec i všechny rámce za ním",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Opakuje se pouze chybný nebo ztracený rámec; ostatní přijaté rámce jsou bufferovány",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Žádné opakování — spolehlivost zajišťuje vyšší vrstva",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Každý rámec se odesílá dvakrát preventivně",
+          "correct": false
+        }
       ],
       "explanation": "Selective Repeat: odesílatel znovu pošle pouze chybný rámec. Přijímač bufferuje rámce přijaté mimo pořadí. Efektivnější než Go-Back-N.",
       "id": "q_04695"
@@ -15210,10 +15402,26 @@
       "sourceType": "generated",
       "question": "Co je okno (window) v protokolu se sliding window ARQ?",
       "answers": [
-        { "id": "a", "text": "Grafické rozhraní správy sítě", "correct": false },
-        { "id": "b", "text": "Maximální počet rámců, které lze odeslat bez obdržení potvrzení", "correct": true },
-        { "id": "c", "text": "Maximální velikost jednoho rámce v bajtech", "correct": false },
-        { "id": "d", "text": "Zpoždění mezi dvěma po sobě jdoucími rámci", "correct": false }
+        {
+          "id": "a",
+          "text": "Grafické rozhraní správy sítě",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Maximální počet rámců, které lze odeslat bez obdržení potvrzení",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Maximální velikost jednoho rámce v bajtech",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Zpoždění mezi dvěma po sobě jdoucími rámci",
+          "correct": false
+        }
       ],
       "explanation": "Sliding window určuje, kolik rámců může být 've vzduchu' (odesláno, ale nepotvrzeno). Větší okno = lepší využití linky při velkém RTT.",
       "id": "q_04697"
@@ -15225,9 +15433,21 @@
       "sourceType": "generated",
       "question": "Jak TCP potvrzuje přijaté segmenty?",
       "answers": [
-        { "id": "a", "text": "Pomocí NACK (negative acknowledgement)", "correct": false },
-        { "id": "b", "text": "Pomocí ACK s číslem potvrzení (Acknowledgement Number)", "correct": true },
-        { "id": "c", "text": "TCP nepotvrzuje — spolehlivost zajišťuje IP", "correct": false },
+        {
+          "id": "a",
+          "text": "Pomocí NACK (negative acknowledgement)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Pomocí ACK s číslem potvrzení (Acknowledgement Number)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "TCP nepotvrzuje — spolehlivost zajišťuje IP",
+          "correct": false
+        },
         { "id": "d", "text": "Pomocí beacon zpráv", "correct": false }
       ],
       "explanation": "TCP posílá ACK s číslem dalšího očekávaného bajtu — kumulativní potvrzení.",
@@ -15255,10 +15475,22 @@
       "sourceType": "generated",
       "question": "Jakým způsobem TCP zajišťuje spolehlivý přenos dat?",
       "answers": [
-        { "id": "a", "text": "Žádným — spolehlivost zajišťuje IP", "correct": false },
-        { "id": "b", "text": "Potvrzováním přijatých segmentů a opakovaným vysíláním při výpadku", "correct": true },
+        {
+          "id": "a",
+          "text": "Žádným — spolehlivost zajišťuje IP",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Potvrzováním přijatých segmentů a opakovaným vysíláním při výpadku",
+          "correct": true
+        },
         { "id": "c", "text": "Šifrováním každého segmentu", "correct": false },
-        { "id": "d", "text": "Pouze kontrolním součtem záhlaví", "correct": false }
+        {
+          "id": "d",
+          "text": "Pouze kontrolním součtem záhlaví",
+          "correct": false
+        }
       ],
       "explanation": "TCP garantuje spolehlivý přenos pomocí sekvenčních čísel, potvrzování (ACK), časovačů a opakovaného odeslání nepotvrzených segmentů.",
       "id": "q_04700"
@@ -15270,8 +15502,16 @@
       "sourceType": "generated",
       "question": "Co je socket v TCP/IP?",
       "answers": [
-        { "id": "a", "text": "Fyzický konektor RJ-45 na síťové kartě", "correct": false },
-        { "id": "b", "text": "Kombinace IP adresy a čísla portu identifikující konkrétní komunikační koncový bod", "correct": true },
+        {
+          "id": "a",
+          "text": "Fyzický konektor RJ-45 na síťové kartě",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Kombinace IP adresy a čísla portu identifikující konkrétní komunikační koncový bod",
+          "correct": true
+        },
         { "id": "c", "text": "MAC adresa síťového rozhraní", "correct": false },
         { "id": "d", "text": "Typ síťového protokolu", "correct": false }
       ],
@@ -15375,8 +15615,16 @@
       "sourceType": "generated",
       "question": "Co je demultiplexování v TCP/IP?",
       "answers": [
-        { "id": "a", "text": "Překlad doménových jmen na IP adresy", "correct": false },
-        { "id": "b", "text": "Přiřazení příchozích dat správné aplikaci na základě čísla cílového portu", "correct": true },
+        {
+          "id": "a",
+          "text": "Překlad doménových jmen na IP adresy",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Přiřazení příchozích dat správné aplikaci na základě čísla cílového portu",
+          "correct": true
+        },
         { "id": "c", "text": "Šifrování přenášených dat", "correct": false },
         { "id": "d", "text": "Fragmentace velkých paketů", "correct": false }
       ],
@@ -15405,8 +15653,16 @@
       "sourceType": "generated",
       "question": "Co tvoří kompletní identifikaci jednoho TCP spojení (čtveřice)?",
       "answers": [
-        { "id": "a", "text": "Pouze IP adresa serveru a číslo portu", "correct": false },
-        { "id": "b", "text": "IP adresa + port klienta a IP adresa + port serveru", "correct": true },
+        {
+          "id": "a",
+          "text": "Pouze IP adresa serveru a číslo portu",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "IP adresa + port klienta a IP adresa + port serveru",
+          "correct": true
+        },
         { "id": "c", "text": "MAC adresa a číslo portu", "correct": false },
         { "id": "d", "text": "Pouze čísla portů obou stran", "correct": false }
       ],
@@ -15471,10 +15727,26 @@
       "sourceType": "generated",
       "question": "Co je izotropní anténa?",
       "answers": [
-        { "id": "a", "text": "Směrová anténa s vysokým ziskem pro spoje point-to-point", "correct": false },
-        { "id": "b", "text": "Teoretická anténa vyzařující elektromagnetické vlny rovnoměrně do všech směrů", "correct": true },
-        { "id": "c", "text": "Anténa speciálně navržená pro Wi-Fi pásmo 5 GHz", "correct": false },
-        { "id": "d", "text": "Anténa s výkonem přesně 1 watt", "correct": false }
+        {
+          "id": "a",
+          "text": "Směrová anténa s vysokým ziskem pro spoje point-to-point",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Teoretická anténa vyzařující elektromagnetické vlny rovnoměrně do všech směrů",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Anténa speciálně navržená pro Wi-Fi pásmo 5 GHz",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Anténa s výkonem přesně 1 watt",
+          "correct": false
+        }
       ],
       "explanation": "Izotropní anténa je teoretický zdroj vyzařující stejně do všech směrů (koule). Slouží jako referenční bod pro měření zisku jiných antén — vyjadřuje se v dBi.",
       "id": "q_04716"
@@ -15486,9 +15758,21 @@
       "sourceType": "generated",
       "question": "Co vyjadřuje zisk antény udávaný v dBi?",
       "answers": [
-        { "id": "a", "text": "Elektrický příkon antény v decibelech", "correct": false },
-        { "id": "b", "text": "Zisk antény vztažený k referenční izotropní anténě", "correct": true },
-        { "id": "c", "text": "Šumové číslo přijímače v decibelech", "correct": false },
+        {
+          "id": "a",
+          "text": "Elektrický příkon antény v decibelech",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zisk antény vztažený k referenční izotropní anténě",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Šumové číslo přijímače v decibelech",
+          "correct": false
+        },
         { "id": "d", "text": "Délku antény v centimetrech", "correct": false }
       ],
       "explanation": "dBi (decibel relative to isotropic) — zisk antény vůči izotropnímu zářiči. Čím vyšší dBi, tím více anténa soustřeďuje energii v preferovaném směru.",
@@ -15516,10 +15800,26 @@
       "sourceType": "generated",
       "question": "Co je Fresnelova zóna v kontextu rádiových spojů?",
       "answers": [
-        { "id": "a", "text": "Frekvenční pásmo vyhrazené pro mikrovlnné spoje", "correct": false },
-        { "id": "b", "text": "Elipsoidní oblast kolem přímé spojnice antén, která musí být volná pro optimální příjem", "correct": true },
-        { "id": "c", "text": "Typ šifrování používaný v bezdrátových sítích", "correct": false },
-        { "id": "d", "text": "Maximální dosah bezdrátového spoje", "correct": false }
+        {
+          "id": "a",
+          "text": "Frekvenční pásmo vyhrazené pro mikrovlnné spoje",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Elipsoidní oblast kolem přímé spojnice antén, která musí být volná pro optimální příjem",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Typ šifrování používaný v bezdrátových sítích",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Maximální dosah bezdrátového spoje",
+          "correct": false
+        }
       ],
       "explanation": "Fresnelova zóna je elipsoidní oblast kolem přímé spojnice antén. Pokud je 60 % první Fresnelovy zóny volné (bez překážek), spoj funguje optimálně.",
       "id": "q_04719"
@@ -15546,10 +15846,26 @@
       "sourceType": "generated",
       "question": "Co je amplitudová modulace (AM)?",
       "answers": [
-        { "id": "a", "text": "Modulace, při které se mění frekvence nosné vlny", "correct": false },
-        { "id": "b", "text": "Modulace, při které se mění amplituda nosné vlny podle přenášeného signálu", "correct": true },
-        { "id": "c", "text": "Modulace, při které se mění fáze nosné vlny", "correct": false },
-        { "id": "d", "text": "Kombinace fázové a amplitudové modulace", "correct": false }
+        {
+          "id": "a",
+          "text": "Modulace, při které se mění frekvence nosné vlny",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Modulace, při které se mění amplituda nosné vlny podle přenášeného signálu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Modulace, při které se mění fáze nosné vlny",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Kombinace fázové a amplitudové modulace",
+          "correct": false
+        }
       ],
       "explanation": "AM (Amplitude Modulation) — informace je kódována změnami amplitudy nosné frekvence. Používá se v rozhlase a jako složka QAM.",
       "id": "q_04721"
@@ -15561,10 +15877,26 @@
       "sourceType": "generated",
       "question": "Co je frekvenční modulace (FM)?",
       "answers": [
-        { "id": "a", "text": "Modulace, při které se mění amplituda nosné vlny", "correct": false },
-        { "id": "b", "text": "Modulace, při které se mění frekvence nosné vlny podle přenášeného signálu", "correct": true },
-        { "id": "c", "text": "Modulace, při které se mění fáze nosné vlny", "correct": false },
-        { "id": "d", "text": "Digitální modulace s více úrovněmi", "correct": false }
+        {
+          "id": "a",
+          "text": "Modulace, při které se mění amplituda nosné vlny",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Modulace, při které se mění frekvence nosné vlny podle přenášeného signálu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Modulace, při které se mění fáze nosné vlny",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Digitální modulace s více úrovněmi",
+          "correct": false
+        }
       ],
       "explanation": "FM (Frequency Modulation) — informace je kódována změnami frekvence nosné. Odolnější vůči šumu než AM. Příklad: FM rozhlas (88–108 MHz).",
       "id": "q_04722"
@@ -15576,10 +15908,26 @@
       "sourceType": "generated",
       "question": "Co je PSK (Phase Shift Keying)?",
       "answers": [
-        { "id": "a", "text": "Amplitudová digitální modulace", "correct": false },
-        { "id": "b", "text": "Frekvenční digitální modulace", "correct": false },
-        { "id": "c", "text": "Digitální modulace, při které data kódují různé fázové posuny nosné vlny", "correct": true },
-        { "id": "d", "text": "Kombinace amplitudy a frekvence", "correct": false }
+        {
+          "id": "a",
+          "text": "Amplitudová digitální modulace",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Frekvenční digitální modulace",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Digitální modulace, při které data kódují různé fázové posuny nosné vlny",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Kombinace amplitudy a frekvence",
+          "correct": false
+        }
       ],
       "explanation": "PSK (Phase Shift Keying) — digitální data jsou zakódována různými fázovými posuny nosné. Varianty: BPSK (2 fáze), QPSK (4 fáze), 8-PSK.",
       "id": "q_04723"
@@ -15593,8 +15941,16 @@
       "answers": [
         { "id": "a", "text": "Jen amplitudová modulace", "correct": false },
         { "id": "b", "text": "Jen fázová modulace", "correct": false },
-        { "id": "c", "text": "Kombinace amplitudové a fázové modulace přenášející více bitů na symbol", "correct": true },
-        { "id": "d", "text": "Frekvenční modulace pro digitální TV", "correct": false }
+        {
+          "id": "c",
+          "text": "Kombinace amplitudové a fázové modulace přenášející více bitů na symbol",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Frekvenční modulace pro digitální TV",
+          "correct": false
+        }
       ],
       "explanation": "QAM kombinuje AM a PM — každý symbol nese více bitů. Příklady: 16-QAM (4 bity/symbol), 64-QAM (6 bitů), 256-QAM (8 bitů). Používá Wi-Fi, kabelová TV.",
       "id": "q_04724"
@@ -15606,9 +15962,21 @@
       "sourceType": "generated",
       "question": "Co je FDM (Frequency Division Multiplexing)?",
       "answers": [
-        { "id": "a", "text": "Přenos více signálů v oddělených časových slotech", "correct": false },
-        { "id": "b", "text": "Přenos více signálů současně na různých frekvencích ve stejném médiu", "correct": true },
-        { "id": "c", "text": "Přenos dat pomocí různých vlnových délek v optickém vláknu", "correct": false },
+        {
+          "id": "a",
+          "text": "Přenos více signálů v oddělených časových slotech",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Přenos více signálů současně na různých frekvencích ve stejném médiu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Přenos dat pomocí různých vlnových délek v optickém vláknu",
+          "correct": false
+        },
         { "id": "d", "text": "Kódové oddělení kanálů", "correct": false }
       ],
       "explanation": "FDM (Frequency Division Multiplexing) — každý kanál dostane své frekvenční pásmo, všechny se přenáší současně. Příklad: analogová TV, ADSL.",
@@ -15621,9 +15989,21 @@
       "sourceType": "generated",
       "question": "Co je TDM (Time Division Multiplexing)?",
       "answers": [
-        { "id": "a", "text": "Přenos více signálů současně na různých frekvencích", "correct": false },
-        { "id": "b", "text": "Přenos více signálů ve střídajících se časových slotech v jednom kanálu", "correct": true },
-        { "id": "c", "text": "Přenos dat pomocí různých vlnových délek", "correct": false },
+        {
+          "id": "a",
+          "text": "Přenos více signálů současně na různých frekvencích",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Přenos více signálů ve střídajících se časových slotech v jednom kanálu",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Přenos dat pomocí různých vlnových délek",
+          "correct": false
+        },
         { "id": "d", "text": "Kódové oddělení kanálů", "correct": false }
       ],
       "explanation": "TDM (Time Division Multiplexing) — přenosový čas se dělí na sloty, každý kanál dostane pevný slot. Příklady: ISDN, E1/T1 linky.",
@@ -15636,10 +16016,26 @@
       "sourceType": "generated",
       "question": "Co je WDM (Wavelength Division Multiplexing)?",
       "answers": [
-        { "id": "a", "text": "Přenos více signálů ve střídajících se časových slotech", "correct": false },
-        { "id": "b", "text": "Přenos více signálů na různých frekvencích v kabelové síti", "correct": false },
-        { "id": "c", "text": "Přenos více signálů na různých vlnových délkách světla v jednom optickém vláknu", "correct": true },
-        { "id": "d", "text": "Kódové oddělení kanálů v mobilní síti", "correct": false }
+        {
+          "id": "a",
+          "text": "Přenos více signálů ve střídajících se časových slotech",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Přenos více signálů na různých frekvencích v kabelové síti",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Přenos více signálů na různých vlnových délkách světla v jednom optickém vláknu",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Kódové oddělení kanálů v mobilní síti",
+          "correct": false
+        }
       ],
       "explanation": "WDM (Wavelength Division Multiplexing) — optické vlákno přenáší více datových toků na různých vlnových délkách světla současně. DWDM zvládne desítky kanálů.",
       "id": "q_04727"
@@ -15651,10 +16047,26 @@
       "sourceType": "generated",
       "question": "Co je backbone (páteřní) topologie sítě?",
       "answers": [
-        { "id": "a", "text": "Hvězdicová topologie s centrálním switchem", "correct": false },
-        { "id": "b", "text": "Páteřní segment propojující menší podsítě nebo skupiny přepínačů do hierarchie", "correct": true },
-        { "id": "c", "text": "Kruhová topologie bez centrálního prvku", "correct": false },
-        { "id": "d", "text": "Bezdrátová topologie bez pevné infrastruktury", "correct": false }
+        {
+          "id": "a",
+          "text": "Hvězdicová topologie s centrálním switchem",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Páteřní segment propojující menší podsítě nebo skupiny přepínačů do hierarchie",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Kruhová topologie bez centrálního prvku",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Bezdrátová topologie bez pevné infrastruktury",
+          "correct": false
+        }
       ],
       "explanation": "Backbone topologie — centrální páteřní kabel nebo segment propojuje menší podsítě. Typické ve větších budovách jako vertikální (páteřní) kabeláž.",
       "id": "q_04728"
@@ -15666,9 +16078,21 @@
       "sourceType": "generated",
       "question": "Co je mesh (síťová) topologie?",
       "answers": [
-        { "id": "a", "text": "Každý uzel je spojen pouze s centrálním bodem (hvězda)", "correct": false },
-        { "id": "b", "text": "Každý uzel je přímo propojen s každým jiným uzlem", "correct": true },
-        { "id": "c", "text": "Uzly jsou zapojeny lineárně za sebou (sběrnice)", "correct": false },
+        {
+          "id": "a",
+          "text": "Každý uzel je spojen pouze s centrálním bodem (hvězda)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Každý uzel je přímo propojen s každým jiným uzlem",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Uzly jsou zapojeny lineárně za sebou (sběrnice)",
+          "correct": false
+        },
         { "id": "d", "text": "Uzly jsou propojeny do kruhu", "correct": false }
       ],
       "explanation": "Mesh (síťová) topologie — full mesh: každý uzel má přímé spojení s každým jiným. Výhoda: redundance; nevýhoda: velký počet spojů.",
@@ -15681,10 +16105,22 @@
       "sourceType": "generated",
       "question": "Co je neomezená topologie v kontextu bezdrátových sítí?",
       "answers": [
-        { "id": "a", "text": "Bezdrátová síť s centrálním přístupovým bodem (infrastrukturní režim)", "correct": false },
-        { "id": "b", "text": "Bezdrátová ad-hoc síť, kde uzly komunikují přímo bez pevné infrastruktury", "correct": true },
+        {
+          "id": "a",
+          "text": "Bezdrátová síť s centrálním přístupovým bodem (infrastrukturní režim)",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Bezdrátová ad-hoc síť, kde uzly komunikují přímo bez pevné infrastruktury",
+          "correct": true
+        },
         { "id": "c", "text": "Síť s neomezeným počtem uzlů", "correct": false },
-        { "id": "d", "text": "Full mesh topologie v kabelové síti", "correct": false }
+        {
+          "id": "d",
+          "text": "Full mesh topologie v kabelové síti",
+          "correct": false
+        }
       ],
       "explanation": "Neomezená topologie (ad-hoc, IBSS) — bezdrátové uzly komunikují přímo peer-to-peer bez přístupového bodu. Žádná pevná infrastruktura.",
       "id": "q_04730"
@@ -15696,10 +16132,22 @@
       "sourceType": "generated",
       "question": "Co je logická topologie sítě?",
       "answers": [
-        { "id": "a", "text": "Fyzické rozmístění kabelů a zařízení v prostoru", "correct": false },
-        { "id": "b", "text": "Způsob, jakým data logicky tečou v síti bez ohledu na fyzické zapojení", "correct": true },
+        {
+          "id": "a",
+          "text": "Fyzické rozmístění kabelů a zařízení v prostoru",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Způsob, jakým data logicky tečou v síti bez ohledu na fyzické zapojení",
+          "correct": true
+        },
         { "id": "c", "text": "Počet zařízení v síti", "correct": false },
-        { "id": "d", "text": "Typ konektorů použitých v síti", "correct": false }
+        {
+          "id": "d",
+          "text": "Typ konektorů použitých v síti",
+          "correct": false
+        }
       ],
       "explanation": "Logická topologie popisuje tok dat: např. síť s fyzickou hvězdicovou topologií (hub) může mít logicky sběrnicovou topologii.",
       "id": "q_04731"
@@ -15727,8 +16175,16 @@
       "question": "Co switch udělá s přijatým broadcast rámcem (cílová MAC FF:FF:FF:FF:FF:FF)?",
       "answers": [
         { "id": "a", "text": "Zahodí ho", "correct": false },
-        { "id": "b", "text": "Přepošle ho pouze na port routeru", "correct": false },
-        { "id": "c", "text": "Přepošle ho na všechny porty kromě portu, na kterém byl přijat", "correct": true },
+        {
+          "id": "b",
+          "text": "Přepošle ho pouze na port routeru",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Přepošle ho na všechny porty kromě portu, na kterém byl přijat",
+          "correct": true
+        },
         { "id": "d", "text": "Pošle ho zpět odesílateli", "correct": false }
       ],
       "explanation": "Switch flooduje broadcast na všechny porty kromě zdrojového — broadcast je určen všem zařízením v broadcastové doméně.",
@@ -15756,10 +16212,26 @@
       "sourceType": "generated",
       "question": "Proč switch přeposílá (flooduje) broadcast rámce na všechny porty?",
       "answers": [
-        { "id": "a", "text": "Broadcast adresy nejsou v MAC tabulce — switch neví cíl", "correct": false },
-        { "id": "b", "text": "Broadcast je určen všem zařízením v síti, proto musí dorazit ke každému", "correct": true },
-        { "id": "c", "text": "Je to chyba konfigurace; správně by ho měl zahodit", "correct": false },
-        { "id": "d", "text": "Broadcast smí přeposlat jen router, ne switch", "correct": false }
+        {
+          "id": "a",
+          "text": "Broadcast adresy nejsou v MAC tabulce — switch neví cíl",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Broadcast je určen všem zařízením v síti, proto musí dorazit ke každému",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Je to chyba konfigurace; správně by ho měl zahodit",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Broadcast smí přeposlat jen router, ne switch",
+          "correct": false
+        }
       ],
       "explanation": "Broadcast (FF:FF:FF:FF:FF:FF) je určen všem hostům v broadcastové doméně — switch ho proto odešle na všechny porty kromě zdrojového.",
       "id": "q_04735"
@@ -15771,8 +16243,16 @@
       "sourceType": "generated",
       "question": "Co je Router Solicitation (RS) v IPv6?",
       "answers": [
-        { "id": "a", "text": "Zpráva, kterou router posílá všem hostům s prefixem sítě", "correct": false },
-        { "id": "b", "text": "Zpráva ICMPv6, kterou host zasílá routeru s žádostí o síťové informace (prefix, brána)", "correct": true },
+        {
+          "id": "a",
+          "text": "Zpráva, kterou router posílá všem hostům s prefixem sítě",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zpráva ICMPv6, kterou host zasílá routeru s žádostí o síťové informace (prefix, brána)",
+          "correct": true
+        },
         { "id": "c", "text": "Dotaz na DNS server v IPv6", "correct": false },
         { "id": "d", "text": "Chybová zpráva ICMPv6", "correct": false }
       ],
@@ -15786,10 +16266,22 @@
       "sourceType": "generated",
       "question": "Co je Router Advertisement (RA) v IPv6?",
       "answers": [
-        { "id": "a", "text": "Žádost hosta o síťové informace", "correct": false },
-        { "id": "b", "text": "Zpráva ICMPv6 routeru oznamující prefix sítě, výchozí bránu a parametry konfigurace", "correct": true },
+        {
+          "id": "a",
+          "text": "Žádost hosta o síťové informace",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Zpráva ICMPv6 routeru oznamující prefix sítě, výchozí bránu a parametry konfigurace",
+          "correct": true
+        },
         { "id": "c", "text": "Typ ARP záznamu pro IPv6", "correct": false },
-        { "id": "d", "text": "Potvrzení přijetí paketu v IPv6", "correct": false }
+        {
+          "id": "d",
+          "text": "Potvrzení přijetí paketu v IPv6",
+          "correct": false
+        }
       ],
       "explanation": "RA (Router Advertisement, ICMPv6 typ 134) — router periodicky (nebo na RS) posílá zprávu s IPv6 prefixem, výchozí bránou a příznakem SLAAC/DHCPv6.",
       "id": "q_04737"
@@ -15801,9 +16293,17 @@
       "sourceType": "generated",
       "question": "Který protokol zajišťuje v IPv6 výměnu zpráv Router Solicitation a Router Advertisement?",
       "answers": [
-        { "id": "a", "text": "ARP (Address Resolution Protocol)", "correct": false },
+        {
+          "id": "a",
+          "text": "ARP (Address Resolution Protocol)",
+          "correct": false
+        },
         { "id": "b", "text": "DHCPv6", "correct": false },
-        { "id": "c", "text": "NDP (Neighbor Discovery Protocol)", "correct": true },
+        {
+          "id": "c",
+          "text": "NDP (Neighbor Discovery Protocol)",
+          "correct": true
+        },
         { "id": "d", "text": "OSPFv3", "correct": false }
       ],
       "explanation": "NDP (Neighbor Discovery Protocol, RFC 4861) nahrazuje ARP v IPv6. Zajišťuje RS/RA, zjišťování sousedů (NS/NA) a DAD.",
@@ -15816,9 +16316,21 @@
       "sourceType": "generated",
       "question": "Co jsou RFC 4941 privacy extensions pro IPv6?",
       "answers": [
-        { "id": "a", "text": "Šifrování celého IPv6 paketu pomocí IPsec", "correct": false },
-        { "id": "b", "text": "Generování náhodné části IPv6 adresy hostu místo deterministického EUI-64", "correct": true },
-        { "id": "c", "text": "Privátní IPv6 adresy obdobné RFC 1918 v IPv4", "correct": false },
+        {
+          "id": "a",
+          "text": "Šifrování celého IPv6 paketu pomocí IPsec",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Generování náhodné části IPv6 adresy hostu místo deterministického EUI-64",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Privátní IPv6 adresy obdobné RFC 1918 v IPv4",
+          "correct": false
+        },
         { "id": "d", "text": "VPN tunel přes IPv6", "correct": false }
       ],
       "explanation": "RFC 4941 (Privacy Extensions for SLAAC) — OS vygeneruje náhodnou 64bitovou část IPv6 adresy místo EUI-64, čímž skryje MAC adresu a ztíží sledování hosta.",
@@ -15831,9 +16343,21 @@
       "sourceType": "generated",
       "question": "Proč se používají RFC 4941 privacy extensions (náhodná část IPv6 adresy)?",
       "answers": [
-        { "id": "a", "text": "Zrychlení přidělování adres pomocí SLAAC", "correct": false },
-        { "id": "b", "text": "Ochrana soukromí — EUI-64 odhaluje MAC adresu zařízení a umožňuje jeho sledování", "correct": true },
-        { "id": "c", "text": "Kompatibilita s IPv4 adresami", "correct": false },
+        {
+          "id": "a",
+          "text": "Zrychlení přidělování adres pomocí SLAAC",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Ochrana soukromí — EUI-64 odhaluje MAC adresu zařízení a umožňuje jeho sledování",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Kompatibilita s IPv4 adresami",
+          "correct": false
+        },
         { "id": "d", "text": "Šifrování provozu mezi hosty", "correct": false }
       ],
       "explanation": "EUI-64 odvozuje část IPv6 adresy z MAC adresy — zařízení je globálně identifikovatelné. RFC 4941 nahradí hostovou část náhodnou hodnotou, která se periodicky mění.",
@@ -15921,10 +16445,26 @@
       "sourceType": "generated",
       "question": "Jak switch buduje svou MAC adresní tabulku (CAM tabulku)?",
       "answers": [
-        { "id": "a", "text": "Administrátor ji zadá ručně při konfiguraci switche", "correct": false },
-        { "id": "b", "text": "Switch se učí automaticky ze zdrojových MAC adres přijatých rámců (MAC learning)", "correct": true },
-        { "id": "c", "text": "Router posílá switchi tabulku MAC adres", "correct": false },
-        { "id": "d", "text": "DNS server oznamuje MAC adresy při překladu jmen", "correct": false }
+        {
+          "id": "a",
+          "text": "Administrátor ji zadá ručně při konfiguraci switche",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Switch se učí automaticky ze zdrojových MAC adres přijatých rámců (MAC learning)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Router posílá switchi tabulku MAC adres",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "DNS server oznamuje MAC adresy při překladu jmen",
+          "correct": false
+        }
       ],
       "explanation": "MAC learning: když switch přijme rámec, zaznamená zdrojovou MAC adresu a číslo portu do CAM tabulky. Po čase záznamy expirují (aging).",
       "id": "q_04746"
@@ -15937,8 +16477,16 @@
       "question": "Co switch udělá s unicast rámcem, jehož cílová MAC adresa není v jeho MAC tabulce?",
       "answers": [
         { "id": "a", "text": "Zahodí ho", "correct": false },
-        { "id": "b", "text": "Přepošle ho na všechny porty kromě zdrojového (unknown unicast flooding)", "correct": true },
-        { "id": "c", "text": "Pošle ho na výchozí bránu (router)", "correct": false },
+        {
+          "id": "b",
+          "text": "Přepošle ho na všechny porty kromě zdrojového (unknown unicast flooding)",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Pošle ho na výchozí bránu (router)",
+          "correct": false
+        },
         { "id": "d", "text": "Vrátí ho odesílateli s chybou", "correct": false }
       ],
       "explanation": "Neznámý unicast: switch neví, na kterém portu se cíl nachází, a proto ho flooduje na všechny porty. Cílová stanice zareaguje a switch si její MAC adresu zapíše.",
@@ -15953,7 +16501,11 @@
       "answers": [
         { "id": "a", "text": "ARP tabulka", "correct": false },
         { "id": "b", "text": "Routing tabulka", "correct": false },
-        { "id": "c", "text": "CAM tabulka (Content Addressable Memory)", "correct": true },
+        {
+          "id": "c",
+          "text": "CAM tabulka (Content Addressable Memory)",
+          "correct": true
+        },
         { "id": "d", "text": "DNS cache", "correct": false }
       ],
       "explanation": "CAM (Content Addressable Memory) tabulka — hardware optimalizovaný pro rychlé vyhledávání MAC adres. Uchovává záznamy (MAC adresa, port, VLAN, stáří).",

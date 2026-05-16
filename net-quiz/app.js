@@ -716,7 +716,38 @@ document.addEventListener('DOMContentLoaded', async () => {
     _setText('resultSkipped', result.skipped);
 
     const review = U.el('resultReview');
-    if (review) review.innerHTML = result.details.map((d, i) => C.resultReviewCard(d.question, d.answer, d.correct, i)).join('');
+    if (review) {
+      review.innerHTML = result.details.map((d, i) => C.resultReviewCard(d.question, d.answer, d.correct, i)).join('');
+
+      const _openRatings = {}; // idx → points 0–5
+      review.querySelectorAll('.open-self-rate').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = Number(btn.dataset.idx);
+          const pts = Number(btn.dataset.pts);
+          _openRatings[idx] = pts;
+
+          const group = btn.closest('.open-rate-group');
+          group.querySelectorAll('.open-self-rate').forEach(b => {
+            const selected = Number(b.dataset.pts) === pts;
+            b.className = `open-self-rate flex-1 text-xs font-bold py-1.5 rounded-lg border-2 transition-colors ${
+              selected
+                ? 'bg-orange-500 border-orange-500 text-white'
+                : 'border-slate-300 dark:border-gray-600 text-slate-500 dark:text-slate-400 hover:border-orange-400 hover:text-orange-600'
+            }`;
+          });
+
+          // score: každá open otázka přispívá pts/5, jmenovatel roste s počtem ohodnocených
+          const ratedCount = Object.keys(_openRatings).length;
+          const openAsCorrect = Object.values(_openRatings).reduce((s, p) => s + p / 5, 0);
+          const nonOpenScored = result.correct + result.wrong;
+          const totalScored = nonOpenScored + ratedCount;
+          const newPct = totalScored > 0 ? Math.round((result.correct + openAsCorrect) / totalScored * 100) : 0;
+          _setText('resultScore', newPct + '%');
+          _setText('resultGrade', U.gradeLabel(newPct));
+          _setText('resultCorrect', Math.round(result.correct + openAsCorrect * 10) / 10);
+        });
+      });
+    }
 
     _rebindBtn('retryBtn', () => R.navigate('quiz-setup'));
     _rebindBtn('retryWrongBtn', () => {
@@ -1389,6 +1420,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else if (q.type === 'number') {
       const inp = container.querySelector('#numAnswer');
       if (inp) inp.addEventListener('input', () => { _browseAnswers[_browseIdx] = Number(inp.value); });
+    } else if (q.type === 'open') {
+      const ta = container.querySelector('#openAnswer');
+      if (ta) ta.addEventListener('input', () => { _browseAnswers[_browseIdx] = ta.value; });
     }
   }
 
