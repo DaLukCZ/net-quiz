@@ -19,9 +19,25 @@ Kvízové rozhraní v prohlížeči pro opakování látky z vysoké školy. Akt
 
 ## To Do
 
-- více prohazovat možnosti odpovědí
-- fixnout vytvoření nového předmětu
-- odpovědi jsou často moc jednoznačné, potřeba je zjednodušit a rozšířit vysvětlení
+* více randomizovat pořadí možností odpovědí
+* opravit vytváření nového předmětu
+* přepracovat otázky i odpovědi do více Cisco-style formátu:
+
+  * méně přímočaré formulace
+  * více podobných možností odpovědí
+  * důraz na pochopení konceptu místo jednoduchého zapamatování
+  * více scénářových a praktických otázek
+  * používat formulace podobné reálným Cisco testům
+* současné odpovědi jsou často příliš jednoznačné:
+
+  * zjednodušit wording odpovědí
+  * přidat více matoucích, ale technicky relevantních možností
+  * rozšířit a zkvalitnit vysvětlení správných i špatných odpovědí
+* to stejné aplikovat i na samotné otázky:
+
+  * méně napovídající formulace
+  * více variant zadání
+  * více praktického networkingu místo čisté teorie
 
 
 ## Stažení z GitHubu
