@@ -15,6 +15,11 @@ Kvízové rozhraní v prohlížeči pro opakování látky z vysoké školy. Akt
 - **Editor otázek** — přidávání a úprava otázek přímo v aplikaci
 - **Tmavý režim**
 
+## To Do
+
+- více prohazovat možnosti odpovědí
+- fixnout vytvoření nového předmětu
+
 > Otázky vznikly částečně pomocí AI analýzou prezentací a externích zdrojů. Nejsou dokončené a nemusí být zcela správné. Nelze zaručit shodu s oficiálními testy.
 
 ## Stažení z GitHubu
