@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       St.setSetting('defaultSubject', id);
       await _loadSubject(id);
       _browseQs = [];
-      await renderSubjects();
+      R.navigate('dashboard');
       U.showToast(`Předmět "${title}" přidán`, 'success');
     };
   }
@@ -947,11 +947,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function _adaptiveNextQuestion() {
-    const q = App.SRS.selectNext(_adp.pool, _adp.shownThisSession, _adp.mode);
+    let q = App.SRS.selectNext(_adp.pool, _adp.shownThisSession, _adp.mode);
     if (!q) {
       U.showToast('Vsechny otazky zobrazeny. Zkus jine sezeni!', 'info', 4000);
       _adaptiveEndSession();
       return;
+    }
+    if (q.type === 'single' || q.type === 'multi') {
+      q = { ...q, answers: U.shuffle(q.answers) };
     }
     _adp.currentQ = q; _adp.currentAnswer = null; _adp.revealed = false; _adp.questionShownAt = Date.now();
     _renderAdaptiveQuestion(); _hideRatingPanel(); _hideWarningBanner();
@@ -1254,7 +1257,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (questionsOverride) {
       // Called from startQuiz with a pre-filtered+sorted pool
-      _browseQs = questionsOverride;
+      _browseQs = questionsOverride.map(q => {
+        if (q.type !== 'single' && q.type !== 'multi') return q;
+        return { ...q, answers: U.shuffle(q.answers) };
+      });
       _browseIdx = 0;
       _browseRevealed = {};
       _browseAnswers = {};
@@ -1268,6 +1274,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         _browseQs = [...db.questions].sort((a, b) => {
           const ai = catOrder.indexOf(a.category); const bi = catOrder.indexOf(b.category);
           return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
+        }).map(q => {
+          if (q.type !== 'single' && q.type !== 'multi') return q;
+          return { ...q, answers: U.shuffle(q.answers) };
         });
         _browseCatStart = {};
         _browseQs.forEach((q, i) => { if (_browseCatStart[q.category] === undefined) _browseCatStart[q.category] = i; });
