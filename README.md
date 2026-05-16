@@ -23,7 +23,7 @@ Kvízové rozhraní v prohlížeči pro opakování látky z vysoké školy. Akt
 1. **Stáhni Python** → https://www.python.org/downloads/
    - Při instalaci zaškrtni **"Add Python to PATH"**
    
-2. **Přejdi do složky** `moodle-quiz` a **dvojklikem otevři `spustit.bat`**
+2. **Přejdi do složky** `net-quiz` a **dvojklikem otevři `NetQuiz.bat`**
    
 3. V prohlížeči (Chrome, Firefox, Edge) otevři: **`http://localhost:8000`**
 
@@ -64,14 +64,14 @@ Nebo si stáhni šablonu přímo z aplikace.
 - Zkus jinou adresu: `http://127.0.0.1:8000`
 
 **Chyba "Connection refused" nebo "Server not responding"**
-- Zkontroluj, že `spustit.bat` běží v pozadí (měl by být otevřený terminál)
+- Zkontroluj, že `NetQuiz.bat` běží v pozadí (měl by být otevřený terminál)
 - Zkus port 8001 místo 8000: `python -m http.server 8001`
 
 **Python není nainstalován**
 - Stáhni z https://www.python.org/downloads/
 - **DŮLEŽITÉ:** Při instalaci zaškrtni "Add Python to PATH"
 - Restartuj počítač
-- Spusť `spustit.bat` znovu
+- Spusť `NetQuiz.bat` znovu
 
 **Otázky se nenačítají**
 - Zavři prohlížeč a otevři novou kartu

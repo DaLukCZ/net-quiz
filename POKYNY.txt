@@ -8,7 +8,7 @@ WINDOWS:
    → Při instalaci ZAŠKRTNI "Add Python to PATH"
    → Restartuj počítač
 
-2. V TÉTO SLOŽCE najdi soubor: spustit.bat
+2. V TÉTO SLOŽCE najdi soubor: NetQuiz.bat
    → Dvojklik na něj
 
 3. Otevři prohlížeč (Chrome, Firefox, Edge)
