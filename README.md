@@ -3,7 +3,7 @@
 * jednoduché kvízové rozhraní v prohlížeči
 * plně napsané vlastním kódem (`fully vibecoded`)
 * otázky zatím nejsou kompletní a nemusí být na 100 % správné
-* aktuální počet otázek: **604**
+* aktuální počet otázek: **702**
 * použij to na vlastní zodpovědnost
 * neexistuje záruka, že v testu jsou nebo budou stejné otázky
 * pro tvorbu otázek bylo použito AI pro analýzu prezentací, učebních okruhů a také leaknutých otázek
