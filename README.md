@@ -9,7 +9,7 @@ Kvízové rozhraní v prohlížeči pro opakování látky z vysoké školy. Akt
 - **Procházení** — otázky seřazené po kategoriích, styl autoškoly, volná navigace
 - **Adaptivní učení** — SRS algoritmus zaměřený na slabá místa
 - **Záložky** — hvězdičkování otázek, kvíz jen ze záložkovaných
-- **🔥 Leaked filtr** — 416 otázek označených jako leaked (shodují se s obsahem uniklého tahák z 2025); filtrovatelné v nastavení kvízu i přepínačem přímo v procházení
+- **Leaked filtr** — 416 otázek označených jako leaked
 - **Více předmětů** — přepínání mezi předměty, podpora vlastních JSON souborů
 - **Studijní materiály** — prohlížeč PDF přímo v aplikaci, nahrání vlastního PDF
 - **Statistiky** — přehled pokroku, kategorie, historická skóre

@@ -2,9 +2,9 @@
   "meta": {
     "title": "Počítačové sítě",
     "version": 15,
-    "questionCount": 702,
+    "questionCount": 771,
     "uniqueQuestions": true,
-    "leakedCount": 416
+    "leakedCount": 485
   },
   "categories": [
     {
@@ -17807,6 +17807,1037 @@
       "explanation": "CAM (Content Addressable Memory) tabulka — hardware optimalizovaný pro rychlé vyhledávání MAC adres. Uchovává záznamy (MAC adresa, port, VLAN, stáří).",
       "id": "q_04748",
       "leaked": true
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "wifi",
+      "question": "Pokud vysíláme u WLAN více kanály a přijímáme pouze jedním kanálem, mluvíme o technologii:",
+      "answers": [
+        {"id": "a", "text": "MISO", "correct": true},
+        {"id": "b", "text": "SIMO", "correct": false},
+        {"id": "c", "text": "MIMO", "correct": false},
+        {"id": "d", "text": "SISO", "correct": false}
+      ],
+      "explanation": "MISO = Multiple Input, Single Output – více vysílacích antén, jedna přijímací.",
+      "leaked": true,
+      "id": "q_04749"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "wifi",
+      "question": "Pokud vysíláme u WLAN pouze jedním kanálem a přijímáme více kanály, mluvíme o technologii:",
+      "answers": [
+        {"id": "a", "text": "MIMO", "correct": false},
+        {"id": "b", "text": "SIMO", "correct": true},
+        {"id": "c", "text": "MISO", "correct": false},
+        {"id": "d", "text": "SISO", "correct": false}
+      ],
+      "explanation": "SIMO = Single Input, Multiple Output – jedna vysílací anténa, více přijímacích.",
+      "leaked": true,
+      "id": "q_04750"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "wifi",
+      "question": "Pokud vysíláme u WLAN více kanály a přijímáme více kanály, mluvíme o technologii:",
+      "answers": [
+        {"id": "a", "text": "SISO", "correct": false},
+        {"id": "b", "text": "MISO", "correct": false},
+        {"id": "c", "text": "MIMO", "correct": true},
+        {"id": "d", "text": "SIMO", "correct": false}
+      ],
+      "explanation": "MIMO = Multiple Input, Multiple Output – více vysílacích i přijímacích antén. Používá se např. u IEEE 802.11n/ac.",
+      "leaked": true,
+      "id": "q_04751"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "wifi",
+      "question": "Nálepku Wi-Fi u WLAN uděluje v současné době organizace:",
+      "answers": [
+        {"id": "a", "text": "IEEE", "correct": false},
+        {"id": "b", "text": "IETF", "correct": false},
+        {"id": "c", "text": "Wi-Fi aliance", "correct": true},
+        {"id": "d", "text": "ISO", "correct": false}
+      ],
+      "explanation": "Wi-Fi Alliance je organizace, která certifikuje zařízení a uděluje jim obchodní označení Wi-Fi.",
+      "leaked": true,
+      "id": "q_04752"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "wifi",
+      "question": "Wi-Fi u WLAN je:",
+      "answers": [
+        {"id": "a", "text": "standard IEEE 802.11", "correct": false},
+        {"id": "b", "text": "pouze obchodní certifikát (nálepka), ne standard", "correct": true},
+        {"id": "c", "text": "protokol pro šifrování bezdrátové komunikace", "correct": false},
+        {"id": "d", "text": "frekvenční pásmo pro bezdrátový přenos", "correct": false}
+      ],
+      "explanation": "Wi-Fi je obchodní certifikát (ochranná známka) udělovaný Wi-Fi Alliance; samotný standard je IEEE 802.11.",
+      "leaked": true,
+      "id": "q_04753"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "wifi",
+      "question": "Bezdrátová síť je obecně označována zkratkou:",
+      "answers": [
+        {"id": "a", "text": "WMAN", "correct": false},
+        {"id": "b", "text": "WPAN", "correct": false},
+        {"id": "c", "text": "WWAN", "correct": false},
+        {"id": "d", "text": "WLAN", "correct": true}
+      ],
+      "leaked": true,
+      "id": "q_04754"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "wifi",
+      "question": "Jaký je maximální vyzářený výkon v pásmu 2,4 GHz v ČR?",
+      "answers": [
+        {"id": "a", "text": "10 dBm (10 mW)", "correct": false},
+        {"id": "b", "text": "30 dBm (1 W)", "correct": false},
+        {"id": "c", "text": "20 dBm (100 mW)", "correct": true},
+        {"id": "d", "text": "23 dBm (200 mW)", "correct": false}
+      ],
+      "explanation": "V pásmu 2,4 GHz je v ČR maximální povolený vyzářený výkon 20 dBm, tedy 100 mW.",
+      "leaked": true,
+      "id": "q_04755"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "wifi",
+      "question": "Technologie IEEE 802.11 nebyly původně určeny pro WMAN a WWAN.",
+      "answers": [
+        {"id": "true", "text": "Pravda", "correct": true},
+        {"id": "false", "text": "Nepravda", "correct": false}
+      ],
+      "explanation": "IEEE 802.11 byl navržen pro WLAN (lokální bezdrátové sítě), nikoli pro rozsáhlejší WMAN či WWAN.",
+      "leaked": true,
+      "id": "q_04756"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "wifi",
+      "question": "Seřaďte způsoby šifrování u WLAN podle účinnosti vzestupně (od nejslabšího):",
+      "answers": [
+        {"id": "a", "text": "WEP, WPA, WPA2", "correct": true},
+        {"id": "b", "text": "WPA, WEP, WPA2", "correct": false},
+        {"id": "c", "text": "WPA2, WPA, WEP", "correct": false},
+        {"id": "d", "text": "WEP, WPA2, WPA", "correct": false}
+      ],
+      "explanation": "WEP je nejslabší (prolomitelný), WPA je silnější (TKIP), WPA2 je nejsilnější (AES/CCMP).",
+      "leaked": true,
+      "id": "q_04757"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "wifi",
+      "question": "Fresnelova zóna má tvar:",
+      "answers": [
+        {"id": "a", "text": "koule", "correct": false},
+        {"id": "b", "text": "paraboloidu", "correct": true},
+        {"id": "c", "text": "válce", "correct": false},
+        {"id": "d", "text": "kužele", "correct": false}
+      ],
+      "explanation": "Fresnelova zóna je rotační elipsoid (paraboloid) – oblast prostoru kolem přímé spojnice dvou antén, kudy se šíří rádiový signál.",
+      "leaked": true,
+      "id": "q_04758"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "wifi",
+      "question": "Signál mezi dvěma anténami se šíří:",
+      "answers": [
+        {"id": "a", "text": "po přímé ose mezi anténami", "correct": false},
+        {"id": "b", "text": "vně Fresnelovy zóny", "correct": false},
+        {"id": "c", "text": "uvnitř Fresnelovy zóny", "correct": true},
+        {"id": "d", "text": "rozptýleně ve všech směrech rovnoměrně", "correct": false}
+      ],
+      "explanation": "Elektromagnetický signál se šíří uvnitř Fresnelovy zóny. Překážky zasahující do první Fresnelovy zóny způsobují útlum signálu.",
+      "leaked": true,
+      "id": "q_04759"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "media",
+      "question": "Největší odolnost vůči elektromagnetickému rušení (EMS) má:",
+      "answers": [
+        {"id": "a", "text": "kroucená dvojlinka UTP", "correct": false},
+        {"id": "b", "text": "koaxiální kabel", "correct": false},
+        {"id": "c", "text": "optické vlákno (FO)", "correct": true},
+        {"id": "d", "text": "stíněná kroucená dvojlinka STP", "correct": false}
+      ],
+      "explanation": "Optické vlákno přenáší světelné pulzy, takže není ovlivněno elektromagnetickým rušením – má největší odolnost vůči EMS.",
+      "leaked": true,
+      "id": "q_04760"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "media",
+      "question": "Co je numerická apertura u optického vlákna (FO)?",
+      "answers": [
+        {"id": "a", "text": "průměr jádra optického vlákna v mikrometrech", "correct": false},
+        {"id": "b", "text": "míra schopnosti vlákna shromažďovat světlo", "correct": true},
+        {"id": "c", "text": "maximální přenosová rychlost vlákna", "correct": false},
+        {"id": "d", "text": "index lomu jádra vlákna", "correct": false}
+      ],
+      "explanation": "Numerická apertura (NA) vyjadřuje, v jakém maximálním úhlu může světlo vstupovat do vlákna a být vedeno totálním odrazem.",
+      "leaked": true,
+      "id": "q_04761"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "media",
+      "question": "Z čeho se skládá přijímač u optického vlákna (FO)?",
+      "answers": [
+        {"id": "a", "text": "laser, modulátor, filtr", "correct": false},
+        {"id": "b", "text": "fotodetektor, zesilovač, procesor", "correct": true},
+        {"id": "c", "text": "LED, konvertor, demodulátor", "correct": false},
+        {"id": "d", "text": "konektor, fotodioda, multiplexer", "correct": false}
+      ],
+      "explanation": "Přijímač FO se skládá z fotodetektoru (převod světla na elektrický signál), zesilovače a procesoru (zpracování signálu).",
+      "leaked": true,
+      "id": "q_04762"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "media",
+      "question": "Optická vlákna (FO) se spojují:",
+      "answers": [
+        {"id": "a", "text": "pouze konektory", "correct": false},
+        {"id": "b", "text": "svařením, slepením, mechanicky", "correct": true},
+        {"id": "c", "text": "pouze svařením", "correct": false},
+        {"id": "d", "text": "pájecí technikou", "correct": false}
+      ],
+      "explanation": "Optická vlákna lze spojovat svařením (fusion splicing), slepením (chemicky) nebo mechanickými spojkami.",
+      "leaked": true,
+      "id": "q_04763"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "media",
+      "question": "Bez retranslace signálu lze pomocí jednovidových optických vláken přenášet až na vzdálenosti přes:",
+      "answers": [
+        {"id": "a", "text": "10 km", "correct": false},
+        {"id": "b", "text": "50 km", "correct": false},
+        {"id": "c", "text": "100 km", "correct": true},
+        {"id": "d", "text": "500 km", "correct": false}
+      ],
+      "explanation": "Jednovidová optická vlákna (SMF) mají velmi nízký útlum a umožňují přenos bez regenerace signálu na vzdálenosti přesahující 100 km.",
+      "leaked": true,
+      "id": "q_04764"
+    },
+    {
+      "type": "single",
+      "difficulty": "hard",
+      "category": "media",
+      "question": "Maximálně kolik vlnových délek lze použít na jednom vlákně u technologie DWDM?",
+      "answers": [
+        {"id": "a", "text": "32", "correct": false},
+        {"id": "b", "text": "80", "correct": false},
+        {"id": "c", "text": "160", "correct": true},
+        {"id": "d", "text": "256", "correct": false}
+      ],
+      "explanation": "DWDM (Dense Wavelength Division Multiplexing) umožňuje přenášet až 160 vlnových délek (kanálů) po jednom optickém vlákně.",
+      "leaked": true,
+      "id": "q_04765"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "media",
+      "question": "K totálnímu odrazu paprsku v optickém vlákně dochází, pokud paprsek dopadá pod úhlem:",
+      "answers": [
+        {"id": "a", "text": "menším než kritický úhel", "correct": false},
+        {"id": "b", "text": "rovným přesně 45°", "correct": false},
+        {"id": "c", "text": "větším nebo rovným kritickému úhlu", "correct": true},
+        {"id": "d", "text": "nulovým (kolmo na rozhraní)", "correct": false}
+      ],
+      "explanation": "Totální odraz nastává, když úhel dopadu (měřený od normály rozhraní) je větší nebo roven kritickému úhlu – paprsek se pak neláme do pláště.",
+      "leaked": true,
+      "id": "q_04766"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "media",
+      "question": "Skoková změna indexu lomu se používá:",
+      "answers": [
+        {"id": "a", "text": "pouze u jednovidových vláken", "correct": false},
+        {"id": "b", "text": "pouze u mnohovidových vláken", "correct": false},
+        {"id": "c", "text": "u jednovidových i mnohovidových vláken", "correct": true},
+        {"id": "d", "text": "u koaxiálních kabelů", "correct": false}
+      ],
+      "explanation": "Step-index (skoková změna indexu lomu) se používá jak u jednovidových, tak u mnohovidových optických vláken.",
+      "leaked": true,
+      "id": "q_04767"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "media",
+      "question": "Průběžná změna indexu lomu v jádře se používá:",
+      "answers": [
+        {"id": "a", "text": "u jednovidových i mnohovidových vláken", "correct": false},
+        {"id": "b", "text": "pouze u jednovidových vláken", "correct": false},
+        {"id": "c", "text": "pouze u mnohovidových vláken", "correct": true},
+        {"id": "d", "text": "u koaxiálních kabelů s frekvenční modulací", "correct": false}
+      ],
+      "explanation": "Graded-index (průběžná/gradientní změna indexu lomu) se používá pouze u mnohovidových vláken ke snížení mezividové disperze.",
+      "leaked": true,
+      "id": "q_04768"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "media",
+      "question": "Plášť (cladding) optického vlákna může být vyroben:",
+      "answers": [
+        {"id": "a", "text": "pouze ze skla", "correct": false},
+        {"id": "b", "text": "pouze z plastu", "correct": false},
+        {"id": "c", "text": "ze skla nebo plastu", "correct": true},
+        {"id": "d", "text": "z kovu nebo skla", "correct": false}
+      ],
+      "explanation": "Plášť optického vlákna (cladding) může být vyroben ze skla nebo plastu – musí mít nižší index lomu než jádro.",
+      "leaked": true,
+      "id": "q_04769"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "media",
+      "question": "Šířka pásma u digitálního signálu se uvádí v:",
+      "answers": [
+        {"id": "a", "text": "Hz (hertz)", "correct": false},
+        {"id": "b", "text": "Bd (baudy)", "correct": false},
+        {"id": "c", "text": "b/s (bps)", "correct": true},
+        {"id": "d", "text": "dBm", "correct": false}
+      ],
+      "explanation": "Šířka pásma (propustnost) digitálního signálu se udává v bitech za sekundu (b/s, bps).",
+      "leaked": true,
+      "id": "q_04770"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "media",
+      "question": "Koaxiální kabel vykazuje dobré přenosové parametry do frekvence přibližně:",
+      "answers": [
+        {"id": "a", "text": "100 MHz", "correct": false},
+        {"id": "b", "text": "500 MHz", "correct": false},
+        {"id": "c", "text": "1 GHz", "correct": true},
+        {"id": "d", "text": "10 GHz", "correct": false}
+      ],
+      "explanation": "Koaxiální kabel má dobré přenosové parametry přibližně do 1 GHz, nad touto frekvencí roste útlum prudce.",
+      "leaked": true,
+      "id": "q_04771"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "media",
+      "question": "Index lomu je definován vzorcem (c = rychlost světla ve vakuu, v = rychlost světla v materiálu):",
+      "answers": [
+        {"id": "a", "text": "n = v/c", "correct": false},
+        {"id": "b", "text": "n = c/v", "correct": true},
+        {"id": "c", "text": "n = c × v", "correct": false},
+        {"id": "d", "text": "n = c − v", "correct": false}
+      ],
+      "explanation": "Index lomu n = c/v, kde c je rychlost světla ve vakuu a v je rychlost světla v daném materiálu. Vždy platí n ≥ 1.",
+      "leaked": true,
+      "id": "q_04772"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "ethernet",
+      "question": "Jaká je doba nutná k odvysílání 1 bitu u 10 Mb/s Ethernetu?",
+      "answers": [
+        {"id": "a", "text": "10 ns", "correct": false},
+        {"id": "b", "text": "1 ns", "correct": false},
+        {"id": "c", "text": "100 ns", "correct": true},
+        {"id": "d", "text": "1 μs", "correct": false}
+      ],
+      "explanation": "Při přenosové rychlosti 10 Mb/s trvá odvysílání jednoho bitu 1/10 000 000 s = 100 ns.",
+      "leaked": true,
+      "id": "q_04773"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "ethernet",
+      "question": "Jaká je doba nutná k odvysílání 1 bitu u 100 Mb/s Ethernetu?",
+      "answers": [
+        {"id": "a", "text": "100 ns", "correct": false},
+        {"id": "b", "text": "10 ns", "correct": true},
+        {"id": "c", "text": "1 ns", "correct": false},
+        {"id": "d", "text": "0,1 ns", "correct": false}
+      ],
+      "explanation": "Při přenosové rychlosti 100 Mb/s trvá odvysílání jednoho bitu 1/100 000 000 s = 10 ns.",
+      "leaked": true,
+      "id": "q_04774"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "ethernet",
+      "question": "Jaká je doba nutná k odvysílání 1 bitu u 1 Gb/s Ethernetu?",
+      "answers": [
+        {"id": "a", "text": "10 ns", "correct": false},
+        {"id": "b", "text": "0,1 ns", "correct": false},
+        {"id": "c", "text": "100 ns", "correct": false},
+        {"id": "d", "text": "1 ns", "correct": true}
+      ],
+      "explanation": "Při přenosové rychlosti 1 Gb/s trvá odvysílání jednoho bitu 1/1 000 000 000 s = 1 ns.",
+      "leaked": true,
+      "id": "q_04775"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "ethernet",
+      "question": "Jaká je doba nutná k odvysílání 1 bitu u 10 Gb/s Ethernetu?",
+      "answers": [
+        {"id": "a", "text": "1 ns", "correct": false},
+        {"id": "b", "text": "0,1 ns", "correct": true},
+        {"id": "c", "text": "0,01 ns", "correct": false},
+        {"id": "d", "text": "10 ns", "correct": false}
+      ],
+      "explanation": "Při přenosové rychlosti 10 Gb/s trvá odvysílání jednoho bitu 1/10 000 000 000 s = 0,1 ns.",
+      "leaked": true,
+      "id": "q_04776"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "ethernet",
+      "question": "Přímý kabel se používá u 10/100 Mb/s Ethernetu k propojení (bez autodetekce křížení):",
+      "answers": [
+        {"id": "a", "text": "PC-PC, switch-switch", "correct": false},
+        {"id": "b", "text": "PC-switch, hub-router, bridge-router", "correct": true},
+        {"id": "c", "text": "router-router, switch-hub", "correct": false},
+        {"id": "d", "text": "PC-router, switch-switch", "correct": false}
+      ],
+      "explanation": "Přímý (patch) kabel spojuje zařízení různých skupin: MDI (PC, router) s MDIX (switch, hub). Křížený kabel naopak spojuje zařízení stejné skupiny.",
+      "leaked": true,
+      "id": "q_04777"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "cabling",
+      "question": "Jaký obvyklý název má rozvodný panel v datovém rozvaděči?",
+      "answers": [
+        {"id": "a", "text": "Switch panel", "correct": false},
+        {"id": "b", "text": "Distribution board", "correct": false},
+        {"id": "c", "text": "Patch panel", "correct": true},
+        {"id": "d", "text": "Wiring panel", "correct": false}
+      ],
+      "explanation": "Patch panel (rozvodný panel) je pasivní prvek v datovém rozvaděči, který sdružuje zakončení kabelů ze strukturované kabeláže.",
+      "leaked": true,
+      "id": "q_04778"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "cabling",
+      "question": "Jaký obvyklý název má kabel propojující switch s rozvodným panelem v datovém rozvaděči?",
+      "answers": [
+        {"id": "a", "text": "Crossover kabel", "correct": false},
+        {"id": "b", "text": "Patch kabel", "correct": true},
+        {"id": "c", "text": "Trunk kabel", "correct": false},
+        {"id": "d", "text": "Backbone kabel", "correct": false}
+      ],
+      "explanation": "Patch kabel (záplatkový kabel) je krátký propojovací kabel v rozvaděči, typicky UTP/STP s konektory RJ-45.",
+      "leaked": true,
+      "id": "q_04779"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "cabling",
+      "question": "Jaký jiný název má datový rozvaděč (skříň) pro strukturovanou kabeláž?",
+      "answers": [
+        {"id": "a", "text": "HUB skříň", "correct": false},
+        {"id": "b", "text": "RACK", "correct": true},
+        {"id": "c", "text": "MDF box", "correct": false},
+        {"id": "d", "text": "IDF cabinet", "correct": false}
+      ],
+      "explanation": "Datový rozvaděč se standardně nazývá RACK (nebo rack skříň). Má standardizovanou šířku 19 palců a výška se měří v jednotkách U.",
+      "leaked": true,
+      "id": "q_04780"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "cabling",
+      "question": "Jaký nástroj se používá pro adjustáž vodičů TP do patch panelů a zásuvek?",
+      "answers": [
+        {"id": "a", "text": "Crimping nástroj (kleště)", "correct": false},
+        {"id": "b", "text": "Narážecí nástroj (punch-down tool)", "correct": true},
+        {"id": "c", "text": "Pájecí pistole", "correct": false},
+        {"id": "d", "text": "Sekáč na kabely", "correct": false}
+      ],
+      "explanation": "Narážecí nástroj (punch-down tool) zatlačí vodič do svorky IDC (Insulation Displacement Connector) v patch panelu nebo zásuvce.",
+      "leaked": true,
+      "id": "q_04781"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "cabling",
+      "question": "Křížený kabel se musí použít při propojení zařízení ze stejných skupin (bez autodetekce) u Ethernetu rychlosti:",
+      "answers": [
+        {"id": "a", "text": "pouze 10 Mb/s", "correct": false},
+        {"id": "b", "text": "1 Gb/s a výše", "correct": false},
+        {"id": "c", "text": "10 Mb/s a 100 Mb/s", "correct": true},
+        {"id": "d", "text": "100 Mb/s a 1 Gb/s", "correct": false}
+      ],
+      "explanation": "U 10BASE-T a 100BASE-TX je nutné použít křížený kabel pro propojení stejných skupin zařízení (PC-PC, switch-switch). Gigabitový Ethernet podporuje automatické křížení (Auto-MDIX).",
+      "leaked": true,
+      "id": "q_04782"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "cabling",
+      "question": "Který typ TP kabelu je ohebnější a lépe se s ním pracuje?",
+      "answers": [
+        {"id": "a", "text": "STP (stíněná kroucená dvojlinka)", "correct": false},
+        {"id": "b", "text": "FTP (fóliované páry)", "correct": false},
+        {"id": "c", "text": "UTP (nestíněná kroucená dvojlinka)", "correct": true},
+        {"id": "d", "text": "ScTP (opletené stínění)", "correct": false}
+      ],
+      "explanation": "UTP kabel nemá stínění, je proto tenčí, lehčí, flexibilnější a snáze se s ním pracuje při instalaci.",
+      "leaked": true,
+      "id": "q_04783"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "cabling",
+      "question": "Pokud jsou jednotlivé páry TP navzájem zkrouceny, celek je obalen stíněním a uložen v PVC, jde o typ:",
+      "answers": [
+        {"id": "a", "text": "UTP", "correct": false},
+        {"id": "b", "text": "FTP", "correct": false},
+        {"id": "c", "text": "STP", "correct": false},
+        {"id": "d", "text": "ScTP", "correct": true}
+      ],
+      "explanation": "ScTP (Screened Twisted Pair) má opletené stínění okolo všech párů dohromady. Páry nejsou stíněny samostatně, ale celý kabel je obalen stíněním.",
+      "leaked": true,
+      "id": "q_04784"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "dns",
+      "question": "DNS systém se skládá z těchto základních částí:",
+      "answers": [
+        {"id": "a", "text": "DNS serverů a DNS cache paměti", "correct": false},
+        {"id": "b", "text": "DNS resolverů a DNS serverů", "correct": false},
+        {"id": "c", "text": "DNS resolverů, DNS serverů, DNS cache paměti", "correct": true},
+        {"id": "d", "text": "DNS serverů, DHCP serverů a DNS proxy", "correct": false}
+      ],
+      "explanation": "DNS systém tvoří tři klíčové části: DNS resolvery (klientská část dotazování), DNS servery (autoritativní databáze) a DNS cache (mezipaměť pro urychlení dotazů).",
+      "leaked": true,
+      "id": "q_04785"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "dns",
+      "question": "DNS resolver zajišťuje:",
+      "answers": [
+        {"id": "a", "text": "autoritativní odpovědi na DNS dotazy", "correct": false},
+        {"id": "b", "text": "odesílání dotazů k DNS serverům", "correct": true},
+        {"id": "c", "text": "správu DNS zón", "correct": false},
+        {"id": "d", "text": "přidělování IP adres klientům", "correct": false}
+      ],
+      "explanation": "DNS resolver je klientská část DNS – odesílá dotazy k rekurzivním či autoritativním DNS serverům a vrací výsledek aplikaci.",
+      "leaked": true,
+      "id": "q_04786"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "dns",
+      "question": "DNS server zajišťuje:",
+      "answers": [
+        {"id": "a", "text": "přidělování IP adres v síti", "correct": false},
+        {"id": "b", "text": "řešení dotazů od resolverů, návrat vyřešeného dotazu", "correct": true},
+        {"id": "c", "text": "pouze ukládání záznamů do cache", "correct": false},
+        {"id": "d", "text": "šifrování DNS komunikace", "correct": false}
+      ],
+      "explanation": "DNS server přijímá dotazy od resolverů, provádí překlad doménových jmen na IP adresy a vrací výsledek dotazujícímu.",
+      "leaked": true,
+      "id": "q_04787"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "dns",
+      "question": "Kořenová doména DNS je označena znakem:",
+      "answers": [
+        {"id": "a", "text": "@ (zavináč)", "correct": false},
+        {"id": "b", "text": "/ (lomítko)", "correct": false},
+        {"id": "c", "text": ". (tečka)", "correct": true},
+        {"id": "d", "text": "# (mřížka)", "correct": false}
+      ],
+      "explanation": "Kořenová (root) doména DNS je označena tečkou (.) – je to nejvyšší úroveň hierarchie doménových jmen.",
+      "leaked": true,
+      "id": "q_04788"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "dns",
+      "question": "Každá doména v Internetu musí mít alespoň:",
+      "answers": [
+        {"id": "a", "text": "jeden DNS server", "correct": false},
+        {"id": "b", "text": "dva DNS servery (redundance)", "correct": true},
+        {"id": "c", "text": "tři DNS servery", "correct": false},
+        {"id": "d", "text": "čtyři DNS servery", "correct": false}
+      ],
+      "explanation": "RFC požaduje, aby každá doména měla minimálně dva DNS servery (primární a sekundární) pro zajištění redundance a dostupnosti.",
+      "leaked": true,
+      "id": "q_04789"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "dns",
+      "question": "Jednotlivé úrovně doménového jména v Internetu se oddělují:",
+      "answers": [
+        {"id": "a", "text": "čárkou", "correct": false},
+        {"id": "b", "text": "pomlčkou", "correct": false},
+        {"id": "c", "text": "tečkou", "correct": true},
+        {"id": "d", "text": "lomítkem", "correct": false}
+      ],
+      "leaked": true,
+      "id": "q_04790"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "dns",
+      "question": "Doména .cz v Internetu je doménou:",
+      "answers": [
+        {"id": "a", "text": "druhé úrovně (SLD)", "correct": false},
+        {"id": "b", "text": "kořenovou (root)", "correct": false},
+        {"id": "c", "text": "nejvyšší úrovně (TLD)", "correct": true},
+        {"id": "d", "text": "třetí úrovně", "correct": false}
+      ],
+      "explanation": ".cz je Top Level Domain (TLD) – doména nejvyšší úrovně spravovaná organizací CZ.NIC.",
+      "leaked": true,
+      "id": "q_04791"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "dns",
+      "question": "Pracovní stanice obsahuje:",
+      "answers": [
+        {"id": "a", "text": "DNS server i DNS resolver", "correct": false},
+        {"id": "b", "text": "DNS resolver (ne DNS server)", "correct": true},
+        {"id": "c", "text": "DNS server (ne DNS resolver)", "correct": false},
+        {"id": "d", "text": "DNS cache server", "correct": false}
+      ],
+      "explanation": "Na pracovní stanici (klientském PC) běží pouze DNS resolver – software, který odesílá dotazy. DNS server typicky provozuje ISP nebo správce sítě.",
+      "leaked": true,
+      "id": "q_04792"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "protocols",
+      "question": "V rozlehlé síti se v daném okamžiku šíří:",
+      "answers": [
+        {"id": "a", "text": "pouze jeden paket", "correct": false},
+        {"id": "b", "text": "více paketů současně", "correct": true},
+        {"id": "c", "text": "datagramy po jednom", "correct": false},
+        {"id": "d", "text": "pouze broadcastové rámce", "correct": false}
+      ],
+      "explanation": "Rozlehlá (packet-switched) síť umožňuje přenášet velké množství paketů od různých zdrojů současně – komutace paketů.",
+      "leaked": true,
+      "id": "q_04793"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "protocols",
+      "question": "V soustředěné síti se v daném okamžiku šíří:",
+      "answers": [
+        {"id": "a", "text": "více paketů současně", "correct": false},
+        {"id": "b", "text": "jeden paket", "correct": true},
+        {"id": "c", "text": "broadcast i unicast paralelně", "correct": false},
+        {"id": "d", "text": "neomezený počet rámců", "correct": false}
+      ],
+      "explanation": "V soustředěné (circuit-switched) síti je v daném okamžiku aktivní pouze jeden přenosový kanál (okruh) – přenáší se pouze jeden paket.",
+      "leaked": true,
+      "id": "q_04794"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "protocols",
+      "question": "Přenos dat pouze jedním směrem se nazývá:",
+      "answers": [
+        {"id": "a", "text": "poloduplexní (half-duplex)", "correct": false},
+        {"id": "b", "text": "fullduplexní (full-duplex)", "correct": false},
+        {"id": "c", "text": "simplexní", "correct": true},
+        {"id": "d", "text": "multiplexní", "correct": false}
+      ],
+      "explanation": "Simplexní přenos probíhá pouze jedním směrem (např. TV vysílání). Nelze přenášet data v opačném směru.",
+      "leaked": true,
+      "id": "q_04795"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "protocols",
+      "question": "Přenos dat oběma směry, ale ne současně, se nazývá:",
+      "answers": [
+        {"id": "a", "text": "simplexní", "correct": false},
+        {"id": "b", "text": "poloduplexní (half-duplex)", "correct": true},
+        {"id": "c", "text": "fullduplexní (full-duplex)", "correct": false},
+        {"id": "d", "text": "bidirektionální", "correct": false}
+      ],
+      "explanation": "Half-duplex umožňuje komunikaci oběma směry, ale ne ve stejný okamžik – v daný moment vysílá jen jedna strana (např. vysílačky, CSMA/CD).",
+      "leaked": true,
+      "id": "q_04796"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "protocols",
+      "question": "Za proxy serverem s NATem se mohou použít IP adresy:",
+      "answers": [
+        {"id": "a", "text": "pouze veřejné IP adresy", "correct": false},
+        {"id": "b", "text": "pouze privátní (RFC 1918) IP adresy", "correct": false},
+        {"id": "c", "text": "veřejné i neveřejné", "correct": true},
+        {"id": "d", "text": "pouze IPv6 adresy", "correct": false}
+      ],
+      "explanation": "NAT (Network Address Translation) překládá adresy, takže za proxy serverem s NATem mohou být jak veřejné, tak privátní IP adresy.",
+      "leaked": true,
+      "id": "q_04797"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "protocols",
+      "question": "Kolik bitů za sekundu lze teoreticky přenést frekvencí 1 Hz (nekódovaný signál)?",
+      "answers": [
+        {"id": "a", "text": "2 b/s", "correct": false},
+        {"id": "b", "text": "1 b/s", "correct": true},
+        {"id": "c", "text": "0,5 b/s", "correct": false},
+        {"id": "d", "text": "závisí na modulaci", "correct": false}
+      ],
+      "explanation": "Nekódovaný (binární) signál o frekvenci 1 Hz přenese 1 bit za sekundu. Nyquistův teorém: max. přenosová rychlost = 2 × šířka pásma pro binární signál.",
+      "leaked": true,
+      "id": "q_04798"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "protocols",
+      "question": "Přístupová metoda ALOHA patří do kategorie přístupu k médiu:",
+      "answers": [
+        {"id": "a", "text": "deterministický přístup", "correct": false},
+        {"id": "b", "text": "přístup s token předáváním", "correct": false},
+        {"id": "c", "text": "náhodný přístup", "correct": true},
+        {"id": "d", "text": "časový multiplex (TDMA)", "correct": false}
+      ],
+      "explanation": "ALOHA je jedna z prvních metod náhodného přístupu k médiu – stanice vysílají kdykoli a v případě kolize čekají náhodnou dobu.",
+      "leaked": true,
+      "id": "q_04799"
+    },
+    {
+      "type": "single",
+      "difficulty": "hard",
+      "category": "protocols",
+      "question": "Adresa protokolu NetBIOS se skládá:",
+      "answers": [
+        {"id": "a", "text": "z IP adresy a portu", "correct": false},
+        {"id": "b", "text": "ze jména NetBIOSu a NetBIOS Service Identifier (NSI)", "correct": true},
+        {"id": "c", "text": "z MAC adresy a pracovní skupiny", "correct": false},
+        {"id": "d", "text": "z UNC cesty a doménového jména", "correct": false}
+      ],
+      "explanation": "NetBIOS adresa sestává ze 16bajtového jména: prvních 15 bytů je jméno NetBIOS uzlu a 16. bajt je NSI (NetBIOS Service Identifier) určující typ služby.",
+      "leaked": true,
+      "id": "q_04800"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "ipv4",
+      "question": "Adresa 127.255.255.254 je adresa typu:",
+      "answers": [
+        {"id": "a", "text": "broadcast", "correct": false},
+        {"id": "b", "text": "veřejná unicast adresa", "correct": false},
+        {"id": "c", "text": "loopback", "correct": true},
+        {"id": "d", "text": "multicast", "correct": false}
+      ],
+      "explanation": "Celý rozsah 127.0.0.0/8 je vyhrazen pro loopback. Adresa 127.255.255.254 patří do tohoto rozsahu, tedy je loopback adresou.",
+      "leaked": true,
+      "id": "q_04801"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "ipv4",
+      "question": "Adresa ve třídě C 200.228.131.0/26 je adresa typu:",
+      "answers": [
+        {"id": "a", "text": "adresa broadcast", "correct": false},
+        {"id": "b", "text": "adresa subsítě", "correct": true},
+        {"id": "c", "text": "adresa počítače (host)", "correct": false},
+        {"id": "d", "text": "adresa sítě třídy C", "correct": false}
+      ],
+      "explanation": "Adresa 200.228.131.0/26 má nulové hostitelské bity (poslední dva bity čtvrtého bajtu jsou 00), tedy jde o adresu subsítě.",
+      "leaked": true,
+      "id": "q_04802"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "ipv4",
+      "question": "Adresa v třídě B 147.225.0.0/16 je adresa typu:",
+      "answers": [
+        {"id": "a", "text": "adresa broadcast", "correct": false},
+        {"id": "b", "text": "adresa počítače (host)", "correct": false},
+        {"id": "c", "text": "adresa sítě", "correct": true},
+        {"id": "d", "text": "adresa subsítě", "correct": false}
+      ],
+      "explanation": "147.225.0.0/16 – maska /16 odpovídá třídě B a hostitelská část je celá nulová, jde tedy o adresu sítě.",
+      "leaked": true,
+      "id": "q_04803"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "ipv4",
+      "question": "Třída A má v prvním bajtu zleva hodnoty:",
+      "answers": [
+        {"id": "a", "text": "0–127", "correct": false},
+        {"id": "b", "text": "1–127", "correct": true},
+        {"id": "c", "text": "1–126", "correct": false},
+        {"id": "d", "text": "128–191", "correct": false}
+      ],
+      "explanation": "Třída A zahrnuje adresy s prvním bajtem 1–127 (0.x.x.x je rezervováno, 127.x.x.x je loopback – ale je součástí rozsahu třídy A).",
+      "leaked": true,
+      "id": "q_04804"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "ipv4",
+      "question": "Kolik tříd IP adres verze 4 se používá k adresování jednotlivých PC?",
+      "answers": [
+        {"id": "a", "text": "2 (A, B)", "correct": false},
+        {"id": "b", "text": "3 (A, B, C)", "correct": true},
+        {"id": "c", "text": "4 (A, B, C, D)", "correct": false},
+        {"id": "d", "text": "5 (A, B, C, D, E)", "correct": false}
+      ],
+      "explanation": "K unicast adresování PC slouží třídy A, B a C. Třída D je pro multicast a třída E je experimentální.",
+      "leaked": true,
+      "id": "q_04805"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "terminology",
+      "question": "V kterém roce zahájil Internet komerční provoz v ČSFR?",
+      "answers": [
+        {"id": "a", "text": "1989", "correct": false},
+        {"id": "b", "text": "1991", "correct": false},
+        {"id": "c", "text": "1992", "correct": true},
+        {"id": "d", "text": "1995", "correct": false}
+      ],
+      "explanation": "Internet zahájil komerční provoz v ČSFR (Česko-Slovenské Federativní Republice) v roce 1992.",
+      "leaked": true,
+      "id": "q_04806"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "terminology",
+      "question": "Kdy byl zahájen vývoj protokolu TCP/IP?",
+      "answers": [
+        {"id": "a", "text": "1969", "correct": false},
+        {"id": "b", "text": "1973", "correct": true},
+        {"id": "c", "text": "1983", "correct": false},
+        {"id": "d", "text": "1978", "correct": false}
+      ],
+      "explanation": "Vývoj protokolu TCP/IP byl zahájen v roce 1973 Vintonem Cerfem a Robertem Kahnem. Plné nasazení v síti ARPANET proběhlo v roce 1983.",
+      "leaked": true,
+      "id": "q_04807"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "terminology",
+      "question": "Modulační rychlost se udává v:",
+      "answers": [
+        {"id": "a", "text": "b/s (bps)", "correct": false},
+        {"id": "b", "text": "Hz (hertz)", "correct": false},
+        {"id": "c", "text": "Bd (baudech)", "correct": true},
+        {"id": "d", "text": "dBm", "correct": false}
+      ],
+      "explanation": "Modulační rychlost (počet změn stavu signálu za sekundu) se udává v Baudech (Bd). Přenosová rychlost bitů závisí na počtu bitů na symbol.",
+      "leaked": true,
+      "id": "q_04808"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "terminology",
+      "question": "Přenosová rychlost se udává v:",
+      "answers": [
+        {"id": "a", "text": "Bd (baudech)", "correct": false},
+        {"id": "b", "text": "b/s (bps)", "correct": true},
+        {"id": "c", "text": "Hz (hertz)", "correct": false},
+        {"id": "d", "text": "dBm", "correct": false}
+      ],
+      "explanation": "Přenosová rychlost (počet bitů za sekundu) se udává v bitech za sekundu (b/s, bps).",
+      "leaked": true,
+      "id": "q_04809"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "terminology",
+      "question": "Zkratka GAN označuje:",
+      "answers": [
+        {"id": "a", "text": "globální bezdrátovou síť", "correct": false},
+        {"id": "b", "text": "celosvětovou síť (Global Area Network)", "correct": true},
+        {"id": "c", "text": "typ topologie sítě", "correct": false},
+        {"id": "d", "text": "Geographic Access Network", "correct": false}
+      ],
+      "explanation": "GAN = Global Area Network – celosvětová síť zahrnující celou zeměkouli (např. Internet je příkladem GAN).",
+      "leaked": true,
+      "id": "q_04810"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "terminology",
+      "question": "O homogenní síť se jedná, když:",
+      "answers": [
+        {"id": "a", "text": "všechny PC jsou od stejného výrobce hardwaru", "correct": false},
+        {"id": "b", "text": "síť používá pouze jeden typ kabeláže", "correct": false},
+        {"id": "c", "text": "všechny PC v síti mají stejný OS a přenosový protokol", "correct": true},
+        {"id": "d", "text": "síť je chráněna firewallem", "correct": false}
+      ],
+      "explanation": "Homogenní síť = síť, kde všechny stanice používají stejný operační systém a přenosový protokol. Heterogenní síť naopak obsahuje různé OS a protokoly.",
+      "leaked": true,
+      "id": "q_04811"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "terminology",
+      "question": "Síť označená jako CAN má typickou rozlehlost:",
+      "answers": [
+        {"id": "a", "text": "do 100 metrů (budova)", "correct": false},
+        {"id": "b", "text": "stovky metrů až jednotky km", "correct": true},
+        {"id": "c", "text": "desítky až stovky km", "correct": false},
+        {"id": "d", "text": "celá zeměkoule", "correct": false}
+      ],
+      "explanation": "CAN (Campus Area Network) pokrývá areál univerzity, průmyslového závodu nebo campusu – typicky stovky metrů až jednotky km.",
+      "leaked": true,
+      "id": "q_04812"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "subnetting",
+      "question": "Jaká je délka prefixu při dělení třídy B na čtvrtiny?",
+      "answers": [
+        {"id": "a", "text": "/17", "correct": false},
+        {"id": "b", "text": "/18", "correct": true},
+        {"id": "c", "text": "/19", "correct": false},
+        {"id": "d", "text": "/20", "correct": false}
+      ],
+      "explanation": "Třída B má prefix /16. Dělení na 4 části (čtvrtiny) přidá 2 bity do síťové části: 16 + 2 = /18.",
+      "leaked": true,
+      "id": "q_04813"
+    },
+    {
+      "type": "single",
+      "difficulty": "hard",
+      "category": "subnetting",
+      "question": "Na kolik subsítí lze maximálně rozdělit síť třídy C, aby v každé subsíti byly volné adresy pro PC?",
+      "answers": [
+        {"id": "a", "text": "128", "correct": false},
+        {"id": "b", "text": "32", "correct": false},
+        {"id": "c", "text": "64", "correct": true},
+        {"id": "d", "text": "256", "correct": false}
+      ],
+      "explanation": "Třída C má 8 hostitelských bitů. Maximální dělení s alespoň jednou použitelnou hostitelskou adresou je /30 (2 bity pro hostitele). To dává 2^6 = 64 subsítí.",
+      "leaked": true,
+      "id": "q_04814"
+    },
+    {
+      "type": "single",
+      "difficulty": "hard",
+      "category": "subnetting",
+      "question": "Jakou hodnotu má druhý bajt zleva v dekadické soustavě při dělení sítě třídy A na poloviny (½)?",
+      "answers": [
+        {"id": "a", "text": "64", "correct": false},
+        {"id": "b", "text": "128", "correct": true},
+        {"id": "c", "text": "192", "correct": false},
+        {"id": "d", "text": "255", "correct": false}
+      ],
+      "explanation": "Třída A má prefix /8. Dělení na ½ přidá 1 bit: maska /9. Maska /9 odpovídá 255.128.0.0 – druhý bajt masky je 128.",
+      "leaked": true,
+      "id": "q_04815"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "wifi",
+      "question": "O jakou hodnotu v dB má anténa větší zisk, je-li udáván v dBi oproti dBd?",
+      "answers": [
+        {"id": "a", "text": "0 dB (jsou ekvivalentní)", "correct": false},
+        {"id": "b", "text": "3 dB", "correct": false},
+        {"id": "c", "text": "2,15 dB", "correct": true},
+        {"id": "d", "text": "6 dB", "correct": false}
+      ],
+      "explanation": "dBi je zisk vůči izotropní anténě, dBd vůči půlvlnnému dipólu. Dipól má zisk 2,15 dBi, tedy: dBi = dBd + 2,15.",
+      "leaked": true,
+      "id": "q_04816"
+    },
+    {
+      "type": "single",
+      "difficulty": "hard",
+      "category": "wifi",
+      "question": "Jaký je správný vzorec pro výpočet výkonu v dBm?",
+      "answers": [
+        {"id": "a", "text": "dBm = 20 × log(P[W] / 0,001)", "correct": false},
+        {"id": "b", "text": "dBm = 10 × log(P[W] / 0,001)", "correct": true},
+        {"id": "c", "text": "dBm = 10 × log(P[mW])", "correct": false},
+        {"id": "d", "text": "dBm = P[mW] / 10", "correct": false}
+      ],
+      "explanation": "dBm = 10 × log₁₀(P[W] / 0,001) = 10 × log₁₀(P[mW]). Jde o výkon vztažený k referenční hodnotě 1 mW.",
+      "leaked": true,
+      "id": "q_04817"
     }
   ]
 }
