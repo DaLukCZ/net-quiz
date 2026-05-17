@@ -1281,6 +1281,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let _browseRevealed = {};
   let _browseAnswers = {};
   let _browseCatStart = {}; // catId → first index
+  let _browseAutoReveal = false;
 
   function startBrowseMode(questionsOverride) {
     const db = St.getDB();
@@ -1321,6 +1322,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     _rebindBtn('browseConfirmBtn', () => { _browseRevealed[_browseIdx] = true; _renderBrowseQuestion(); });
     _rebindBtn('browseJumpBtn', _browseJump);
 
+    const autoRevealBtn = U.el('browseAutoRevealToggle');
+    if (autoRevealBtn) {
+      const freshAR = autoRevealBtn.cloneNode(true);
+      autoRevealBtn.parentNode.replaceChild(freshAR, autoRevealBtn);
+      U.setToggle(freshAR, _browseAutoReveal);
+      freshAR.addEventListener('click', () => {
+        _browseAutoReveal = !_browseAutoReveal;
+        U.setToggle(freshAR, _browseAutoReveal);
+        _renderBrowseQuestion();
+      });
+    }
+
     const ji = U.el('browseJumpInput');
     if (ji) { const f = ji.cloneNode(true); ji.parentNode.replaceChild(f, ji); f.addEventListener('keydown', e => { if (e.key === 'Enter') _browseJump(); }); }
   }
@@ -1339,7 +1352,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!q) return;
     const db = St.getDB();
     const catLabel = db?.categories?.find(c => c.id === q.category)?.label || q.category || '';
-    const revealed = !!_browseRevealed[_browseIdx];
+    const revealed = _browseAutoReveal || !!_browseRevealed[_browseIdx];
+    if (_browseAutoReveal) _browseRevealed[_browseIdx] = true;
     const answer = _browseAnswers[_browseIdx];
 
     if (U.el('browseCatBadge')) U.el('browseCatBadge').textContent = catLabel;
@@ -1367,8 +1381,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const feedbackArea = U.el('browseFeedbackArea');
     if (feedbackArea) {
       if (revealed) {
-        feedbackArea.innerHTML = C.renderFeedback(QE.isCorrect(q, answer), q.explanation, q.type);
-        feedbackArea.classList.remove('hidden');
+        if (_browseAutoReveal && answer === undefined && q.type !== 'open') {
+          if (q.explanation) {
+            feedbackArea.innerHTML = `<div class="rounded-xl border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 p-4"><p class="text-sm text-slate-700 dark:text-slate-300">${U.escapeHtml(q.explanation)}</p></div>`;
+            feedbackArea.classList.remove('hidden');
+          } else { feedbackArea.innerHTML = ''; feedbackArea.classList.add('hidden'); }
+        } else {
+          feedbackArea.innerHTML = C.renderFeedback(QE.isCorrect(q, answer), q.explanation, q.type);
+          feedbackArea.classList.remove('hidden');
+        }
       } else { feedbackArea.innerHTML = ''; feedbackArea.classList.add('hidden'); }
     }
 
