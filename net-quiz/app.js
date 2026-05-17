@@ -412,6 +412,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       const bm = new Set(App.DB.getBookmarks());
       pool = pool.filter(q => bm.has(q.id));
     }
+    if (selSRS.includes('leaked')) {
+      pool = pool.filter(q => q.leaked === true);
+    }
 
     const total = pool.length;
     const isBrowse = document.querySelector('input[name="quizMode"]:checked')?.value === 'browse';
@@ -455,6 +458,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (selSRS.includes('bookmarked')) {
       const bm = new Set(App.DB.getBookmarks());
       pool = pool.filter(q => bm.has(q.id));
+    }
+    if (selSRS.includes('leaked')) {
+      pool = pool.filter(q => q.leaked === true);
     }
     if (!pool.length) { U.showToast('Žádné otázky pro zvolené filtry.', 'warning'); return; }
 
@@ -1277,11 +1283,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ── Browse mode ──────────────────────────────────────────────
 
   let _browseQs = [];
+  let _browseQsAll = [];
   let _browseIdx = 0;
   let _browseRevealed = {};
   let _browseAnswers = {};
   let _browseCatStart = {}; // catId → first index
   let _browseAutoReveal = false;
+  let _browseLeakedOnly = false;
 
   function startBrowseMode(questionsOverride) {
     const db = St.getDB();
@@ -1289,7 +1297,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (questionsOverride) {
       // Called from startQuiz with a pre-filtered+sorted pool
-      _browseQs = questionsOverride;
+      _browseQsAll = questionsOverride;
+      _browseQs = _browseLeakedOnly ? questionsOverride.filter(q => q.leaked) : questionsOverride;
       _browseIdx = 0;
       _browseRevealed = {};
       _browseAnswers = {};
@@ -1298,12 +1307,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       R.navigate('browse');
     } else {
       // Called from onEnter (sidebar click) — init only if empty
-      if (!_browseQs.length) {
+      if (!_browseQsAll.length) {
         const catOrder = (db.categories || []).map(c => c.id);
-        _browseQs = [...db.questions].sort((a, b) => {
+        _browseQsAll = [...db.questions].sort((a, b) => {
           const ai = catOrder.indexOf(a.category); const bi = catOrder.indexOf(b.category);
           return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi);
         });
+      }
+      if (!_browseQs.length) {
+        _browseQs = _browseLeakedOnly ? _browseQsAll.filter(q => q.leaked) : _browseQsAll;
         _browseCatStart = {};
         _browseQs.forEach((q, i) => { if (_browseCatStart[q.category] === undefined) _browseCatStart[q.category] = i; });
       }
@@ -1321,6 +1333,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     _rebindBtn('browseNextBtn', () => { if (_browseIdx < _browseQs.length - 1) { _browseIdx++; _renderBrowseQuestion(); _renderBrowseCatList(); } });
     _rebindBtn('browseConfirmBtn', () => { _browseRevealed[_browseIdx] = true; _renderBrowseQuestion(); });
     _rebindBtn('browseJumpBtn', _browseJump);
+
+    const leakedBtn = U.el('browseLeakedToggle');
+    if (leakedBtn) {
+      const freshL = leakedBtn.cloneNode(true);
+      leakedBtn.parentNode.replaceChild(freshL, leakedBtn);
+      U.setToggle(freshL, _browseLeakedOnly);
+      freshL.addEventListener('click', () => {
+        _browseLeakedOnly = !_browseLeakedOnly;
+        U.setToggle(freshL, _browseLeakedOnly);
+        _browseQs = _browseLeakedOnly ? _browseQsAll.filter(q => q.leaked) : [..._browseQsAll];
+        _browseIdx = 0;
+        _browseRevealed = {};
+        _browseAnswers = {};
+        _browseCatStart = {};
+        _browseQs.forEach((q, i) => { if (_browseCatStart[q.category] === undefined) _browseCatStart[q.category] = i; });
+        _renderBrowseQuestion();
+        _renderBrowseCatList();
+      });
+    }
 
     const autoRevealBtn = U.el('browseAutoRevealToggle');
     if (autoRevealBtn) {
@@ -1372,6 +1403,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         diffEl.classList.remove('hidden');
       } else diffEl.classList.add('hidden');
     }
+    const leakedEl = U.el('browseQLeaked');
+    if (leakedEl) leakedEl.classList.toggle('hidden', !q.leaked);
 
     if (U.el('browseQText')) U.el('browseQText').textContent = q.question;
 
