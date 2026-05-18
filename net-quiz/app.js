@@ -717,13 +717,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     _setText('resultScore', pct + '%');
     _setText('resultGrade', U.gradeLabel(pct));
     _setText('resultMeta', `${result.totalQuestions} otázek · ${U.formatTime(result.elapsedSeconds)} · ${result.mode === 'exam' ? 'Zkouška' : 'Studium'}`);
-    _setText('resultCorrect', result.correct);
+    _setText('resultCorrect', parseFloat(result.totalScore.toFixed(2)));
     _setText('resultWrong', result.wrong);
     _setText('resultSkipped', result.skipped);
 
     const review = U.el('resultReview');
     if (review) {
-      review.innerHTML = result.details.map((d, i) => C.resultReviewCard(d.question, d.answer, d.correct, i)).join('');
+      review.innerHTML = result.details.map((d, i) => C.resultReviewCard(d.question, d.answer, d.correct, i, d.score)).join('');
 
       const _openRatings = {}; // idx → points 0–5
       review.querySelectorAll('.open-self-rate').forEach(btn => {
@@ -742,15 +742,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             }`;
           });
 
-          // score: každá open otázka přispívá pts/5, jmenovatel roste s počtem ohodnocených
           const ratedCount = Object.keys(_openRatings).length;
-          const openAsCorrect = Object.values(_openRatings).reduce((s, p) => s + p / 5, 0);
-          const nonOpenScored = result.correct + result.wrong;
-          const totalScored = nonOpenScored + ratedCount;
-          const newPct = totalScored > 0 ? Math.round((result.correct + openAsCorrect) / totalScored * 100) : 0;
+          const openAsCorrect = Object.values(_openRatings).reduce((s, p) => s + p, 0);
+          const nonOpenAnswered = result.correct + result.wrong;
+          const totalDenominator = nonOpenAnswered + ratedCount;
+          const newTotal = result.totalScore + openAsCorrect;
+          const newPct = totalDenominator > 0 ? Math.round((newTotal / totalDenominator) * 100) : 0;
           _setText('resultScore', newPct + '%');
           _setText('resultGrade', U.gradeLabel(newPct));
-          _setText('resultCorrect', Math.round(result.correct + openAsCorrect * 10) / 10);
+          _setText('resultCorrect', parseFloat(newTotal.toFixed(2)));
         });
       });
     }

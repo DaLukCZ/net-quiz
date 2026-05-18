@@ -157,6 +157,34 @@ App.QuizEngine = (() => {
     return 'default';
   }
 
+  function scoreQuestion(question, answer) {
+    if (answer === undefined || answer === null || answer === '') return 0;
+    switch (question.type) {
+      case 'single':
+      case 'boolean':
+      case 'number':
+      case 'text':
+        return isCorrect(question, answer) ? 1 : 0;
+      case 'multi': {
+        const sel = Array.isArray(answer) ? answer : [];
+        const correctIndices = question.answers
+          .map((a, i) => a.correct ? i : -1)
+          .filter(i => i !== -1);
+        const numCorrect = correctIndices.length;
+        if (numCorrect === 0) return 0;
+        const pointPerCorrect = 1 / numCorrect;
+        let score = 0;
+        for (const i of sel) {
+          if (question.answers[i]?.correct) score += pointPerCorrect;
+          else score -= 0.5;
+        }
+        return Math.max(0, Math.min(1, score));
+      }
+      default:
+        return 0;
+    }
+  }
+
   function submit() {
     if (!_session) return null;
     clearInterval(_timerInterval);
@@ -165,6 +193,7 @@ App.QuizEngine = (() => {
     let correctCount = 0;
     let wrongCount = 0;
     let openCount = 0;
+    let totalScore = 0;
     const skippedCount = _session.skipped.size;
 
     const details = _session.questions.map((q, i) => {
@@ -172,17 +201,20 @@ App.QuizEngine = (() => {
       const answered = ans !== undefined;
       const skipped = _session.skipped.has(i);
       const correct = answered && !skipped ? isCorrect(q, ans) : null;
+      const qScore = answered && !skipped && q.type !== 'open' ? scoreQuestion(q, ans) : 0;
       const isOpen = q.type === 'open';
 
       if (isOpen && answered) openCount++;
       else if (correct === true) correctCount++;
       else if (correct === false) wrongCount++;
 
-      return { question: q, answer: ans, correct, skipped, flagged: _session.flagged.has(i), index: i };
+      if (!isOpen && answered && !skipped) totalScore += qScore;
+
+      return { question: q, answer: ans, correct, score: qScore, skipped, flagged: _session.flagged.has(i), index: i };
     });
 
     const scoreable = _session.questions.filter(q => q.type !== 'open').length;
-    const pct = scoreable > 0 ? Math.round((correctCount / scoreable) * 100) : 0;
+    const pct = scoreable > 0 ? Math.round((totalScore / scoreable) * 100) : 0;
 
     return {
       mode: _session.config.mode,
@@ -192,6 +224,7 @@ App.QuizEngine = (() => {
       wrong: wrongCount,
       skipped: skippedCount,
       openAnswered: openCount,
+      totalScore,
       elapsedSeconds: _session.elapsedSeconds,
       details,
       finishedAt: Date.now(),

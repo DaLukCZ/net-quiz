@@ -222,7 +222,7 @@ App.Components = (() => {
       </div>`;
   }
 
-  function resultReviewCard(q, answer, isCorrect, index) {
+  function resultReviewCard(q, answer, isCorrect, index, score) {
     const isOpen = q.type === 'open';
     const icon = isOpen
       ? `<span class="shrink-0 w-6 h-6 rounded-full bg-blue-400 text-white flex items-center justify-center text-xs font-bold">?</span>`
@@ -244,8 +244,12 @@ App.Components = (() => {
               <span class="text-xs text-slate-400">#${index + 1}</span>
               ${U.typeBadge(q.type)}
               ${q.category ? `<span class="text-xs text-orange-600 dark:text-orange-400 font-medium">${U.escapeHtml(q.category)}</span>` : ''}
+              ${!isOpen && score !== undefined ? `<span class="ml-auto text-xs font-bold px-2 py-0.5 rounded-full ${score === 1 ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300' : score > 0 ? 'bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300' : 'bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400'}">${parseFloat(score.toFixed(2))} / 1 b</span>` : ''}
             </div>
             <p class="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">${U.escapeHtml(q.question)}</p>
+            ${q.type !== 'open'
+              ? `<div class="mt-3 space-y-2">${renderAnswers(q, answer, true)}</div>`
+              : ''}
             ${isOpen && answer ? `<p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 bg-slate-50 dark:bg-gray-800 rounded-lg px-2.5 py-1.5 italic">"${U.escapeHtml(String(answer))}"</p>` : ''}
             ${modelBullets ? `
               <div class="mt-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg px-3 py-2 border border-blue-100 dark:border-blue-800">
@@ -256,9 +260,9 @@ App.Components = (() => {
               </div>` : ''}
             ${isOpen && answer != null ? `
               <div class="mt-2.5 open-rate-group" data-idx="${index}">
-                <p class="text-xs text-slate-400 dark:text-slate-500 mb-1.5">Ohodnoť svou odpověď (0–5 bodů):</p>
+                <p class="text-xs text-slate-400 dark:text-slate-500 mb-1.5">Ohodnoť svou odpověď (0–1 bod):</p>
                 <div class="flex gap-1.5">
-                  ${[0,1,2,3,4,5].map(p => `<button class="open-self-rate flex-1 text-xs font-bold py-1.5 rounded-lg border-2 border-slate-300 dark:border-gray-600 text-slate-500 dark:text-slate-400 hover:border-orange-400 hover:text-orange-600 transition-colors" data-idx="${index}" data-pts="${p}">${p}</button>`).join('')}
+                  ${[0, 0.2, 0.4, 0.6, 0.8, 1].map(p => `<button class="open-self-rate flex-1 text-xs font-bold py-1.5 rounded-lg border-2 border-slate-300 dark:border-gray-600 text-slate-500 dark:text-slate-400 hover:border-orange-400 hover:text-orange-600 transition-colors" data-idx="${index}" data-pts="${p}">${p}</button>`).join('')}
                 </div>
               </div>` : ''}
             ${q.explanation ? `<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 italic">${U.escapeHtml(q.explanation)}</p>` : ''}
