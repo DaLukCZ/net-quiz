@@ -18446,14 +18446,14 @@
       "difficulty": "easy",
       "category": "images",
       "question": "Co je na obrázku?",
-      "image": "../images/vertikální prutová anténa.jpg",
+      "image": "../images/anténa všesměrová.jpg",
       "answers": [
-        {"id": "a", "text": "Vertikální prutová anténa", "correct": true},
+        {"id": "a", "text": "Všesměrová anténa /", "correct": true},
         {"id": "b", "text": "Dipólová anténa", "correct": false},
         {"id": "c", "text": "Yagi anténa", "correct": false},
         {"id": "d", "text": "Parabolická anténa", "correct": false}
       ],
-      "explanation": "Vertikální prutová anténa (omnidirectionální) — typicky používaná jako přístupový bod Wi-Fi nebo mobilní anténa. Vyzařuje rovnoměrně do všech stran v horizontální rovině.",
+      "explanation": "Prostě je no - https://www.maxlink.cz/cs/maxlink-antena-vsesmerova-8dbi-24ghz-500/product",
       "id": "q_04824"
     },
     {
