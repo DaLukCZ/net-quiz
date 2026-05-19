@@ -22,7 +22,7 @@ Leaknuté otázky - ale nemusí být všechny správně nebo aktuální.
 
 ### 2. Projít všechny otázky v appce
 
-Ideálně přes **Procházení**, ať si projdeš i otázky, které by se v testech nemusely objevit.
+Ideálně přes **Procházení**, ať si projdeš i otázky, které by se v testech mohly objevit.
 
 ### 3. Udělat pár zkušebních testů
 
