@@ -94,8 +94,8 @@ Pokud ti appka pomohla, můžeš poslat pár korun na podporu projektu xdd
 
 ## Dashboard
 
-<img src="./screenshots/dashboard.jpg" width="50%">
+<img src="./screenshots/dashboard.jpg" width="100%">
 
 ## Procházet otázky
 
-<img src="./screenshots/browse-questions.jpg" width="50%">
+<img src="./screenshots/browse-questions.jpg" width="100%">
