@@ -53,8 +53,8 @@ Zatím rozpracované - doplním, až bude hotový kvíz pro weby.
 
 2. Ve složce `net-quiz` spusť:
 
-```bat
-NetQuiz.bat
+```py
+start.py
 ```
 
 3. Jestli se neotevřelo autmaticky, tak otevři:
