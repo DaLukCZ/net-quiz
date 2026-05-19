@@ -89,3 +89,13 @@ Pokud ti appka pomohla, můžeš poslat pár korun na podporu projektu xdd
 ```txt
 2081256014/3030
 ```
+
+# Ukázky
+
+## Dashboard
+
+<img src="./screenshots/dashboard.jpg" width="50%">
+
+## Procházet otázky
+
+<img src="./screenshots/browse-questions.jpg" width="50%">
