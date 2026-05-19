@@ -2,9 +2,8 @@
   "meta": {
     "title": "Počítačové sítě",
     "version": 15,
-    "questionCount": 771,
-    "uniqueQuestions": true,
-    "leakedCount": 485
+    "questionCount": 800,
+    "uniqueQuestions": true
   },
   "categories": [
     {
@@ -66,6 +65,10 @@
     {
       "id": "number_systems",
       "label": "Číselné soustavy"
+    },
+    {
+      "id": "images",
+      "label": "Obrazky"
     }
   ],
   "questions": [
@@ -97,8 +100,7 @@
         }
       ],
       "explanation": "IP adresy používá síťová vrstva.",
-      "id": "q_00001",
-      "leaked": true
+      "id": "q_00001"
     },
     {
       "type": "single",
@@ -158,8 +160,7 @@
         }
       ],
       "explanation": "802.11g má maximálně 54 Mb/s.",
-      "id": "q_00003",
-      "leaked": true
+      "id": "q_00003"
     },
     {
       "type": "single",
@@ -189,8 +190,7 @@
         }
       ],
       "explanation": "TCP je spojovaný protokol.",
-      "id": "q_00004",
-      "leaked": true
+      "id": "q_00004"
     },
     {
       "type": "single",
@@ -221,8 +221,7 @@
         }
       ],
       "explanation": "Model OSI má 7 vrstev: fyzická, linková, síťová, transportní, relační, prezentační a aplikační.",
-      "id": "q_00005",
-      "leaked": true
+      "id": "q_00005"
     },
     {
       "type": "single",
@@ -253,8 +252,7 @@
         }
       ],
       "explanation": "Fyzická vrstva (1.) přenáší bity po přenosovém médiu.",
-      "id": "q_00006",
-      "leaked": true
+      "id": "q_00006"
     },
     {
       "type": "single",
@@ -285,8 +283,7 @@
         }
       ],
       "explanation": "Router pracuje na 3. (síťové) vrstvě OSI a směruje pakety na základě IP adres.",
-      "id": "q_00007",
-      "leaked": true
+      "id": "q_00007"
     },
     {
       "type": "single",
@@ -317,8 +314,7 @@
         }
       ],
       "explanation": "Switch pracuje na 2. (linkové) vrstvě OSI a přeposílá rámce na základě MAC adres.",
-      "id": "q_00008",
-      "leaked": true
+      "id": "q_00008"
     },
     {
       "type": "single",
@@ -349,8 +345,7 @@
         }
       ],
       "explanation": "Hub (opakovač) pracuje na 1. (fyzické) vrstvě OSI – pouze zesiluje a přeposílá bity.",
-      "id": "q_00009",
-      "leaked": true
+      "id": "q_00009"
     },
     {
       "type": "single",
@@ -381,8 +376,7 @@
         }
       ],
       "explanation": "Gateway pracuje na 7. (aplikační) vrstvě OSI – převádí protokoly mezi různými sítěmi.",
-      "id": "q_00010",
-      "leaked": true
+      "id": "q_00010"
     },
     {
       "type": "single",
@@ -413,8 +407,7 @@
         }
       ],
       "explanation": "TCP pracuje na 4. (transportní) vrstvě OSI.",
-      "id": "q_00011",
-      "leaked": true
+      "id": "q_00011"
     },
     {
       "type": "single",
@@ -445,8 +438,7 @@
         }
       ],
       "explanation": "Při každém průchodu routerem se hodnota TTL zmenší o 1. Při dosažení hodnoty 0 je paket zahozen.",
-      "id": "q_00012",
-      "leaked": true
+      "id": "q_00012"
     },
     {
       "type": "single",
@@ -477,8 +469,7 @@
         }
       ],
       "explanation": "DHCP (Dynamic Host Configuration Protocol) přiděluje IP adresy dynamicky.",
-      "id": "q_00013",
-      "leaked": true
+      "id": "q_00013"
     },
     {
       "type": "single",
@@ -509,8 +500,7 @@
         }
       ],
       "explanation": "ARP (Address Resolution Protocol) překládá IP adresy na MAC adresy.",
-      "id": "q_00014",
-      "leaked": true
+      "id": "q_00014"
     },
     {
       "type": "single",
@@ -541,8 +531,7 @@
         }
       ],
       "explanation": "HTTP používá TCP port 80. HTTPS používá port 443.",
-      "id": "q_00015",
-      "leaked": true
+      "id": "q_00015"
     },
     {
       "type": "single",
@@ -573,8 +562,7 @@
         }
       ],
       "explanation": "SMTP (odesílání pošty) používá port 25.",
-      "id": "q_00016",
-      "leaked": true
+      "id": "q_00016"
     },
     {
       "type": "single",
@@ -605,8 +593,7 @@
         }
       ],
       "explanation": "Router zahodí paket a odešle ICMP Time Exceeded, jakmile TTL dosáhne hodnoty 0.",
-      "id": "q_00017",
-      "leaked": true
+      "id": "q_00017"
     },
     {
       "type": "single",
@@ -637,8 +624,7 @@
         }
       ],
       "explanation": "Třída C má 24 síťových bitů, tedy masku 255.255.255.0 (/24).",
-      "id": "q_00018",
-      "leaked": true
+      "id": "q_00018"
     },
     {
       "type": "single",
@@ -669,8 +655,7 @@
         }
       ],
       "explanation": "Třída B: 128.0.0.0 – 191.255.255.255. Adresa 172.16.0.1 patří do třídy B.",
-      "id": "q_00019",
-      "leaked": true
+      "id": "q_00019"
     },
     {
       "type": "single",
@@ -701,8 +686,7 @@
         }
       ],
       "explanation": "Třída A: 1.0.0.0 – 126.255.255.255. Adresa 10.0.0.1 je privátní adresa třídy A.",
-      "id": "q_00020",
-      "leaked": true
+      "id": "q_00020"
     },
     {
       "type": "single",
@@ -733,8 +717,7 @@
         }
       ],
       "explanation": "255.255.255.255 je omezený broadcast (limited broadcast) – doručuje se všem zařízením v místní síti.",
-      "id": "q_00021",
-      "leaked": true
+      "id": "q_00021"
     },
     {
       "type": "single",
@@ -765,8 +748,7 @@
         }
       ],
       "explanation": "/26 vytváří bloky po 64: .0, .64, .128, .192. Adresa .64 má všechny bity hostů nulové – jde o adresu subsítě.",
-      "id": "q_00022",
-      "leaked": true
+      "id": "q_00022"
     },
     {
       "type": "single",
@@ -797,8 +779,7 @@
         }
       ],
       "explanation": "Adresa 0.0.0.0 se používá jako zdrojová adresa, když zařízení ještě nezná svou IP (např. při DHCP Discover).",
-      "id": "q_00023",
-      "leaked": true
+      "id": "q_00023"
     },
     {
       "type": "single",
@@ -829,8 +810,7 @@
         }
       ],
       "explanation": "2^8 – 2 = 256 – 2 = 254 použitelných hostů (/24 má 8 bitů pro hostu).",
-      "id": "q_00024",
-      "leaked": true
+      "id": "q_00024"
     },
     {
       "type": "single",
@@ -861,8 +841,7 @@
         }
       ],
       "explanation": "2^4 – 2 = 16 – 2 = 14 použitelných hostů (/28 ponechává 4 bity pro hosty).",
-      "id": "q_00025",
-      "leaked": true
+      "id": "q_00025"
     },
     {
       "type": "single",
@@ -893,8 +872,7 @@
         }
       ],
       "explanation": "Vypůjčením n bitů vznikne 2^n subsítí. 2^3 = 8 subsítí.",
-      "id": "q_00026",
-      "leaked": true
+      "id": "q_00026"
     },
     {
       "type": "single",
@@ -925,8 +903,7 @@
         }
       ],
       "explanation": "2^4 = 16 subsítí. Každá subsíť bude mít 2^4 – 2 = 14 použitelných hostů.",
-      "id": "q_00027",
-      "leaked": true
+      "id": "q_00027"
     },
     {
       "type": "single",
@@ -957,8 +934,7 @@
         }
       ],
       "explanation": "/28: poslední oktet = 11110000 = 128+64+32+16 = 240. Maska: 255.255.255.240.",
-      "id": "q_00028",
-      "leaked": true
+      "id": "q_00028"
     },
     {
       "type": "single",
@@ -989,8 +965,7 @@
         }
       ],
       "explanation": "2^2 – 2 = 4 – 2 = 2 použitelné hostu. /30 se typicky používá pro point-to-point linky.",
-      "id": "q_00029",
-      "leaked": true
+      "id": "q_00029"
     },
     {
       "type": "single",
@@ -1021,8 +996,7 @@
         }
       ],
       "explanation": "Nejkratší rámec u 10 Mb/s i 100 Mb/s Ethernetu má délku 512 bitů (slot time).",
-      "id": "q_00030",
-      "leaked": true
+      "id": "q_00030"
     },
     {
       "type": "single",
@@ -1053,8 +1027,7 @@
         }
       ],
       "explanation": "U Gigabit Ethernetu byl slot time rozšířen na 4096 bitů kvůli zachování CSMA/CD na delší vzdálenosti.",
-      "id": "q_00031",
-      "leaked": true
+      "id": "q_00031"
     },
     {
       "type": "single",
@@ -1085,8 +1058,7 @@
         }
       ],
       "explanation": "1000BASE-T (Gigabit Ethernet) využívá všechny 4 páry kroucené dvojlinky.",
-      "id": "q_00032",
-      "leaked": true
+      "id": "q_00032"
     },
     {
       "type": "single",
@@ -1117,8 +1089,7 @@
         }
       ],
       "explanation": "100BASE-TX využívá 2 páry (jeden pro vysílání, druhý pro příjem).",
-      "id": "q_00033",
-      "leaked": true
+      "id": "q_00033"
     },
     {
       "type": "single",
@@ -1149,8 +1120,7 @@
         }
       ],
       "explanation": "Ethernet (IEEE 802.3) používá přístupovou metodu CSMA/CD (Carrier Sense Multiple Access / Collision Detection).",
-      "id": "q_00034",
-      "leaked": true
+      "id": "q_00034"
     },
     {
       "type": "single",
@@ -1181,8 +1151,7 @@
         }
       ],
       "explanation": "V ČR je pásmo 2,4 GHz rozděleno do 13 kanálů šíře 20 MHz.",
-      "id": "q_00035",
-      "leaked": true
+      "id": "q_00035"
     },
     {
       "type": "single",
@@ -1213,8 +1182,7 @@
         }
       ],
       "explanation": "WPA3 je aktuálně nejsilnější šifrovací standard pro Wi-Fi sítě. WEP je zastaralý a snadno prolomitelný.",
-      "id": "q_00036",
-      "leaked": true
+      "id": "q_00036"
     },
     {
       "type": "single",
@@ -1245,8 +1213,7 @@
         }
       ],
       "explanation": "V ČR se doporučují kanály 1, 7 a 13 pro minimální překryv v pásmu 2,4 GHz.",
-      "id": "q_00037",
-      "leaked": true
+      "id": "q_00037"
     },
     {
       "type": "single",
@@ -1277,8 +1244,7 @@
         }
       ],
       "explanation": "Wi-Fi (IEEE 802.11) používá CSMA/CA (Collision Avoidance) – nelze detekovat kolize jako u Ethernetu.",
-      "id": "q_00038",
-      "leaked": true
+      "id": "q_00038"
     },
     {
       "type": "single",
@@ -1309,8 +1275,7 @@
         }
       ],
       "explanation": "Koaxiální kabel pro TV rozvody má impedanci 75 Ohm. Pro Wi-Fi a Ethernet (10Base2) se používá 50 Ohm.",
-      "id": "q_00039",
-      "leaked": true
+      "id": "q_00039"
     },
     {
       "type": "single",
@@ -1341,8 +1306,7 @@
         }
       ],
       "explanation": "9/125 označuje jednovidové (single-mode) vlákno s jádrem 9 µm. Mnohavidové je 50/125 nebo 62,5/125.",
-      "id": "q_00040",
-      "leaked": true
+      "id": "q_00040"
     },
     {
       "type": "single",
@@ -1373,8 +1337,7 @@
         }
       ],
       "explanation": "Maximální přenosová rychlost jedním optickým vláknem na jedné vlnové délce je 100 Gb/s.",
-      "id": "q_00041",
-      "leaked": true
+      "id": "q_00041"
     },
     {
       "type": "single",
@@ -1405,8 +1368,7 @@
         }
       ],
       "explanation": "Kroucená dvojlinka (TP) pro LAN má impedanci 100 Ohm.",
-      "id": "q_00042",
-      "leaked": true
+      "id": "q_00042"
     },
     {
       "type": "single",
@@ -1437,8 +1399,7 @@
         }
       ],
       "explanation": "Link-local adresy IPv6 mají prefix FE80::/10. Jsou platné pouze v rámci jednoho segmentu sítě.",
-      "id": "q_00043",
-      "leaked": true
+      "id": "q_00043"
     },
     {
       "type": "single",
@@ -1469,8 +1430,7 @@
         }
       ],
       "explanation": "Loopback adresa IPv6 je ::1 (ekvivalent 127.0.0.1 v IPv4).",
-      "id": "q_00044",
-      "leaked": true
+      "id": "q_00044"
     },
     {
       "type": "single",
@@ -1501,8 +1461,7 @@
         }
       ],
       "explanation": "Router rozděluje broadcastové domény a směruje pakety mezi různými sítěmi na základě IP adres.",
-      "id": "q_00045",
-      "leaked": true
+      "id": "q_00045"
     },
     {
       "type": "single",
@@ -1533,8 +1492,7 @@
         }
       ],
       "explanation": "Současné verze Ethernetu (100BASE-TX, 1000BASE-T) fyzicky používají topologii hvězda se switchem v centru.",
-      "id": "q_00046",
-      "leaked": true
+      "id": "q_00046"
     },
     {
       "type": "single",
@@ -1565,8 +1523,7 @@
         }
       ],
       "explanation": "Ethernet logicky funguje jako sběrnice – všechny stanice sdílejí přenosové médium (i když fyzicky jde o hvězdu).",
-      "id": "q_00047",
-      "leaked": true
+      "id": "q_00047"
     },
     {
       "type": "single",
@@ -1597,8 +1554,7 @@
         }
       ],
       "explanation": "IEEE 802.11n (Wi-Fi 4) dosahuje max. 600 Mb/s při použití 4×4 MIMO a 40 MHz kanálů.",
-      "id": "q_00048",
-      "leaked": true
+      "id": "q_00048"
     },
     {
       "type": "single",
@@ -1629,8 +1585,7 @@
         }
       ],
       "explanation": "Router a routing switch (L3 switch) směrují data na základě IP adres (adresy síťového protokolu).",
-      "id": "q_00049",
-      "leaked": true
+      "id": "q_00049"
     },
     {
       "type": "multi",
@@ -1660,8 +1615,7 @@
         }
       ],
       "id": "q_01001",
-      "explanation": "Síťová vrstva (L3) zajišťuje směrování paketů pomocí IP adres. Switch (L2) a hub (L1) pracují na nižších vrstvách.",
-      "leaked": true
+      "explanation": "Síťová vrstva (L3) zajišťuje směrování paketů pomocí IP adres. Switch (L2) a hub (L1) pracují na nižších vrstvách."
     },
     {
       "type": "multi",
@@ -1691,8 +1645,7 @@
         }
       ],
       "id": "q_01002",
-      "explanation": "Ethernet (IEEE 802.3) pracuje na L1 (fyzická) i L2 (linková). Wi-Fi (802.11) je na L1/L2, IP na L3, TCP na L4.",
-      "leaked": true
+      "explanation": "Ethernet (IEEE 802.3) pracuje na L1 (fyzická) i L2 (linková). Wi-Fi (802.11) je na L1/L2, IP na L3, TCP na L4."
     },
     {
       "type": "multi",
@@ -1723,8 +1676,7 @@
         }
       ],
       "explanation": "Fyzické topologie jsou: sběrnice, hvězda, kruh, strom, mesh. CSMA/CD je přístupová metoda, ne topologie.",
-      "id": "q_01003",
-      "leaked": true
+      "id": "q_01003"
     },
     {
       "type": "multi",
@@ -1755,8 +1707,7 @@
         }
       ],
       "explanation": "Na transportní vrstvě (4.) pracují TCP a UDP. ICMP a IP pracují na síťové vrstvě (3.).",
-      "id": "q_01004",
-      "leaked": true
+      "id": "q_01004"
     },
     {
       "type": "multi",
@@ -1818,8 +1769,7 @@
         }
       ],
       "explanation": "802.11b a 802.11g pracují pouze na 2,4 GHz. 802.11a pouze na 5 GHz. 802.11n podporuje obě pásma.",
-      "id": "q_01006",
-      "leaked": true
+      "id": "q_01006"
     },
     {
       "type": "multi",
@@ -1850,8 +1800,7 @@
         }
       ],
       "explanation": "127.x.x.x = loopback, 169.254.x.x = APIPA, 255.255.255.255 = omezený broadcast. 8.8.8.8 je veřejná IP.",
-      "id": "q_01007",
-      "leaked": true
+      "id": "q_01007"
     },
     {
       "type": "multi",
@@ -1882,8 +1831,7 @@
         }
       ],
       "explanation": "Switch a bridge pracují na 2. (linkové) vrstvě. Hub je na vrstvě 1, router na vrstvě 3.",
-      "id": "q_01008",
-      "leaked": true
+      "id": "q_01008"
     },
     {
       "type": "multi",
@@ -1914,8 +1862,7 @@
         }
       ],
       "explanation": "FTP používá port 21 pro řídící spojení a port 20 pro datový přenos.",
-      "id": "q_01009",
-      "leaked": true
+      "id": "q_01009"
     },
     {
       "type": "multi",
@@ -1946,8 +1893,7 @@
         }
       ],
       "explanation": "Pro 1 Gb/s Ethernet je minimem Cat 5e. Cat 6, 6A a 7 jsou také vhodné. Cat 3 pouze pro 10 Mb/s.",
-      "id": "q_01010",
-      "leaked": true
+      "id": "q_01010"
     },
     {
       "type": "boolean",
@@ -1956,8 +1902,7 @@
       "question": "IPv6 má 128 bitů?",
       "correct": true,
       "id": "q_01361",
-      "explanation": "IPv6 adresa má 128 bitů (oproti 32 bitům IPv4).",
-      "leaked": true
+      "explanation": "IPv6 adresa má 128 bitů (oproti 32 bitům IPv4)."
     },
     {
       "type": "boolean",
@@ -1966,8 +1911,7 @@
       "question": "Switch pracuje na 2. vrstvě OSI?",
       "correct": true,
       "id": "q_01362",
-      "explanation": "Switch pracuje na 2. vrstvě OSI (linková vrstva) — přeposílá rámce podle MAC adres.",
-      "leaked": true
+      "explanation": "Switch pracuje na 2. vrstvě OSI (linková vrstva) — přeposílá rámce podle MAC adres."
     },
     {
       "type": "boolean",
@@ -1976,8 +1920,7 @@
       "question": "Hub rozděluje broadcast domény?",
       "correct": false,
       "id": "q_01363",
-      "explanation": "Hub nerozlišuje domény — všechny porty sdílejí jednu broadcast i kolizní doménu. Broadcast domény odděluje router.",
-      "leaked": true
+      "explanation": "Hub nerozlišuje domény — všechny porty sdílejí jednu broadcast i kolizní doménu. Broadcast domény odděluje router."
     },
     {
       "type": "boolean",
@@ -1986,8 +1929,7 @@
       "question": "802.11b používá pásmo 2.4 GHz?",
       "correct": true,
       "id": "q_01364",
-      "explanation": "IEEE 802.11b pracuje v pásmu 2,4 GHz (max 11 Mbps).",
-      "leaked": true
+      "explanation": "IEEE 802.11b pracuje v pásmu 2,4 GHz (max 11 Mbps)."
     },
     {
       "type": "boolean",
@@ -1996,8 +1938,7 @@
       "question": "127.0.0.1 je loopback adresa?",
       "correct": true,
       "id": "q_01365",
-      "explanation": "127.0.0.1 je standardní IPv4 loopback adresa (testuje síťový stack lokálního zařízení).",
-      "leaked": true
+      "explanation": "127.0.0.1 je standardní IPv4 loopback adresa (testuje síťový stack lokálního zařízení)."
     },
     {
       "type": "boolean",
@@ -2007,8 +1948,7 @@
       "question": "Router pracuje na síťové (3.) vrstvě OSI?",
       "correct": true,
       "explanation": "Router pracuje na síťové vrstvě (L3) OSI — směruje pakety na základě IP adres.",
-      "id": "q_01366",
-      "leaked": true
+      "id": "q_01366"
     },
     {
       "type": "boolean",
@@ -2018,8 +1958,7 @@
       "question": "UDP je spolehlivý přenosový protokol?",
       "correct": false,
       "explanation": "UDP je nespojový protokol bez záruky doručení — tvrzení je NEPRAVDIVÉ.",
-      "id": "q_01367",
-      "leaked": true
+      "id": "q_01367"
     },
     {
       "type": "boolean",
@@ -2029,8 +1968,7 @@
       "question": "TCP používá three-way handshake pro navázání spojení?",
       "correct": true,
       "explanation": "TCP 3-way handshake: SYN → SYN-ACK → ACK.",
-      "id": "q_01368",
-      "leaked": true
+      "id": "q_01368"
     },
     {
       "type": "boolean",
@@ -2040,8 +1978,7 @@
       "question": "DNS používá port 53?",
       "correct": true,
       "explanation": "DNS používá UDP (a TCP pro velké odpovědi) na portu 53.",
-      "id": "q_01369",
-      "leaked": true
+      "id": "q_01369"
     },
     {
       "type": "boolean",
@@ -2051,8 +1988,7 @@
       "question": "HTTP používá port 443?",
       "correct": false,
       "explanation": "HTTP používá port 80; HTTPS (šifrovaný HTTP) používá port 443 — tvrzení je NEPRAVDIVÉ.",
-      "id": "q_01370",
-      "leaked": true
+      "id": "q_01370"
     },
     {
       "type": "boolean",
@@ -2062,8 +1998,7 @@
       "question": "CSMA/CD se používá v IEEE 802.11 Wi-Fi sítích?",
       "correct": false,
       "explanation": "Wi-Fi (IEEE 802.11) používá CSMA/CA, nikoli CSMA/CD (které patří Ethernetu) — NEPRAVDIVÉ.",
-      "id": "q_01371",
-      "leaked": true
+      "id": "q_01371"
     },
     {
       "type": "boolean",
@@ -2073,8 +2008,7 @@
       "question": "Optický kabel je náchylný na elektromagnetické rušení (EMS)?",
       "correct": false,
       "explanation": "Optický kabel přenáší světlo, nikoli elektrický signál — je imunní vůči elektromagnetickému rušení — NEPRAVDIVÉ.",
-      "id": "q_01372",
-      "leaked": true
+      "id": "q_01372"
     },
     {
       "type": "boolean",
@@ -2084,8 +2018,7 @@
       "question": "Switch odděluje kolizní domény?",
       "correct": true,
       "explanation": "Každý port switche tvoří vlastní kolizní doménu — tvrzení je PRAVDIVÉ.",
-      "id": "q_01373",
-      "leaked": true
+      "id": "q_01373"
     },
     {
       "type": "boolean",
@@ -2095,8 +2028,7 @@
       "question": "Hub odděluje kolizní domény?",
       "correct": false,
       "explanation": "Hub všechny porty spojuje do jedné kolizní domény — neoddděluje je — NEPRAVDIVÉ.",
-      "id": "q_01374",
-      "leaked": true
+      "id": "q_01374"
     },
     {
       "type": "boolean",
@@ -2106,8 +2038,7 @@
       "question": "Maska /24 odpovídá hodnotě 255.255.255.0?",
       "correct": true,
       "explanation": "Maska /24 = 24 jedniček = 255.255.255.0 — PRAVDIVÉ.",
-      "id": "q_01375",
-      "leaked": true
+      "id": "q_01375"
     },
     {
       "type": "boolean",
@@ -2117,8 +2048,7 @@
       "question": "ARP překládá MAC adresy na ip adresy?",
       "correct": false,
       "explanation": "ARP překládá IP adresy na MAC adresy (ne opačně) — tvrzení je NEPRAVDIVÉ.",
-      "id": "q_01376",
-      "leaked": true
+      "id": "q_01376"
     },
     {
       "type": "boolean",
@@ -2128,8 +2058,7 @@
       "question": "IEEE 802.11g pracuje výhradně na pásmu 5 GHz?",
       "correct": false,
       "explanation": "IEEE 802.11g pracuje v pásmu 2,4 GHz (max 54 Mbps); 5 GHz používá 802.11a — NEPRAVDIVÉ.",
-      "id": "q_01377",
-      "leaked": true
+      "id": "q_01377"
     },
     {
       "type": "boolean",
@@ -2139,8 +2068,7 @@
       "question": "Lepený spoj u optického vlákna má obecně lepší přenosové vlastnosti než svařovaný?",
       "correct": false,
       "explanation": "Svařovaný (fusion splice) spoj optického vlákna má nižší útlum než lepený — NEPRAVDIVÉ tvrzení.",
-      "id": "q_01378",
-      "leaked": true
+      "id": "q_01378"
     },
     {
       "type": "number",
@@ -2149,8 +2077,7 @@
       "question": "Kolik bitů má IPv4?",
       "correct": 32,
       "tolerance": 0,
-      "id": "q_03111",
-      "leaked": true
+      "id": "q_03111"
     },
     {
       "type": "number",
@@ -2159,8 +2086,7 @@
       "question": "Kolik bitů má IPv6?",
       "correct": 128,
       "tolerance": 0,
-      "id": "q_03112",
-      "leaked": true
+      "id": "q_03112"
     },
     {
       "type": "number",
@@ -2169,8 +2095,7 @@
       "question": "Kolik kontaktů má RJ-45?",
       "correct": 8,
       "tolerance": 0,
-      "id": "q_03113",
-      "leaked": true
+      "id": "q_03113"
     },
     {
       "type": "number",
@@ -2208,8 +2133,7 @@
       "correct": 48,
       "tolerance": 0,
       "explanation": "MAC adresa má 48 bitů = 6 bytů. Skládá se z OUI (24 bitů výrobce) a identifikátoru zařízení (24 bitů).",
-      "id": "q_03117",
-      "leaked": true
+      "id": "q_03117"
     },
     {
       "type": "number",
@@ -2220,8 +2144,7 @@
       "correct": 53,
       "tolerance": 0,
       "explanation": "DNS používá port 53 (UDP pro standardní dotazy, TCP pro přenos zón).",
-      "id": "q_03118",
-      "leaked": true
+      "id": "q_03118"
     },
     {
       "type": "number",
@@ -2232,8 +2155,7 @@
       "correct": 7,
       "tolerance": 0,
       "explanation": "OSI model má 7 vrstev: 1-fyzická, 2-linková, 3-síťová, 4-transportní, 5-relační, 6-prezentační, 7-aplikační.",
-      "id": "q_03119",
-      "leaked": true
+      "id": "q_03119"
     },
     {
       "type": "number",
@@ -2244,8 +2166,7 @@
       "correct": 4,
       "tolerance": 0,
       "explanation": "Model TCP/IP má 4 vrstvy: síťového přístupu, internetová, transportní, aplikační.",
-      "id": "q_03120",
-      "leaked": true
+      "id": "q_03120"
     },
     {
       "type": "number",
@@ -2256,8 +2177,7 @@
       "correct": 100,
       "tolerance": 0,
       "explanation": "Maximální délka segmentu UTP (kroucená dvojlinka) pro Ethernet je 100 metrů.",
-      "id": "q_03121",
-      "leaked": true
+      "id": "q_03121"
     },
     {
       "type": "number",
@@ -2268,8 +2188,7 @@
       "correct": 14,
       "tolerance": 0,
       "explanation": "2^4 – 2 = 14 použitelných hostů. /28 ponechává 4 bity pro hostu.",
-      "id": "q_03122",
-      "leaked": true
+      "id": "q_03122"
     },
     {
       "type": "number",
@@ -2280,8 +2199,7 @@
       "correct": 32,
       "tolerance": 0,
       "explanation": "2^5 = 32 subsítí.",
-      "id": "q_03123",
-      "leaked": true
+      "id": "q_03123"
     },
     {
       "type": "number",
@@ -2292,8 +2210,7 @@
       "correct": 80,
       "tolerance": 0,
       "explanation": "HTTP používá port 80.",
-      "id": "q_03124",
-      "leaked": true
+      "id": "q_03124"
     },
     {
       "type": "text",
@@ -2313,8 +2230,7 @@
       "correct": [
         "router"
       ],
-      "id": "q_04612",
-      "leaked": true
+      "id": "q_04612"
     },
     {
       "type": "text",
@@ -2324,8 +2240,7 @@
       "correct": [
         "wlan"
       ],
-      "id": "q_04613",
-      "leaked": true
+      "id": "q_04613"
     },
     {
       "type": "text",
@@ -2337,8 +2252,7 @@
         "csma/cd",
         "csma-cd"
       ],
-      "id": "q_04614",
-      "leaked": true
+      "id": "q_04614"
     },
     {
       "type": "text",
@@ -2350,8 +2264,7 @@
         "csma/ca",
         "csma-ca"
       ],
-      "id": "q_04615",
-      "leaked": true
+      "id": "q_04615"
     },
     {
       "type": "text",
@@ -2362,8 +2275,7 @@
       "correct": [
         "dhcp"
       ],
-      "id": "q_04616",
-      "leaked": true
+      "id": "q_04616"
     },
     {
       "type": "text",
@@ -2374,8 +2286,7 @@
       "correct": [
         "arp"
       ],
-      "id": "q_04617",
-      "leaked": true
+      "id": "q_04617"
     },
     {
       "type": "text",
@@ -2387,8 +2298,7 @@
         "mtu",
         "maximum transmission unit"
       ],
-      "id": "q_04618",
-      "leaked": true
+      "id": "q_04618"
     },
     {
       "type": "open",
@@ -2431,8 +2341,7 @@
         "UDP má nižší režii a vyšší rychlost – vhodný pro streaming, VoIP a DNS.",
         "TCP se používá pro přenos, kde je vyžadována spolehlivost: HTTP, FTP, SMTP."
       ],
-      "id": "q_05363",
-      "leaked": true
+      "id": "q_05363"
     },
     {
       "type": "open",
@@ -2447,8 +2356,7 @@
         "Strom (tree): hierarchické propojení hvězd; backbone spojuje přístupové switche.",
         "Plná síť (mesh): každé zařízení propojeno s každým; nejvyšší odolnost vůči výpadkům."
       ],
-      "id": "q_05364",
-      "leaked": true
+      "id": "q_05364"
     },
     {
       "type": "open",
@@ -2464,8 +2372,7 @@
         "Adresa sítě: všechny bity hostů = 0. Broadcast: všechny bity hostů = 1.",
         "AND IP adresy s maskou → adresa subsítě (např. 200.129.41.23 AND 255.255.255.240 = 200.129.41.16)."
       ],
-      "id": "q_05365",
-      "leaked": true
+      "id": "q_05365"
     },
     {
       "type": "single",
@@ -2527,8 +2434,7 @@
         }
       ],
       "explanation": "PAN (Personal Area Network) pokrývá osobní prostor do ~10 m.",
-      "id": "q_00051",
-      "leaked": true
+      "id": "q_00051"
     },
     {
       "type": "single",
@@ -2559,8 +2465,7 @@
         }
       ],
       "explanation": "CAN = Campus Area Network, síť propojující budovy v areálu školy/kampusu.",
-      "id": "q_00052",
-      "leaked": true
+      "id": "q_00052"
     },
     {
       "type": "single",
@@ -2622,8 +2527,7 @@
         }
       ],
       "explanation": "ARPANET byl spuštěn v roce 1969 jako předchůdce internetu.",
-      "id": "q_00054",
-      "leaked": true
+      "id": "q_00054"
     },
     {
       "type": "single",
@@ -2654,8 +2558,7 @@
         }
       ],
       "explanation": "TCP/IP byl přijat jako standard pro ARPANET v roce 1983.",
-      "id": "q_00055",
-      "leaked": true
+      "id": "q_00055"
     },
     {
       "type": "single",
@@ -2686,8 +2589,7 @@
         }
       ],
       "explanation": "DNS byl zaveden do ARPANETu v roce 1984.",
-      "id": "q_00056",
-      "leaked": true
+      "id": "q_00056"
     },
     {
       "type": "single",
@@ -2718,8 +2620,7 @@
         }
       ],
       "explanation": "WWW bylo vytvořeno Timem Berners-Lee v roce 1989 v CERNu.",
-      "id": "q_00057",
-      "leaked": true
+      "id": "q_00057"
     },
     {
       "type": "single",
@@ -2750,8 +2651,7 @@
         }
       ],
       "explanation": "Intranet je privátní interní síť firmy/organizace využívající TCP/IP technologie.",
-      "id": "q_00058",
-      "leaked": true
+      "id": "q_00058"
     },
     {
       "type": "single",
@@ -2782,8 +2682,7 @@
         }
       ],
       "explanation": "Extranet rozšiřuje intranet organizace o přístup pro vybrané externí subjekty (dodavatele, partnery).",
-      "id": "q_00059",
-      "leaked": true
+      "id": "q_00059"
     },
     {
       "type": "single",
@@ -2814,8 +2713,7 @@
         }
       ],
       "explanation": "VLAN (Virtual LAN) umožňuje logicky segmentovat síť nezávisle na fyzické topologii.",
-      "id": "q_00060",
-      "leaked": true
+      "id": "q_00060"
     },
     {
       "type": "single",
@@ -2877,8 +2775,7 @@
         }
       ],
       "explanation": "Homogenní síť = všechny uzly mají stejné OS a protokoly; heterogenní = mix různých systémů.",
-      "id": "q_00062",
-      "leaked": true
+      "id": "q_00062"
     },
     {
       "type": "single",
@@ -2940,8 +2837,7 @@
         }
       ],
       "explanation": "Switch pracuje na linkové vrstvě (L2) a přeposílá rámce na základě MAC adres.",
-      "id": "q_00064",
-      "leaked": true
+      "id": "q_00064"
     },
     {
       "type": "single",
@@ -2972,8 +2868,7 @@
         }
       ],
       "explanation": "Sběrnice je jednoduché sdílené médium — přerušení kdekoli zastaví celou síť.",
-      "id": "q_00065",
-      "leaked": true
+      "id": "q_00065"
     },
     {
       "type": "single",
@@ -3004,8 +2899,7 @@
         }
       ],
       "explanation": "V hvězdě závisí vše na centru — výpadek centra = výpadek celé sítě.",
-      "id": "q_00066",
-      "leaked": true
+      "id": "q_00066"
     },
     {
       "type": "single",
@@ -3036,8 +2930,7 @@
         }
       ],
       "explanation": "Na sběrnici se zpráva šíří oběma směry a dostane ji každá připojená stanice.",
-      "id": "q_00067",
-      "leaked": true
+      "id": "q_00067"
     },
     {
       "type": "single",
@@ -3068,8 +2961,7 @@
         }
       ],
       "explanation": "V kruhu data obíhají celý okruh — cílová stanice je zkopíruje, odesilatel je odstraní.",
-      "id": "q_00068",
-      "leaked": true
+      "id": "q_00068"
     },
     {
       "type": "single",
@@ -3100,8 +2992,7 @@
         }
       ],
       "explanation": "Plná mesh nabízí redundanci — každý uzel je spojen s každým, výpadek linky neodstaví síť.",
-      "id": "q_00069",
-      "leaked": true
+      "id": "q_00069"
     },
     {
       "type": "single",
@@ -3132,8 +3023,7 @@
         }
       ],
       "explanation": "WAN páteř bývá částečná mesh — kompromis mezi redundancí a náklady.",
-      "id": "q_00070",
-      "leaked": true
+      "id": "q_00070"
     },
     {
       "type": "single",
@@ -3164,8 +3054,7 @@
         }
       ],
       "explanation": "Strom je hierarchický — kořen je jediný spojovací bod; jeho výpadek izoluje celé podstromy.",
-      "id": "q_00071",
-      "leaked": true
+      "id": "q_00071"
     },
     {
       "type": "single",
@@ -3227,8 +3116,7 @@
         }
       ],
       "explanation": "OSI vrstva 1 = fyzická (physical layer) — přenos bitů přes médium.",
-      "id": "q_00073",
-      "leaked": true
+      "id": "q_00073"
     },
     {
       "type": "single",
@@ -3259,8 +3147,7 @@
         }
       ],
       "explanation": "OSI vrstva 2 = linková (data link layer) — rámce, MAC adresy.",
-      "id": "q_00074",
-      "leaked": true
+      "id": "q_00074"
     },
     {
       "type": "single",
@@ -3291,8 +3178,7 @@
         }
       ],
       "explanation": "OSI vrstva 4 = transportní (transport layer) — TCP, UDP, segmenty.",
-      "id": "q_00075",
-      "leaked": true
+      "id": "q_00075"
     },
     {
       "type": "single",
@@ -3323,8 +3209,7 @@
         }
       ],
       "explanation": "OSI vrstva 5 = relační (session layer) — správa relací, NetBIOS.",
-      "id": "q_00076",
-      "leaked": true
+      "id": "q_00076"
     },
     {
       "type": "single",
@@ -3355,8 +3240,7 @@
         }
       ],
       "explanation": "OSI vrstva 6 = prezentační (presentation layer) — kódování, šifrování, komprese.",
-      "id": "q_00077",
-      "leaked": true
+      "id": "q_00077"
     },
     {
       "type": "single",
@@ -3418,8 +3302,7 @@
         }
       ],
       "explanation": "L2 (linková) PDU = rámec (frame).",
-      "id": "q_00079",
-      "leaked": true
+      "id": "q_00079"
     },
     {
       "type": "single",
@@ -3450,8 +3333,7 @@
         }
       ],
       "explanation": "FTP je aplikační protokol — pracuje na 7. vrstvě OSI.",
-      "id": "q_00080",
-      "leaked": true
+      "id": "q_00080"
     },
     {
       "type": "single",
@@ -3482,8 +3364,7 @@
         }
       ],
       "explanation": "SPX (Sequenced Packet Exchange) je transportní protokol sítí Novell NetWare — L4.",
-      "id": "q_00081",
-      "leaked": true
+      "id": "q_00081"
     },
     {
       "type": "single",
@@ -3514,8 +3395,7 @@
         }
       ],
       "explanation": "IPX (Internetwork Packet Exchange) je síťový protokol — analogie IP, L3.",
-      "id": "q_00082",
-      "leaked": true
+      "id": "q_00082"
     },
     {
       "type": "single",
@@ -3546,8 +3426,7 @@
         }
       ],
       "explanation": "NetBIOS poskytuje relační (session) služby — patří na 5. vrstvu OSI.",
-      "id": "q_00083",
-      "leaked": true
+      "id": "q_00083"
     },
     {
       "type": "single",
@@ -3578,8 +3457,7 @@
         }
       ],
       "explanation": "ARP (Address Resolution Protocol) je součástí IP vrstvy — L3, i když zapouzdřuje do L2 rámců.",
-      "id": "q_00084",
-      "leaked": true
+      "id": "q_00084"
     },
     {
       "type": "single",
@@ -3610,8 +3488,7 @@
         }
       ],
       "explanation": "Dle výuky předmětu PS je DNS zařazen na 5. vrstvu OSI (relační), nikoli na 7. vrstvu.",
-      "id": "q_00085",
-      "leaked": true
+      "id": "q_00085"
     },
     {
       "type": "single",
@@ -3673,8 +3550,7 @@
         }
       ],
       "explanation": "Router pracuje na L3 — hledá nejlepší cestu (route) a směruje pakety.",
-      "id": "q_00087",
-      "leaked": true
+      "id": "q_00087"
     },
     {
       "type": "single",
@@ -3705,8 +3581,7 @@
         }
       ],
       "explanation": "Linková vrstva přijme pakety od síťové a obalí je do rámců (frames) včetně MAC adres.",
-      "id": "q_00088",
-      "leaked": true
+      "id": "q_00088"
     },
     {
       "type": "single",
@@ -3737,8 +3612,7 @@
         }
       ],
       "explanation": "Horní tři vrstvy (5-7) pracují se zprávami/daty; nižší vrstvy mají vlastní PDU (segmenty, pakety, rámce, bity).",
-      "id": "q_00089",
-      "leaked": true
+      "id": "q_00089"
     },
     {
       "type": "single",
@@ -3769,8 +3643,7 @@
         }
       ],
       "explanation": "OSI model má 7 vrstev: fyzická, linková, síťová, transportní, relační, prezentační, aplikační.",
-      "id": "q_00090",
-      "leaked": true
+      "id": "q_00090"
     },
     {
       "type": "single",
@@ -3801,8 +3674,7 @@
         }
       ],
       "explanation": "TCP/IP aplikační vrstva zahrnuje OSI vrstvy 5, 6 a 7.",
-      "id": "q_00091",
-      "leaked": true
+      "id": "q_00091"
     },
     {
       "type": "single",
@@ -3833,8 +3705,7 @@
         }
       ],
       "explanation": "5-vrstvý TCP/IP: fyzická, linková (síťového rozhraní), síťová (internet), transportní, aplikační.",
-      "id": "q_00092",
-      "leaked": true
+      "id": "q_00092"
     },
     {
       "type": "single",
@@ -3865,8 +3736,7 @@
         }
       ],
       "explanation": "V 5-vrstvém TCP/IP modelu je 5. vrstva aplikační.",
-      "id": "q_00093",
-      "leaked": true
+      "id": "q_00093"
     },
     {
       "type": "single",
@@ -3897,8 +3767,7 @@
         }
       ],
       "explanation": "V 5-vrstvém TCP/IP je 2. vrstva linková (nebo vrstva síťového rozhraní).",
-      "id": "q_00094",
-      "leaked": true
+      "id": "q_00094"
     },
     {
       "type": "single",
@@ -3960,8 +3829,7 @@
         }
       ],
       "explanation": "TFTP (Trivial FTP) je zjednodušená verze FTP bez autentizace — typicky pro PXE boot bezdiskových stanic.",
-      "id": "q_00096",
-      "leaked": true
+      "id": "q_00096"
     },
     {
       "type": "single",
@@ -4023,8 +3891,7 @@
         }
       ],
       "explanation": "Virtuální okruh (connection-oriented) rezervuje zdroje a zajišťuje pořadí; datagramy jsou flexibilnější ale bez záruk.",
-      "id": "q_00098",
-      "leaked": true
+      "id": "q_00098"
     },
     {
       "type": "single",
@@ -4086,8 +3953,7 @@
         }
       ],
       "explanation": "TCP je spolehlivý protokol — nevydané ACK způsobí retransmisi po vypršení časovače (retransmission timer).",
-      "id": "q_00100",
-      "leaked": true
+      "id": "q_00100"
     },
     {
       "type": "single",
@@ -4118,8 +3984,7 @@
         }
       ],
       "explanation": "Třída A: 1.0.0.0 – 126.255.255.255 (127.x je loopback).",
-      "id": "q_00101",
-      "leaked": true
+      "id": "q_00101"
     },
     {
       "type": "single",
@@ -4150,8 +4015,7 @@
         }
       ],
       "explanation": "Třída B: 128.0.0.0 – 191.255.255.255.",
-      "id": "q_00102",
-      "leaked": true
+      "id": "q_00102"
     },
     {
       "type": "single",
@@ -4182,8 +4046,7 @@
         }
       ],
       "explanation": "Třída C: 192.0.0.0 – 223.255.255.255.",
-      "id": "q_00103",
-      "leaked": true
+      "id": "q_00103"
     },
     {
       "type": "single",
@@ -4214,8 +4077,7 @@
         }
       ],
       "explanation": "Třída D (224–239) je vyhrazena pro multicastové skupiny.",
-      "id": "q_00104",
-      "leaked": true
+      "id": "q_00104"
     },
     {
       "type": "single",
@@ -4246,8 +4108,7 @@
         }
       ],
       "explanation": "Třída E (240–255) je vyhrazena pro experimentální a výzkumné účely.",
-      "id": "q_00105",
-      "leaked": true
+      "id": "q_00105"
     },
     {
       "type": "single",
@@ -4371,8 +4232,7 @@
         }
       ],
       "explanation": "172.16.0.0 – 172.31.255.255 je privátní rozsah třídy B (RFC 1918).",
-      "id": "q_00109",
-      "leaked": true
+      "id": "q_00109"
     },
     {
       "type": "single",
@@ -4403,8 +4263,7 @@
         }
       ],
       "explanation": "127.0.0.1 (rozsah 127.x.x.x) je loopback — testuje síťový stack na lokálním zařízení.",
-      "id": "q_00110",
-      "leaked": true
+      "id": "q_00110"
     },
     {
       "type": "single",
@@ -4466,8 +4325,7 @@
         }
       ],
       "explanation": "APIPA (169.254.x.x) přiřadí Windows automaticky, když není k dispozici DHCP server.",
-      "id": "q_00112",
-      "leaked": true
+      "id": "q_00112"
     },
     {
       "type": "single",
@@ -4498,8 +4356,7 @@
         }
       ],
       "explanation": "/25 přidá 1 bit k masce sítě — 2^1 = 2 podsítě.",
-      "id": "q_00113",
-      "leaked": true
+      "id": "q_00113"
     },
     {
       "type": "single",
@@ -4530,8 +4387,7 @@
         }
       ],
       "explanation": "/26 přidá 2 bity — 2^2 = 4 podsítě.",
-      "id": "q_00114",
-      "leaked": true
+      "id": "q_00114"
     },
     {
       "type": "single",
@@ -4562,8 +4418,7 @@
         }
       ],
       "explanation": "/27 přidá 3 bity — 2^3 = 8 podsítí.",
-      "id": "q_00115",
-      "leaked": true
+      "id": "q_00115"
     },
     {
       "type": "single",
@@ -4594,8 +4449,7 @@
         }
       ],
       "explanation": "/28 přidá 4 bity — 2^4 = 16 podsítí.",
-      "id": "q_00116",
-      "leaked": true
+      "id": "q_00116"
     },
     {
       "type": "single",
@@ -4626,8 +4480,7 @@
         }
       ],
       "explanation": "/29 přidá 5 bitů — 2^5 = 32 podsítí.",
-      "id": "q_00117",
-      "leaked": true
+      "id": "q_00117"
     },
     {
       "type": "single",
@@ -4658,8 +4511,7 @@
         }
       ],
       "explanation": "/30 přidá 6 bitů — 2^6 = 64 podsítí.",
-      "id": "q_00118",
-      "leaked": true
+      "id": "q_00118"
     },
     {
       "type": "number",
@@ -4670,8 +4522,7 @@
       "correct": 126,
       "tolerance": 0,
       "explanation": "/25 = 128 adres celkem; -2 (síť + broadcast) = 126 použitelných.",
-      "id": "q_03125",
-      "leaked": true
+      "id": "q_03125"
     },
     {
       "type": "number",
@@ -4682,8 +4533,7 @@
       "correct": 62,
       "tolerance": 0,
       "explanation": "/26 = 64 adres celkem; -2 = 62 použitelných.",
-      "id": "q_03126",
-      "leaked": true
+      "id": "q_03126"
     },
     {
       "type": "number",
@@ -4694,8 +4544,7 @@
       "correct": 30,
       "tolerance": 0,
       "explanation": "/27 = 32 adres; -2 = 30 použitelných.",
-      "id": "q_03127",
-      "leaked": true
+      "id": "q_03127"
     },
     {
       "type": "number",
@@ -4706,8 +4555,7 @@
       "correct": 14,
       "tolerance": 0,
       "explanation": "/28 = 16 adres; -2 = 14 použitelných.",
-      "id": "q_03128",
-      "leaked": true
+      "id": "q_03128"
     },
     {
       "type": "number",
@@ -4718,8 +4566,7 @@
       "correct": 6,
       "tolerance": 0,
       "explanation": "/29 = 8 adres; -2 = 6 použitelných.",
-      "id": "q_03129",
-      "leaked": true
+      "id": "q_03129"
     },
     {
       "type": "number",
@@ -4730,8 +4577,7 @@
       "correct": 2,
       "tolerance": 0,
       "explanation": "/30 = 4 adresy; -2 = 2 použitelné — ideální pro point-to-point linky.",
-      "id": "q_03130",
-      "leaked": true
+      "id": "q_03130"
     },
     {
       "type": "single",
@@ -4762,8 +4608,7 @@
         }
       ],
       "explanation": "/25 = 25 jedniček v binárním zápisu = 255.255.255.128.",
-      "id": "q_00119",
-      "leaked": true
+      "id": "q_00119"
     },
     {
       "type": "single",
@@ -4794,8 +4639,7 @@
         }
       ],
       "explanation": "/26 = 26 jedniček = 255.255.255.192 (192 = 11000000).",
-      "id": "q_00120",
-      "leaked": true
+      "id": "q_00120"
     },
     {
       "type": "single",
@@ -4826,8 +4670,7 @@
         }
       ],
       "explanation": "/27 = 27 jedniček = 255.255.255.224 (224 = 11100000).",
-      "id": "q_00121",
-      "leaked": true
+      "id": "q_00121"
     },
     {
       "type": "single",
@@ -4858,8 +4701,7 @@
         }
       ],
       "explanation": "/28 = 28 jedniček = 255.255.255.240 (240 = 11110000).",
-      "id": "q_00122",
-      "leaked": true
+      "id": "q_00122"
     },
     {
       "type": "single",
@@ -4890,8 +4732,7 @@
         }
       ],
       "explanation": "/29 = 29 jedniček = 255.255.255.248 (248 = 11111000).",
-      "id": "q_00123",
-      "leaked": true
+      "id": "q_00123"
     },
     {
       "type": "single",
@@ -4922,8 +4763,7 @@
         }
       ],
       "explanation": "/30 = 30 jedniček = 255.255.255.252 (252 = 11111100).",
-      "id": "q_00124",
-      "leaked": true
+      "id": "q_00124"
     },
     {
       "type": "single",
@@ -4954,8 +4794,7 @@
         }
       ],
       "explanation": "Třída B = /16. Čtvrtina = 2 přidané bity → /18.",
-      "id": "q_00125",
-      "leaked": true
+      "id": "q_00125"
     },
     {
       "type": "single",
@@ -5017,8 +4856,7 @@
         }
       ],
       "explanation": "/26 rozděluje .0-.255 na .0-.63, .64-.127, .128-.191, .192-.255. Adresa .200 je ve čtvrté části → broadcast .255.",
-      "id": "q_00127",
-      "leaked": true
+      "id": "q_00127"
     },
     {
       "type": "single",
@@ -5204,8 +5042,7 @@
         }
       ],
       "explanation": "FTP port 21 = řídící spojení, port 20 = datový přenos.",
-      "id": "q_00133",
-      "leaked": true
+      "id": "q_00133"
     },
     {
       "type": "single",
@@ -5329,8 +5166,7 @@
         }
       ],
       "explanation": "TCP (Transmission Control Protocol) je spojově orientovaný, spolehlivý protokol s potvrzováním.",
-      "id": "q_00137",
-      "leaked": true
+      "id": "q_00137"
     },
     {
       "type": "single",
@@ -5454,8 +5290,7 @@
         }
       ],
       "explanation": "RARP (Reverse ARP) = stanice zná svou MAC a ptá se na IP adresu; dnes nahrazen DHCP.",
-      "id": "q_00141",
-      "leaked": true
+      "id": "q_00141"
     },
     {
       "type": "single",
@@ -5486,8 +5321,7 @@
         }
       ],
       "explanation": "Minimální rámec Ethernet II = 64 bajtů (14 bajtů header + 46 bajtů data + 4 bajty FCS).",
-      "id": "q_00142",
-      "leaked": true
+      "id": "q_00142"
     },
     {
       "type": "single",
@@ -5518,8 +5352,7 @@
         }
       ],
       "explanation": "Maximální Ethernet rámec = 1518 bajtů (1500 bajtů data + 14 bajtů header + 4 bajty FCS).",
-      "id": "q_00143",
-      "leaked": true
+      "id": "q_00143"
     },
     {
       "type": "single",
@@ -5550,8 +5383,7 @@
         }
       ],
       "explanation": "Při 10/100 Mbps je minimální rámec 512 bitů (64 B × 8) — zajišťuje detekci kolizí v celé doméně.",
-      "id": "q_00144",
-      "leaked": true
+      "id": "q_00144"
     },
     {
       "type": "single",
@@ -5582,8 +5414,7 @@
         }
       ],
       "explanation": "Při 1 Gbps je kolizní doména kratší — minimum bylo zvýšeno na 4096 bitů (512 B).",
-      "id": "q_00145",
-      "leaked": true
+      "id": "q_00145"
     },
     {
       "type": "single",
@@ -5614,8 +5445,7 @@
         }
       ],
       "explanation": "Ethernet CSMA/CD: po 16 neúspěšných pokusech (kolizích) je přenos prohlášen za chybný.",
-      "id": "q_00146",
-      "leaked": true
+      "id": "q_00146"
     },
     {
       "type": "single",
@@ -5657,8 +5487,7 @@
       "correct": 96,
       "tolerance": 0,
       "explanation": "IFG = 96 bitů (12 B) — umožňuje přijímačům se připravit na další rámec.",
-      "id": "q_03131",
-      "leaked": true
+      "id": "q_03131"
     },
     {
       "type": "single",
@@ -5689,8 +5518,7 @@
         }
       ],
       "explanation": "Ethernet CSMA/CD = Carrier Sense Multiple Access with Collision Detection.",
-      "id": "q_00148",
-      "leaked": true
+      "id": "q_00148"
     },
     {
       "type": "single",
@@ -5721,8 +5549,7 @@
         }
       ],
       "explanation": "Wi-Fi používá CSMA/CA (Collision Avoidance) — bezdrátové médium neumožňuje spolehlivou detekci kolizí.",
-      "id": "q_00149",
-      "leaked": true
+      "id": "q_00149"
     },
     {
       "type": "single",
@@ -5753,8 +5580,7 @@
         }
       ],
       "explanation": "802.11a pracuje výhradně v pásmu 5 GHz, max 54 Mbps.",
-      "id": "q_00150",
-      "leaked": true
+      "id": "q_00150"
     },
     {
       "type": "single",
@@ -5785,8 +5611,7 @@
         }
       ],
       "explanation": "802.11b = 2,4 GHz, max 11 Mbps — první rozšířený Wi-Fi standard.",
-      "id": "q_00151",
-      "leaked": true
+      "id": "q_00151"
     },
     {
       "type": "single",
@@ -5817,8 +5642,7 @@
         }
       ],
       "explanation": "802.11g = 2,4 GHz, max 54 Mbps — zpětně kompatibilní s 802.11b.",
-      "id": "q_00152",
-      "leaked": true
+      "id": "q_00152"
     },
     {
       "type": "single",
@@ -5849,8 +5673,7 @@
         }
       ],
       "explanation": "802.11n (Wi-Fi 4) = až 600 Mbps (4 prostorové toky × 150 Mbps), 2,4 a 5 GHz.",
-      "id": "q_00153",
-      "leaked": true
+      "id": "q_00153"
     },
     {
       "type": "single",
@@ -5881,8 +5704,7 @@
         }
       ],
       "explanation": "802.11ac Wave 2 = až ~3,5 Gbps; pracuje pouze v pásmu 5 GHz.",
-      "id": "q_00154",
-      "leaked": true
+      "id": "q_00154"
     },
     {
       "type": "single",
@@ -5913,8 +5735,7 @@
         }
       ],
       "explanation": "802.11ax (Wi-Fi 6) = až 9,608 Gbps; pracuje v 2,4, 5 a 6 GHz.",
-      "id": "q_00155",
-      "leaked": true
+      "id": "q_00155"
     },
     {
       "type": "single",
@@ -5945,8 +5766,7 @@
         }
       ],
       "explanation": "V ČR je dostupný kanál 13, proto se doporučují 1, 7 a 13 (ne 1, 6, 11 jako v USA).",
-      "id": "q_00156",
-      "leaked": true
+      "id": "q_00156"
     },
     {
       "type": "single",
@@ -6070,8 +5890,7 @@
         }
       ],
       "explanation": "Single-mode může přenášet signál více než 100 km bez zesilovače/opakovače.",
-      "id": "q_00160",
-      "leaked": true
+      "id": "q_00160"
     },
     {
       "type": "single",
@@ -6133,8 +5952,7 @@
         }
       ],
       "explanation": "Koaxiální kabel pro TV = 75 Ω (RG-6 / RG-59).",
-      "id": "q_00162",
-      "leaked": true
+      "id": "q_00162"
     },
     {
       "type": "single",
@@ -6165,8 +5983,7 @@
         }
       ],
       "explanation": "Ethernet koaxiál (tenký/tlustý) = 50 Ω (RG-58 / RG-8).",
-      "id": "q_00163",
-      "leaked": true
+      "id": "q_00163"
     },
     {
       "type": "single",
@@ -6197,8 +6014,7 @@
         }
       ],
       "explanation": "Cat 5e = 100 MHz / 1 Gbps na 100 m (vylepšená verze Cat 5 s lepším přeslechy).",
-      "id": "q_00164",
-      "leaked": true
+      "id": "q_00164"
     },
     {
       "type": "single",
@@ -6229,8 +6045,7 @@
         }
       ],
       "explanation": "RJ-45 = 8-pinový konektor standardní pro TP síťové kabely (Ethernet).",
-      "id": "q_00165",
-      "leaked": true
+      "id": "q_00165"
     },
     {
       "type": "single",
@@ -6261,8 +6076,7 @@
         }
       ],
       "explanation": "Pure ALOHA má maximální propustnost 1/(2e) ≈ 18,4 %.",
-      "id": "q_00166",
-      "leaked": true
+      "id": "q_00166"
     },
     {
       "type": "single",
@@ -6293,8 +6107,7 @@
         }
       ],
       "explanation": "Slotted ALOHA má maximální propustnost 1/e ≈ 36,8 % — dvojnásobek pure ALOHA.",
-      "id": "q_00167",
-      "leaked": true
+      "id": "q_00167"
     },
     {
       "type": "single",
@@ -6325,8 +6138,7 @@
         }
       ],
       "explanation": "Token ring (Newhall): token obíhá kruhem; kdo chce vysílat, zachytí volný token a po přenosu ho uvolní.",
-      "id": "q_00168",
-      "leaked": true
+      "id": "q_00168"
     },
     {
       "type": "single",
@@ -6357,8 +6169,7 @@
         }
       ],
       "explanation": "CSMA/CD detekuje kolize po jejich vzniku (Ethernet); CSMA/CA se jim snaží předcházet (Wi-Fi).",
-      "id": "q_00169",
-      "leaked": true
+      "id": "q_00169"
     },
     {
       "type": "single",
@@ -6482,8 +6293,7 @@
         }
       ],
       "explanation": "IPv6 loopback = ::1 (ekvivalent 127.0.0.1 v IPv4).",
-      "id": "q_00173",
-      "leaked": true
+      "id": "q_00173"
     },
     {
       "type": "single",
@@ -6514,8 +6324,7 @@
         }
       ],
       "explanation": "Linkové lokální adresy IPv6 začínají fe80::/10 — automaticky konfigurovány na každém rozhraní.",
-      "id": "q_00174",
-      "leaked": true
+      "id": "q_00174"
     },
     {
       "type": "single",
@@ -6577,8 +6386,7 @@
         }
       ],
       "explanation": "Statické cesty nastavuje správce ručně; dynamické protokoly (RIP, OSPF, BGP) je aktualizují samy.",
-      "id": "q_00176",
-      "leaked": true
+      "id": "q_00176"
     },
     {
       "type": "single",
@@ -6609,8 +6417,7 @@
         }
       ],
       "explanation": "RIP měří vzdálenost v hopech; max 15 hopů (16 = nedosažitelný).",
-      "id": "q_00177",
-      "leaked": true
+      "id": "q_00177"
     },
     {
       "type": "single",
@@ -6641,8 +6448,7 @@
         }
       ],
       "explanation": "Klasický switch pracuje na L2 — filtruje a přeposílá rámce podle MAC adres.",
-      "id": "q_00178",
-      "leaked": true
+      "id": "q_00178"
     },
     {
       "type": "single",
@@ -6673,8 +6479,7 @@
         }
       ],
       "explanation": "Hub je pasivní nebo aktivní opakovač na L1 — rozesílá vše na všechny porty bez filtrování.",
-      "id": "q_00179",
-      "leaked": true
+      "id": "q_00179"
     },
     {
       "type": "single",
@@ -6735,8 +6540,7 @@
       "question": "Podle výuky předmětu PS je DNS zařazen na relační vrstvě (L5) OSI — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Dle výuky PS: DNS = L5 (relační vrstva), i když konvenčně se řadí na L7.",
-      "id": "q_01381",
-      "leaked": true
+      "id": "q_01381"
     },
     {
       "type": "boolean",
@@ -6766,8 +6570,7 @@
       "question": "Ethernet využívá přístupovou metodu CSMA/CD — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, klasický Ethernet (sdílené médium) používá CSMA/CD.",
-      "id": "q_01384",
-      "leaked": true
+      "id": "q_01384"
     },
     {
       "type": "boolean",
@@ -6777,8 +6580,7 @@
       "question": "Wi-Fi IEEE 802.11a pracuje v pásmu 2,4 GHz — je toto tvrzení pravdivé?",
       "correct": false,
       "explanation": "802.11a pracuje v pásmu 5 GHz. V 2,4 GHz pracuje 802.11b/g.",
-      "id": "q_01385",
-      "leaked": true
+      "id": "q_01385"
     },
     {
       "type": "boolean",
@@ -6808,8 +6610,7 @@
       "question": "Jednovidové optické vlákno má průměr jádra 9 μm — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, single-mode vlákno: jádro 9 μm, plášť 125 μm.",
-      "id": "q_01388",
-      "leaked": true
+      "id": "q_01388"
     },
     {
       "type": "boolean",
@@ -6819,8 +6620,7 @@
       "question": "Ethernet při 1 Gbps vyžaduje minimální délku rámce 4096 bitů — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, 1 Gbps Ethernet zvýšil minimální rámec z 512 na 4096 bitů (burst mode).",
-      "id": "q_01389",
-      "leaked": true
+      "id": "q_01389"
     },
     {
       "type": "boolean",
@@ -6830,8 +6630,7 @@
       "question": "Ve hvězdicové topologii výpadek jedné stanice způsobí výpadek celé sítě — je toto tvrzení pravdivé?",
       "correct": false,
       "explanation": "Výpadek stanice neovlivní ostatní; výpadek centra (switche) však odstaví celou síť.",
-      "id": "q_01390",
-      "leaked": true
+      "id": "q_01390"
     },
     {
       "type": "single",
@@ -6862,8 +6661,7 @@
         }
       ],
       "explanation": "IPv4 adresa má 32 bitů (4 oktety po 8 bitech).",
-      "id": "q_00181",
-      "leaked": true
+      "id": "q_00181"
     },
     {
       "type": "single",
@@ -6925,8 +6723,7 @@
         }
       ],
       "explanation": "172.x začíná 10101100 — třída B (128-191); 172.16-172.31 je privátní (RFC 1918).",
-      "id": "q_00183",
-      "leaked": true
+      "id": "q_00183"
     },
     {
       "type": "single",
@@ -6957,8 +6754,7 @@
         }
       ],
       "explanation": "192.168.x.x = třída C privátní (RFC 1918); .200 není ani síťová (.0) ani broadcast (.255).",
-      "id": "q_00184",
-      "leaked": true
+      "id": "q_00184"
     },
     {
       "type": "single",
@@ -6989,8 +6785,7 @@
         }
       ],
       "explanation": "První adresa v podsíti = adresa sítě — nelze přiřadit hostu.",
-      "id": "q_00185",
-      "leaked": true
+      "id": "q_00185"
     },
     {
       "type": "single",
@@ -7052,8 +6847,7 @@
         }
       ],
       "explanation": "V /24 je poslední adresa .255 — to je broadcast pro celou síť.",
-      "id": "q_00187",
-      "leaked": true
+      "id": "q_00187"
     },
     {
       "type": "number",
@@ -7064,8 +6858,7 @@
       "correct": 254,
       "tolerance": 0,
       "explanation": "/24 = 256 adres; -2 (síťová + broadcast) = 254 použitelných.",
-      "id": "q_03132",
-      "leaked": true
+      "id": "q_03132"
     },
     {
       "type": "number",
@@ -7076,8 +6869,7 @@
       "correct": 65534,
       "tolerance": 0,
       "explanation": "/16 = 65536 adres; -2 = 65534 použitelných.",
-      "id": "q_03133",
-      "leaked": true
+      "id": "q_03133"
     },
     {
       "type": "number",
@@ -7088,8 +6880,7 @@
       "correct": 16777214,
       "tolerance": 0,
       "explanation": "/8 = 2^24 = 16777216 adres; -2 = 16777214 použitelných.",
-      "id": "q_03134",
-      "leaked": true
+      "id": "q_03134"
     },
     {
       "type": "single",
@@ -7275,8 +7066,7 @@
         }
       ],
       "explanation": "TCP navázání spojení: klient posílá SYN → server SYN-ACK → klient ACK.",
-      "id": "q_00193",
-      "leaked": true
+      "id": "q_00193"
     },
     {
       "type": "single",
@@ -7307,8 +7097,7 @@
         }
       ],
       "explanation": "TCP ukončení: FIN → ACK → FIN → ACK (každá strana ukončí zvlášť).",
-      "id": "q_00194",
-      "leaked": true
+      "id": "q_00194"
     },
     {
       "type": "single",
@@ -7494,8 +7283,7 @@
         }
       ],
       "explanation": "DHCP DORA: klient vysílá Discover, server odpovídá Offer, klient Request, server Acknowledge.",
-      "id": "q_00200",
-      "leaked": true
+      "id": "q_00200"
     },
     {
       "type": "single",
@@ -7526,8 +7314,7 @@
         }
       ],
       "explanation": "DHCP (Dynamic Host Configuration Protocol) automaticky konfiguruje síťové parametry stanic.",
-      "id": "q_00201",
-      "leaked": true
+      "id": "q_00201"
     },
     {
       "type": "single",
@@ -7589,8 +7376,7 @@
         }
       ],
       "explanation": "NTP (RFC 5905) synchronizuje hodiny na UDP port 123.",
-      "id": "q_00203",
-      "leaked": true
+      "id": "q_00203"
     },
     {
       "type": "single",
@@ -7621,8 +7407,7 @@
         }
       ],
       "explanation": "IMAP (port 143) umožňuje přístup k e-mailům přímo na serveru; POP3 (110) je stahuje.",
-      "id": "q_00204",
-      "leaked": true
+      "id": "q_00204"
     },
     {
       "type": "single",
@@ -7653,8 +7438,7 @@
         }
       ],
       "explanation": "IGMP (Internet Group Management Protocol) spravuje členství v IPv4 multicastových skupinách.",
-      "id": "q_00205",
-      "leaked": true
+      "id": "q_00205"
     },
     {
       "type": "single",
@@ -7758,8 +7542,7 @@
         }
       ],
       "explanation": "FCS = 4 B CRC-32 — kontrolní součet pro detekci chyb přenosu.",
-      "id": "q_00208",
-      "leaked": true
+      "id": "q_00208"
     },
     {
       "type": "single",
@@ -7821,8 +7604,7 @@
         }
       ],
       "explanation": "Ethernet broadcast MAC = FF:FF:FF:FF:FF:FF — přijmou všechna zařízení v segmentu.",
-      "id": "q_00210",
-      "leaked": true
+      "id": "q_00210"
     },
     {
       "type": "single",
@@ -7853,8 +7635,7 @@
         }
       ],
       "explanation": "BSS = Basic Service Set — jeden AP a jeho klienti tvoří jednu BSS.",
-      "id": "q_00211",
-      "leaked": true
+      "id": "q_00211"
     },
     {
       "type": "single",
@@ -7916,8 +7697,7 @@
         }
       ],
       "explanation": "WPA3 nahrazuje WPA2; používá SAE (Simultaneous Authentication of Equals) místo PSK.",
-      "id": "q_00213",
-      "leaked": true
+      "id": "q_00213"
     },
     {
       "type": "single",
@@ -8010,8 +7790,7 @@
         }
       ],
       "explanation": "2,4 GHz má 13 kanálů v ČR, ale jen 3 se nepřekrývají (šířka kanálu 22 MHz): 1, 7, 13.",
-      "id": "q_00216",
-      "leaked": true
+      "id": "q_00216"
     },
     {
       "type": "single",
@@ -8042,8 +7821,7 @@
         }
       ],
       "explanation": "Každý 2,4 GHz Wi-Fi kanál má šířku 22 MHz; kanály jsou od sebe 5 MHz — proto se překrývají.",
-      "id": "q_00217",
-      "leaked": true
+      "id": "q_00217"
     },
     {
       "type": "multi",
@@ -8074,8 +7852,7 @@
         }
       ],
       "explanation": "L3 (síťová): IP, IPX, ARP. TCP je na L4 (transportní).",
-      "id": "q_01011",
-      "leaked": true
+      "id": "q_01011"
     },
     {
       "type": "multi",
@@ -8106,8 +7883,7 @@
         }
       ],
       "explanation": "HTTP, FTP, SMTP jsou aplikační protokoly (L7); TCP je na transportní vrstvě (L4).",
-      "id": "q_01012",
-      "leaked": true
+      "id": "q_01012"
     },
     {
       "type": "multi",
@@ -8169,8 +7945,7 @@
         }
       ],
       "explanation": "DNS, DHCP, NTP, TFTP, SNMP, RIP používají UDP. FTP, HTTP, SMTP, SSH používají TCP.",
-      "id": "q_01014",
-      "leaked": true
+      "id": "q_01014"
     },
     {
       "type": "multi",
@@ -8232,8 +8007,7 @@
         }
       ],
       "explanation": "IPv6: větší prostor, IPsec nativně, SLAAC. Rychlost závisí na médiu, ne na verzi IP.",
-      "id": "q_01016",
-      "leaked": true
+      "id": "q_01016"
     },
     {
       "type": "multi",
@@ -8264,8 +8038,7 @@
         }
       ],
       "explanation": "RIP, OSPF, EIGRP, BGP jsou směrovací protokoly; ARP je protokol pro rozlišení adres (L3).",
-      "id": "q_01017",
-      "leaked": true
+      "id": "q_01017"
     },
     {
       "type": "boolean",
@@ -8295,8 +8068,7 @@
       "question": "Adresa 127.0.0.1 je loopback adresa IPv4 — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, celý rozsah 127.x.x.x je vyhrazen pro loopback.",
-      "id": "q_01393",
-      "leaked": true
+      "id": "q_01393"
     },
     {
       "type": "boolean",
@@ -8306,8 +8078,7 @@
       "question": "IPv6 loopback adresa je ::1 — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, ::1 je IPv6 loopback (ekvivalent 127.0.0.1 v IPv4).",
-      "id": "q_01394",
-      "leaked": true
+      "id": "q_01394"
     },
     {
       "type": "boolean",
@@ -8317,8 +8088,7 @@
       "question": "DHCP používá pro komunikaci protokol TCP — je toto tvrzení pravdivé?",
       "correct": false,
       "explanation": "DHCP používá UDP (port 67 server, 68 klient), nikoliv TCP.",
-      "id": "q_01395",
-      "leaked": true
+      "id": "q_01395"
     },
     {
       "type": "boolean",
@@ -8348,8 +8118,7 @@
       "question": "IPv4 adresa má 32 bitů — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, IPv4 = 4 oktety × 8 bitů = 32 bitů.",
-      "id": "q_01398",
-      "leaked": true
+      "id": "q_01398"
     },
     {
       "type": "boolean",
@@ -8369,8 +8138,7 @@
       "question": "Router pracuje na síťové vrstvě OSI (L3) — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, router zpracovává IP adresy na L3 a směruje pakety mezi sítěmi.",
-      "id": "q_01400",
-      "leaked": true
+      "id": "q_01400"
     },
     {
       "type": "boolean",
@@ -8390,8 +8158,7 @@
       "question": "IEEE 802.11ac pracuje výhradně v pásmu 5 GHz — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, 802.11ac (Wi-Fi 5) pracuje pouze v 5 GHz.",
-      "id": "q_01402",
-      "leaked": true
+      "id": "q_01402"
     },
     {
       "type": "boolean",
@@ -8401,8 +8168,7 @@
       "question": "Ve sběrnicové topologii přerušení kabelu způsobí výpadek celé sítě — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, sběrnice je sdílené médium — přerušení kdekoli zastaví veškerý provoz.",
-      "id": "q_01403",
-      "leaked": true
+      "id": "q_01403"
     },
     {
       "type": "number",
@@ -8413,8 +8179,7 @@
       "correct": 7,
       "tolerance": 0,
       "explanation": "OSI model má 7 vrstev.",
-      "id": "q_03136",
-      "leaked": true
+      "id": "q_03136"
     },
     {
       "type": "number",
@@ -8425,8 +8190,7 @@
       "correct": 4,
       "tolerance": 0,
       "explanation": "4-vrstvý TCP/IP: síťového přístupu, síťová (internet), transportní, aplikační.",
-      "id": "q_03137",
-      "leaked": true
+      "id": "q_03137"
     },
     {
       "type": "number",
@@ -8492,8 +8256,7 @@
       "correct": 254,
       "tolerance": 0,
       "explanation": "/24 = 256 adres; -2 = 254 použitelných.",
-      "id": "q_03143",
-      "leaked": true
+      "id": "q_03143"
     },
     {
       "type": "number",
@@ -8504,8 +8267,7 @@
       "correct": 32,
       "tolerance": 0,
       "explanation": "IPv4 adresa = 32 bitů.",
-      "id": "q_03144",
-      "leaked": true
+      "id": "q_03144"
     },
     {
       "type": "number",
@@ -8516,8 +8278,7 @@
       "correct": 128,
       "tolerance": 0,
       "explanation": "IPv6 adresa = 128 bitů.",
-      "id": "q_03145",
-      "leaked": true
+      "id": "q_03145"
     },
     {
       "type": "number",
@@ -8528,8 +8289,7 @@
       "correct": 16,
       "tolerance": 0,
       "explanation": "/28 přidá 4 bity ke /24: 2^4 = 16 podsítí.",
-      "id": "q_03146",
-      "leaked": true
+      "id": "q_03146"
     },
     {
       "type": "number",
@@ -8540,8 +8300,7 @@
       "correct": 16,
       "tolerance": 0,
       "explanation": "Ethernet CSMA/CD: 16 neúspěšných pokusů → prohlášení chyby.",
-      "id": "q_03147",
-      "leaked": true
+      "id": "q_03147"
     },
     {
       "type": "number",
@@ -8634,8 +8393,7 @@
       "correct": [
         "127.0.0.1"
       ],
-      "id": "q_04625",
-      "leaked": true
+      "id": "q_04625"
     },
     {
       "type": "text",
@@ -8646,8 +8404,7 @@
       "correct": [
         "::1"
       ],
-      "id": "q_04626",
-      "leaked": true
+      "id": "q_04626"
     },
     {
       "type": "text",
@@ -8672,8 +8429,7 @@
         "1,7,13",
         "1 7 13"
       ],
-      "id": "q_04628",
-      "leaked": true
+      "id": "q_04628"
     },
     {
       "type": "open",
@@ -8684,8 +8440,7 @@
       "answer": [
         "Maska /27 = 255.255.255.224; blok = 32. Adresy v blocích: 0-31, 32-63, ..., 128-159, 160-191. Adresa .150 leží v bloku 128-159. Adresa sítě: 192.168.5.128; Broadcast: 192.168.5.159; Hostitele: .129 – .158 (30 hostitelů)."
       ],
-      "id": "q_05366",
-      "leaked": true
+      "id": "q_05366"
     },
     {
       "type": "open",
@@ -8707,8 +8462,7 @@
       "answer": [
         "1) Obrovský adresní prostor (128 bitů vs 32 bitů IPv4 — 3,4×10^38 adres). 2) Automatická konfigurace (SLAAC — stanice si nastaví adresu bez DHCP). 3) Integrovaná podpora IPsec (šifrování a autentizace přímo v protokolu). Bonus: žádný broadcast — jen multicast/unicast/anycast; zjednodušená hlavička."
       ],
-      "id": "q_05368",
-      "leaked": true
+      "id": "q_05368"
     },
     {
       "type": "open",
@@ -8781,8 +8535,7 @@
         }
       ],
       "explanation": "WPA3 je aktuálně nejbezpečnější standard; WEP a WPA/TKIP mají known vulnerabilities.",
-      "id": "q_00219",
-      "leaked": true
+      "id": "q_00219"
     },
     {
       "type": "single",
@@ -8906,8 +8659,7 @@
         }
       ],
       "explanation": "MU-MIMO umožňuje AP vysílat na různé klienty ve stejný čas na různých prostorových tocích.",
-      "id": "q_00223",
-      "leaked": true
+      "id": "q_00223"
     },
     {
       "type": "single",
@@ -8969,8 +8721,7 @@
         }
       ],
       "explanation": "LC konektor je malý push-pull konektor nejpoužívanější v datových centrech a LAN páteřích.",
-      "id": "q_00225",
-      "leaked": true
+      "id": "q_00225"
     },
     {
       "type": "single",
@@ -9001,8 +8752,7 @@
         }
       ],
       "explanation": "10BASE2 (thinnet) používal koaxiální kabel s BNC konektory a T-spoji.",
-      "id": "q_00226",
-      "leaked": true
+      "id": "q_00226"
     },
     {
       "type": "single",
@@ -9033,8 +8783,7 @@
         }
       ],
       "explanation": "IEEE 802.3 definuje maximum 100 m pro TP kabel (Cat 5e+) při Gigabit Ethernetu.",
-      "id": "q_00227",
-      "leaked": true
+      "id": "q_00227"
     },
     {
       "type": "single",
@@ -9065,8 +8814,7 @@
         }
       ],
       "explanation": "UTP = nestíněný kroucený pár; STP = stíněný; FTP = fóliově stíněný.",
-      "id": "q_00228",
-      "leaked": true
+      "id": "q_00228"
     },
     {
       "type": "single",
@@ -9097,8 +8845,7 @@
         }
       ],
       "explanation": "STP přidává stínění ke kroucenému páru pro vyšší odolnost vůči elektromagnetickému rušení.",
-      "id": "q_00229",
-      "leaked": true
+      "id": "q_00229"
     },
     {
       "type": "single",
@@ -9222,8 +8969,7 @@
         }
       ],
       "explanation": "Multi-mode vlákno podporuje mnoho vidů světla cestujících různými úhly — způsobuje rozmazání pulzu (modální disperze) a omezuje vzdálenost.",
-      "id": "q_00233",
-      "leaked": true
+      "id": "q_00233"
     },
     {
       "type": "single",
@@ -9254,8 +9000,7 @@
         }
       ],
       "explanation": "10BASE2 (thinnet, RG-58) max segment = 185 m; 10BASE5 (thicknet) = 500 m.",
-      "id": "q_00234",
-      "leaked": true
+      "id": "q_00234"
     },
     {
       "type": "single",
@@ -9317,8 +9062,7 @@
         }
       ],
       "explanation": "Bridge = L2 zařízení — učí se MAC adresy a přeposílá rámce jen tam, kde je cíl.",
-      "id": "q_00236",
-      "leaked": true
+      "id": "q_00236"
     },
     {
       "type": "single",
@@ -9349,8 +9093,7 @@
         }
       ],
       "explanation": "Repeater pracuje na fyzické vrstvě (L1) — regeneruje signál pro překonání maximální vzdálenosti.",
-      "id": "q_00237",
-      "leaked": true
+      "id": "q_00237"
     },
     {
       "type": "single",
@@ -9381,8 +9124,7 @@
         }
       ],
       "explanation": "Gateway může překládat protokoly různých vrstev (např. email gateway, VoIP gateway) — obecnější než router.",
-      "id": "q_00238",
-      "leaked": true
+      "id": "q_00238"
     },
     {
       "type": "single",
@@ -9444,8 +9186,7 @@
         }
       ],
       "explanation": "BGP = EGP (Exterior Gateway Protocol) pro výměnu směrovacích informací mezi autonomními systémy (AS) na internetu.",
-      "id": "q_00240",
-      "leaked": true
+      "id": "q_00240"
     },
     {
       "type": "single",
@@ -9569,8 +9310,7 @@
         }
       ],
       "explanation": "TCP segment = L4 PDU: zdrojový/cílový port, sekvenční číslo, ACK číslo, flagy, okno, data.",
-      "id": "q_00244",
-      "leaked": true
+      "id": "q_00244"
     },
     {
       "type": "single",
@@ -9601,8 +9341,7 @@
         }
       ],
       "explanation": "UDP datagram = L4 PDU bez navázání spojení: jen src/dst port, délka, checksum, data.",
-      "id": "q_00245",
-      "leaked": true
+      "id": "q_00245"
     },
     {
       "type": "single",
@@ -9695,8 +9434,7 @@
         }
       ],
       "explanation": "Kolizní doménu sdílí stanice na stejném hubu nebo sběrnici; switch každý port izoluje do vlastní domény.",
-      "id": "q_00248",
-      "leaked": true
+      "id": "q_00248"
     },
     {
       "type": "single",
@@ -9727,8 +9465,7 @@
         }
       ],
       "explanation": "Broadcast doménu oddělují routery (a VLAN) — broadcast neprojde přes router do jiné sítě.",
-      "id": "q_00249",
-      "leaked": true
+      "id": "q_00249"
     },
     {
       "type": "single",
@@ -9759,8 +9496,7 @@
         }
       ],
       "explanation": "IPv4 = 32 bitů; /20 = 20 bitů síťová část; 32-20 = 12 bitů pro hostitele.",
-      "id": "q_00250",
-      "leaked": true
+      "id": "q_00250"
     },
     {
       "type": "single",
@@ -9791,8 +9527,7 @@
         }
       ],
       "explanation": "/20 vs /16 = 4 přidané bity → 2^4 = 16 podsítí.",
-      "id": "q_00251",
-      "leaked": true
+      "id": "q_00251"
     },
     {
       "type": "single",
@@ -9823,8 +9558,7 @@
         }
       ],
       "explanation": "/20 v třetím oktetu: 20-16=4 bity → 0000xxxx. Síť = 172.16.0.0; broadcast = 172.16.15.255 (0000 1111 = 15).",
-      "id": "q_00252",
-      "leaked": true
+      "id": "q_00252"
     },
     {
       "type": "single",
@@ -9855,8 +9589,7 @@
         }
       ],
       "explanation": "/29 = bloky po 8. 50 = 48+2 → blok 48-55. Síť = 10.10.10.48.",
-      "id": "q_00253",
-      "leaked": true
+      "id": "q_00253"
     },
     {
       "type": "single",
@@ -9887,8 +9620,7 @@
         }
       ],
       "explanation": "Blok .48 – .55; broadcast = .55 (poslední adresa).",
-      "id": "q_00254",
-      "leaked": true
+      "id": "q_00254"
     },
     {
       "type": "single",
@@ -9950,8 +9682,7 @@
         }
       ],
       "explanation": "Proxy ARP: router odpoví na ARP za vzdálené hostitele vlastní MAC adresou — klient posílá data routeru.",
-      "id": "q_00256",
-      "leaked": true
+      "id": "q_00256"
     },
     {
       "type": "single",
@@ -10004,8 +9735,7 @@
       "correct": 192,
       "tolerance": 0,
       "explanation": "11000000 = 128+64 = 192 (první dva bity = 1, ostatní = 0).",
-      "id": "q_03150",
-      "leaked": true
+      "id": "q_03150"
     },
     {
       "type": "number",
@@ -10016,8 +9746,7 @@
       "correct": 224,
       "tolerance": 0,
       "explanation": "11100000 = 128+64+32 = 224.",
-      "id": "q_03151",
-      "leaked": true
+      "id": "q_03151"
     },
     {
       "type": "number",
@@ -10028,8 +9757,7 @@
       "correct": 248,
       "tolerance": 0,
       "explanation": "11111000 = 128+64+32+16+8 = 248.",
-      "id": "q_03152",
-      "leaked": true
+      "id": "q_03152"
     },
     {
       "type": "number",
@@ -10040,8 +9768,7 @@
       "correct": 252,
       "tolerance": 0,
       "explanation": "11111100 = 128+64+32+16+8+4 = 252.",
-      "id": "q_03153",
-      "leaked": true
+      "id": "q_03153"
     },
     {
       "type": "number",
@@ -10105,8 +9832,7 @@
         }
       ],
       "explanation": "LC, SC, ST jsou optické konektory; RJ-45 je konektor pro metalický TP kabel.",
-      "id": "q_01018",
-      "leaked": true
+      "id": "q_01018"
     },
     {
       "type": "multi",
@@ -10137,8 +9863,7 @@
         }
       ],
       "explanation": "Router: L3, odděluje broadcast domény, používá IP adresy. MAC adresy jsou doménou L2 (switch).",
-      "id": "q_01019",
-      "leaked": true
+      "id": "q_01019"
     },
     {
       "type": "multi",
@@ -10169,8 +9894,7 @@
         }
       ],
       "explanation": "5 GHz: 802.11a, 802.11ac (Wi-Fi 5), 802.11ax (Wi-Fi 6, také 2,4 a 6 GHz). 802.11b = pouze 2,4 GHz.",
-      "id": "q_01020",
-      "leaked": true
+      "id": "q_01020"
     },
     {
       "type": "multi",
@@ -10221,8 +9945,7 @@
       "question": "Switch pracuje na fyzické vrstvě OSI (L1) — je toto tvrzení pravdivé?",
       "correct": false,
       "explanation": "Switch pracuje na linkové vrstvě (L2). L1 je hub/repeater.",
-      "id": "q_01405",
-      "leaked": true
+      "id": "q_01405"
     },
     {
       "type": "boolean",
@@ -10232,8 +9955,7 @@
       "question": "Maximální délka segmentu TP kabelu pro Gigabit Ethernet je 100 metrů — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, IEEE 802.3 definuje max 100 m pro Cat 5e/6 při GbE.",
-      "id": "q_01406",
-      "leaked": true
+      "id": "q_01406"
     },
     {
       "type": "boolean",
@@ -10263,8 +9985,7 @@
       "question": "BGP je protokol pro směrování uvnitř autonomního systému (IGP) — je toto tvrzení pravdivé?",
       "correct": false,
       "explanation": "BGP je EGP (Exterior Gateway Protocol) — pro výměnu cest MEZI autonomními systémy. IGP jsou RIP, OSPF, EIGRP.",
-      "id": "q_01409",
-      "leaked": true
+      "id": "q_01409"
     },
     {
       "type": "boolean",
@@ -10304,8 +10025,7 @@
       "question": "Broadcast MAC adresa je FF:FF:FF:FF:FF:FF — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, Ethernet broadcast MAC = všechny bity nastaveny na 1 = FF:FF:FF:FF:FF:FF.",
-      "id": "q_01413",
-      "leaked": true
+      "id": "q_01413"
     },
     {
       "type": "text",
@@ -10329,8 +10049,7 @@
         "DHCP",
         "dhcp"
       ],
-      "id": "q_04630",
-      "leaked": true
+      "id": "q_04630"
     },
     {
       "type": "text",
@@ -10460,8 +10179,7 @@
         }
       ],
       "explanation": "802.1Q vkládá 4B tag za zdrojovou MAC: TPID (0x8100), PCP (3 bity), DEI (1 bit), VLAN ID (12 bitů = max 4094 VLAN).",
-      "id": "q_00259",
-      "leaked": true
+      "id": "q_00259"
     },
     {
       "type": "single",
@@ -10616,8 +10334,7 @@
         }
       ],
       "explanation": "HTTPS je aplikační protokol (L7); TLS/SSL šifrování je na L6 (prezentační vrstvě).",
-      "id": "q_00264",
-      "leaked": true
+      "id": "q_00264"
     },
     {
       "type": "single",
@@ -10648,8 +10365,7 @@
         }
       ],
       "explanation": "SSL/TLS poskytuje šifrování a autentizaci — patří na prezentační vrstvu (L6) OSI modelu.",
-      "id": "q_00265",
-      "leaked": true
+      "id": "q_00265"
     },
     {
       "type": "single",
@@ -10680,8 +10396,7 @@
         }
       ],
       "explanation": "Ethernet zahrnuje L1 (fyzické signály, kódování) i L2 (rámce, MAC adresy, CSMA/CD).",
-      "id": "q_00266",
-      "leaked": true
+      "id": "q_00266"
     },
     {
       "type": "single",
@@ -10712,8 +10427,7 @@
         }
       ],
       "explanation": "ICMP (Internet Control Message Protocol) je součástí IP — pracuje na L3 (síťová vrstva).",
-      "id": "q_00267",
-      "leaked": true
+      "id": "q_00267"
     },
     {
       "type": "single",
@@ -10775,8 +10489,7 @@
         }
       ],
       "explanation": "Switch = L2, unicast na cílový port; hub = L1, všesměrové opakování signálu na všechny porty.",
-      "id": "q_00269",
-      "leaked": true
+      "id": "q_00269"
     },
     {
       "type": "single",
@@ -10869,8 +10582,7 @@
         }
       ],
       "explanation": "IDS detekuje anomálie a útoky (pouze hlásí); IPS navíc automaticky blokuje detekovaný útok.",
-      "id": "q_00272",
-      "leaked": true
+      "id": "q_00272"
     },
     {
       "type": "single",
@@ -10901,8 +10613,7 @@
         }
       ],
       "explanation": "224-239 = třída D; 224.0.0.9 je RIPv2 multicast adresa.",
-      "id": "q_00273",
-      "leaked": true
+      "id": "q_00273"
     },
     {
       "type": "single",
@@ -10933,8 +10644,7 @@
         }
       ],
       "explanation": "0.0.0.0 = this host (neznámá vlastní adresa při startu) nebo default route 0.0.0.0/0.",
-      "id": "q_00274",
-      "leaked": true
+      "id": "q_00274"
     },
     {
       "type": "single",
@@ -10965,8 +10675,7 @@
         }
       ],
       "explanation": "IPv4 classful: A (unicast velké), B (unicast střední), C (unicast malé), D (multicast), E (experimentální).",
-      "id": "q_00275",
-      "leaked": true
+      "id": "q_00275"
     },
     {
       "type": "single",
@@ -11183,8 +10892,7 @@
         }
       ],
       "explanation": "SIP = aplikační protokol (L7) pro iniciaci, modifikaci a ukončení multimediálních relací (VoIP).",
-      "id": "q_00282",
-      "leaked": true
+      "id": "q_00282"
     },
     {
       "type": "single",
@@ -11215,8 +10923,7 @@
         }
       ],
       "explanation": "SSH (port 22) nahrazuje nešifrovaný Telnet (port 23) pro bezpečnou vzdálenou správu.",
-      "id": "q_00283",
-      "leaked": true
+      "id": "q_00283"
     },
     {
       "type": "single",
@@ -11441,8 +11148,7 @@
       "question": "Třída D IPv4 adres je vyhrazena pro multicast — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, rozsah 224.0.0.0–239.255.255.255 (třída D) = multicastové skupiny.",
-      "id": "q_01420",
-      "leaked": true
+      "id": "q_01420"
     },
     {
       "type": "boolean",
@@ -11452,8 +11158,7 @@
       "question": "Hub odděluje každý port do vlastní kolizní domény — je toto tvrzení pravdivé?",
       "correct": false,
       "explanation": "Hub sdílí kolizní doménu na všech portech. Switch odděluje každý port do vlastní kolizní domény.",
-      "id": "q_01421",
-      "leaked": true
+      "id": "q_01421"
     },
     {
       "type": "boolean",
@@ -11473,8 +11178,7 @@
       "question": "PoE umožňuje napájení zařízení přes datový kabel UTP — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, PoE (IEEE 802.3af/at/bt) přenáší DC napájení a data po stejném kabelu.",
-      "id": "q_01423",
-      "leaked": true
+      "id": "q_01423"
     },
     {
       "type": "number",
@@ -11485,8 +11189,7 @@
       "correct": 10,
       "tolerance": 0,
       "explanation": "32 - 22 = 10 bitů pro hostitele.",
-      "id": "q_03157",
-      "leaked": true
+      "id": "q_03157"
     },
     {
       "type": "number",
@@ -11574,8 +11277,7 @@
       "correct": 3,
       "tolerance": 0,
       "explanation": "2,4 GHz: 3 nepřekrývající se kanály — 1, 7, 13 (v ČR).",
-      "id": "q_03165",
-      "leaked": true
+      "id": "q_03165"
     },
     {
       "type": "number",
@@ -11586,8 +11288,7 @@
       "correct": 48,
       "tolerance": 0,
       "explanation": "MAC adresa = 48 bitů = 6 bajtů.",
-      "id": "q_03166",
-      "leaked": true
+      "id": "q_03166"
     },
     {
       "type": "multi",
@@ -11680,8 +11381,7 @@
         }
       ],
       "explanation": "RFC 1918 privátní: 10/8, 172.16-31/12, 192.168/16. APIPA (169.254/16) je link-local, definován RFC 3927.",
-      "id": "q_01024",
-      "leaked": true
+      "id": "q_01024"
     },
     {
       "type": "multi",
@@ -11712,8 +11412,7 @@
         }
       ],
       "explanation": "L3: router, L3 switch, většina firewallů (paket filter). Hub = L1.",
-      "id": "q_01025",
-      "leaked": true
+      "id": "q_01025"
     },
     {
       "type": "text",
@@ -11782,8 +11481,7 @@
       "answer": [
         "Kolizní doména: oblast sítě kde může dojít ke kolizi signálů. Každý port switche nebo routeru = vlastní kolizní doména. Hub = všechny porty sdílejí jednu kolizní doménu. Vysílací doména: oblast kde se broadcasty šíří ke všem stanicím. Routery a VLAN tyto domény oddělují. Switch neoddděluje broadcast domény (pouze kolizní). Router nebo VLAN je oddělí — broadcast neprojde routerem do jiné sítě."
       ],
-      "id": "q_05372",
-      "leaked": true
+      "id": "q_05372"
     },
     {
       "type": "open",
@@ -11794,8 +11492,7 @@
       "answer": [
         "TCP (Transmission Control Protocol): spojově orientovaný, spolehlivý, zaručuje pořadí paketů, flow control, 3-way handshake. Vhodný pro: HTTP/S, FTP, SMTP, SSH — aplikace vyžadující spolehlivé doručení. UDP (User Datagram Protocol): connectionless, bez záruky doručení, bez pořadí, nižší overhead. Vhodný pro: DNS (dotazy), DHCP, VoIP, streamování videa, online hry — latence důležitější než spolehlivost."
       ],
-      "id": "q_05373",
-      "leaked": true
+      "id": "q_05373"
     },
     {
       "type": "single",
@@ -11857,8 +11554,7 @@
         }
       ],
       "explanation": "Full-duplex = simultánní TX a RX; eliminuje kolize → CSMA/CD není potřeba; vyžaduje switch (ne hub).",
-      "id": "q_00290",
-      "leaked": true
+      "id": "q_00290"
     },
     {
       "type": "single",
@@ -12013,8 +11709,7 @@
         }
       ],
       "explanation": "TCP L4 PDU = segment; UDP L4 PDU = datagram (i když oba jsou na L4, terminologie se liší).",
-      "id": "q_00295",
-      "leaked": true
+      "id": "q_00295"
     },
     {
       "type": "single",
@@ -12138,8 +11833,7 @@
         }
       ],
       "explanation": "FE80::/10 = link-local rozsah; adresy začínají FE80–FEBF a jsou platné pouze na jednom segmentu sítě.",
-      "id": "q_00299",
-      "leaked": true
+      "id": "q_00299"
     },
     {
       "type": "single",
@@ -12170,8 +11864,7 @@
         }
       ],
       "explanation": "IPv6 multicast = FF00::/8 (první bajt = FF); nahrazuje IPv4 broadcast i multicast.",
-      "id": "q_00300",
-      "leaked": true
+      "id": "q_00300"
     },
     {
       "type": "single",
@@ -12481,8 +12174,7 @@
         }
       ],
       "explanation": "WPA2-Personal = sdílená passphrase (PSK) pro všechny. Enterprise = každý uživatel má vlastní přihlašovací údaje ověřované RADIUS serverem.",
-      "id": "q_00310",
-      "leaked": true
+      "id": "q_00310"
     },
     {
       "type": "single",
@@ -12606,8 +12298,7 @@
         }
       ],
       "explanation": "Pokud paket přesahuje MTU linky, IPv4 router ho fragmentuje; příjemce fragmenty složí. IPv6 fragmentaci v síti nepodporuje — řeší ji PMTUD.",
-      "id": "q_00314",
-      "leaked": true
+      "id": "q_00314"
     },
     {
       "type": "single",
@@ -12733,8 +12424,7 @@
       "correct": 8,
       "tolerance": 0,
       "explanation": "IPv6: 8 skupin × 4 hex číslice × 4 bity = 128 bitů.",
-      "id": "q_03169",
-      "leaked": true
+      "id": "q_03169"
     },
     {
       "type": "number",
@@ -12745,8 +12435,7 @@
       "correct": 11,
       "tolerance": 0,
       "explanation": "802.11b = max 11 Mbps v pásmu 2,4 GHz.",
-      "id": "q_03170",
-      "leaked": true
+      "id": "q_03170"
     },
     {
       "type": "number",
@@ -12757,8 +12446,7 @@
       "correct": 54,
       "tolerance": 0,
       "explanation": "802.11a (5 GHz) i 802.11g (2,4 GHz) = max 54 Mbps.",
-      "id": "q_03171",
-      "leaked": true
+      "id": "q_03171"
     },
     {
       "type": "number",
@@ -12769,8 +12457,7 @@
       "correct": 3,
       "tolerance": 0,
       "explanation": "/27 - /24 = 3 bity pro subnet ID.",
-      "id": "q_03172",
-      "leaked": true
+      "id": "q_03172"
     },
     {
       "type": "number",
@@ -12792,8 +12479,7 @@
       "correct": 7,
       "tolerance": 0,
       "explanation": "OSI = 7 vrstev.",
-      "id": "q_03174",
-      "leaked": true
+      "id": "q_03174"
     },
     {
       "type": "boolean",
@@ -12813,8 +12499,7 @@
       "question": "IPv6 adresy třídy FC00::/7 jsou privátní adresy (ULA) — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, FC00::/7 = Unique Local Address (ULA) = privátní IPv6; analogie RFC 1918.",
-      "id": "q_01425",
-      "leaked": true
+      "id": "q_01425"
     },
     {
       "type": "boolean",
@@ -12824,8 +12509,7 @@
       "question": "IPv6 podporuje broadcast adresy stejně jako IPv4 — je toto tvrzení pravdivé?",
       "correct": false,
       "explanation": "IPv6 NEMÁ broadcast. Místo toho používá multicast (FF02::1 = all nodes) a anycast.",
-      "id": "q_01426",
-      "leaked": true
+      "id": "q_01426"
     },
     {
       "type": "boolean",
@@ -12885,8 +12569,7 @@
       "question": "SLAAC umožňuje IPv6 stanici nakonfigurovat adresu bez DHCP serveru — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, SLAAC (RFC 4862) = stanice použije prefix z Router Advertisement + EUI-64 z MAC adresy.",
-      "id": "q_01432",
-      "leaked": true
+      "id": "q_01432"
     },
     {
       "type": "boolean",
@@ -12906,8 +12589,7 @@
       "question": "BGP je protokol pro směrování uvnitř jednoho autonomního systému — je toto tvrzení pravdivé?",
       "correct": false,
       "explanation": "BGP je EGP (Exterior) — pro směrování MEZI AS. Uvnitř AS se používají IGP (OSPF, RIP, EIGRP).",
-      "id": "q_01434",
-      "leaked": true
+      "id": "q_01434"
     },
     {
       "type": "boolean",
@@ -12948,8 +12630,7 @@
         }
       ],
       "explanation": "IPv6: unicast (jeden příjemce), multicast (skupina), anycast (nejbližší z grupy). Broadcast v IPv6 NEEXISTUJE.",
-      "id": "q_01026",
-      "leaked": true
+      "id": "q_01026"
     },
     {
       "type": "multi",
@@ -12980,8 +12661,7 @@
         }
       ],
       "explanation": "HTTP, FTP, DNS jsou aplikační (L7). IP je síťový protokol (L3).",
-      "id": "q_01027",
-      "leaked": true
+      "id": "q_01027"
     },
     {
       "type": "multi",
@@ -13012,8 +12692,7 @@
         }
       ],
       "explanation": "Runt vzniká při kolizi (přerušení vysílání) nebo vadnou NIC. Přetížení switche způsobuje zahazování plných rámců, ne runt.",
-      "id": "q_01028",
-      "leaked": true
+      "id": "q_01028"
     },
     {
       "type": "multi",
@@ -13070,8 +12749,7 @@
         "SLAAC",
         "slaac"
       ],
-      "id": "q_04641",
-      "leaked": true
+      "id": "q_04641"
     },
     {
       "type": "text",
@@ -13105,8 +12783,7 @@
         "FF:FF:FF:FF:FF:FF",
         "ff:ff:ff:ff:ff:ff"
       ],
-      "id": "q_04644",
-      "leaked": true
+      "id": "q_04644"
     },
     {
       "type": "text",
@@ -13118,8 +12795,7 @@
         "CSMA/CA",
         "csma/ca"
       ],
-      "id": "q_04645",
-      "leaked": true
+      "id": "q_04645"
     },
     {
       "type": "text",
@@ -13131,8 +12807,7 @@
         "DHCP",
         "dhcp"
       ],
-      "id": "q_04646",
-      "leaked": true
+      "id": "q_04646"
     },
     {
       "type": "open",
@@ -13143,8 +12818,7 @@
       "answer": [
         "IPv4: 32 bitů, ~4,3 miliardy adres, zápis tečkový (4 oktetové skupiny), broadcast, NAT pro řešení nedostatku adres. IPv6: 128 bitů, 3,4×10^38 adres, zápis hexadecimální (8 skupin), žádný broadcast (multicast/anycast), SLAAC, integrovaný IPsec, zjednodušená hlavička (40 B vs proměnná IPv4). Přechod: dual-stack, tunelování (6to4, Teredo), NAT64."
       ],
-      "id": "q_05374",
-      "leaked": true
+      "id": "q_05374"
     },
     {
       "type": "open",
@@ -13197,8 +12871,7 @@
         }
       ],
       "explanation": "1 bajt = 8 bitů. 4 bity = nibble, 16 bitů = word.",
-      "id": "q_00318",
-      "leaked": true
+      "id": "q_00318"
     },
     {
       "type": "single",
@@ -13229,8 +12902,7 @@
         }
       ],
       "explanation": "00001111 = 8+4+2+1 = 15.",
-      "id": "q_00319",
-      "leaked": true
+      "id": "q_00319"
     },
     {
       "type": "single",
@@ -13261,8 +12933,7 @@
         }
       ],
       "explanation": "192 = 128+64 = 11000000.",
-      "id": "q_00320",
-      "leaked": true
+      "id": "q_00320"
     },
     {
       "type": "single",
@@ -13293,8 +12964,7 @@
         }
       ],
       "explanation": "255 = 16×15 + 15 = FF (F = 15 v hex).",
-      "id": "q_00321",
-      "leaked": true
+      "id": "q_00321"
     },
     {
       "type": "single",
@@ -13325,8 +12995,7 @@
         }
       ],
       "explanation": "0xA0 = 10×16 + 0 = 160.",
-      "id": "q_00322",
-      "leaked": true
+      "id": "q_00322"
     },
     {
       "type": "single",
@@ -13357,8 +13026,7 @@
         }
       ],
       "explanation": "0x1F = 1×16 + 15 = 31.",
-      "id": "q_00323",
-      "leaked": true
+      "id": "q_00323"
     },
     {
       "type": "single",
@@ -13420,8 +13088,7 @@
         }
       ],
       "explanation": "Binární AND každého oktetu s maskou: 73 AND 255=73 → ne, 73 AND 0=0 → 4. oktet=0. Výsledek: 192.168.1.0.",
-      "id": "q_00325",
-      "leaked": true
+      "id": "q_00325"
     },
     {
       "type": "single",
@@ -13452,8 +13119,7 @@
         }
       ],
       "explanation": "10101010 = 128+32+8+2 = 170.",
-      "id": "q_00326",
-      "leaked": true
+      "id": "q_00326"
     },
     {
       "type": "single",
@@ -13515,8 +13181,7 @@
         }
       ],
       "explanation": "172 = 10×16 + 12 = 0xAC (A=10, C=12).",
-      "id": "q_00328",
-      "leaked": true
+      "id": "q_00328"
     },
     {
       "type": "single",
@@ -13547,8 +13212,7 @@
         }
       ],
       "explanation": "0x = hex, 0b = binární, 0o = oktalová (osmičková) soustava.",
-      "id": "q_00329",
-      "leaked": true
+      "id": "q_00329"
     },
     {
       "type": "single",
@@ -13579,8 +13243,7 @@
         }
       ],
       "explanation": "Hexadecimální = základ 16: číslice 0–9 a písmena A(10)–F(15).",
-      "id": "q_00330",
-      "leaked": true
+      "id": "q_00330"
     },
     {
       "type": "number",
@@ -13591,8 +13254,7 @@
       "correct": 255,
       "tolerance": 0,
       "explanation": "11111111 = 128+64+32+16+8+4+2+1 = 255.",
-      "id": "q_03175",
-      "leaked": true
+      "id": "q_03175"
     },
     {
       "type": "number",
@@ -13614,8 +13276,7 @@
       "correct": 255,
       "tolerance": 0,
       "explanation": "0xFF = 15×16 + 15 = 240+15 = 255.",
-      "id": "q_03177",
-      "leaked": true
+      "id": "q_03177"
     },
     {
       "type": "number",
@@ -13626,8 +13287,7 @@
       "correct": 192,
       "tolerance": 0,
       "explanation": "0xC0 = 12×16 + 0 = 192.",
-      "id": "q_03178",
-      "leaked": true
+      "id": "q_03178"
     },
     {
       "type": "single",
@@ -13658,8 +13318,7 @@
         }
       ],
       "explanation": "Baseband: digitální signál se šíří bez modulace po celé šířce pásma média. Příklad: Ethernet 10BASE-T.",
-      "id": "q_00331",
-      "leaked": true
+      "id": "q_00331"
     },
     {
       "type": "single",
@@ -13690,8 +13349,7 @@
         }
       ],
       "explanation": "Broadband/passband: data modulována na nosnou (AM, FM, QAM...) — dovoluje sdílet médium více kanálů. Příklad: kabelová TV, DSL, Wi-Fi.",
-      "id": "q_00332",
-      "leaked": true
+      "id": "q_00332"
     },
     {
       "type": "single",
@@ -13722,8 +13380,7 @@
         }
       ],
       "explanation": "Ethernet = klasický příklad baseband; kabelová TV a DSL = broadband (modulace na nosnou).",
-      "id": "q_00333",
-      "leaked": true
+      "id": "q_00333"
     },
     {
       "type": "single",
@@ -13816,8 +13473,7 @@
         }
       ],
       "explanation": "ADSL moduluje data na nosné frekvence nad telefonním signálem (0–4 kHz) — typický příklad broadband/passband.",
-      "id": "q_00336",
-      "leaked": true
+      "id": "q_00336"
     },
     {
       "type": "single",
@@ -13848,8 +13504,7 @@
         }
       ],
       "explanation": "NRZ může mít dlouhé série bitů bez přechodu — přijímač ztratí synchronizaci. Manchester garantuje přechod v každé bitové periodě.",
-      "id": "q_00337",
-      "leaked": true
+      "id": "q_00337"
     },
     {
       "type": "single",
@@ -13911,8 +13566,7 @@
         }
       ],
       "explanation": "255.255.255.255 (limited) routery nepřeposílají — platí jen v lokálním segmentu. Directed broadcast (síť.255) theoreticky routovatelný, ale dle RFC 2644 defaultně blokován.",
-      "id": "q_00339",
-      "leaked": true
+      "id": "q_00339"
     },
     {
       "type": "single",
@@ -13943,8 +13597,7 @@
         }
       ],
       "explanation": "/16 = 16 bitů síť, 16 bitů host. Directed broadcast = síťová adresa + všechny 1 v host části = 10.1.255.255.",
-      "id": "q_00340",
-      "leaked": true
+      "id": "q_00340"
     },
     {
       "type": "boolean",
@@ -14088,8 +13741,7 @@
         }
       ],
       "explanation": "1) SLAAC (ze síťového prefixu + EUI-64), 2) Stateless DHCPv6 (prefix z RA, ostatní parametry z DHCPv6), 3) Stateful DHCPv6 (celá adresa z DHCPv6 serveru).",
-      "id": "q_00344",
-      "leaked": true
+      "id": "q_00344"
     },
     {
       "type": "single",
@@ -14264,8 +13916,7 @@
         }
       ],
       "explanation": "RTS (Request to Send): skrytá stanice pošle RTS na AP. AP odešle CTS (Clear to Send) broadcastem — i 'skrytá' stanice B ho uslyší a nastaví NAV (wait timer).",
-      "id": "q_00349",
-      "leaked": true
+      "id": "q_00349"
     },
     {
       "type": "single",
@@ -14368,8 +14019,7 @@
         }
       ],
       "explanation": "2,5GBASE-T (IEEE 802.3bz): 2,5 Gbps na Cat 5e nebo Cat 6 do 100 m — umožňuje upgradovat stávající kabeláž.",
-      "id": "q_00352",
-      "leaked": true
+      "id": "q_00352"
     },
     {
       "type": "single",
@@ -14400,8 +14050,7 @@
         }
       ],
       "explanation": "5GBASE-T (IEEE 802.3bz): 5 Gbps na Cat 6 (do 100 m) nebo Cat 6A (doporučeno pro plný výkon).",
-      "id": "q_00353",
-      "leaked": true
+      "id": "q_00353"
     },
     {
       "type": "single",
@@ -14432,8 +14081,7 @@
         }
       ],
       "explanation": "10GBASE-T (IEEE 802.3an): 10 Gbps vyžaduje Cat 6A nebo Cat 7 na 100 m (Cat 6 max. 55 m s omezením).",
-      "id": "q_00354",
-      "leaked": true
+      "id": "q_00354"
     },
     {
       "type": "single",
@@ -14557,8 +14205,7 @@
         }
       ],
       "explanation": "Auto-MDI/X: zařízení samo přepne TX/RX páry — lze použít přímý kabel i tam, kde by byl potřeba křížený. Všechny moderní switche ho podporují.",
-      "id": "q_00358",
-      "leaked": true
+      "id": "q_00358"
     },
     {
       "type": "single",
@@ -14589,8 +14236,7 @@
         }
       ],
       "explanation": "1000BASE-T a rychlejší (2,5G/5G/10G) používají všechny 4 páry obousměrně (full duplex na každém páru).",
-      "id": "q_00359",
-      "leaked": true
+      "id": "q_00359"
     },
     {
       "type": "single",
@@ -14621,8 +14267,7 @@
         }
       ],
       "explanation": "100BASE-TX (Fast Ethernet) používá pouze 2 páry: jeden pro TX, jeden pro RX. Zbylé 2 páry jsou nevyužity.",
-      "id": "q_00360",
-      "leaked": true
+      "id": "q_00360"
     },
     {
       "type": "single",
@@ -14653,8 +14298,7 @@
         }
       ],
       "explanation": "Fyzická topologie = jak jsou kabely reálně taženy. Logická topologie = jak data proudí (např. Ethernet může být fyzicky hvězda, ale logicky sběrnice).",
-      "id": "q_00361",
-      "leaked": true
+      "id": "q_00361"
     },
     {
       "type": "single",
@@ -14685,8 +14329,7 @@
         }
       ],
       "explanation": "Ethernet = logická sběrnice (všechny stanice slyší všechny), i když fyzicky může být zapojen jako hvězda (se switchem/hubem).",
-      "id": "q_00362",
-      "leaked": true
+      "id": "q_00362"
     },
     {
       "type": "single",
@@ -14717,8 +14360,7 @@
         }
       ],
       "explanation": "Token Ring: fyzicky bývá zapojen jako hvězda (MAU/MSU uprostřed), ale logicky data putují v kruhu (token ring).",
-      "id": "q_00363",
-      "leaked": true
+      "id": "q_00363"
     },
     {
       "type": "single",
@@ -14749,8 +14391,7 @@
         }
       ],
       "explanation": "Se switchem a full-duplexem každá stanice má vlastní dedikovaný segment → logická hvězda (žádné sdílení, žádný CSMA/CD).",
-      "id": "q_00364",
-      "leaked": true
+      "id": "q_00364"
     },
     {
       "type": "boolean",
@@ -14791,8 +14432,7 @@
         }
       ],
       "explanation": "Hex číslice: 0–9 a A–F (A=10, B=11, C=12, D=13, E=14, F=15). G neexistuje v hex.",
-      "id": "q_01030",
-      "leaked": true
+      "id": "q_01030"
     },
     {
       "type": "multi",
@@ -14823,8 +14463,7 @@
         }
       ],
       "explanation": "100BASE-TX = 2 páry. 1000BASE-T a vyšší = všechny 4 páry (obousměrně).",
-      "id": "q_01031",
-      "leaked": true
+      "id": "q_01031"
     },
     {
       "type": "boolean",
@@ -14834,8 +14473,7 @@
       "question": "Hexadecimální číslo 0xFF odpovídá dekadické hodnotě 255 — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "0xFF = 15×16 + 15 = 240+15 = 255. PRAVDA.",
-      "id": "q_01442",
-      "leaked": true
+      "id": "q_01442"
     },
     {
       "type": "boolean",
@@ -14855,8 +14493,7 @@
       "question": "Standard 10GBASE-T vyžaduje Cat 6A nebo Cat 7 kabel pro přenos na 100 m — je toto tvrzení pravdivé?",
       "correct": true,
       "explanation": "Ano, 10GBASE-T na 100 m vyžaduje Cat 6A nebo Cat 7. Na Cat 6 max. 55 m.",
-      "id": "q_01444",
-      "leaked": true
+      "id": "q_01444"
     },
     {
       "type": "boolean",
@@ -14880,8 +14517,7 @@
         "0xFF",
         "0xff"
       ],
-      "id": "q_04647",
-      "leaked": true
+      "id": "q_04647"
     },
     {
       "type": "text",
@@ -14892,8 +14528,7 @@
       "correct": [
         "192"
       ],
-      "id": "q_04648",
-      "leaked": true
+      "id": "q_04648"
     },
     {
       "type": "text",
@@ -14905,8 +14540,7 @@
         "RTS/CTS",
         "rts/cts"
       ],
-      "id": "q_04649",
-      "leaked": true
+      "id": "q_04649"
     },
     {
       "type": "text",
@@ -14949,8 +14583,7 @@
         }
       ],
       "explanation": "ARPANET byl spuštěn v roce 1969 americkou agenturou DARPA.",
-      "id": "q_04651",
-      "leaked": true
+      "id": "q_04651"
     },
     {
       "type": "single",
@@ -15074,8 +14707,7 @@
         }
       ],
       "explanation": "1. ledna 1983 (Den D) ARPANET přešel z NCP na TCP/IP — tento datum se považuje za vznik internetu.",
-      "id": "q_04655",
-      "leaked": true
+      "id": "q_04655"
     },
     {
       "type": "single",
@@ -15199,8 +14831,7 @@
         }
       ],
       "explanation": "TDMA (Time Division Multiple Access) rozděluje přenosový čas na pevné sloty přidělené jednotlivým stanicím.",
-      "id": "q_04659",
-      "leaked": true
+      "id": "q_04659"
     },
     {
       "type": "single",
@@ -15231,8 +14862,7 @@
         }
       ],
       "explanation": "FDMA (Frequency Division Multiple Access) rozděluje frekvenční pásmo na subkanály přidělené jednotlivým stanicím.",
-      "id": "q_04660",
-      "leaked": true
+      "id": "q_04660"
     },
     {
       "type": "single",
@@ -15263,8 +14893,7 @@
         }
       ],
       "explanation": "CDMA (Code Division Multiple Access) umožňuje stanicím vysílat současně na stejné frekvenci — jsou rozlišovány jedinečným kódem.",
-      "id": "q_04661",
-      "leaked": true
+      "id": "q_04661"
     },
     {
       "type": "single",
@@ -15295,8 +14924,7 @@
         }
       ],
       "explanation": "TDMA přiděluje pevné časové sloty staticky — nevyužité sloty neaktivních stanic jsou plýtváním kapacitou.",
-      "id": "q_04662",
-      "leaked": true
+      "id": "q_04662"
     },
     {
       "type": "single",
@@ -15389,8 +15017,7 @@
         }
       ],
       "explanation": "Centrální přidělování (polling, master-slave) řídí přístup jedna stanice; distribuované (CSMA, token passing) si stanice koordinují přístup samy.",
-      "id": "q_04665",
-      "leaked": true
+      "id": "q_04665"
     },
     {
       "type": "text",
@@ -15457,8 +15084,7 @@
         }
       ],
       "explanation": "Token Ring (IEEE 802.5) používá předávání žetonu: stanice může vysílat pouze když drží žeton, poté jej předá sousední stanici v kruhu.",
-      "id": "q_04669",
-      "leaked": true
+      "id": "q_04669"
     },
     {
       "type": "single",
@@ -15489,8 +15115,7 @@
         }
       ],
       "explanation": "FDMA a TDMA jsou metody statického přidělování — každé stanici je přidělen pevný frekvenční kanál nebo časový slot bez ohledu na aktuální provoz.",
-      "id": "q_04670",
-      "leaked": true
+      "id": "q_04670"
     },
     {
       "type": "single",
@@ -15521,8 +15146,7 @@
         }
       ],
       "explanation": "IEEE 802.3 standardizuje Ethernet — definuje fyzickou a linkovou vrstvu pro kabelové LAN.",
-      "id": "q_04671",
-      "leaked": true
+      "id": "q_04671"
     },
     {
       "type": "single",
@@ -15553,8 +15177,7 @@
         }
       ],
       "explanation": "IEEE 802.11 definuje rodinu standardů pro bezdrátové LAN — Wi-Fi.",
-      "id": "q_04672",
-      "leaked": true
+      "id": "q_04672"
     },
     {
       "type": "single",
@@ -15585,8 +15208,7 @@
         }
       ],
       "explanation": "IEEE 802.5 standardizuje Token Ring — síť s předáváním žetonu v kruhu.",
-      "id": "q_04673",
-      "leaked": true
+      "id": "q_04673"
     },
     {
       "type": "single",
@@ -15617,8 +15239,7 @@
         }
       ],
       "explanation": "IEEE 802.15 pokrývá bezdrátové osobní sítě (WPAN) — zahrnuje Bluetooth (802.15.1) a ZigBee (802.15.4).",
-      "id": "q_04674",
-      "leaked": true
+      "id": "q_04674"
     },
     {
       "type": "single",
@@ -15649,8 +15270,7 @@
         }
       ],
       "explanation": "IEEE 802.2 definuje LLC (Logical Link Control) — horní podvrstvu linkové vrstvy, která zajišťuje multiplexing protokolů síťové vrstvy.",
-      "id": "q_04675",
-      "leaked": true
+      "id": "q_04675"
     },
     {
       "type": "single",
@@ -15681,8 +15301,7 @@
         }
       ],
       "explanation": "IEEE 802.4 standardizuje Token Bus — síť se sběrnicovou topologií a předáváním žetonu.",
-      "id": "q_04676",
-      "leaked": true
+      "id": "q_04676"
     },
     {
       "type": "text",
@@ -15693,8 +15312,7 @@
       "correct": [
         "802.3"
       ],
-      "id": "q_04677",
-      "leaked": true
+      "id": "q_04677"
     },
     {
       "type": "text",
@@ -15705,8 +15323,7 @@
       "correct": [
         "802.11"
       ],
-      "id": "q_04678",
-      "leaked": true
+      "id": "q_04678"
     },
     {
       "type": "text",
@@ -15717,8 +15334,7 @@
       "correct": [
         "802.5"
       ],
-      "id": "q_04679",
-      "leaked": true
+      "id": "q_04679"
     },
     {
       "type": "single",
@@ -15842,8 +15458,7 @@
         }
       ],
       "explanation": "IP je datagramový (connectionless) protokol — každý paket se routuje nezávisle bez předchozího navázání spojení.",
-      "id": "q_04683",
-      "leaked": true
+      "id": "q_04683"
     },
     {
       "type": "single",
@@ -15967,8 +15582,7 @@
         }
       ],
       "explanation": "PVC (Permanent VC) je trvale konfigurovaný — existuje stále. SVC (Switched VC) se dynamicky navazuje a ruší podobně jako telefonní hovor.",
-      "id": "q_04687",
-      "leaked": true
+      "id": "q_04687"
     },
     {
       "type": "single",
@@ -16309,8 +15923,7 @@
         }
       ],
       "explanation": "TCP posílá ACK s číslem dalšího očekávaného bajtu — kumulativní potvrzení.",
-      "id": "q_04698",
-      "leaked": true
+      "id": "q_04698"
     },
     {
       "type": "single",
@@ -16465,8 +16078,7 @@
         }
       ],
       "explanation": "Registrované porty: 1024–49151. Organizace si je mohou zaregistrovat u IANA pro konkrétní aplikace (např. 3306 pro MySQL).",
-      "id": "q_04703",
-      "leaked": true
+      "id": "q_04703"
     },
     {
       "type": "single",
@@ -16497,8 +16109,7 @@
         }
       ],
       "explanation": "Dynamické (privátní, ephemeral) porty: 49152–65535. Přiděluje je OS dočasně klientským aplikacím při navazování spojení.",
-      "id": "q_04704",
-      "leaked": true
+      "id": "q_04704"
     },
     {
       "type": "single",
@@ -16622,8 +16233,7 @@
         }
       ],
       "explanation": "Demultiplexování: TCP/UDP přijme segment a podle čísla cílového portu ho doručí správné aplikaci (soketu).",
-      "id": "q_04708",
-      "leaked": true
+      "id": "q_04708"
     },
     {
       "type": "single",
@@ -16727,8 +16337,7 @@
       "correct": [
         "10"
       ],
-      "id": "q_04712",
-      "leaked": true
+      "id": "q_04712"
     },
     {
       "type": "text",
@@ -16739,8 +16348,7 @@
       "correct": [
         "15"
       ],
-      "id": "q_04713",
-      "leaked": true
+      "id": "q_04713"
     },
     {
       "type": "text",
@@ -16751,8 +16359,7 @@
       "correct": [
         "7"
       ],
-      "id": "q_04714",
-      "leaked": true
+      "id": "q_04714"
     },
     {
       "type": "text",
@@ -16763,8 +16370,7 @@
       "correct": [
         "8"
       ],
-      "id": "q_04715",
-      "leaked": true
+      "id": "q_04715"
     },
     {
       "type": "single",
@@ -16795,8 +16401,7 @@
         }
       ],
       "explanation": "Izotropní anténa je teoretický zdroj vyzařující stejně do všech směrů (koule). Slouží jako referenční bod pro měření zisku jiných antén — vyjadřuje se v dBi.",
-      "id": "q_04716",
-      "leaked": true
+      "id": "q_04716"
     },
     {
       "type": "single",
@@ -16827,8 +16432,7 @@
         }
       ],
       "explanation": "dBi (decibel relative to isotropic) — zisk antény vůči izotropnímu zářiči. Čím vyšší dBi, tím více anténa soustřeďuje energii v preferovaném směru.",
-      "id": "q_04717",
-      "leaked": true
+      "id": "q_04717"
     },
     {
       "type": "single",
@@ -16952,8 +16556,7 @@
         }
       ],
       "explanation": "AM (Amplitude Modulation) — informace je kódována změnami amplitudy nosné frekvence. Používá se v rozhlase a jako složka QAM.",
-      "id": "q_04721",
-      "leaked": true
+      "id": "q_04721"
     },
     {
       "type": "single",
@@ -16984,8 +16587,7 @@
         }
       ],
       "explanation": "FM (Frequency Modulation) — informace je kódována změnami frekvence nosné. Odolnější vůči šumu než AM. Příklad: FM rozhlas (88–108 MHz).",
-      "id": "q_04722",
-      "leaked": true
+      "id": "q_04722"
     },
     {
       "type": "single",
@@ -17171,8 +16773,7 @@
         }
       ],
       "explanation": "Backbone topologie — centrální páteřní kabel nebo segment propojuje menší podsítě. Typické ve větších budovách jako vertikální (páteřní) kabeláž.",
-      "id": "q_04728",
-      "leaked": true
+      "id": "q_04728"
     },
     {
       "type": "single",
@@ -17203,8 +16804,7 @@
         }
       ],
       "explanation": "Mesh (síťová) topologie — full mesh: každý uzel má přímé spojení s každým jiným. Výhoda: redundance; nevýhoda: velký počet spojů.",
-      "id": "q_04729",
-      "leaked": true
+      "id": "q_04729"
     },
     {
       "type": "single",
@@ -17235,8 +16835,7 @@
         }
       ],
       "explanation": "Neomezená topologie (ad-hoc, IBSS) — bezdrátové uzly komunikují přímo peer-to-peer bez přístupového bodu. Žádná pevná infrastruktura.",
-      "id": "q_04730",
-      "leaked": true
+      "id": "q_04730"
     },
     {
       "type": "single",
@@ -17267,8 +16866,7 @@
         }
       ],
       "explanation": "Logická topologie popisuje tok dat: např. síť s fyzickou hvězdicovou topologií (hub) může mít logicky sběrnicovou topologii.",
-      "id": "q_04731",
-      "leaked": true
+      "id": "q_04731"
     },
     {
       "type": "single",
@@ -17299,8 +16897,7 @@
         }
       ],
       "explanation": "Moderní LAN používá hvězdicovou topologii — všechna zařízení jsou zapojena do centrálního switche. Výhoda: snadná správa, porucha jednoho kabelu neovlivní ostatní.",
-      "id": "q_04732",
-      "leaked": true
+      "id": "q_04732"
     },
     {
       "type": "single",
@@ -17331,8 +16928,7 @@
         }
       ],
       "explanation": "Switch flooduje broadcast na všechny porty kromě zdrojového — broadcast je určen všem zařízením v broadcastové doméně.",
-      "id": "q_04733",
-      "leaked": true
+      "id": "q_04733"
     },
     {
       "type": "single",
@@ -17363,8 +16959,7 @@
         }
       ],
       "explanation": "Broadcast MAC adresa je FF:FF:FF:FF:FF:FF (všechny bity 1). Rámec s touto adresou obdrží všechna zařízení ve stejné broadcastové doméně.",
-      "id": "q_04734",
-      "leaked": true
+      "id": "q_04734"
     },
     {
       "type": "single",
@@ -17395,8 +16990,7 @@
         }
       ],
       "explanation": "Broadcast (FF:FF:FF:FF:FF:FF) je určen všem hostům v broadcastové doméně — switch ho proto odešle na všechny porty kromě zdrojového.",
-      "id": "q_04735",
-      "leaked": true
+      "id": "q_04735"
     },
     {
       "type": "single",
@@ -17489,8 +17083,7 @@
         }
       ],
       "explanation": "NDP (Neighbor Discovery Protocol, RFC 4861) nahrazuje ARP v IPv6. Zajišťuje RS/RA, zjišťování sousedů (NS/NA) a DAD.",
-      "id": "q_04738",
-      "leaked": true
+      "id": "q_04738"
     },
     {
       "type": "single",
@@ -17583,8 +17176,7 @@
         }
       ],
       "explanation": "10BASE5 (Thick Ethernet / Thicknet) — první Ethernet, rychlost 10 Mb/s, tlustý koaxiální kabel, max. délka segmentu 500 m.",
-      "id": "q_04741",
-      "leaked": true
+      "id": "q_04741"
     },
     {
       "type": "single",
@@ -17615,8 +17207,7 @@
         }
       ],
       "explanation": "10BASE2 (Thin Ethernet / Thinnet / Cheapernet) — 10 Mb/s, tenký koaxiální kabel (RG-58), max. délka segmentu 185 m.",
-      "id": "q_04742",
-      "leaked": true
+      "id": "q_04742"
     },
     {
       "type": "single",
@@ -17647,8 +17238,7 @@
         }
       ],
       "explanation": "10BASE-T — 10 Mb/s Ethernet na kroucené dvojlince (UTP), max. délka 100 m, zapojení do hubu/switche (hvězdicová topologie).",
-      "id": "q_04743",
-      "leaked": true
+      "id": "q_04743"
     },
     {
       "type": "single",
@@ -17679,8 +17269,7 @@
         }
       ],
       "explanation": "10BASE5: max. délka segmentu 500 m (odtud číslo 5 — 5 × 100 m). Tlustý koaxiální kabel, konektory AUI/BNC.",
-      "id": "q_04744",
-      "leaked": true
+      "id": "q_04744"
     },
     {
       "type": "single",
@@ -17711,8 +17300,7 @@
         }
       ],
       "explanation": "10BASE2: max. délka segmentu 185 m (přibližně 200 m — odtud číslo 2). Tenký koaxiální kabel RG-58, BNC konektory ve tvaru T.",
-      "id": "q_04745",
-      "leaked": true
+      "id": "q_04745"
     },
     {
       "type": "single",
@@ -17805,8 +17393,7 @@
         }
       ],
       "explanation": "CAM (Content Addressable Memory) tabulka — hardware optimalizovaný pro rychlé vyhledávání MAC adres. Uchovává záznamy (MAC adresa, port, VLAN, stáří).",
-      "id": "q_04748",
-      "leaked": true
+      "id": "q_04748"
     },
     {
       "type": "single",
@@ -17820,7 +17407,6 @@
         {"id": "d", "text": "SISO", "correct": false}
       ],
       "explanation": "MISO = Multiple Input, Single Output – více vysílacích antén, jedna přijímací.",
-      "leaked": true,
       "id": "q_04749"
     },
     {
@@ -17835,7 +17421,6 @@
         {"id": "d", "text": "SISO", "correct": false}
       ],
       "explanation": "SIMO = Single Input, Multiple Output – jedna vysílací anténa, více přijímacích.",
-      "leaked": true,
       "id": "q_04750"
     },
     {
@@ -17850,7 +17435,6 @@
         {"id": "d", "text": "SIMO", "correct": false}
       ],
       "explanation": "MIMO = Multiple Input, Multiple Output – více vysílacích i přijímacích antén. Používá se např. u IEEE 802.11n/ac.",
-      "leaked": true,
       "id": "q_04751"
     },
     {
@@ -17865,7 +17449,6 @@
         {"id": "d", "text": "ISO", "correct": false}
       ],
       "explanation": "Wi-Fi Alliance je organizace, která certifikuje zařízení a uděluje jim obchodní označení Wi-Fi.",
-      "leaked": true,
       "id": "q_04752"
     },
     {
@@ -17880,7 +17463,6 @@
         {"id": "d", "text": "frekvenční pásmo pro bezdrátový přenos", "correct": false}
       ],
       "explanation": "Wi-Fi je obchodní certifikát (ochranná známka) udělovaný Wi-Fi Alliance; samotný standard je IEEE 802.11.",
-      "leaked": true,
       "id": "q_04753"
     },
     {
@@ -17894,7 +17476,6 @@
         {"id": "c", "text": "WWAN", "correct": false},
         {"id": "d", "text": "WLAN", "correct": true}
       ],
-      "leaked": true,
       "id": "q_04754"
     },
     {
@@ -17909,7 +17490,6 @@
         {"id": "d", "text": "23 dBm (200 mW)", "correct": false}
       ],
       "explanation": "V pásmu 2,4 GHz je v ČR maximální povolený vyzářený výkon 20 dBm, tedy 100 mW.",
-      "leaked": true,
       "id": "q_04755"
     },
     {
@@ -17922,7 +17502,6 @@
         {"id": "false", "text": "Nepravda", "correct": false}
       ],
       "explanation": "IEEE 802.11 byl navržen pro WLAN (lokální bezdrátové sítě), nikoli pro rozsáhlejší WMAN či WWAN.",
-      "leaked": true,
       "id": "q_04756"
     },
     {
@@ -17937,7 +17516,6 @@
         {"id": "d", "text": "WEP, WPA2, WPA", "correct": false}
       ],
       "explanation": "WEP je nejslabší (prolomitelný), WPA je silnější (TKIP), WPA2 je nejsilnější (AES/CCMP).",
-      "leaked": true,
       "id": "q_04757"
     },
     {
@@ -17952,7 +17530,6 @@
         {"id": "d", "text": "kužele", "correct": false}
       ],
       "explanation": "Fresnelova zóna je rotační elipsoid (paraboloid) – oblast prostoru kolem přímé spojnice dvou antén, kudy se šíří rádiový signál.",
-      "leaked": true,
       "id": "q_04758"
     },
     {
@@ -17967,7 +17544,6 @@
         {"id": "d", "text": "rozptýleně ve všech směrech rovnoměrně", "correct": false}
       ],
       "explanation": "Elektromagnetický signál se šíří uvnitř Fresnelovy zóny. Překážky zasahující do první Fresnelovy zóny způsobují útlum signálu.",
-      "leaked": true,
       "id": "q_04759"
     },
     {
@@ -17982,7 +17558,6 @@
         {"id": "d", "text": "stíněná kroucená dvojlinka STP", "correct": false}
       ],
       "explanation": "Optické vlákno přenáší světelné pulzy, takže není ovlivněno elektromagnetickým rušením – má největší odolnost vůči EMS.",
-      "leaked": true,
       "id": "q_04760"
     },
     {
@@ -17997,7 +17572,6 @@
         {"id": "d", "text": "index lomu jádra vlákna", "correct": false}
       ],
       "explanation": "Numerická apertura (NA) vyjadřuje, v jakém maximálním úhlu může světlo vstupovat do vlákna a být vedeno totálním odrazem.",
-      "leaked": true,
       "id": "q_04761"
     },
     {
@@ -18012,7 +17586,6 @@
         {"id": "d", "text": "konektor, fotodioda, multiplexer", "correct": false}
       ],
       "explanation": "Přijímač FO se skládá z fotodetektoru (převod světla na elektrický signál), zesilovače a procesoru (zpracování signálu).",
-      "leaked": true,
       "id": "q_04762"
     },
     {
@@ -18027,7 +17600,6 @@
         {"id": "d", "text": "pájecí technikou", "correct": false}
       ],
       "explanation": "Optická vlákna lze spojovat svařením (fusion splicing), slepením (chemicky) nebo mechanickými spojkami.",
-      "leaked": true,
       "id": "q_04763"
     },
     {
@@ -18042,7 +17614,6 @@
         {"id": "d", "text": "500 km", "correct": false}
       ],
       "explanation": "Jednovidová optická vlákna (SMF) mají velmi nízký útlum a umožňují přenos bez regenerace signálu na vzdálenosti přesahující 100 km.",
-      "leaked": true,
       "id": "q_04764"
     },
     {
@@ -18057,7 +17628,6 @@
         {"id": "d", "text": "256", "correct": false}
       ],
       "explanation": "DWDM (Dense Wavelength Division Multiplexing) umožňuje přenášet až 160 vlnových délek (kanálů) po jednom optickém vlákně.",
-      "leaked": true,
       "id": "q_04765"
     },
     {
@@ -18072,7 +17642,6 @@
         {"id": "d", "text": "nulovým (kolmo na rozhraní)", "correct": false}
       ],
       "explanation": "Totální odraz nastává, když úhel dopadu (měřený od normály rozhraní) je větší nebo roven kritickému úhlu – paprsek se pak neláme do pláště.",
-      "leaked": true,
       "id": "q_04766"
     },
     {
@@ -18087,7 +17656,6 @@
         {"id": "d", "text": "u koaxiálních kabelů", "correct": false}
       ],
       "explanation": "Step-index (skoková změna indexu lomu) se používá jak u jednovidových, tak u mnohovidových optických vláken.",
-      "leaked": true,
       "id": "q_04767"
     },
     {
@@ -18102,7 +17670,6 @@
         {"id": "d", "text": "u koaxiálních kabelů s frekvenční modulací", "correct": false}
       ],
       "explanation": "Graded-index (průběžná/gradientní změna indexu lomu) se používá pouze u mnohovidových vláken ke snížení mezividové disperze.",
-      "leaked": true,
       "id": "q_04768"
     },
     {
@@ -18117,7 +17684,6 @@
         {"id": "d", "text": "z kovu nebo skla", "correct": false}
       ],
       "explanation": "Plášť optického vlákna (cladding) může být vyroben ze skla nebo plastu – musí mít nižší index lomu než jádro.",
-      "leaked": true,
       "id": "q_04769"
     },
     {
@@ -18132,7 +17698,6 @@
         {"id": "d", "text": "dBm", "correct": false}
       ],
       "explanation": "Šířka pásma (propustnost) digitálního signálu se udává v bitech za sekundu (b/s, bps).",
-      "leaked": true,
       "id": "q_04770"
     },
     {
@@ -18147,7 +17712,6 @@
         {"id": "d", "text": "10 GHz", "correct": false}
       ],
       "explanation": "Koaxiální kabel má dobré přenosové parametry přibližně do 1 GHz, nad touto frekvencí roste útlum prudce.",
-      "leaked": true,
       "id": "q_04771"
     },
     {
@@ -18162,7 +17726,6 @@
         {"id": "d", "text": "n = c − v", "correct": false}
       ],
       "explanation": "Index lomu n = c/v, kde c je rychlost světla ve vakuu a v je rychlost světla v daném materiálu. Vždy platí n ≥ 1.",
-      "leaked": true,
       "id": "q_04772"
     },
     {
@@ -18177,7 +17740,6 @@
         {"id": "d", "text": "1 μs", "correct": false}
       ],
       "explanation": "Při přenosové rychlosti 10 Mb/s trvá odvysílání jednoho bitu 1/10 000 000 s = 100 ns.",
-      "leaked": true,
       "id": "q_04773"
     },
     {
@@ -18192,7 +17754,6 @@
         {"id": "d", "text": "0,1 ns", "correct": false}
       ],
       "explanation": "Při přenosové rychlosti 100 Mb/s trvá odvysílání jednoho bitu 1/100 000 000 s = 10 ns.",
-      "leaked": true,
       "id": "q_04774"
     },
     {
@@ -18207,7 +17768,6 @@
         {"id": "d", "text": "1 ns", "correct": true}
       ],
       "explanation": "Při přenosové rychlosti 1 Gb/s trvá odvysílání jednoho bitu 1/1 000 000 000 s = 1 ns.",
-      "leaked": true,
       "id": "q_04775"
     },
     {
@@ -18222,7 +17782,6 @@
         {"id": "d", "text": "10 ns", "correct": false}
       ],
       "explanation": "Při přenosové rychlosti 10 Gb/s trvá odvysílání jednoho bitu 1/10 000 000 000 s = 0,1 ns.",
-      "leaked": true,
       "id": "q_04776"
     },
     {
@@ -18237,7 +17796,6 @@
         {"id": "d", "text": "PC-router, switch-switch", "correct": false}
       ],
       "explanation": "Přímý (patch) kabel spojuje zařízení různých skupin: MDI (PC, router) s MDIX (switch, hub). Křížený kabel naopak spojuje zařízení stejné skupiny.",
-      "leaked": true,
       "id": "q_04777"
     },
     {
@@ -18252,7 +17810,6 @@
         {"id": "d", "text": "Wiring panel", "correct": false}
       ],
       "explanation": "Patch panel (rozvodný panel) je pasivní prvek v datovém rozvaděči, který sdružuje zakončení kabelů ze strukturované kabeláže.",
-      "leaked": true,
       "id": "q_04778"
     },
     {
@@ -18267,7 +17824,6 @@
         {"id": "d", "text": "Backbone kabel", "correct": false}
       ],
       "explanation": "Patch kabel (záplatkový kabel) je krátký propojovací kabel v rozvaděči, typicky UTP/STP s konektory RJ-45.",
-      "leaked": true,
       "id": "q_04779"
     },
     {
@@ -18282,7 +17838,6 @@
         {"id": "d", "text": "IDF cabinet", "correct": false}
       ],
       "explanation": "Datový rozvaděč se standardně nazývá RACK (nebo rack skříň). Má standardizovanou šířku 19 palců a výška se měří v jednotkách U.",
-      "leaked": true,
       "id": "q_04780"
     },
     {
@@ -18297,7 +17852,6 @@
         {"id": "d", "text": "Sekáč na kabely", "correct": false}
       ],
       "explanation": "Narážecí nástroj (punch-down tool) zatlačí vodič do svorky IDC (Insulation Displacement Connector) v patch panelu nebo zásuvce.",
-      "leaked": true,
       "id": "q_04781"
     },
     {
@@ -18312,7 +17866,6 @@
         {"id": "d", "text": "100 Mb/s a 1 Gb/s", "correct": false}
       ],
       "explanation": "U 10BASE-T a 100BASE-TX je nutné použít křížený kabel pro propojení stejných skupin zařízení (PC-PC, switch-switch). Gigabitový Ethernet podporuje automatické křížení (Auto-MDIX).",
-      "leaked": true,
       "id": "q_04782"
     },
     {
@@ -18327,7 +17880,6 @@
         {"id": "d", "text": "ScTP (opletené stínění)", "correct": false}
       ],
       "explanation": "UTP kabel nemá stínění, je proto tenčí, lehčí, flexibilnější a snáze se s ním pracuje při instalaci.",
-      "leaked": true,
       "id": "q_04783"
     },
     {
@@ -18342,7 +17894,6 @@
         {"id": "d", "text": "ScTP", "correct": true}
       ],
       "explanation": "ScTP (Screened Twisted Pair) má opletené stínění okolo všech párů dohromady. Páry nejsou stíněny samostatně, ale celý kabel je obalen stíněním.",
-      "leaked": true,
       "id": "q_04784"
     },
     {
@@ -18357,7 +17908,6 @@
         {"id": "d", "text": "DNS serverů, DHCP serverů a DNS proxy", "correct": false}
       ],
       "explanation": "DNS systém tvoří tři klíčové části: DNS resolvery (klientská část dotazování), DNS servery (autoritativní databáze) a DNS cache (mezipaměť pro urychlení dotazů).",
-      "leaked": true,
       "id": "q_04785"
     },
     {
@@ -18372,7 +17922,6 @@
         {"id": "d", "text": "přidělování IP adres klientům", "correct": false}
       ],
       "explanation": "DNS resolver je klientská část DNS – odesílá dotazy k rekurzivním či autoritativním DNS serverům a vrací výsledek aplikaci.",
-      "leaked": true,
       "id": "q_04786"
     },
     {
@@ -18387,7 +17936,6 @@
         {"id": "d", "text": "šifrování DNS komunikace", "correct": false}
       ],
       "explanation": "DNS server přijímá dotazy od resolverů, provádí překlad doménových jmen na IP adresy a vrací výsledek dotazujícímu.",
-      "leaked": true,
       "id": "q_04787"
     },
     {
@@ -18402,7 +17950,6 @@
         {"id": "d", "text": "# (mřížka)", "correct": false}
       ],
       "explanation": "Kořenová (root) doména DNS je označena tečkou (.) – je to nejvyšší úroveň hierarchie doménových jmen.",
-      "leaked": true,
       "id": "q_04788"
     },
     {
@@ -18417,7 +17964,6 @@
         {"id": "d", "text": "čtyři DNS servery", "correct": false}
       ],
       "explanation": "RFC požaduje, aby každá doména měla minimálně dva DNS servery (primární a sekundární) pro zajištění redundance a dostupnosti.",
-      "leaked": true,
       "id": "q_04789"
     },
     {
@@ -18431,7 +17977,6 @@
         {"id": "c", "text": "tečkou", "correct": true},
         {"id": "d", "text": "lomítkem", "correct": false}
       ],
-      "leaked": true,
       "id": "q_04790"
     },
     {
@@ -18446,7 +17991,6 @@
         {"id": "d", "text": "třetí úrovně", "correct": false}
       ],
       "explanation": ".cz je Top Level Domain (TLD) – doména nejvyšší úrovně spravovaná organizací CZ.NIC.",
-      "leaked": true,
       "id": "q_04791"
     },
     {
@@ -18461,7 +18005,6 @@
         {"id": "d", "text": "DNS cache server", "correct": false}
       ],
       "explanation": "Na pracovní stanici (klientském PC) běží pouze DNS resolver – software, který odesílá dotazy. DNS server typicky provozuje ISP nebo správce sítě.",
-      "leaked": true,
       "id": "q_04792"
     },
     {
@@ -18476,7 +18019,6 @@
         {"id": "d", "text": "pouze broadcastové rámce", "correct": false}
       ],
       "explanation": "Rozlehlá (packet-switched) síť umožňuje přenášet velké množství paketů od různých zdrojů současně – komutace paketů.",
-      "leaked": true,
       "id": "q_04793"
     },
     {
@@ -18491,7 +18033,6 @@
         {"id": "d", "text": "neomezený počet rámců", "correct": false}
       ],
       "explanation": "V soustředěné (circuit-switched) síti je v daném okamžiku aktivní pouze jeden přenosový kanál (okruh) – přenáší se pouze jeden paket.",
-      "leaked": true,
       "id": "q_04794"
     },
     {
@@ -18506,7 +18047,6 @@
         {"id": "d", "text": "multiplexní", "correct": false}
       ],
       "explanation": "Simplexní přenos probíhá pouze jedním směrem (např. TV vysílání). Nelze přenášet data v opačném směru.",
-      "leaked": true,
       "id": "q_04795"
     },
     {
@@ -18521,7 +18061,6 @@
         {"id": "d", "text": "bidirektionální", "correct": false}
       ],
       "explanation": "Half-duplex umožňuje komunikaci oběma směry, ale ne ve stejný okamžik – v daný moment vysílá jen jedna strana (např. vysílačky, CSMA/CD).",
-      "leaked": true,
       "id": "q_04796"
     },
     {
@@ -18536,7 +18075,6 @@
         {"id": "d", "text": "pouze IPv6 adresy", "correct": false}
       ],
       "explanation": "NAT (Network Address Translation) překládá adresy, takže za proxy serverem s NATem mohou být jak veřejné, tak privátní IP adresy.",
-      "leaked": true,
       "id": "q_04797"
     },
     {
@@ -18551,7 +18089,6 @@
         {"id": "d", "text": "závisí na modulaci", "correct": false}
       ],
       "explanation": "Nekódovaný (binární) signál o frekvenci 1 Hz přenese 1 bit za sekundu. Nyquistův teorém: max. přenosová rychlost = 2 × šířka pásma pro binární signál.",
-      "leaked": true,
       "id": "q_04798"
     },
     {
@@ -18566,7 +18103,6 @@
         {"id": "d", "text": "časový multiplex (TDMA)", "correct": false}
       ],
       "explanation": "ALOHA je jedna z prvních metod náhodného přístupu k médiu – stanice vysílají kdykoli a v případě kolize čekají náhodnou dobu.",
-      "leaked": true,
       "id": "q_04799"
     },
     {
@@ -18581,7 +18117,6 @@
         {"id": "d", "text": "z UNC cesty a doménového jména", "correct": false}
       ],
       "explanation": "NetBIOS adresa sestává ze 16bajtového jména: prvních 15 bytů je jméno NetBIOS uzlu a 16. bajt je NSI (NetBIOS Service Identifier) určující typ služby.",
-      "leaked": true,
       "id": "q_04800"
     },
     {
@@ -18596,7 +18131,6 @@
         {"id": "d", "text": "multicast", "correct": false}
       ],
       "explanation": "Celý rozsah 127.0.0.0/8 je vyhrazen pro loopback. Adresa 127.255.255.254 patří do tohoto rozsahu, tedy je loopback adresou.",
-      "leaked": true,
       "id": "q_04801"
     },
     {
@@ -18611,7 +18145,6 @@
         {"id": "d", "text": "adresa sítě třídy C", "correct": false}
       ],
       "explanation": "Adresa 200.228.131.0/26 má nulové hostitelské bity (poslední dva bity čtvrtého bajtu jsou 00), tedy jde o adresu subsítě.",
-      "leaked": true,
       "id": "q_04802"
     },
     {
@@ -18626,7 +18159,6 @@
         {"id": "d", "text": "adresa subsítě", "correct": false}
       ],
       "explanation": "147.225.0.0/16 – maska /16 odpovídá třídě B a hostitelská část je celá nulová, jde tedy o adresu sítě.",
-      "leaked": true,
       "id": "q_04803"
     },
     {
@@ -18641,7 +18173,6 @@
         {"id": "d", "text": "128–191", "correct": false}
       ],
       "explanation": "Třída A zahrnuje adresy s prvním bajtem 1–127 (0.x.x.x je rezervováno, 127.x.x.x je loopback – ale je součástí rozsahu třídy A).",
-      "leaked": true,
       "id": "q_04804"
     },
     {
@@ -18656,7 +18187,6 @@
         {"id": "d", "text": "5 (A, B, C, D, E)", "correct": false}
       ],
       "explanation": "K unicast adresování PC slouží třídy A, B a C. Třída D je pro multicast a třída E je experimentální.",
-      "leaked": true,
       "id": "q_04805"
     },
     {
@@ -18671,7 +18201,6 @@
         {"id": "d", "text": "1995", "correct": false}
       ],
       "explanation": "Internet zahájil komerční provoz v ČSFR (Česko-Slovenské Federativní Republice) v roce 1992.",
-      "leaked": true,
       "id": "q_04806"
     },
     {
@@ -18686,7 +18215,6 @@
         {"id": "d", "text": "1978", "correct": false}
       ],
       "explanation": "Vývoj protokolu TCP/IP byl zahájen v roce 1973 Vintonem Cerfem a Robertem Kahnem. Plné nasazení v síti ARPANET proběhlo v roce 1983.",
-      "leaked": true,
       "id": "q_04807"
     },
     {
@@ -18701,7 +18229,6 @@
         {"id": "d", "text": "dBm", "correct": false}
       ],
       "explanation": "Modulační rychlost (počet změn stavu signálu za sekundu) se udává v Baudech (Bd). Přenosová rychlost bitů závisí na počtu bitů na symbol.",
-      "leaked": true,
       "id": "q_04808"
     },
     {
@@ -18716,7 +18243,6 @@
         {"id": "d", "text": "dBm", "correct": false}
       ],
       "explanation": "Přenosová rychlost (počet bitů za sekundu) se udává v bitech za sekundu (b/s, bps).",
-      "leaked": true,
       "id": "q_04809"
     },
     {
@@ -18731,7 +18257,6 @@
         {"id": "d", "text": "Geographic Access Network", "correct": false}
       ],
       "explanation": "GAN = Global Area Network – celosvětová síť zahrnující celou zeměkouli (např. Internet je příkladem GAN).",
-      "leaked": true,
       "id": "q_04810"
     },
     {
@@ -18746,7 +18271,6 @@
         {"id": "d", "text": "síť je chráněna firewallem", "correct": false}
       ],
       "explanation": "Homogenní síť = síť, kde všechny stanice používají stejný operační systém a přenosový protokol. Heterogenní síť naopak obsahuje různé OS a protokoly.",
-      "leaked": true,
       "id": "q_04811"
     },
     {
@@ -18761,7 +18285,6 @@
         {"id": "d", "text": "celá zeměkoule", "correct": false}
       ],
       "explanation": "CAN (Campus Area Network) pokrývá areál univerzity, průmyslového závodu nebo campusu – typicky stovky metrů až jednotky km.",
-      "leaked": true,
       "id": "q_04812"
     },
     {
@@ -18776,7 +18299,6 @@
         {"id": "d", "text": "/20", "correct": false}
       ],
       "explanation": "Třída B má prefix /16. Dělení na 4 části (čtvrtiny) přidá 2 bity do síťové části: 16 + 2 = /18.",
-      "leaked": true,
       "id": "q_04813"
     },
     {
@@ -18791,7 +18313,6 @@
         {"id": "d", "text": "256", "correct": false}
       ],
       "explanation": "Třída C má 8 hostitelských bitů. Maximální dělení s alespoň jednou použitelnou hostitelskou adresou je /30 (2 bity pro hostitele). To dává 2^6 = 64 subsítí.",
-      "leaked": true,
       "id": "q_04814"
     },
     {
@@ -18806,7 +18327,6 @@
         {"id": "d", "text": "255", "correct": false}
       ],
       "explanation": "Třída A má prefix /8. Dělení na ½ přidá 1 bit: maska /9. Maska /9 odpovídá 255.128.0.0 – druhý bajt masky je 128.",
-      "leaked": true,
       "id": "q_04815"
     },
     {
@@ -18821,7 +18341,6 @@
         {"id": "d", "text": "6 dB", "correct": false}
       ],
       "explanation": "dBi je zisk vůči izotropní anténě, dBd vůči půlvlnnému dipólu. Dipól má zisk 2,15 dBi, tedy: dBi = dBd + 2,15.",
-      "leaked": true,
       "id": "q_04816"
     },
     {
@@ -18836,8 +18355,429 @@
         {"id": "d", "text": "dBm = P[mW] / 10", "correct": false}
       ],
       "explanation": "dBm = 10 × log₁₀(P[W] / 0,001) = 10 × log₁₀(P[mW]). Jde o výkon vztažený k referenční hodnotě 1 mW.",
-      "leaked": true,
       "id": "q_04817"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "protocols",
+      "question": "Datagram (paket) na 3. vrstvě OSI — může samostatně procházet sítí?",
+      "answers": [
+        {"id": "a", "text": "Ano, datagram je samostatně směrovatelná jednotka", "correct": true},
+        {"id": "b", "text": "Ne, potřebuje vždy navázané spojení (jako TCP)", "correct": false},
+        {"id": "c", "text": "Ne, může cestovat sítí jen jako součást rámce 2. vrstvy přes celou trasu", "correct": false},
+        {"id": "d", "text": "Ano, ale pouze v rámci jedné podsítě", "correct": false}
+      ],
+      "explanation": "Datagram (IP paket) na 3. vrstvě je samostatně směrovatelná jednotka — každý paket může jít jinou cestou. L2 rámec se přepisuje na každém hop, ale L3 datagram cestuje sítí samostatně.",
+      "id": "q_04818"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "media",
+      "question": "EMS (ElectroMagnetic Susceptibility) označuje odolnost vůči rušení — jde o rušení vnitřní nebo vnější?",
+      "answers": [
+        {"id": "a", "text": "Vnější — odolnost zařízení vůči rušení přicházejícímu z okolí", "correct": true},
+        {"id": "b", "text": "Vnitřní — rušení způsobené samotným zařízením", "correct": false},
+        {"id": "c", "text": "Obojí — EMS zahrnuje vnitřní i vnější rušení", "correct": false},
+        {"id": "d", "text": "EMS se netýká elektromagnetického rušení", "correct": false}
+      ],
+      "explanation": "EMS (ElectroMagnetic Susceptibility) = náchylnost/odolnost zařízení vůči vnějšímu elektromagnetickému rušení. EMI (ElectroMagnetic Interference) naopak označuje rušení, které zařízení samo vydává.",
+      "id": "q_04819"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "topology",
+      "question": "Co je hvězdicová topologie sítě?",
+      "answers": [
+        {"id": "a", "text": "Zapojení, kde každé zařízení je připojeno přímo ke každému dalšímu", "correct": false},
+        {"id": "b", "text": "Zapojení, kde jsou všechna zařízení připojena k centrálnímu uzlu (hub/switch)", "correct": true},
+        {"id": "c", "text": "Zapojení, kde jsou zařízení propojena do smyčky za sebou", "correct": false},
+        {"id": "d", "text": "Zapojení, kde jsou všechna zařízení připojena na jeden sdílený kabel", "correct": false}
+      ],
+      "explanation": "Hvězdicová topologie = centrální uzel (hub nebo switch) + paprsky ke každé stanici. Výpadek jedné stanice neovlivní ostatní, výpadek centra ale odstaví celou síť.",
+      "id": "q_04820"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "protocols",
+      "question": "Které z následujících jsou metody náhodného (nespojového) přístupu k médiu? (Zaškrtni všechny správné)",
+      "answers": [
+        {"id": "a", "text": "ALOHA", "correct": true},
+        {"id": "b", "text": "CSMA (příposlech nosné)", "correct": true},
+        {"id": "c", "text": "Token Ring", "correct": false},
+        {"id": "d", "text": "TDMA", "correct": false}
+      ],
+      "explanation": "ALOHA a CSMA (Carrier Sense Multiple Access — příposlech nosné) jsou metody náhodného přístupu — stanice vysílají bez rezervace. Token Ring a TDMA jsou deterministické metody s řízeným přístupem.",
+      "id": "q_04821"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "wifi",
+      "question": "Které dva standardy Wi-Fi jsou navzájem zpětně kompatibilní (pracují na stejném frekvenčním pásmu)?",
+      "answers": [
+        {"id": "a", "text": "802.11a a 802.11g", "correct": false},
+        {"id": "b", "text": "802.11b a 802.11g", "correct": true},
+        {"id": "c", "text": "802.11a a 802.11b", "correct": false},
+        {"id": "d", "text": "802.11ac a 802.11b", "correct": false}
+      ],
+      "explanation": "802.11b (max 11 Mb/s) a 802.11g (max 54 Mb/s) oba pracují v pásmu 2,4 GHz a jsou navzájem kompatibilní. 802.11a pracuje na 5 GHz a s b/g kompatibilní není.",
+      "id": "q_04822"
+    },
+    {
+      "type": "single",
+      "difficulty": "hard",
+      "category": "protocols",
+      "question": "Jaké kódování používá sériový port COM (RS-232) na PC?",
+      "answers": [
+        {"id": "a", "text": "Manchester", "correct": false},
+        {"id": "b", "text": "NRZ (Non-Return to Zero)", "correct": true},
+        {"id": "c", "text": "4B/5B", "correct": false},
+        {"id": "d", "text": "AMI (Alternate Mark Inversion)", "correct": false}
+      ],
+      "explanation": "COM port (RS-232) používá NRZ-L (Non-Return to Zero Level) kódování — logická 1 je záporné napětí (−3 až −15 V), logická 0 je kladné napětí (+3 až +15 V). Signál se nevrací na nulu mezi bity.",
+      "id": "q_04823"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/vertikální prutová anténa.jpg",
+      "answers": [
+        {"id": "a", "text": "Vertikální prutová anténa", "correct": true},
+        {"id": "b", "text": "Dipólová anténa", "correct": false},
+        {"id": "c", "text": "Yagi anténa", "correct": false},
+        {"id": "d", "text": "Parabolická anténa", "correct": false}
+      ],
+      "explanation": "Vertikální prutová anténa (omnidirectionální) — typicky používaná jako přístupový bod Wi-Fi nebo mobilní anténa. Vyzařuje rovnoměrně do všech stran v horizontální rovině.",
+      "id": "q_04824"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/Patch panel.jpg",
+      "answers": [
+        {"id": "a", "text": "Datový rozvaděč (RACK)", "correct": false},
+        {"id": "b", "text": "Zásuvky RJ45", "correct": false},
+        {"id": "c", "text": "Patch panel", "correct": true},
+        {"id": "d", "text": "Konektory RJ45", "correct": false}
+      ],
+      "explanation": "Patch panel slouží k centrálnímu propojení kabelů strukturované kabeláže. Na přední straně jsou porty RJ45, do nichž se zapojují patch kordy vedoucí k zařízením.",
+      "id": "q_04825"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/Datový rozvaděč.jpg",
+      "answers": [
+        {"id": "a", "text": "Datový rozvaděč (RACK)", "correct": true},
+        {"id": "b", "text": "Patch panel", "correct": false},
+        {"id": "c", "text": "UPS skříň", "correct": false},
+        {"id": "d", "text": "Serverová skříň bez normalizace", "correct": false}
+      ],
+      "explanation": "Datový rozvaděč (RACK) má standardizovanou šířku 19 palců a výška se měří v jednotkách U (1U = 44,45 mm). Obsahuje aktivní i pasivní síťové prvky.",
+      "id": "q_04826"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/Konektory RJ45.jpg",
+      "answers": [
+        {"id": "a", "text": "Konektory RJ45", "correct": true},
+        {"id": "b", "text": "Konektory RJ11", "correct": false},
+        {"id": "c", "text": "Zásuvky RJ45", "correct": false},
+        {"id": "d", "text": "Konektory LC (optické)", "correct": false}
+      ],
+      "explanation": "Konektory RJ45 (8P8C) se krimpují na konec UTP/STP kabelu. Mají 8 kontaktů a používají se pro Ethernet.",
+      "id": "q_04827"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/zásuvky RJ45.jpg",
+      "answers": [
+        {"id": "a", "text": "Konektory RJ45", "correct": false},
+        {"id": "b", "text": "Zásuvky RJ45", "correct": true},
+        {"id": "c", "text": "Patch panel", "correct": false},
+        {"id": "d", "text": "Keystone moduly", "correct": false}
+      ],
+      "explanation": "Zásuvky RJ45 (datové zásuvky) se instalují do krabic ve zdi. Vodiče TP kabelu se zařezávají do kontaktů IDC (Insulation Displacement Connector).",
+      "id": "q_04828"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/Krimpovací kleště 4P, 6P a 8P.jpg",
+      "answers": [
+        {"id": "a", "text": "Narážecí nástroj (punch-down tool)", "correct": false},
+        {"id": "b", "text": "Krimpovací kleště (4P, 6P a 8P)", "correct": true},
+        {"id": "c", "text": "Kombinované kleště", "correct": false},
+        {"id": "d", "text": "Kleště na optiku", "correct": false}
+      ],
+      "explanation": "Krimpovací kleště slouží k upevnění konektoru RJ na kabel. 4P pro RJ11 (telefon), 6P pro RJ12, 8P pro RJ45 (Ethernet).",
+      "id": "q_04829"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/Narážecí nástroj a krimpovací kleště 6P a 8P.jpg",
+      "answers": [
+        {"id": "a", "text": "Pouze krimpovací kleště", "correct": false},
+        {"id": "b", "text": "Narážecí nástroj a krimpovací kleště (6P a 8P)", "correct": true},
+        {"id": "c", "text": "Střihač kabelů a kleště", "correct": false},
+        {"id": "d", "text": "Pájecí stanice a kleště", "correct": false}
+      ],
+      "explanation": "Narážecí nástroj (punch-down tool) se používá pro zařezání vodičů do svorek IDC v patch panelech a zásuvkách. Krimpovací kleště se používají pro lisování konektorů RJ.",
+      "id": "q_04830"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/Zařezávací hroty konektorů RJ.jpg",
+      "answers": [
+        {"id": "a", "text": "Narážecí nástroj", "correct": false},
+        {"id": "b", "text": "Konektory RJ45", "correct": false},
+        {"id": "c", "text": "Zařezávací hroty konektorů RJ", "correct": true},
+        {"id": "d", "text": "Patch panel kontakty", "correct": false}
+      ],
+      "explanation": "Zařezávací hroty (IDC kontakty) uvnitř konektoru RJ protínají izolaci vodiče při krimpu a vytvoří elektrické spojení.",
+      "id": "q_04831"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/kabel UTP s konektorem RJ45.jpg",
+      "answers": [
+        {"id": "a", "text": "Kabel STP s konektorem RJ11", "correct": false},
+        {"id": "b", "text": "Optický kabel s konektorem LC", "correct": false},
+        {"id": "c", "text": "Kabel UTP s konektorem RJ45", "correct": true},
+        {"id": "d", "text": "Koaxiální kabel s konektorem BNC", "correct": false}
+      ],
+      "explanation": "UTP (Unshielded Twisted Pair) kabel zakončený konektorem RJ45 — nejběžnější typ propojovacího kabelu (patch cord) pro Ethernet.",
+      "id": "q_04832"
+    },
+    {
+      "type": "image",
+      "difficulty": "medium",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/Kabel U-UTP - Cat 5.jpg",
+      "answers": [
+        {"id": "a", "text": "Kabel S-FTP (Cat 7)", "correct": false},
+        {"id": "b", "text": "Kabel U-UTP (Cat 5)", "correct": true},
+        {"id": "c", "text": "Koaxiální kabel", "correct": false},
+        {"id": "d", "text": "Twin-axiální kabel", "correct": false}
+      ],
+      "explanation": "U-UTP (Unshielded/Unshielded) Cat 5 — neopláštěná kroucená dvojlinka bez stínění. Každý pár je kroucen, ale ani páry ani celý kabel nemají stínění.",
+      "id": "q_04833"
+    },
+    {
+      "type": "image",
+      "difficulty": "medium",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/Kabel S-FTP - Cat 7.jpg",
+      "answers": [
+        {"id": "a", "text": "Kabel U-UTP (Cat 5)", "correct": false},
+        {"id": "b", "text": "Kabel S-FTP (Cat 7)", "correct": true},
+        {"id": "c", "text": "Optický kabel", "correct": false},
+        {"id": "d", "text": "Koaxiální kabel", "correct": false}
+      ],
+      "explanation": "S-FTP (Screened/Foiled Twisted Pair) Cat 7 — každý pár má fóliové stínění (F/FTP) a celý kabel má opletené stínění (S). Určen pro 10 Gb/s Ethernet.",
+      "id": "q_04834"
+    },
+    {
+      "type": "image",
+      "difficulty": "medium",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/Twin-axiální kabel.jpg",
+      "answers": [
+        {"id": "a", "text": "Koaxiální kabel", "correct": false},
+        {"id": "b", "text": "Twin-axiální kabel (Twinax)", "correct": true},
+        {"id": "c", "text": "Kabel S-FTP (Cat 7)", "correct": false},
+        {"id": "d", "text": "Optický kabel", "correct": false}
+      ],
+      "explanation": "Twin-axiální kabel (Twinax) obsahuje dva vodiče sdílející společné stínění — používá se pro krátká vysokorychlostní propojení (např. SFP+ Direct Attach Copper do 5 m).",
+      "id": "q_04835"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/optický kabel.jpg",
+      "answers": [
+        {"id": "a", "text": "Kabel S-FTP (Cat 7)", "correct": false},
+        {"id": "b", "text": "Twin-axiální kabel", "correct": false},
+        {"id": "c", "text": "Optický kabel", "correct": true},
+        {"id": "d", "text": "Koaxiální kabel", "correct": false}
+      ],
+      "explanation": "Optický kabel přenáší data pomocí světelných pulzů skrze skleněné nebo plastové vlákno. Je imunní vůči elektromagnetickému rušení a umožňuje velmi vysoké rychlosti na dlouhé vzdálenosti.",
+      "id": "q_04836"
+    },
+    {
+      "type": "image",
+      "difficulty": "medium",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/Vlastnosti kroucené dvojlinky.jpg",
+      "answers": [
+        {"id": "a", "text": "Vlastnosti koaxiálního kabelu", "correct": false},
+        {"id": "b", "text": "Vlastnosti optického vlákna", "correct": false},
+        {"id": "c", "text": "Vlastnosti kroucené dvojlinky (TP)", "correct": true},
+        {"id": "d", "text": "Vlastnosti stíněného kabelu STP", "correct": false}
+      ],
+      "explanation": "Tabulka nebo diagram vlastností kroucené dvojlinky (Twisted Pair) — zobrazuje parametry jako kategorie, frekvence, útlum a vzdálenost.",
+      "id": "q_04837"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/šíření dat přes hub.jpg",
+      "answers": [
+        {"id": "a", "text": "Šíření dat přes switch", "correct": false},
+        {"id": "b", "text": "Šíření dat přes router", "correct": false},
+        {"id": "c", "text": "Šíření dat přes hub", "correct": true},
+        {"id": "d", "text": "Šíření dat přes bridge", "correct": false}
+      ],
+      "explanation": "Hub (rozbočovač) pracuje na 1. vrstvě OSI a posílá každý přijatý rámec na všechny porty (broadcast na L1). Všechna zařízení jsou ve stejné kolizní doméně.",
+      "id": "q_04838"
+    },
+    {
+      "type": "image",
+      "difficulty": "easy",
+      "category": "images",
+      "question": "Co je na obrázku?",
+      "image": "../images/šíření dat přes switch.jpg",
+      "answers": [
+        {"id": "a", "text": "Šíření dat přes hub", "correct": false},
+        {"id": "b", "text": "Šíření dat přes router", "correct": false},
+        {"id": "c", "text": "Šíření dat přes switch", "correct": true},
+        {"id": "d", "text": "Šíření dat přes bridge", "correct": false}
+      ],
+      "explanation": "Switch (přepínač) pracuje na 2. vrstvě OSI a posílá rámce pouze na správný port na základě MAC tabulky. Každý port je samostatná kolizní doména.",
+      "id": "q_04839"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "terminology",
+      "question": "Co je charakteristickým rysem přepojování okruhů (circuit switching)?",
+      "answers": [
+        {"id": "a", "text": "Před přenosem se vytvoří vyhrazená cesta (okruh) po celou dobu spojení", "correct": true},
+        {"id": "b", "text": "Data se dělí na pakety, každý putuje vlastní cestou", "correct": false},
+        {"id": "c", "text": "Přenos probíhá bez předchozího navázání spojení", "correct": false},
+        {"id": "d", "text": "Síť dynamicky přiděluje kapacitu podle aktuálního provozu", "correct": false}
+      ],
+      "explanation": "Přepojování okruhů (circuit switching) — před zahájením přenosu se rezervuje celá přenosová cesta (fyzický okruh) na celou dobu spojení. Typický příklad: analogová telefonní síť PSTN.",
+      "id": "q_05377"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "terminology",
+      "question": "Jakou nevýhodu má přepojování okruhů oproti přepojování paketů?",
+      "answers": [
+        {"id": "a", "text": "Vyhrazená kapacita okruhu je plýtvána, pokud se momentálně nepřenáší žádná data", "correct": true},
+        {"id": "b", "text": "Data mohou přijít v jiném pořadí, než byla odeslána", "correct": false},
+        {"id": "c", "text": "Neumožňuje přenos hlasu", "correct": false},
+        {"id": "d", "text": "Vyžaduje adresaci každého paketu", "correct": false}
+      ],
+      "explanation": "U přepojování okruhů je okruh vyhrazen po celou dobu spojení — i ve chvíli ticha. To je neefektivní využití kapacity. Packet switching sdílí kapacitu linek statisticky mezi více spojení.",
+      "id": "q_05378"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "terminology",
+      "question": "Co je charakteristickým rysem přepojování paketů (packet switching)?",
+      "answers": [
+        {"id": "a", "text": "Data se dělí na pakety, každý se směruje sítí nezávisle podle cílové adresy", "correct": true},
+        {"id": "b", "text": "Před přenosem se rezervuje vyhrazená cesta pro celé spojení", "correct": false},
+        {"id": "c", "text": "Pakety vždy putují stejnou cestou ve stejném pořadí", "correct": false},
+        {"id": "d", "text": "Je vhodné pouze pro přenos hlasu v reálném čase", "correct": false}
+      ],
+      "explanation": "Přepojování paketů (packet switching) — data se rozdělí na pakety s adresou cíle, síť je směruje nezávisle. Kapacita linek se sdílí (statistické multiplexování). Základ internetu (IP).",
+      "id": "q_05379"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "terminology",
+      "question": "Co vyjadřuje binární předpona IEC 'kibi' (Ki)?",
+      "answers": [
+        {"id": "a", "text": "2¹⁰ = 1 024", "correct": true},
+        {"id": "b", "text": "10³ = 1 000", "correct": false},
+        {"id": "c", "text": "2⁸ = 256", "correct": false},
+        {"id": "d", "text": "10⁶ = 1 000 000", "correct": false}
+      ],
+      "explanation": "IEC binární předpony: 1 Ki (kibi) = 2¹⁰ = 1 024; 1 Mi (mebi) = 2²⁰ = 1 048 576; 1 Gi (gibi) = 2³⁰ = 1 073 741 824. Dekadické SI: 1 k = 1 000; 1 M = 1 000 000. 1 KiB ≠ 1 kB.",
+      "id": "q_05380"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "terminology",
+      "question": "Co označuje pojem 'modulační rychlost' (baud rate)?",
+      "answers": [
+        {"id": "a", "text": "Počet změn stavu signálu (symbolů) za sekundu", "correct": true},
+        {"id": "b", "text": "Počet přenesených bitů za sekundu", "correct": false},
+        {"id": "c", "text": "Počet paketů přenesených za sekundu", "correct": false},
+        {"id": "d", "text": "Frekvence nosné vlny v Hz", "correct": false}
+      ],
+      "explanation": "Modulační rychlost (baud rate) = počet symbolů (změn stavu signálu) za sekundu. Jeden symbol může kódovat více bitů (např. QAM-64 přenese 6 bitů/symbol). Přenosová rychlost [b/s] = baud × bity na symbol.",
+      "id": "q_05381"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "terminology",
+      "question": "Co je intranet?",
+      "answers": [
+        {"id": "a", "text": "Privátní síť organizace využívající internetové technologie (TCP/IP, HTTP), dostupná pouze interně", "correct": true},
+        {"id": "b", "text": "Část internetu dostupná jen po zaplacení", "correct": false},
+        {"id": "c", "text": "Propojení dvou firemních sítí přes internet", "correct": false},
+        {"id": "d", "text": "Synonymum pro lokální síť LAN", "correct": false}
+      ],
+      "explanation": "Intranet = firemní (interní) síť využívající standardní internetové protokoly (TCP/IP, HTTP, SMTP). Je přístupná pouze zaměstnancům organizace, nikoli veřejnosti.",
+      "id": "q_05382"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "terminology",
+      "question": "Co je extranet?",
+      "answers": [
+        {"id": "a", "text": "Rozšíření firemního intranetu zpřístupněné vybraným externím partnerům (dodavatelům, zákazníkům)", "correct": true},
+        {"id": "b", "text": "Veřejná část internetu přístupná komukoli", "correct": false},
+        {"id": "c", "text": "Záložní síť pro případ výpadku intranetu", "correct": false},
+        {"id": "d", "text": "Síť propojující pobočky jedné firmy přes VPN", "correct": false}
+      ],
+      "explanation": "Extranet = část intranetu zpřístupněná vybraným externím subjektům (dodavatelé, zákazníci, partneři). Typicky zabezpečeno VPN nebo certifikáty.",
+      "id": "q_05383"
     }
   ]
 }

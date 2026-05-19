@@ -112,7 +112,7 @@ App.Stats = (() => {
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2 mb-0.5">${modeBadge}<span class="text-xs text-slate-400">${date}</span></div>
-            <div class="text-sm text-slate-600 dark:text-slate-400">${r.correct ?? 0} správně · ${r.wrong ?? 0} špatně · ${r.totalQuestions ?? 0} otázek · ${U.formatTime(r.elapsedSeconds ?? 0)}</div>
+            <div class="text-sm text-slate-600 dark:text-slate-400">${r.correct ?? 0} správně · ${r.wrong ?? 0} špatně · ${r.totalQuestions ?? 0} otázek</div>
           </div>
           <div class="shrink-0">
             <div class="w-24 h-2 bg-slate-100 dark:bg-gray-800 rounded-full overflow-hidden">

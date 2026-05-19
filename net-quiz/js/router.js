@@ -54,12 +54,6 @@ App.Router = (() => {
 
     _current = viewId;
 
-    const timerEl = document.getElementById('topbarTimer');
-    if (timerEl) {
-      timerEl.classList.toggle('hidden', viewId !== 'quiz');
-      timerEl.classList.toggle('flex',   viewId === 'quiz');
-    }
-
     if (_hooks[viewId]) _hooks[viewId](params);
   }
 

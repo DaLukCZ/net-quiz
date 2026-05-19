@@ -1,116 +1,91 @@
 # NetQuiz
 
-Kvízové rozhraní v prohlížeči pro opakování látky z vysoké školy. Aktuálně pokrývá počítačové sítě, připraveno na rozšíření o další předměty.
+Kvízová appka na opakování látky - aktuálně hlavně počítačové sítě, časem snad i webové technologie a další předměty.
 
+---
 
-## Funkce
+## Důležité
 
-- **Kvíz** — náhodný výběr otázek s nastavením obtížnosti, kategorie a počtu
-- **Procházení** — otázky seřazené po kategoriích, styl autoškoly, volná navigace
-- **Adaptivní učení** — SRS algoritmus zaměřený na slabá místa
-- **Záložky** — hvězdičkování otázek, kvíz jen ze záložkovaných
-- **Leaked filtr** — 416 otázek označených jako leaked
-- **Více předmětů** — přepínání mezi předměty, podpora vlastních JSON souborů
-- **Studijní materiály** — prohlížeč PDF přímo v aplikaci, nahrání vlastního PDF
-- **Statistiky** — přehled pokroku, kategorie, historická skóre
-- **Editor otázek** — přidávání a úprava otázek přímo v aplikaci
-- **Tmavý režim**
+- Otázky nemusí být vždy správně - část vznikla pomocí AI analýzy z prezentací
+- Učitel může otázky kdykoliv změnit, přidat nebo odebrat
+- Hodně otázek v appce má záměrně jasnou odpověď - jsou na naučení látky, ne na trénink zkoušky. Na přesnější simulaci zkoušky (1:1 odpovědi) je lepší projít tahak
+- DNS učitel řadí do 5. (relační) vrstvy, i když správně patří do aplikační - u zkoušky napiš relační (Internet ti řekne, že patří do aplikační)
+---
 
-> Otázky vznikly částečně pomocí AI analýzou prezentací a externích zdrojů. Nejsou dokončené a nemusí být zcela správné. Nelze zaručit shodu s oficiálními testy.
+# Jak se připravit
 
-## To Do
+## Počítačové sítě
 
-* více randomizovat pořadí možností odpovědí
-* opravit vytváření nového předmětu
-* přepracovat otázky i odpovědi do více Cisco-style formátu:
+### 1. Projít `FULL_TAHAK_2025.pdf`
 
-  * méně přímočaré formulace
-  * více podobných možností odpovědí
-  * důraz na pochopení konceptu místo jednoduchého zapamatování
-  * více scénářových a praktických otázek
-  * používat formulace podobné reálným Cisco testům
-* současné odpovědi jsou často příliš jednoznačné:
+Leaknuté otázky - ale nemusí být všechny správně nebo aktuální.
 
-  * zjednodušit wording odpovědí
-  * přidat více matoucích, ale technicky relevantních možností
-  * rozšířit a zkvalitnit vysvětlení správných i špatných odpovědí
-* to stejné aplikovat i na samotné otázky:
+### 2. Projít všechny otázky v appce
 
-  * méně napovídající formulace
-  * více variant zadání
-  * více praktického networkingu místo čisté teorie
+Ideálně přes **Procházení**, ať si projdeš i otázky, které by se v testech nemusely objevit.
 
+### 3. Udělat pár zkušebních testů
 
-## Stažení z GitHubu
+U skutečné zkoušky je 25 otázek - je dobré si zkusit tempo.
 
-Stáhnout si tento projekt můžeš dvěma způsoby:
+---
 
-1. Klonuj repozitář:
-   ```bash
-   git clone https://github.com/DaLukCZ/net-quiz.git
-   ```
-2. Nebo stáhni ZIP přes tlačítko **Code → Download ZIP** na GitHubu.
+Na zkoušku je povolená tužka s papírem - na převody, adresy, ...
 
-Po stažení rozbal složku a otevři `net-quiz`.
+Kurz na Moodlu:  
+- https://moodle.utb.cz/course/view.php?id=16491
 
-## Spuštění
+Heslo (asi):
+- site
 
-1. **Stáhni Python** → https://www.python.org/downloads/
-   - Při instalaci zaškrtni **"Add Python to PATH"**
-   - Restartuj počítač
+---
 
-2. **Přejdi do složky** `net-quiz` a **dvojklikem otevři `NetQuiz.bat`**
+## Webové technologie
 
-3. V prohlížeči (Chrome, Firefox, Edge) otevři: **`http://localhost:8000/net-quiz/`**
+Zatím rozpracované - doplním, až bude hotový kvíz pro weby.
 
-4. Hotovo! 🎉
+---
 
+# Spuštění
 
-### Stále problém?
+1. Nainstaluj Python  
+   *(a při instalaci zaškrtni `Add Python to PATH`)*
 
-- Ověř, že v terminálu běží server pomocí `python -m http.server 8000`.
-- Vymaž cache v prohlížeči nebo otevři stránku v anonymním okně.
-- Pokud nic nepomáhá, vrať se k této sekci a ověř krok za krokem.
+2. Ve složce `net-quiz` spusť:
 
-## Soubory s otázkami
+```bat
+NetQuiz.bat
+```
 
-| Soubor | Předmět | Kolik otázek? |
-|--------|---------|--------|
-| `json/site.json` | Počítačové sítě | 702 |
-| `json/weby.json` | Webové technologie | 5 |
+3. Jestli se neotevřelo autmaticky, tak otevři:
 
-### Chceš přidat vlastní předmět?
+```txt
+http://localhost:8000/net-quiz/
+```
 
-V aplikaci klikni na **Výběr předmětu → Nový předmět** a nahraj svůj JSON soubor.  
-Nebo si stáhni šablonu přímo z aplikace.
+---
 
-## ❓ Problémy?
+# Nefunguje to?
 
-**Otevírám `http://localhost:8000`, ale nic se neukáže**
-- Zkus refreshnout stránku (F5)
-- Zkontroluj, že v příkazovém řádku běží server (mělo by být vidět "Serving HTTP...")
-- Zkus jinou adresu: `http://127.0.0.1:8000`
+Zkus:
 
-**Chyba "Connection refused" nebo "Server not responding"**
-- Zkontroluj, že `NetQuiz.bat` běží v pozadí (měl by být otevřený terminál)
-- Zkus port 8001 místo 8000: `python -m http.server 8001`
+- zkontrolovat, že běží server
+```bash
+python -m http.server 8000
+```
 
-**Python není nainstalován**
-- Stáhni z https://www.python.org/downloads/
-- **DŮLEŽITÉ:** Při instalaci zaškrtni "Add Python to PATH"
-- Restartuj počítač
-- Spusť `NetQuiz.bat` znovu
+- vymazat cache / otevřít anonymní okno
+- použít:
+```txt
+http://127.0.0.1:8000
+```
 
-**Otázky se nenačítají**
-- Zavři prohlížeč a otevři novou kartu
-- Zkus Ctrl+Shift+Delete (vymazat cache)
+místo `localhost`
 
-## Podpora
+# Podpora
 
-Chceš-li projekt podpořit, pošli pár korun: **2081256014/3030**
+Pokud ti appka pomohla, můžeš poslat pár korun na podporu projektu xdd
 
-## O projektu
-
-- **Autor:** Šmachy - DaLuk
-- **Verze:** 0.6
-- **Poslední aktualizace:** 17.5.2026
+```txt
+2081256014/3030
+```

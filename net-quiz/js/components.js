@@ -166,7 +166,8 @@ App.Components = (() => {
 
   function renderAnswers(question, sessionAnswer, revealed) {
     switch (question.type) {
-      case 'single': return renderSingleChoice(question, sessionAnswer, revealed);
+      case 'single':
+      case 'image': return renderSingleChoice(question, sessionAnswer, revealed);
       case 'multi': return renderMultiChoice(question, sessionAnswer, revealed);
       case 'boolean': return renderBoolean(question, sessionAnswer, revealed);
       case 'number': return renderNumberInput(question, sessionAnswer, revealed);
@@ -206,7 +207,6 @@ App.Components = (() => {
     const s = {
       current: `${base} bg-orange-500 border-orange-600 text-white shadow-sm`,
       answered: `${base} bg-emerald-100 dark:bg-emerald-900/40 border-emerald-400 text-emerald-700 dark:text-emerald-300`,
-      flagged: `${base} bg-amber-100 dark:bg-amber-900/40 border-amber-400 text-amber-700 dark:text-amber-300`,
       wrong: `${base} bg-red-100 dark:bg-red-900/40 border-red-400 text-red-700 dark:text-red-300`,
       skipped: `${base} bg-slate-100 dark:bg-gray-800 border-slate-300 dark:border-gray-600 text-slate-500 line-through`,
       default: `${base} bg-white dark:bg-gray-800 border-slate-200 dark:border-gray-700 text-slate-600 dark:text-slate-400 hover:border-orange-300`,
@@ -246,9 +246,12 @@ App.Components = (() => {
               ${q.category ? `<span class="text-xs text-orange-600 dark:text-orange-400 font-medium">${U.escapeHtml(q.category)}</span>` : ''}
               ${!isOpen && score !== undefined ? `<span class="ml-auto text-xs font-bold px-2 py-0.5 rounded-full ${score === 1 ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300' : score > 0 ? 'bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300' : 'bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400'}">${parseFloat(score.toFixed(2))} / 1 b</span>` : ''}
             </div>
-            <p class="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">${U.escapeHtml(q.question)}</p>
+            <p class="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug mt-1">${U.escapeHtml(q.question)}</p>
             ${q.type !== 'open'
-              ? `<div class="mt-3 space-y-2">${renderAnswers(q, answer, true)}</div>`
+              ? `<div class="flex gap-3 items-start mt-3">
+                  ${q.type === 'image' && q.image ? `<img src="${U.escapeHtml(q.image)}" alt="" class="quiz-img shrink-0 w-36 min-h-16 max-h-40 object-contain rounded-lg border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800">` : ''}
+                  <div class="flex-1 space-y-2">${renderAnswers(q, answer, true)}</div>
+                 </div>`
               : ''}
             ${isOpen && answer ? `<p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 bg-slate-50 dark:bg-gray-800 rounded-lg px-2.5 py-1.5 italic">"${U.escapeHtml(String(answer))}"</p>` : ''}
             ${modelBullets ? `

@@ -4,13 +4,13 @@ window.App = window.App || {};
 App.QuizEngine = (() => {
 
   let _session = null;
-  let _timerInterval = null;
 
   function isCorrect(question, answer) {
     if (answer === undefined || answer === null || answer === '') return false;
 
     switch (question.type) {
-      case 'single': {
+      case 'single':
+      case 'image': {
         const correctIdx = question.answers.findIndex(a => a.correct);
         return answer === correctIdx;
       }
@@ -59,7 +59,6 @@ App.QuizEngine = (() => {
     const config = {
       mode: options.mode || 'study',
       instantFeedback: options.mode === 'study',
-      showTimer: options.showTimer !== false,
       totalQuestions: questions.length,
     };
 
@@ -69,38 +68,20 @@ App.QuizEngine = (() => {
       currentIndex: 0,
       answers: {},
       revealed: {},
-      flagged: new Set(),
       skipped: new Set(),
-      elapsedSeconds: 0,
       paused: false,
       finished: false,
       startedAt: Date.now(),
     };
 
-    if (config.showTimer) _startTimer();
     return _session;
   }
-
-  function _startTimer() {
-    clearInterval(_timerInterval);
-    _timerInterval = setInterval(() => {
-      if (_session && !_session.paused && !_session.finished) {
-        _session.elapsedSeconds++;
-        _notifyTimer();
-      }
-    }, 1000);
-  }
-
-  let _timerCallback = null;
-  function onTimer(fn) { _timerCallback = fn; }
-  function _notifyTimer() { if (_timerCallback) _timerCallback(_session.elapsedSeconds); }
 
   function getSession() { return _session; }
   function getQuestion(i) { return _session ? _session.questions[i ?? _session.currentIndex] : null; }
   function getCurrentIndex() { return _session ? _session.currentIndex : 0; }
   function getAnswer(i) { return _session ? _session.answers[i ?? _session.currentIndex] : undefined; }
   function isRevealed(i) { return _session ? !!_session.revealed[i ?? _session.currentIndex] : false; }
-  function isFlagged(i) { return _session ? _session.flagged.has(i ?? _session.currentIndex) : false; }
 
   function setAnswer(answer) {
     if (!_session || _session.finished) return;
@@ -111,13 +92,6 @@ App.QuizEngine = (() => {
   function reveal() {
     if (!_session) return;
     _session.revealed[_session.currentIndex] = true;
-  }
-
-  function toggleFlag() {
-    if (!_session) return;
-    const i = _session.currentIndex;
-    if (_session.flagged.has(i)) _session.flagged.delete(i);
-    else _session.flagged.add(i);
   }
 
   function skip() {
@@ -146,7 +120,6 @@ App.QuizEngine = (() => {
   function navStatus(i) {
     if (!_session) return 'default';
     if (i === _session.currentIndex) return 'current';
-    if (_session.flagged.has(i)) return 'flagged';
     if (_session.skipped.has(i)) return 'skipped';
     if (_session.answers[i] !== undefined) {
       if (_session.revealed[i]) {
@@ -161,6 +134,7 @@ App.QuizEngine = (() => {
     if (answer === undefined || answer === null || answer === '') return 0;
     switch (question.type) {
       case 'single':
+      case 'image':
       case 'boolean':
       case 'number':
       case 'text':
@@ -187,7 +161,6 @@ App.QuizEngine = (() => {
 
   function submit() {
     if (!_session) return null;
-    clearInterval(_timerInterval);
     _session.finished = true;
 
     let correctCount = 0;
@@ -210,7 +183,7 @@ App.QuizEngine = (() => {
 
       if (!isOpen && answered && !skipped) totalScore += qScore;
 
-      return { question: q, answer: ans, correct, score: qScore, skipped, flagged: _session.flagged.has(i), index: i };
+      return { question: q, answer: ans, correct, score: qScore, skipped, index: i };
     });
 
     const scoreable = _session.questions.filter(q => q.type !== 'open').length;
@@ -225,22 +198,19 @@ App.QuizEngine = (() => {
       skipped: skippedCount,
       openAnswered: openCount,
       totalScore,
-      elapsedSeconds: _session.elapsedSeconds,
       details,
       finishedAt: Date.now(),
     };
   }
 
   function destroy() {
-    clearInterval(_timerInterval);
     _session = null;
-    _timerCallback = null;
   }
 
   return {
-    isCorrect, start, onTimer,
-    getSession, getQuestion, getCurrentIndex, getAnswer, isRevealed, isFlagged,
-    setAnswer, reveal, toggleFlag, skip,
+    isCorrect, start,
+    getSession, getQuestion, getCurrentIndex, getAnswer, isRevealed,
+    setAnswer, reveal, skip,
     goTo, next, prev, togglePause,
     navStatus, submit, destroy,
   };

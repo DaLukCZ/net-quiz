@@ -62,7 +62,7 @@ App.Utils = (() => {
   }
 
   function typeLabel(type) {
-    const map = { single: 'Single choice', multi: 'Multi choice', boolean: 'Boolean', number: 'Number', text: 'Text', open: 'Otevřená' };
+    const map = { single: 'Single choice', multi: 'Multi choice', boolean: 'Boolean', number: 'Number', text: 'Text', open: 'Otevřená', image: 'Poznej obrázek' };
     return map[type] || type;
   }
 
@@ -74,6 +74,7 @@ App.Utils = (() => {
       number:  'Zadej číslo',
       text:    'Zadej text',
       open:    'Napiš vlastní odpověď',
+      image:   'Vyber správný popis obrázku',
     };
     return map[type] || '';
   }

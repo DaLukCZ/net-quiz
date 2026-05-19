@@ -7,7 +7,6 @@ App.State = (() => {
     defaultCount:      20,
     randomize:         true,
     instantFeedback:   true,
-    showTimer:         true,
     darkMode:          false,
     defaultMode:       'study',
     defaultSubject:    'site',

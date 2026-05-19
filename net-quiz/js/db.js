@@ -46,31 +46,6 @@ App.DB = (() => {
     localStorage.removeItem(SRS_KEY);
   }
 
-  // ── Bookmarks ────────────────────────────────────────────────
-
-  const BOOKMARKS_KEY = 'nq_bookmarks';
-
-  function getBookmarks() {
-    return _load(BOOKMARKS_KEY, []);
-  }
-
-  function isBookmarked(id) {
-    return getBookmarks().includes(id);
-  }
-
-  function toggleBookmark(id) {
-    const bm = getBookmarks();
-    const idx = bm.indexOf(id);
-    if (idx !== -1) bm.splice(idx, 1);
-    else bm.push(id);
-    _save(BOOKMARKS_KEY, bm);
-    return idx === -1;
-  }
-
-  function clearBookmarks() {
-    localStorage.removeItem(BOOKMARKS_KEY);
-  }
-
   // ── Questions (in-memory, načteno z site.json nebo weby.json) ──────────
 
   function upsertQuestion(q) {
@@ -102,7 +77,6 @@ App.DB = (() => {
   return {
     loadSRSStates, saveSRSState, clearSRSStates,
     saveQuizResult, getQuizResults, clearQuizResults,
-    getBookmarks, isBookmarked, toggleBookmark, clearBookmarks,
     upsertQuestion, deleteQuestion, deleteQuestions,
   };
 })();

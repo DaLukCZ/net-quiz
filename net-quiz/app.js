@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           const date = r.finishedAt ? new Date(r.finishedAt).toLocaleDateString('cs-CZ') : '—';
           return `<div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-gray-800 transition-colors">
             <div class="w-12 h-12 rounded-xl ${color} flex items-center justify-center font-black text-lg shrink-0">${pct}%</div>
-            <div class="flex-1"><div class="text-sm font-medium">${r.correct ?? 0} správně z ${r.totalQuestions ?? 0}</div><div class="text-xs text-slate-400">${date} · ${U.formatTime(r.elapsedSeconds ?? 0)}</div></div>
+            <div class="flex-1"><div class="text-sm font-medium">${r.correct ?? 0} správně z ${r.totalQuestions ?? 0}</div><div class="text-xs text-slate-400">${date}</div></div>
           </div>`;
         }).join('');
       }
@@ -309,9 +309,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     U.setToggle(U.el('toggle-randomize'), settings.randomize);
-    U.setToggle(U.el('toggle-timer'), settings.showTimer);
     _rebindBtn('toggle-randomize', function () { U.setToggle(this, !U.getToggle(this)); });
-    _rebindBtn('toggle-timer', function () { U.setToggle(this, !U.getToggle(this)); });
 
     document.querySelectorAll('.mode-option input').forEach(radio => {
       radio.addEventListener('change', () => { _updateModeCards(); _updateFilterCount(); });
@@ -408,14 +406,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         return (selSRS.includes('unseen') && unseen) || (selSRS.includes('weak') && weak);
       });
     }
-    if (selSRS.includes('bookmarked')) {
-      const bm = new Set(App.DB.getBookmarks());
-      pool = pool.filter(q => bm.has(q.id));
-    }
-    if (selSRS.includes('leaked')) {
-      pool = pool.filter(q => q.leaked === true);
-    }
-
     const total = pool.length;
     const isBrowse = document.querySelector('input[name="quizMode"]:checked')?.value === 'browse';
     if (total === 0) {
@@ -438,7 +428,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const mode = document.querySelector('input[name="quizMode"]:checked')?.value || 'browse';
     const count = Number(U.el('setup-count')?.value || db.questions.length);
     const randomize = U.getToggle(U.el('toggle-randomize'));
-    const showTimer = U.getToggle(U.el('toggle-timer'));
 
     const selCats = Array.from(document.querySelectorAll('.cat-filter:checked')).map(c => c.value).filter(Boolean);
     const selDiffs = Array.from(document.querySelectorAll('.diff-filter:checked')).map(c => c.value);
@@ -454,13 +443,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const weak = s && s.timesSeen > 0 && s.timesCorrect / s.timesSeen < 0.5;
         return (selSRS.includes('unseen') && unseen) || (selSRS.includes('weak') && weak);
       });
-    }
-    if (selSRS.includes('bookmarked')) {
-      const bm = new Set(App.DB.getBookmarks());
-      pool = pool.filter(q => bm.has(q.id));
-    }
-    if (selSRS.includes('leaked')) {
-      pool = pool.filter(q => q.leaked === true);
     }
     if (!pool.length) { U.showToast('Žádné otázky pro zvolené filtry.', 'warning'); return; }
 
@@ -487,11 +469,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     St.setSetting('defaultCount', count);
     St.setSetting('randomize', randomize);
-    St.setSetting('showTimer', showTimer);
     St.setSetting('defaultMode', mode);
 
-    QE.start(questions, { mode, showTimer });
-    QE.onTimer(secs => { const d = U.el('topbarTimerDisplay'); if (d) d.textContent = U.formatTime(secs); });
+    QE.start(questions, { mode });
 
     R.navigate('quiz');
     _renderQuizView();
@@ -505,8 +485,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     _rebindBtn('nextQuestionBtn', () => _handleNext());
     _rebindBtn('confirmAnswerBtn', () => _confirmAnswer());
     _rebindBtn('skipBtn', () => { QE.skip(); _handleNext(); });
-    _rebindBtn('flagBtn', () => { QE.toggleFlag(); _renderFlagBtn(); _renderNavGrid(); });
-    _rebindBtn('starBtn', () => { App.DB.toggleBookmark(QE.getQuestion()?.id); _renderStarBtn(); });
     _rebindBtn('quizPauseBtn', () => _handlePause());
     _rebindBtn('quizEndBtn', () => { if (confirm('Ukončit test a zobrazit výsledky?')) _finishQuiz(); });
   }
@@ -542,6 +520,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     _setText('qText', q.question);
+
+    const qImageArea = U.el('qImageArea');
+    const qImage = U.el('qImage');
+    if (qImageArea && qImage) {
+      if (q.type === 'image' && q.image) {
+        qImage.src = q.image;
+        qImage.alt = q.question;
+        qImageArea.classList.remove('hidden');
+      } else {
+        qImageArea.classList.add('hidden');
+        qImage.src = '';
+      }
+    }
+
     const answersArea = U.el('answersArea');
     if (answersArea) { answersArea.innerHTML = C.renderAnswers(q, answer, revealed); _bindAnswerEvents(answersArea, q.type); }
 
@@ -553,13 +545,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else { feedbackArea.classList.add('hidden'); feedbackArea.innerHTML = ''; }
     }
 
-    _renderFlagBtn();
-    _renderStarBtn();
     _updateActionButtons();
   }
 
   function _bindAnswerEvents(container, type) {
-    if (type === 'single' || type === 'boolean') {
+    if (type === 'single' || type === 'boolean' || type === 'image') {
       container.querySelectorAll('label[data-index], label[data-value]').forEach(label => {
         label.addEventListener('click', event => {
           if (event.target.tagName === 'INPUT') return;
@@ -657,24 +647,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  function _renderFlagBtn() {
-    const btn = U.el('flagBtn');
-    if (!btn) return;
-    const flagged = QE.isFlagged();
-    btn.classList.toggle('text-amber-500', flagged);
-    btn.classList.toggle('text-slate-300', !flagged);
-  }
-
-  function _renderStarBtn() {
-    const btn = U.el('starBtn');
-    if (!btn) return;
-    const starred = App.DB.isBookmarked(QE.getQuestion()?.id);
-    btn.classList.toggle('text-yellow-500', !!starred);
-    btn.classList.toggle('text-slate-300', !starred);
-    const svg = btn.querySelector('svg');
-    if (svg) svg.setAttribute('fill', starred ? 'currentColor' : 'none');
-  }
-
   function _renderNavGrid() {
     const grid = U.el('quizNavGrid');
     if (!grid) return;
@@ -716,7 +688,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (scoreEl) { scoreEl.classList.remove('score-reveal'); void scoreEl.offsetWidth; scoreEl.classList.add('score-reveal'); }
     _setText('resultScore', pct + '%');
     _setText('resultGrade', U.gradeLabel(pct));
-    _setText('resultMeta', `${result.totalQuestions} otázek · ${U.formatTime(result.elapsedSeconds)} · ${result.mode === 'exam' ? 'Zkouška' : 'Studium'}`);
+    _setText('resultMeta', `${result.totalQuestions} otázek · ${result.mode === 'exam' ? 'Zkouška' : 'Studium'}`);
     _setText('resultCorrect', parseFloat(result.totalScore.toFixed(2)));
     _setText('resultWrong', result.wrong);
     _setText('resultSkipped', result.skipped);
@@ -759,8 +731,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     _rebindBtn('retryWrongBtn', () => {
       const wrongs = result.details.filter(d => d.correct === false).map(d => d.question);
       if (!wrongs.length) { U.showToast('Žádné špatné odpovědi!', 'success'); return; }
-      QE.start(wrongs, { mode: result.mode, showTimer: St.getSetting('showTimer') });
-      QE.onTimer(secs => { const d = U.el('topbarTimerDisplay'); if (d) d.textContent = U.formatTime(secs); });
+      QE.start(wrongs, { mode: result.mode });
       R.navigate('quiz'); _renderQuizView();
     });
   }
@@ -1019,6 +990,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     _setText('srsQText', q.question);
+
+    const srsImageArea = U.el('srsImageArea');
+    const srsImage = U.el('srsImage');
+    if (srsImageArea && srsImage) {
+      if (q.type === 'image' && q.image) {
+        srsImage.src = q.image;
+        srsImage.alt = q.question;
+        srsImageArea.classList.remove('hidden');
+      } else {
+        srsImageArea.classList.add('hidden');
+        srsImage.src = '';
+      }
+    }
+
     const answersArea = U.el('srsAnswersArea');
     if (answersArea) { answersArea.innerHTML = App.Components.renderAnswers(q, _adp.currentAnswer, _adp.revealed); _bindAdaptiveAnswerEvents(answersArea, q.type); }
 
@@ -1037,7 +1022,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function _bindAdaptiveAnswerEvents(container, type) {
-    if (type === 'single' || type === 'boolean') {
+    if (type === 'single' || type === 'boolean' || type === 'image') {
       container.querySelectorAll('label[data-index], label[data-value]').forEach(label => {
         label.addEventListener('click', e => {
           if (e.target.tagName === 'INPUT') return;
@@ -1246,8 +1231,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       const nb = U.el('nextQuestionBtn'); if (nb && !nb.classList.contains('hidden')) nb.click();
     }
     if (e.key === 'ArrowLeft') U.el('prevQuestionBtn')?.click();
-    if (e.key === 'f' || e.key === 'F') U.el('flagBtn')?.click();
-    if (e.key === 'b' || e.key === 'B') U.el('starBtn')?.click();
     if (e.key === 's' || e.key === 'S') U.el('skipBtn')?.click();
     if (!QE.isRevealed()) {
       const num = parseInt(e.key, 10);
@@ -1289,7 +1272,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   let _browseAnswers = {};
   let _browseCatStart = {}; // catId → first index
   let _browseAutoReveal = false;
-  let _browseLeakedOnly = false;
 
   function startBrowseMode(questionsOverride) {
     const db = St.getDB();
@@ -1298,7 +1280,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (questionsOverride) {
       // Called from startQuiz with a pre-filtered+sorted pool
       _browseQsAll = questionsOverride;
-      _browseQs = _browseLeakedOnly ? questionsOverride.filter(q => q.leaked) : questionsOverride;
+      _browseQs = questionsOverride;
       _browseIdx = 0;
       _browseRevealed = {};
       _browseAnswers = {};
@@ -1315,7 +1297,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
       }
       if (!_browseQs.length) {
-        _browseQs = _browseLeakedOnly ? _browseQsAll.filter(q => q.leaked) : _browseQsAll;
+        _browseQs = _browseQsAll;
         _browseCatStart = {};
         _browseQs.forEach((q, i) => { if (_browseCatStart[q.category] === undefined) _browseCatStart[q.category] = i; });
       }
@@ -1333,25 +1315,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     _rebindBtn('browseNextBtn', () => { if (_browseIdx < _browseQs.length - 1) { _browseIdx++; _renderBrowseQuestion(); _renderBrowseCatList(); } });
     _rebindBtn('browseConfirmBtn', () => { _browseRevealed[_browseIdx] = true; _renderBrowseQuestion(); });
     _rebindBtn('browseJumpBtn', _browseJump);
-
-    const leakedBtn = U.el('browseLeakedToggle');
-    if (leakedBtn) {
-      const freshL = leakedBtn.cloneNode(true);
-      leakedBtn.parentNode.replaceChild(freshL, leakedBtn);
-      U.setToggle(freshL, _browseLeakedOnly);
-      freshL.addEventListener('click', () => {
-        _browseLeakedOnly = !_browseLeakedOnly;
-        U.setToggle(freshL, _browseLeakedOnly);
-        _browseQs = _browseLeakedOnly ? _browseQsAll.filter(q => q.leaked) : [..._browseQsAll];
-        _browseIdx = 0;
-        _browseRevealed = {};
-        _browseAnswers = {};
-        _browseCatStart = {};
-        _browseQs.forEach((q, i) => { if (_browseCatStart[q.category] === undefined) _browseCatStart[q.category] = i; });
-        _renderBrowseQuestion();
-        _renderBrowseCatList();
-      });
-    }
 
     const autoRevealBtn = U.el('browseAutoRevealToggle');
     if (autoRevealBtn) {
@@ -1403,10 +1366,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         diffEl.classList.remove('hidden');
       } else diffEl.classList.add('hidden');
     }
-    const leakedEl = U.el('browseQLeaked');
-    if (leakedEl) leakedEl.classList.toggle('hidden', !q.leaked);
-
     if (U.el('browseQText')) U.el('browseQText').textContent = q.question;
+
+    const browseImageArea = U.el('browseImageArea');
+    const browseImage = U.el('browseImage');
+    if (browseImageArea && browseImage) {
+      if (q.type === 'image' && q.image) {
+        browseImage.src = q.image;
+        browseImage.alt = q.question;
+        browseImageArea.classList.remove('hidden');
+      } else {
+        browseImageArea.classList.add('hidden');
+        browseImage.src = '';
+      }
+    }
 
     const answersArea = U.el('browseAnswersArea');
     if (answersArea) { answersArea.innerHTML = C.renderAnswers(q, answer, revealed); _bindBrowseAnswerEvents(answersArea, q); }
@@ -1437,7 +1410,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   function _bindBrowseAnswerEvents(container, q) {
-    if (q.type === 'single' || q.type === 'boolean') {
+    if (q.type === 'single' || q.type === 'boolean' || q.type === 'image') {
       container.querySelectorAll('label[data-index], label[data-value]').forEach(label => {
         label.addEventListener('click', ev => {
           if (ev.target.tagName === 'INPUT') return;
@@ -1532,4 +1505,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function _setText(id, val) { const el = U.el(id); if (el) el.textContent = val ?? ''; }
   function _setHtml(id, val) { const el = U.el(id); if (el) el.innerHTML = val ?? ''; }
+
+  // Image zoom on hover
+  const _zoomOverlay = document.getElementById('imgZoomOverlay');
+  const _zoomTarget  = document.getElementById('imgZoomTarget');
+  document.addEventListener('mouseover', e => {
+    const img = e.target.closest('.quiz-img');
+    if (!img || !_zoomOverlay || !_zoomTarget) return;
+    _zoomTarget.src = img.src;
+    _zoomOverlay.classList.remove('hidden');
+  });
+  document.addEventListener('mouseout', e => {
+    const img = e.target.closest('.quiz-img');
+    if (!img || !_zoomOverlay) return;
+    _zoomOverlay.classList.add('hidden');
+  });
 });
