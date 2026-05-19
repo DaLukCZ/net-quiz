@@ -1,7 +1,7 @@
 # NetQuiz
 
-Kvízová appka na opakování látky - aktuálně hlavně počítačové sítě, časem snad i webové technologie a další předměty.
-
+- Kvízová appka na opakování látky - aktuálně hlavně počítačové sítě, časem snad i webové technologie a další předměty.
+- na fixy kdyžtak pište, nebo můžu dát collaboratora
 ---
 
 ## Důležité
