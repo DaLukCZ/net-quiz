@@ -18448,7 +18448,7 @@
       "question": "Co je na obrázku?",
       "image": "../images/anténa všesměrová.jpg",
       "answers": [
-        {"id": "a", "text": "Všesměrová anténa /", "correct": true},
+        {"id": "a", "text": "Všesměrová anténa", "correct": true},
         {"id": "b", "text": "Dipólová anténa", "correct": false},
         {"id": "c", "text": "Yagi anténa", "correct": false},
         {"id": "d", "text": "Parabolická anténa", "correct": false}
