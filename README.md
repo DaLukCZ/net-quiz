@@ -26,7 +26,7 @@ Ideálně přes **Procházení**, ať si projdeš i otázky, které by se v test
 
 ### 3. Udělat pár zkušebních testů
 
-U skutečné zkoušky je 25 otázek - je dobré si zkusit tempo.
+U skutečné zkoušky je 25 otázek a 30 minut času
 
 ---
 
