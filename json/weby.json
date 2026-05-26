@@ -2,7 +2,7 @@
   "meta": {
     "title": "Webové technologie",
     "version": 2,
-    "questionCount": 77,
+    "questionCount": 130,
     "uniqueQuestions": true
   },
   "categories": [
@@ -1045,6 +1045,739 @@
       ],
       "explanation": "TypeScript (od Microsoftu) přidává statické typování k JavaScriptu. tsc kompilátor přeloží .ts → .js, které spouští prohlížeč/Node.js. TypeScript je superset JS — každý JS je validní TS.",
       "id": "w_00077"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Co znamená HTTP stavový kód 201?",
+      "answers": [
+        { "id": "a", "text": "Požadavek byl úspěšně zpracován, obsah vrácen", "correct": false },
+        { "id": "b", "text": "Nový zdroj byl úspěšně vytvořen", "correct": true },
+        { "id": "c", "text": "Požadavek byl přijat, ale čeká na zpracování", "correct": false },
+        { "id": "d", "text": "Obsah se nezměnil — použijte cache", "correct": false }
+      ],
+      "explanation": "201 Created vrací server po úspěšném POST/PUT, který vytvořil nový zdroj. Hlavička Location obsahuje URL nově vytvořeného záznamu.",
+      "id": "w_00078"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Co znamená HTTP stavový kód 204 (No Content)?",
+      "answers": [
+        { "id": "a", "text": "Stránka neobsahuje žádný text ani obrázky", "correct": false },
+        { "id": "b", "text": "Požadavek proběhl úspěšně, ale odpověď nemá tělo (body)", "correct": true },
+        { "id": "c", "text": "Obsah byl trvale přesunut na jinou adresu", "correct": false },
+        { "id": "d", "text": "Server nerozumí obsahu požadavku", "correct": false }
+      ],
+      "explanation": "204 No Content = operace proběhla úspěšně, ale server nemá co vrátit. Typické pro DELETE nebo PUT — akce provedena, žádná data k vrácení.",
+      "id": "w_00079"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Jaký je rozdíl mezi HTTP stavovými kódy 301 a 302?",
+      "answers": [
+        { "id": "a", "text": "301 = přesměrování pro GET, 302 = přesměrování pro POST", "correct": false },
+        { "id": "b", "text": "301 = trvalé přesměrování (Moved Permanently), 302 = dočasné přesměrování (Found)", "correct": true },
+        { "id": "c", "text": "301 = přesměrování na HTTPS, 302 = přesměrování v rámci domény", "correct": false },
+        { "id": "d", "text": "Jsou identické, liší se jen v záhlaví response", "correct": false }
+      ],
+      "explanation": "301 Moved Permanently = zdroj byl trvale přesunut (prohlížeč i vyhledávač aktualizují záznamy). 302 Found = dočasné přesměrování — prohlížeč neaktualizuje záložky, vyhledávač novou URL neindexuje.",
+      "id": "w_00080"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Jaký je rozdíl mezi HTTP stavovými kódy 401 a 403?",
+      "answers": [
+        { "id": "a", "text": "401 = špatné heslo, 403 = špatné uživatelské jméno", "correct": false },
+        { "id": "b", "text": "401 = Unauthorized (nejsi přihlášen), 403 = Forbidden (přihlášen, ale nemáš oprávnění)", "correct": true },
+        { "id": "c", "text": "401 = chyba klienta, 403 = chyba serveru", "correct": false },
+        { "id": "d", "text": "Jsou totéž — záleží na implementaci serveru", "correct": false }
+      ],
+      "explanation": "401 Unauthorized = server neví kdo jsi — vyžaduje přihlášení (chybí nebo neplatné credentials). 403 Forbidden = server ví kdo jsi, ale tento zdroj pro tebe není dostupný.",
+      "id": "w_00081"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "HTTP stavový kód 400 (Bad Request) označuje chybu na straně serveru.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "400 Bad Request je chyba na straně klienta (skupina 4xx). Znamená, že požadavek byl syntakticky chybný nebo server mu nerozuměl. Chyby serveru jsou 5xx (500, 502, 503 atd.).",
+      "id": "w_00082"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Co označuje skupina HTTP stavových kódů 5xx?",
+      "answers": [
+        { "id": "a", "text": "Chyby na straně klienta (špatný požadavek, chybí přihlášení)", "correct": false },
+        { "id": "b", "text": "Úspěšně zpracované požadavky", "correct": false },
+        { "id": "c", "text": "Chyby na straně serveru — server nemohl požadavek zpracovat", "correct": true },
+        { "id": "d", "text": "Přesměrování na jinou URL", "correct": false }
+      ],
+      "explanation": "5xx = chyby serveru: 500 Internal Server Error (obecná chyba), 502 Bad Gateway (chyba reverzní proxy), 503 Service Unavailable (přetížen/údržba). Za chybu může server, ne klient.",
+      "id": "w_00083"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Co znamená HTTP stavový kód 503 (Service Unavailable)?",
+      "answers": [
+        { "id": "a", "text": "Požadovaná služba (URL) na serveru neexistuje", "correct": false },
+        { "id": "b", "text": "Server je dočasně nedostupný — přetížen nebo v údržbě", "correct": true },
+        { "id": "c", "text": "Klient nemá oprávnění přistupovat ke zdroji", "correct": false },
+        { "id": "d", "text": "Požadavek byl zamítnut kvůli neplatnému SSL certifikátu", "correct": false }
+      ],
+      "explanation": "503 Service Unavailable = server momentálně nemůže zpracovávat požadavky (přetížení nebo plánovaná údržba). Hlavička Retry-After může informovat, kdy bude server opět dostupný.",
+      "id": "w_00084"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Co znamená HTTP stavový kód 304 (Not Modified)?",
+      "answers": [
+        { "id": "a", "text": "Obsah stránky byl upraven a klient ho musí znovu stáhnout", "correct": false },
+        { "id": "b", "text": "Obsah se nezměnil — klient může použít svou verzi z mezipaměti (cache)", "correct": true },
+        { "id": "c", "text": "Požadavek byl dočasně přesměrován", "correct": false },
+        { "id": "d", "text": "Server odmítl požadavek kvůli nesprávnému formátu dat", "correct": false }
+      ],
+      "explanation": "304 Not Modified se vrátí na podmíněný GET (If-None-Match / If-Modified-Since). Server říká: 'Tvá cache je aktuální, použij ji.' Tělo odpovědi je prázdné — šetří přenos dat.",
+      "id": "w_00085"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Co vrátí server HTTP stavovým kódem 422 (Unprocessable Entity)?",
+      "answers": [
+        { "id": "a", "text": "Požadavek má špatnou syntaxi — malformed JSON/XML", "correct": false },
+        { "id": "b", "text": "Data jsou sémanticky neplatná — validace selhala (správná syntaxe, ale neplatné hodnoty)", "correct": true },
+        { "id": "c", "text": "Server nerozumí formátu média (Content-Type)", "correct": false },
+        { "id": "d", "text": "Uživatel nemá oprávnění k operaci", "correct": false }
+      ],
+      "explanation": "422 Unprocessable Entity = požadavek byl syntakticky správně přijat, ale sémantická validace selhala. V Laravelu API toto vrátí automaticky při selhání Request validace — odpověď obsahuje seznam chyb polí.",
+      "id": "w_00086"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Co znamená HTTP stavový kód 429 (Too Many Requests)?",
+      "answers": [
+        { "id": "a", "text": "Požadavek je příliš velký — přesahuje limit serveru", "correct": false },
+        { "id": "b", "text": "Klient odeslal příliš mnoho požadavků za daný čas — rate limiting", "correct": true },
+        { "id": "c", "text": "Server odmítl nadbytečné parametry v URL", "correct": false },
+        { "id": "d", "text": "Počet otevřených spojení přesáhl limit TCP", "correct": false }
+      ],
+      "explanation": "429 Too Many Requests = rate limiting (omezení četnosti požadavků). Hlavička Retry-After říká, kdy lze znovu posílat. Běžné u veřejných API — ochrana před přetížením a zneužitím.",
+      "id": "w_00087"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Které HTTP stavové kódy patří do skupiny 4xx (chyby na straně klienta)?",
+      "answers": [
+        { "id": "a", "text": "400 Bad Request", "correct": true },
+        { "id": "b", "text": "401 Unauthorized", "correct": true },
+        { "id": "c", "text": "403 Forbidden", "correct": true },
+        { "id": "d", "text": "502 Bad Gateway", "correct": false }
+      ],
+      "explanation": "4xx = chyby klienta: 400, 401, 403, 404, 405, 408, 409, 422, 429 atd. 502 Bad Gateway je 5xx — chyba serveru (zpravidla reverzní proxy nebo load balancer).",
+      "id": "w_00088"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Doplňte správné HTTP stavové kódy k jednotlivým situacím.",
+      "code": "// Formulář odeslán, nový uživatel zaregistrován\nHTTP ___1___ Created\n\n// Smazání záznamu proběhlo, nic k vrácení\nHTTP ___2___ No Content\n\n// Stránka trvale přesunuta na novou adresu\nHTTP ___3___ Moved Permanently\n\n// Přihlášení vyžadováno (nepřihlášen)\nHTTP ___4___ Unauthorized",
+      "blanks": ["201", "204", "301", "401"],
+      "wordbank": ["200", "201", "204", "301", "302", "400", "401", "403", "404", "500"],
+      "explanation": "201 = Created (nový zdroj), 204 = No Content (úspěch bez těla), 301 = Moved Permanently (trvalý redirect), 401 = Unauthorized (nutná autentifikace).",
+      "id": "w_00089"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Co je REST (Representational State Transfer)?",
+      "answers": [
+        { "id": "a", "text": "Programovací jazyk pro tvorbu webových API", "correct": false },
+        { "id": "b", "text": "Architektonický styl pro návrh distribuovaných systémů využívající HTTP", "correct": true },
+        { "id": "c", "text": "Databázový protokol pro přenos dat mezi systémy", "correct": false },
+        { "id": "d", "text": "Bezpečnostní standard pro šifrování HTTP komunikace", "correct": false }
+      ],
+      "explanation": "REST je architektonický styl (ne protokol ani jazyk) definovaný Roy Fieldingem v roce 2000. Využívá HTTP metódy, URL jako identifikátory zdrojů a stavové kódy. Laravel Route::apiResource() vytváří RESTful endpointy.",
+      "id": "w_00090"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Jak mapuje RESTful API HTTP metódy na CRUD operace?",
+      "answers": [
+        { "id": "a", "text": "GET=Create, POST=Read, PUT=Update, DELETE=Delete", "correct": false },
+        { "id": "b", "text": "GET=Read, POST=Create, PUT/PATCH=Update, DELETE=Delete", "correct": true },
+        { "id": "c", "text": "POST=Read i Create, GET se v REST nepoužívá", "correct": false },
+        { "id": "d", "text": "REST nepoužívá HTTP metódy — má vlastní slovesa", "correct": false }
+      ],
+      "explanation": "REST CRUD: GET → Read, POST → Create, PUT/PATCH → Update, DELETE → Delete. V Laravelu Route::resource() automaticky mapuje všechny tyto operace na metódy resource controlleru.",
+      "id": "w_00091"
+    },
+    {
+      "type": "multi",
+      "difficulty": "hard",
+      "category": "http",
+      "question": "Které z těchto vlastností jsou základní principy REST architektury?",
+      "answers": [
+        { "id": "a", "text": "Stateless — server neuchovává stav klienta mezi požadavky", "correct": true },
+        { "id": "b", "text": "Cacheable — odpovědi mohou být označeny jako kešovatelné", "correct": true },
+        { "id": "c", "text": "Povinné HTTPS šifrování všech komunikací", "correct": false },
+        { "id": "d", "text": "Uniform Interface — zdroje identifikovány URL, přístup přes standardní HTTP metódy", "correct": true }
+      ],
+      "explanation": "REST má 6 principů: Client-Server, Stateless, Cacheable, Uniform Interface, Layered System, Code on Demand (volitelné). HTTPS není podmínkou REST — je to best practice, ale ne architektonický constraint.",
+      "id": "w_00092"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Co je ODM (Object Document Mapper)?",
+      "answers": [
+        { "id": "a", "text": "Nástroj pro mapování PHP objektů na řádky v relační databázi (totéž jako ORM/Eloquent)", "correct": false },
+        { "id": "b", "text": "Nástroj pro mapování PHP objektů na dokumenty v dokumentové (NoSQL) databázi jako MongoDB", "correct": true },
+        { "id": "c", "text": "Systém pro správu databázových migrací v Laravelu", "correct": false },
+        { "id": "d", "text": "Protokol pro komunikaci mezi aplikačním serverem a databází", "correct": false }
+      ],
+      "explanation": "ODM je analogie k ORM, ale pro dokumentové databáze (MongoDB, CouchDB). ORM mapuje objekty na tabulky (řádky), ODM mapuje objekty na dokumenty (JSON/BSON). V Laravelu se používá např. balíček jenssegers/laravel-mongodb.",
+      "id": "w_00093"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Co je kaskáda v CSS (CSS Cascade)?",
+      "answers": [
+        { "id": "a", "text": "Technika pro vnořování CSS selektorů do sebe", "correct": false },
+        { "id": "b", "text": "Mechanismus, který rozhoduje, které CSS pravidlo se aplikuje, když více pravidel cílí na stejný element", "correct": true },
+        { "id": "c", "text": "Způsob, jak CSS soubory importují jiné CSS soubory pomocí @import", "correct": false },
+        { "id": "d", "text": "Pořadí načítání externích CSS souborů prohlížečem", "correct": false }
+      ],
+      "explanation": "Kaskáda (cascade) je algoritmus řešící konflikty mezi CSS pravidly. Bere v úvahu: 1) původ pravidla (browser/user/author), 2) !important, 3) specifičnost selektoru, 4) pořadí v souboru. Právě proto se jazyk jmenuje Cascading Style Sheets.",
+      "id": "w_00094"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "css",
+      "question": "Mají-li dvě CSS pravidla stejnou specifičnost, vyhraje pravidlo, které se nachází dříve v CSS souboru.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "Pravidlo napsané NÍŽE (later) v souboru má přednost. CSS kaskáda: stejný původ + stejné !important + stejná specifičnost → rozhoduje pořadí, pozdější pravidlo vyhraje.",
+      "id": "w_00095"
+    },
+    {
+      "type": "single",
+      "difficulty": "hard",
+      "category": "css",
+      "question": "Seřaďte tyto CSS selektory od nejnižší po nejvyšší specifičnost.",
+      "answers": [
+        { "id": "a", "text": "p → .trida → #id → style=\"...\"", "correct": true },
+        { "id": "b", "text": "#id → .trida → p → style=\"...\"", "correct": false },
+        { "id": "c", "text": "style=\"...\" → #id → .trida → p", "correct": false },
+        { "id": "d", "text": ".trida → p → #id → style=\"...\"", "correct": false }
+      ],
+      "explanation": "Specifičnost (a,b,c,d): element p = (0,0,0,1), .trida = (0,0,1,0), #id = (0,1,0,0), inline style = (1,0,0,0). Vyhraje vždy vyšší číslo v komponentách zleva doprava. !important přebíjí vše.",
+      "id": "w_00096"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Co je OOCSS (Object-Oriented CSS)?",
+      "answers": [
+        { "id": "a", "text": "Způsob psaní CSS v JavaScriptu (CSS-in-JS)", "correct": false },
+        { "id": "b", "text": "Metodika pro psaní znovupoužitelného CSS — odděluje strukturu (layout) od vzhledu (skin)", "correct": true },
+        { "id": "c", "text": "Specifikace CSS pro objekty a třídy jako v PHP OOP", "correct": false },
+        { "id": "d", "text": "Nástroj pro kompilaci SCSS do CSS", "correct": false }
+      ],
+      "explanation": "OOCSS (Nicole Sullivan, 2009): odděluje strukturu (rozložení, rozměry) od skinu (barvy, fonty, pozadí). Třídy jsou znovupoužitelné — .btn pro strukturu + .btn-primary pro barvu. Metodika vznikla analýzou CSS kódu Facebooku a Salesforce.",
+      "id": "w_00097"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Co je SMACSS (Scalable and Modular Architecture for CSS)?",
+      "answers": [
+        { "id": "a", "text": "Preprocesor pro CSS (jako SASS nebo LESS)", "correct": false },
+        { "id": "b", "text": "Architektura pro organizaci CSS do 5 kategorií: Base, Layout, Module, State, Theme", "correct": true },
+        { "id": "c", "text": "Systém pojmenování tříd Block-Element-Modifier (BEM)", "correct": false },
+        { "id": "d", "text": "Bootstrap alternativa od Googlu", "correct": false }
+      ],
+      "explanation": "SMACSS (Jonathan Snook): Base = výchozí styly elementů (reset), Layout = mřížka/sekce stránky, Module = znovupoužitelné komponenty (tlačítka, karty), State = stavy (.is-active, .is-hidden), Theme = vizuální téma. BEM (Block–Element–Modifier) je jiná metodika.",
+      "id": "w_00098"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "K čemu slouží HTTP metóda HEAD?",
+      "answers": [
+        { "id": "a", "text": "Vrátí záhlaví (<head>) stránky jako HTML", "correct": false },
+        { "id": "b", "text": "Totéž jako GET, ale bez těla odpovědi — vrací pouze hlavičky (headers)", "correct": true },
+        { "id": "c", "text": "Získá první řádek obsahu dokumentu", "correct": false },
+        { "id": "d", "text": "Testuje dostupnost serveru (jako ping)", "correct": false }
+      ],
+      "explanation": "HEAD = identický požadavek jako GET, ale server neposílá tělo odpovědi — pouze hlavičky (Content-Type, Content-Length, Last-Modified). Využití: ověření existence zdroje nebo zjištění velikosti souboru před stažením. Je safe a idempotentní.",
+      "id": "w_00099"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "K čemu slouží HTTP metóda OPTIONS a kde se s ní nejčastěji setkáme?",
+      "answers": [
+        { "id": "a", "text": "Slouží k admin konfiguraci serveru", "correct": false },
+        { "id": "b", "text": "Zjišťuje, jaké HTTP metódy server podporuje; automaticky ji odesílá prohlížeč jako CORS preflight", "correct": true },
+        { "id": "c", "text": "Přenáší metadata požadavku místo jeho těla", "correct": false },
+        { "id": "d", "text": "Slouží k nastavení HTTP hlaviček na serveru", "correct": false }
+      ],
+      "explanation": "OPTIONS vrátí hlavičku Allow: GET, POST, PUT... Prohlížeče automaticky odesílají OPTIONS jako CORS preflight request před cross-origin požadavky — zkontrolují, zda server požadavek povoluje (Access-Control-Allow-Origin). Je safe a idempotentní.",
+      "id": "w_00100"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Co je Persistent Connection (Keep-Alive) v HTTP/1.1 a jaký problém HTTP/1.0 řeší?",
+      "answers": [
+        { "id": "a", "text": "Udržuje přihlášení uživatele aktivní i po zavření prohlížeče", "correct": false },
+        { "id": "b", "text": "Jedno TCP spojení zůstane otevřené pro více požadavků — v HTTP/1.0 se otevíralo nové spojení pro každý požadavek", "correct": true },
+        { "id": "c", "text": "Cachuje obsah stránky v prohlížeči pro offline použití", "correct": false },
+        { "id": "d", "text": "Komprimuje HTTP hlavičky pro opakovaná spojení", "correct": false }
+      ],
+      "explanation": "HTTP/1.0: každý požadavek = nový TCP handshake (pomalé, velký overhead). HTTP/1.1 zavedlo Persistent Connection (Keep-Alive) — TCP spojení zůstává otevřené a slouží pro více požadavků. Výrazně snižuje latenci a zatížení sítě.",
+      "id": "w_00101"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Jak se liší HTTP/2 od HTTP/1.x v přenosovém formátu zpráv?",
+      "answers": [
+        { "id": "a", "text": "HTTP/2 přidalo JSON formát místo prostého textu", "correct": false },
+        { "id": "b", "text": "HTTP/2 používá binární formát (rámce/frames) místo textového formátu HTTP/1.x", "correct": true },
+        { "id": "c", "text": "HTTP/2 šifruje každou zprávu zvlášť jiným klíčem", "correct": false },
+        { "id": "d", "text": "HTTP/2 přidalo gzip kompresi těla zprávy (poprvé)", "correct": false }
+      ],
+      "explanation": "HTTP/1.x = textový formát (čitelný jako plaintext). HTTP/2 = binární rámce (frames) — zprávy se rozdělí na malé binární rámce, které lze interleaveovat. Efektivnější zpracování, menší overhead, základ pro multiplexing.",
+      "id": "w_00102"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Co je HTTP/2 Server Push?",
+      "answers": [
+        { "id": "a", "text": "WebSocket mechanismus pro real-time notifikace z serveru", "correct": false },
+        { "id": "b", "text": "Server proaktivně odešle klientovi zdroje (CSS, JS) ještě před tím, než je klient vyžádá", "correct": true },
+        { "id": "c", "text": "Technika pro deploy kódu na produkční server přes HTTP", "correct": false },
+        { "id": "d", "text": "Mechanismus, kdy server aktualizuje HTML stránku bez požadavku klienta", "correct": false }
+      ],
+      "explanation": "Při Server Push server odesílá CSS, JS soubory ihned s HTML odpovědí — bez nutnosti, aby prohlížeč tyto soubory teprve objevil a vyžádal. Zkracuje dobu prvního renderování. Jedna z klíčových funkcí HTTP/2.",
+      "id": "w_00103"
+    },
+    {
+      "type": "single",
+      "difficulty": "hard",
+      "category": "http",
+      "question": "Co je HPACK v HTTP/2?",
+      "answers": [
+        { "id": "a", "text": "Algoritmus pro kompresi těla HTTP odpovědi (alternativa ke gzip)", "correct": false },
+        { "id": "b", "text": "Algoritmus pro kompresi HTTP hlaviček — snižuje jejich opakující se přenos", "correct": true },
+        { "id": "c", "text": "Bezpečnostní protokol pro šifrování HTTP/2 komunikace", "correct": false },
+        { "id": "d", "text": "Formát pro balení více HTTP požadavků do jednoho paketu", "correct": false }
+      ],
+      "explanation": "HTTP hlavičky se opakují s každým požadavkem (User-Agent, Cookie, Host...). HPACK je kompresní algoritmus HTTP/2 specificky pro hlavičky — udržuje sdílenou tabulku dříve odeslaných hlaviček, opakované posílá jen jako referenci. Výrazně snižuje overhead.",
+      "id": "w_00104"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "js-frameworks",
+      "question": "Za co je zodpovědná komponenta (component) při práci s JS frameworkem?",
+      "answers": [
+        { "id": "a", "text": "Pouze za vizuální zobrazení — stav a logika patří vždy do globálního store", "correct": false },
+        { "id": "b", "text": "Kombinuje šablonu (HTML struktura), logiku (stav + akce) a styly do znovupoužitelné, samostatné jednotky UI", "correct": true },
+        { "id": "c", "text": "Pouze za komunikaci s backend API — renderování řeší framework", "correct": false },
+        { "id": "d", "text": "Výhradně za routování mezi stránkami aplikace", "correct": false }
+      ],
+      "explanation": "Komponenta = nejmenší znovupoužitelná jednotka UI. Zapouzdřuje šablonu, logiku (stav, event handlery) a styly. Přijímá vstupy přes props, oznamuje změny přes eventy/callbacks. Komponenty se skládají do stromové struktury celé aplikace (React, Vue, Angular, Svelte).",
+      "id": "w_00105"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "js-frameworks",
+      "question": "Jaký je rozdíl mezi CSR, SSR a SSG v kontextu JS frameworků?",
+      "answers": [
+        { "id": "a", "text": "Jsou to tři různé JS frameworky (React/Vue/Angular)", "correct": false },
+        { "id": "b", "text": "CSR = renderování v prohlížeči, SSR = renderování na serveru per request, SSG = předgenerované HTML při buildu", "correct": true },
+        { "id": "c", "text": "Jsou to různé způsoby stylování (CSS/SCSS/Sass)", "correct": false },
+        { "id": "d", "text": "Jsou to různé způsoby komunikace s API (fetch/axios/GraphQL)", "correct": false }
+      ],
+      "explanation": "CSR (Client-Side Rendering) = prázdné HTML + JS renderuje v prohlížeči. SSR (Server-Side Rendering) = každý request vygeneruje HTML na serveru. SSG (Static Site Generation) = HTML se vygeneruje jednou při buildu. Metaframeworky (Next.js, Nuxt) kombinují všechny tři módy.",
+      "id": "w_00106"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Jak se správně chrání databázové dotazy v PHP před SQL injection?",
+      "answers": [
+        { "id": "a", "text": "Vstupní data se ošetří funkcí htmlspecialchars() před vložením do dotazu", "correct": false },
+        { "id": "b", "text": "Pomocí PDO s prepared statements (připravenými dotazy) a parametry místo přímé concatenace", "correct": true },
+        { "id": "c", "text": "Stačí validovat délku řetězce na frontendu před odesláním", "correct": false },
+        { "id": "d", "text": "Použitím MySQL funkce ESCAPE() přímo v SQL dotazu", "correct": false }
+      ],
+      "explanation": "Prepared statements oddělují SQL kód od dat: $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ?'); $stmt->execute([$email]); Útočník nemůže měnit strukturu dotazu. htmlspecialchars() chrání před XSS, ne SQL injection.",
+      "id": "w_00107"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "K čemu slouží Blade direktiva @forelse ... @empty ... @endforelse?",
+      "answers": [
+        { "id": "a", "text": "Iteruje přes pole a přeskočí prázdné prvky", "correct": false },
+        { "id": "b", "text": "Iteruje přes kolekci jako @foreach, ale zobrazí @empty blok, když je kolekce prázdná", "correct": true },
+        { "id": "c", "text": "Kombinuje @foreach a @for cykly do jednoho", "correct": false },
+        { "id": "d", "text": "Iteruje přes pole a zobrazí pouze první neprázdný prvek", "correct": false }
+      ],
+      "explanation": "@forelse je rozšíření @foreach s integrovanou obsluhou prázdné kolekce. Místo `@if($items->isEmpty()) ... @else @foreach ... @endforeach @endif` napíšeš jednoduše `@forelse($items as $item) ... @empty Žádné záznamy. @endforelse`.",
+      "id": "w_00108"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "K čemu slouží Blade direktiva @error('pole') ... @enderror?",
+      "answers": [
+        { "id": "a", "text": "Zachytí PHP výjimku a zobrazí chybovou stránku", "correct": false },
+        { "id": "b", "text": "Zobrazí validační chybovou zprávu pro konkrétní formulářové pole, pokud validace selhala", "correct": true },
+        { "id": "c", "text": "Přesměruje uživatele na chybovou stránku 422", "correct": false },
+        { "id": "d", "text": "Loguje chyby do Laravel logu pro dané pole", "correct": false }
+      ],
+      "explanation": "@error('nazev') {{ $message }} @enderror zobrazí chybu pouze tehdy, pokud pro toto pole existuje validační chyba. $message obsahuje text chyby. Ideálně se umísťuje přímo pod příslušné formulářové pole.",
+      "id": "w_00109"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Co dělá return redirect()->route('users.index')->with('success', 'Uloženo!') v Laravel controlleru?",
+      "answers": [
+        { "id": "a", "text": "Přesměruje a trvale uloží zprávu 'Uloženo!' do databáze", "correct": false },
+        { "id": "b", "text": "Přesměruje na route 'users.index' a do session uloží jednorázovou flash zprávu", "correct": true },
+        { "id": "c", "text": "Vrátí JSON odpověď s success: true a zprávou 'Uloženo!'", "correct": false },
+        { "id": "d", "text": "Přesměruje a zobrazí browser alert s textem 'Uloženo!'", "correct": false }
+      ],
+      "explanation": "->with('key', 'value') uloží flash data do session — dostupná pouze pro jedno zobrazení. V Blade: @if(session('success')) <div class=\"alert\">{{ session('success') }}</div> @endif. Standardní vzor po store()/update()/destroy().",
+      "id": "w_00110"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Které tři způsoby lze použít pro předání proměnných z Laravel controlleru do Blade šablony?",
+      "answers": [
+        { "id": "a", "text": "global(), session(), cookie()", "correct": false },
+        { "id": "b", "text": "view('name', ['key' => $val]), compact('var'), ->with('key', $val)", "correct": true },
+        { "id": "c", "text": "inject(), provide(), emit()", "correct": false },
+        { "id": "d", "text": "request(), response(), render()", "correct": false }
+      ],
+      "explanation": "3 způsoby: 1) Pole: return view('users.index', ['users' => $users]). 2) compact(): return view('users.index', compact('users')) — automaticky ['users' => $users]. 3) with(): return view('users.index')->with('users', $users). Všechny dělají totéž.",
+      "id": "w_00111"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "html",
+      "question": "Jaký je rozdíl mezi blokovými (block) a řádkovými (inline) HTML elementy?",
+      "answers": [
+        { "id": "a", "text": "Blokové jsou sémantické, řádkové jsou pouze dekorativní", "correct": false },
+        { "id": "b", "text": "Blokové zabírají celou šířku a začínají na novém řádku; řádkové zabírají jen tolik místa, kolik potřebují", "correct": true },
+        { "id": "c", "text": "Blokové lze stylovat, řádkové nelze", "correct": false },
+        { "id": "d", "text": "Blokové jsou HTML5 novinky, řádkové jsou z HTML4", "correct": false }
+      ],
+      "explanation": "Block elementy (<div>, <p>, <h1-h6>, <section>, <article>): nový řádek, plná šířka kontejneru. Inline elementy (<span>, <a>, <strong>, <em>, <img>): bez nového řádku, zabírají jen nutnou šířku. CSS vlastnost display může toto změnit.",
+      "id": "w_00112"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "html",
+      "question": "Které z těchto funkcí byly přidány v HTML5 (oproti HTML4)?",
+      "answers": [
+        { "id": "a", "text": "Sémantické elementy: <header>, <footer>, <nav>, <article>, <section>", "correct": true },
+        { "id": "b", "text": "Multimediální elementy: <video> a <audio> bez potřeby Flash pluginu", "correct": true },
+        { "id": "c", "text": "Povinné XHTML syntaxe s pravidly XML", "correct": false },
+        { "id": "d", "text": "<canvas> element pro kreslení 2D grafiky JavaScriptem", "correct": true }
+      ],
+      "explanation": "HTML5 přineslo: sémantické elementy, <video>/<audio> bez pluginů, <canvas> pro JS grafiku, Web Storage (localStorage/sessionStorage), Geolocation API, nové input typy (email/date/color/range), Web Workers. XHTML se naopak opustilo.",
+      "id": "w_00113"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "javascript",
+      "question": "Jaký je rozdíl mezi null a undefined v JavaScriptu?",
+      "answers": [
+        { "id": "a", "text": "Jsou totéž — null i undefined vyjadřují 'chybějící hodnotu' a jsou zaměnitelné", "correct": false },
+        { "id": "b", "text": "undefined = hodnota nebyla nikdy přiřazena; null = programátor záměrně nastavil 'žádná hodnota'", "correct": true },
+        { "id": "c", "text": "null je pro čísla, undefined pro řetězce", "correct": false },
+        { "id": "d", "text": "undefined je chybový stav (nikdy by nemělo nastat), null je platná hodnota", "correct": false }
+      ],
+      "explanation": "undefined = proměnná existuje, ale nikdy nedostala hodnotu; funkce nic nevrátila; vlastnost neexistuje. null = programátor explicitně říká 'tady záměrně nic není'. Při porovnání vždy používej === (null == undefined je true, null === undefined je false).",
+      "id": "w_00114"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "javascript",
+      "question": "K čemu slouží atribut defer na elementu <script src=\"app.js\" defer>?",
+      "answers": [
+        { "id": "a", "text": "Zabrání spuštění skriptu z bezpečnostních důvodů (CSP)", "correct": false },
+        { "id": "b", "text": "Skript se načte paralelně s HTML, ale spustí se až po dokončení parsování celého dokumentu", "correct": true },
+        { "id": "c", "text": "Odloží načítání skriptu o 1 sekundu po načtení stránky", "correct": false },
+        { "id": "d", "text": "Skript se načte a spustí okamžitě, HTML parsing se pozastaví", "correct": false }
+      ],
+      "explanation": "Bez atributů: <script> blokuje HTML parsing. async = načítá paralelně, spustí hned (nepředvídatelné pořadí). defer = načítá paralelně, spustí po dokončení HTML — zachovává pořadí skriptů. Best practice: <script src=\"app.js\" defer>.",
+      "id": "w_00115"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "css",
+      "question": "Jaké jsou 4 části CSS Box Modelu (od vnitřní po vnější)?",
+      "answers": [
+        { "id": "a", "text": "content → padding → border → margin", "correct": true },
+        { "id": "b", "text": "margin → border → padding → content", "correct": false },
+        { "id": "c", "text": "content → border → padding → margin", "correct": false },
+        { "id": "d", "text": "padding → content → margin → border", "correct": false }
+      ],
+      "explanation": "Box model: content (obsah) → padding (vnitřní odsazení) → border (ohraničení) → margin (vnější odsazení). box-sizing: border-box způsobí, že padding a border jsou zahrnuty do width/height elementu.",
+      "id": "w_00116"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Jaká CSS vlastnost centruje flex položky podél hlavní osy (horizontálně ve výchozím směru)?",
+      "answers": [
+        { "id": "a", "text": "align-items: center", "correct": false },
+        { "id": "b", "text": "justify-content: center", "correct": true },
+        { "id": "c", "text": "flex-align: center", "correct": false },
+        { "id": "d", "text": "text-align: center", "correct": false }
+      ],
+      "explanation": "justify-content řídí rozmístění podél hlavní osy (default: horizontální). align-items řídí vedlejší osu (vertikální). Pro centrování v obou osách: display:flex + justify-content:center + align-items:center.",
+      "id": "w_00117"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "css",
+      "question": "K čemu slouží CSS media queries (@media)?",
+      "answers": [
+        { "id": "a", "text": "K vložení obrázků a videí přímo do CSS", "correct": false },
+        { "id": "b", "text": "K aplikaci různých CSS pravidel podle šířky obrazovky nebo typu zařízení — základ responzivního designu", "correct": true },
+        { "id": "c", "text": "K načtení externích CSS souborů podmíněně", "correct": false },
+        { "id": "d", "text": "K animaci CSS vlastností při přechodu mezi stránkami", "correct": false }
+      ],
+      "explanation": "@media (max-width: 768px) { ... } — pravidla se aplikují pouze při splnění podmínky (šířka, orientace, typ média). Základ Mobile-First přístupu. Bootstrap breakpoints jsou definovány právě přes media queries.",
+      "id": "w_00118"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Které části tvoří URL adresu https://example.com:8080/path?q=1#sekce?",
+      "answers": [
+        { "id": "a", "text": "protokol, doména, cesta — port, query a fragment nejsou součástí URL", "correct": false },
+        { "id": "b", "text": "scheme (https), host (example.com), port (8080), path (/path), query (?q=1), fragment (#sekce)", "correct": true },
+        { "id": "c", "text": "doména, IP adresa, port, soubor", "correct": false },
+        { "id": "d", "text": "protokol, server, parametry — fragment je jen záložka v prohlížeči, ne část URL", "correct": false }
+      ],
+      "explanation": "URL = scheme://host:port/path?query#fragment. Scheme = protokol (https), host = doména nebo IP, port = nepovinný (https default 443, http 80), path = cesta ke zdroji, query = parametry, fragment = kotva na stránce (neodesílá se serveru).",
+      "id": "w_00119"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "HTTPS šifruje přenášená data — bez HTTPS jsou data přenášena v čitelném (plaintext) formátu.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": true },
+        { "id": "b", "text": "Nepravda", "correct": false }
+      ],
+      "explanation": "HTTPS = HTTP + TLS/SSL šifrování. Bez HTTPS může kdokoli na síti (Wi-Fi, ISP) číst přenášená data včetně hesel a cookies. TLS šifruje obsah, ale ne metadata (host se komu připojuješ je viditelný přes SNI).",
+      "id": "w_00120"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Co je návrhový vzor Singleton?",
+      "answers": [
+        { "id": "a", "text": "Vzor pro vytváření kopií (klonování) objektů", "correct": false },
+        { "id": "b", "text": "Vzor zajišťující, že třída má pouze jednu instanci v celé aplikaci, přístupnou globálně", "correct": true },
+        { "id": "c", "text": "Vzor pro spárování jednoho controlleru s jedním modelem", "correct": false },
+        { "id": "d", "text": "Vzor pro přístup k databázi přes jedinou metodu", "correct": false }
+      ],
+      "explanation": "Singleton = třída, která dovolí vytvořit pouze jednu instanci. Konstruktor je private, přístup přes statickou metodu getInstance(). Typicky pro: konfiguraci, logger, databázové spojení. V Laravelu je Service Container de facto Singleton manager.",
+      "id": "w_00121"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Co je Factory návrhový vzor?",
+      "answers": [
+        { "id": "a", "text": "Třída, která generuje testovací data (seed) pro databázi", "correct": false },
+        { "id": "b", "text": "Vzor zapouzdřující logiku vytváření objektů — klient nemusí znát konkrétní třídu, jen továrnu", "correct": true },
+        { "id": "c", "text": "Vzor pro propojení modelu s views ve frameworku", "correct": false },
+        { "id": "d", "text": "Vzor pro správu databázových transakcí", "correct": false }
+      ],
+      "explanation": "Factory = objekt zodpovědný za vytváření jiných objektů. Klient volá factory->create('typ') místo new KonkretniTrida(). Odděluje vytváření od použití. V Laravelu: Model Factories pro testovací data jsou inspirovány tímto vzorem.",
+      "id": "w_00122"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Co je Observer (Pozorovatel) návrhový vzor?",
+      "answers": [
+        { "id": "a", "text": "Vzor pro sledování výkonu a logování HTTP požadavků", "correct": false },
+        { "id": "b", "text": "Vzor, kde objekt (Subject) notifikuje závislé objekty (Observers) o změnách svého stavu", "correct": true },
+        { "id": "c", "text": "Vzor pro testování, kdy mock objekty sledují volání metod", "correct": false },
+        { "id": "d", "text": "Vzor pro přístup ke konfiguraci aplikace", "correct": false }
+      ],
+      "explanation": "Observer = publish/subscribe pattern. Subject (vydavatel) drží seznam Observerů a při změně stavu je notifikuje. Příklad: přihlášení uživatele → notifikační email, log, welcome bonus. Laravel má vestavěný Event/Listener systém založený na tomto vzoru.",
+      "id": "w_00123"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Co je Repository návrhový vzor?",
+      "answers": [
+        { "id": "a", "text": "Složka v gitu pro verzování kódu projektu", "correct": false },
+        { "id": "b", "text": "Vrstva abstrakce nad datovým zdrojem — controller komunikuje s repository, ne přímo s databází/modelem", "correct": true },
+        { "id": "c", "text": "Vzor pro ukládání souborů na serveru", "correct": false },
+        { "id": "d", "text": "Alternativní název pro Eloquent model v Laravelu", "correct": false }
+      ],
+      "explanation": "Repository odděluje business logiku od datové vrstvy. Controller volá $userRepo->findActive() místo User::where('active', 1)->get(). Výhoda: snadná záměna datového zdroje (MySQL → MongoDB) bez změny controlleru. Zvyšuje testovatelnost.",
+      "id": "w_00124"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Co je Decorator návrhový vzor?",
+      "answers": [
+        { "id": "a", "text": "CSS třída pro vizuální ozdobení HTML elementů", "correct": false },
+        { "id": "b", "text": "Vzor přidávající objektu nové chování dynamicky obalením do jiného objektu", "correct": true },
+        { "id": "c", "text": "Vzor pro přidávání nových sloupců do databázové tabulky", "correct": false },
+        { "id": "d", "text": "PHP atribut (#[Attribute]) pro označení metod controlleru", "correct": false }
+      ],
+      "explanation": "Decorator obalí existující objekt a přidá mu nové chování bez změny původní třídy (alternativa k dědičnosti). Příklad: Logger obalí Repository a loguje každé volání. Každý dekorátor implementuje stejné rozhraní jako obalovaný objekt.",
+      "id": "w_00125"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Co je middleware v Laravelu a k čemu slouží?",
+      "answers": [
+        { "id": "a", "text": "Soubor pro konfiguraci databázového připojení", "correct": false },
+        { "id": "b", "text": "Vrstva kódu, která zpracovává HTTP požadavek před tím (nebo po tom), než dorazí na controller", "correct": true },
+        { "id": "c", "text": "Šablona pro layout stránky v Blade", "correct": false },
+        { "id": "d", "text": "Třída propojující Eloquent model s databázovou tabulkou", "correct": false }
+      ],
+      "explanation": "Middleware = filtr HTTP požadavků. Příklady: auth (zkontroluj přihlášení), throttle (rate limiting), CORS. V routes/web.php: Route::get('/admin', ...)->middleware('auth'). Middleware může požadavek vpustit, odmítnout (redirect), nebo upravit.",
+      "id": "w_00126"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "K čemu slouží Blade direktiva @auth ... @endauth?",
+      "answers": [
+        { "id": "a", "text": "Přihlásí uživatele automaticky bez formuláře", "correct": false },
+        { "id": "b", "text": "Zobrazí obsah bloku pouze přihlášeným uživatelům", "correct": true },
+        { "id": "c", "text": "Ověří CSRF token formuláře", "correct": false },
+        { "id": "d", "text": "Načte přihlašovací formulář z výchozí Laravel šablony", "correct": false }
+      ],
+      "explanation": "@auth ... @endauth zobrazí obsah pouze přihlášeným uživatelům. @guest ... @endguest zobrazí obsah pouze nepřihlášeným. Ekvivalent @if(Auth::check()) ale čitelnější. Auth::user() vrátí aktuálně přihlášeného uživatele.",
+      "id": "w_00127"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Které z těchto návrhových vzorů jsou v Laravelu přímo implementovány nebo podporovány?",
+      "answers": [
+        { "id": "a", "text": "MVC (Model-View-Controller) — základní architektura Laravelu", "correct": true },
+        { "id": "b", "text": "Observer — Event/Listener systém a Eloquent model eventy", "correct": true },
+        { "id": "c", "text": "Singleton — Service Container spravuje singleton instance", "correct": true },
+        { "id": "d", "text": "Blockchain — decentralizované uložení modelů", "correct": false }
+      ],
+      "explanation": "Laravel implementuje: MVC (základ frameworku), Observer (Events/Listeners, Eloquent eventy: creating/created/updating...), Singleton (Service Container), Factory (Model Factories), Repository (doporučená praxe), Decorator (Middleware pipeline).",
+      "id": "w_00128"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Jak se v Laravelu ochrání skupina routes tak, aby byly přístupné pouze přihlášeným uživatelům?",
+      "answers": [
+        { "id": "a", "text": "Route::secure([...])", "correct": false },
+        { "id": "b", "text": "Route::middleware('auth')->group(function() { ... })", "correct": true },
+        { "id": "c", "text": "Route::private([...])", "correct": false },
+        { "id": "d", "text": "@auth direktiva v routes/web.php", "correct": false }
+      ],
+      "explanation": "Route::middleware('auth')->group(fn() => { Route::get('/dashboard', ...); }) — všechny routes v group() projdou auth middlewarem. Nepřihlášený uživatel je přesměrován na login stránku. Lze kombinovat: ->middleware(['auth', 'verified']).",
+      "id": "w_00129"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Co je Front Controller návrhový vzor a jak ho Laravel využívá?",
+      "answers": [
+        { "id": "a", "text": "Controller zpracovávající pouze první stránku webu (homepage)", "correct": false },
+        { "id": "b", "text": "Jeden vstupní bod aplikace, který přijme všechny HTTP požadavky a distribuuje je dál", "correct": true },
+        { "id": "c", "text": "Controller s pouze jednou metodou (single action controller)", "correct": false },
+        { "id": "d", "text": "Vzor pro zobrazení chybových stránek (404, 500)", "correct": false }
+      ],
+      "explanation": "Front Controller = jeden vstupní bod (single entry point). V Laravelu je to public/index.php — všechny požadavky jdou přes něj (Apache/Nginx RewriteRule). index.php bootstrapuje framework, který pak předá požadavek routeru → controlleru.",
+      "id": "w_00130"
     }
   ]
 }

@@ -42,18 +42,18 @@ Heslo (asi):
 
 ## Webové technologie
 
-**77 otázek** pokrývajících celou látku:
+**130 otázek** pokrývajících celou látku:
 
 | Kategorie | Otázky |
 |-----------|--------|
-| HTTP | 10 |
-| HTML | 6 |
-| CSS | 7 |
+| HTTP | 33 |
+| HTML | 8 |
+| CSS | 15 |
 | Bootstrap | 3 |
-| JavaScript | 6 |
-| JS Frameworky | 3 |
-| PHP & OOP | 11 |
-| Laravel & OOP | 31 |
+| JavaScript | 8 |
+| JS Frameworky | 5 |
+| PHP & OOP | 12 |
+| Laravel & OOP | 46 |
 
 ---
 
