@@ -22,11 +22,11 @@ Leaknuté otázky - ale nemusí být všechny správně nebo aktuální.
 
 ### 2. Projít všechny otázky v appce
 
-Ideálně přes **Procházení**, ať si projdeš i otázky, které by se v testech nemusely objevit.
+Ideálně přes **Procházení**, ať si projdeš i otázky, které by se v testech mohly objevit.
 
 ### 3. Udělat pár zkušebních testů
 
-U skutečné zkoušky je 25 otázek - je dobré si zkusit tempo.
+U skutečné zkoušky je 25 otázek a 30 minut času
 
 ---
 
@@ -64,8 +64,8 @@ Heslo (asi):
 
 2. Ve složce `net-quiz` spusť:
 
-```bat
-NetQuiz.bat
+```py
+start.py
 ```
 
 3. Jestli se neotevřelo autmaticky, tak otevři:
