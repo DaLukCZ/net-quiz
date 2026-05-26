@@ -42,7 +42,18 @@ Heslo (asi):
 
 ## Webové technologie
 
-Zatím rozpracované - doplním, až bude hotový kvíz pro weby.
+**77 otázek** pokrývajících celou látku:
+
+| Kategorie | Otázky |
+|-----------|--------|
+| HTTP | 10 |
+| HTML | 6 |
+| CSS | 7 |
+| Bootstrap | 3 |
+| JavaScript | 6 |
+| JS Frameworky | 3 |
+| PHP & OOP | 11 |
+| Laravel & OOP | 31 |
 
 ---
 

@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (id === (St.getSetting('defaultSubject') || 'site')) { R.navigate('dashboard'); return; }
         St.setSetting('defaultSubject', id);
         await _loadSubject(id);
-        _browseQs = [];
+        _browseQs = []; _browseQsAll = []; _browseIdx = 0; _browseRevealed = {}; _browseAnswers = {}; _browseCatStart = {};
         R.navigate('dashboard');
         U.showToast('Předmět přepnut', 'success');
       });
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if ((St.getSetting('defaultSubject') || 'site') === id) {
           St.setSetting('defaultSubject', 'site');
           await _loadSubject('site');
-          _browseQs = [];
+          _browseQs = []; _browseQsAll = []; _browseIdx = 0; _browseRevealed = {}; _browseAnswers = {}; _browseCatStart = {};
         }
         renderSubjects();
       });
@@ -584,6 +584,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (type === 'open') {
       container.querySelector('#openAnswer')?.addEventListener('input', function () { QE.setAnswer(this.value || undefined); _updateActionButtons(); });
     }
+    if (type === 'fillcode') {
+      const wrapper = container.querySelector('.fillcode-wrapper');
+      if (!wrapper) return;
+      const q = QE.getQuestion();
+      wrapper.querySelectorAll('.fillcode-word').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const alreadySel = chip.classList.contains('fillcode-selected');
+          wrapper.querySelectorAll('.fillcode-word').forEach(w => w.classList.remove('fillcode-selected'));
+          if (!alreadySel) chip.classList.add('fillcode-selected');
+        });
+      });
+      wrapper.querySelectorAll('.fillcode-blank').forEach(blank => {
+        blank.addEventListener('click', () => {
+          const blankIdx = parseInt(blank.dataset.blank);
+          const cur = Array.isArray(QE.getAnswer()) ? [...QE.getAnswer()] : new Array(q.blanks.length).fill(null);
+          if (blank.classList.contains('fillcode-filled')) {
+            cur[blankIdx] = null;
+            QE.setAnswer(cur.every(c => c == null) ? undefined : cur);
+          } else {
+            const sel = wrapper.querySelector('.fillcode-word.fillcode-selected');
+            if (!sel) return;
+            cur[blankIdx] = sel.dataset.word;
+            wrapper.querySelectorAll('.fillcode-word').forEach(w => w.classList.remove('fillcode-selected'));
+            QE.setAnswer(cur);
+          }
+          _renderQuestion(true);
+        });
+      });
+    }
   }
 
   function _updateActionButtons() {
@@ -593,7 +622,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const mode = session?.config?.mode;
     const idx = QE.getCurrentIndex();
     const lastIdx = (session?.questions?.length ?? 1) - 1;
-    const hasAnswer = answer !== undefined && answer !== null && answer !== '' && !(Array.isArray(answer) && !answer.length);
+    const q = QE.getQuestion();
+    let hasAnswer = answer !== undefined && answer !== null && answer !== '' && !(Array.isArray(answer) && !answer.length);
+    if (q?.type === 'fillcode') {
+      hasAnswer = Array.isArray(answer) && answer.length === (q.blanks?.length || 0) && answer.every(a => a != null);
+    }
 
     const confirmBtn = U.el('confirmAnswerBtn');
     const nextBtn = U.el('nextQuestionBtn');
@@ -835,6 +868,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         St.setSetting('defaultSubject', selected);
         await _loadSubject(selected);
+        _browseQs = []; _browseQsAll = []; _browseIdx = 0; _browseRevealed = {}; _browseAnswers = {}; _browseCatStart = {};
         const label = allSubjects.find(s => s.id === selected)?.label || selected;
         U.showToast(`Načteno učivo "${label}"`, 'success');
       });
@@ -1050,6 +1084,36 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (type === 'number') { container.querySelector('#numAnswer')?.addEventListener('input', function () { _adp.currentAnswer = this.value ? Number(this.value) : null; _updateAdaptiveActionBar(); }); }
     if (type === 'text') { container.querySelector('#txtAnswer')?.addEventListener('input', function () { _adp.currentAnswer = this.value || null; _updateAdaptiveActionBar(); }); }
     if (type === 'open') { container.querySelector('#openAnswer')?.addEventListener('input', function () { _adp.currentAnswer = this.value || null; _updateAdaptiveActionBar(); }); }
+    if (type === 'fillcode') {
+      const wrapper = container.querySelector('.fillcode-wrapper');
+      if (!wrapper) return;
+      const q = _adp.currentQ;
+      wrapper.querySelectorAll('.fillcode-word').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const alreadySel = chip.classList.contains('fillcode-selected');
+          wrapper.querySelectorAll('.fillcode-word').forEach(w => w.classList.remove('fillcode-selected'));
+          if (!alreadySel) chip.classList.add('fillcode-selected');
+        });
+      });
+      wrapper.querySelectorAll('.fillcode-blank').forEach(blank => {
+        blank.addEventListener('click', () => {
+          if (!q) return;
+          const blankIdx = parseInt(blank.dataset.blank);
+          const cur = Array.isArray(_adp.currentAnswer) ? [..._adp.currentAnswer] : new Array(q.blanks.length).fill(null);
+          if (blank.classList.contains('fillcode-filled')) {
+            cur[blankIdx] = null;
+          } else {
+            const sel = wrapper.querySelector('.fillcode-word.fillcode-selected');
+            if (!sel) return;
+            cur[blankIdx] = sel.dataset.word;
+            wrapper.querySelectorAll('.fillcode-word').forEach(w => w.classList.remove('fillcode-selected'));
+          }
+          _adp.currentAnswer = cur;
+          _updateAdaptiveActionBar();
+          _renderAdaptiveQuestion();
+        });
+      });
+    }
   }
 
   function _updateAdaptiveActionBar() {
@@ -1060,7 +1124,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!q || !actionBar) return;
     if (_adp.revealed) { actionBar.classList.add('hidden'); return; }
     actionBar.classList.remove('hidden');
-    const hasAnswer = _adp.currentAnswer !== null && _adp.currentAnswer !== undefined && !(Array.isArray(_adp.currentAnswer) && !_adp.currentAnswer.length);
+    let hasAnswer = _adp.currentAnswer !== null && _adp.currentAnswer !== undefined && !(Array.isArray(_adp.currentAnswer) && !_adp.currentAnswer.length);
+    if (q?.type === 'fillcode') {
+      hasAnswer = Array.isArray(_adp.currentAnswer) && _adp.currentAnswer.length === (q.blanks?.length || 0) && _adp.currentAnswer.every(a => a != null);
+    }
     if (q.type === 'open') {
       if (confirmed) confirmed.classList.add('hidden');
       if (reveal) reveal.classList.remove('hidden');
@@ -1401,7 +1468,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const confirmBtn = U.el('browseConfirmBtn');
     if (confirmBtn) {
-      const needsConfirm = !revealed && (q.type === 'multi' || q.type === 'text' || q.type === 'number' || q.type === 'open');
+      const needsConfirm = !revealed && (q.type === 'multi' || q.type === 'text' || q.type === 'number' || q.type === 'open' || q.type === 'fillcode');
       confirmBtn.classList.toggle('hidden', !needsConfirm);
     }
 
@@ -1444,6 +1511,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else if (q.type === 'open') {
       const ta = container.querySelector('#openAnswer');
       if (ta) ta.addEventListener('input', () => { _browseAnswers[_browseIdx] = ta.value; });
+    } else if (q.type === 'fillcode') {
+      const wrapper = container.querySelector('.fillcode-wrapper');
+      if (!wrapper) return;
+      wrapper.querySelectorAll('.fillcode-word').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const alreadySel = chip.classList.contains('fillcode-selected');
+          wrapper.querySelectorAll('.fillcode-word').forEach(w => w.classList.remove('fillcode-selected'));
+          if (!alreadySel) chip.classList.add('fillcode-selected');
+        });
+      });
+      wrapper.querySelectorAll('.fillcode-blank').forEach(blank => {
+        blank.addEventListener('click', () => {
+          if (_browseRevealed[_browseIdx]) return;
+          const blankIdx = parseInt(blank.dataset.blank);
+          const cur = Array.isArray(_browseAnswers[_browseIdx]) ? [..._browseAnswers[_browseIdx]] : new Array(q.blanks.length).fill(null);
+          if (blank.classList.contains('fillcode-filled')) {
+            cur[blankIdx] = null;
+          } else {
+            const sel = wrapper.querySelector('.fillcode-word.fillcode-selected');
+            if (!sel) return;
+            cur[blankIdx] = sel.dataset.word;
+            wrapper.querySelectorAll('.fillcode-word').forEach(w => w.classList.remove('fillcode-selected'));
+          }
+          _browseAnswers[_browseIdx] = cur;
+          _renderBrowseQuestion();
+        });
+      });
     }
   }
 

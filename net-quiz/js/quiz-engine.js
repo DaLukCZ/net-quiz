@@ -48,6 +48,12 @@ App.QuizEngine = (() => {
         const candidates = Array.isArray(expected) ? expected : [expected];
         return candidates.some(e => String(e).trim().toLowerCase() === normalized);
       }
+      case 'fillcode': {
+        if (!Array.isArray(answer)) return false;
+        const blanks = question.blanks || [];
+        if (answer.length !== blanks.length) return false;
+        return answer.every((a, i) => a === blanks[i]);
+      }
       case 'open':
         return true;
       default:
@@ -153,6 +159,13 @@ App.QuizEngine = (() => {
           else score -= 0.5;
         }
         return Math.max(0, Math.min(1, score));
+      }
+      case 'fillcode': {
+        if (!Array.isArray(answer)) return 0;
+        const blanks = question.blanks || [];
+        if (!blanks.length) return 0;
+        const correct = answer.reduce((sum, a, i) => sum + (a === blanks[i] ? 1 : 0), 0);
+        return correct / blanks.length;
       }
       default:
         return 0;

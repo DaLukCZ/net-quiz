@@ -164,6 +164,50 @@ App.Components = (() => {
       </div>`;
   }
 
+  function renderFillCode(question, sessionAnswer, revealed) {
+    const blanks = question.blanks || [];
+    const answers = Array.isArray(sessionAnswer) ? sessionAnswer : [];
+    const allWords = Array.isArray(question.wordbank) ? question.wordbank : [...blanks];
+
+    const parts = String(question.code || '').split(/(___\d+___)/);
+    const codeHtml = parts.map(part => {
+      const m = part.match(/^___(\d+)___$/);
+      if (!m) return U.escapeHtml(part);
+      const idx = parseInt(m[1]) - 1;
+      const filled = answers[idx] != null ? answers[idx] : null;
+      if (revealed) {
+        const correct = filled === blanks[idx];
+        if (correct && filled != null) {
+          return `<span class="fillcode-reveal-correct">${U.escapeHtml(filled)}</span>`;
+        }
+        return (filled != null ? `<span class="fillcode-reveal-wrong">${U.escapeHtml(filled)}</span>` : `<span class="fillcode-reveal-empty">(prázdné)</span>`)
+          + `<span class="fillcode-reveal-solution">${U.escapeHtml(blanks[idx] ?? '')}</span>`;
+      }
+      return filled != null
+        ? `<span class="fillcode-blank fillcode-filled" data-blank="${idx}">${U.escapeHtml(filled)}</span>`
+        : `<span class="fillcode-blank fillcode-empty" data-blank="${idx}"></span>`;
+    }).join('');
+
+    return `
+      <div class="fillcode-wrapper space-y-4">
+        <div class="rounded-xl overflow-hidden border border-slate-700 dark:border-gray-700">
+          <div class="bg-slate-800 dark:bg-gray-800 px-4 py-2 flex items-center gap-2 border-b border-slate-700 dark:border-gray-700">
+            <div class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span><span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span><span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span></div>
+            <span class="text-xs text-slate-400 font-mono ml-1">code</span>
+          </div>
+          <pre class="bg-slate-900 dark:bg-gray-950 text-slate-100 text-sm font-mono leading-relaxed p-4 overflow-x-auto whitespace-pre-wrap">${codeHtml}</pre>
+        </div>
+        ${!revealed ? `
+          <div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-2 font-medium">Vyber slovo → klikni na mezeru v kódu. Kliknutím na vyplněnou mezeru ji vyčistíš.</p>
+            <div class="flex flex-wrap gap-2">
+              ${allWords.map((w, wi) => `<button class="fillcode-word font-mono text-xs font-semibold px-3 py-1.5 rounded-lg border-2 border-slate-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-slate-700 dark:text-slate-200 transition-all hover:border-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/20" data-word="${U.escapeHtml(w)}" data-wi="${wi}">${U.escapeHtml(w)}</button>`).join('')}
+            </div>
+          </div>
+        ` : ''}
+      </div>`;
+  }
+
   function renderAnswers(question, sessionAnswer, revealed) {
     switch (question.type) {
       case 'single':
@@ -173,6 +217,7 @@ App.Components = (() => {
       case 'number': return renderNumberInput(question, sessionAnswer, revealed);
       case 'text': return renderTextInput(question, sessionAnswer, revealed);
       case 'open': return renderOpenInput(question, sessionAnswer, revealed);
+      case 'fillcode': return renderFillCode(question, sessionAnswer, revealed);
       default: return `<p class="text-slate-400 text-sm">Neznámý typ otázky: ${U.escapeHtml(question.type)}</p>`;
     }
   }

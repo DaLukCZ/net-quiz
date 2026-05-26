@@ -35,12 +35,13 @@ App.Utils = (() => {
   }
 
   const TYPE_META = {
-    single:  { label: 'Single',  cls: 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800' },
-    multi:   { label: 'Multi',   cls: 'bg-violet-50 dark:bg-violet-900/20 text-violet-700 dark:text-violet-300 border-violet-200 dark:border-violet-800' },
-    boolean: { label: 'Bool',    cls: 'bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 border-teal-200 dark:border-teal-800' },
-    number:  { label: 'Number',  cls: 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800' },
-    text:    { label: 'Text',    cls: 'bg-pink-50 dark:bg-pink-900/20 text-pink-700 dark:text-pink-300 border-pink-200 dark:border-pink-800' },
-    open:    { label: 'Open',    cls: 'bg-slate-100 dark:bg-gray-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-gray-700' },
+    single:   { label: 'Single',   cls: 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800' },
+    multi:    { label: 'Multi',    cls: 'bg-violet-50 dark:bg-violet-900/20 text-violet-700 dark:text-violet-300 border-violet-200 dark:border-violet-800' },
+    boolean:  { label: 'Bool',     cls: 'bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 border-teal-200 dark:border-teal-800' },
+    number:   { label: 'Number',   cls: 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800' },
+    text:     { label: 'Text',     cls: 'bg-pink-50 dark:bg-pink-900/20 text-pink-700 dark:text-pink-300 border-pink-200 dark:border-pink-800' },
+    open:     { label: 'Open',     cls: 'bg-slate-100 dark:bg-gray-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-gray-700' },
+    fillcode: { label: 'FillCode', cls: 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800' },
   };
 
   const DIFF_META = {
@@ -62,19 +63,20 @@ App.Utils = (() => {
   }
 
   function typeLabel(type) {
-    const map = { single: 'Single choice', multi: 'Multi choice', boolean: 'Boolean', number: 'Number', text: 'Text', open: 'Otevřená', image: 'Poznej obrázek' };
+    const map = { single: 'Single choice', multi: 'Multi choice', boolean: 'Boolean', number: 'Number', text: 'Text', open: 'Otevřená', image: 'Poznej obrázek', fillcode: 'Doplň kód' };
     return map[type] || type;
   }
 
   function typeHint(type) {
     const map = {
-      single:  'Vyber jednu správnou odpověď',
-      multi:   'Vyber všechny správné odpovědi',
-      boolean: 'Pravda nebo nepravda?',
-      number:  'Zadej číslo',
-      text:    'Zadej text',
-      open:    'Napiš vlastní odpověď',
-      image:   'Vyber správný popis obrázku',
+      single:   'Vyber jednu správnou odpověď',
+      multi:    'Vyber všechny správné odpovědi',
+      boolean:  'Pravda nebo nepravda?',
+      number:   'Zadej číslo',
+      text:     'Zadej text',
+      open:     'Napiš vlastní odpověď',
+      image:    'Vyber správný popis obrázku',
+      fillcode: 'Vyber slovo → klikni na mezeru v kódu',
     };
     return map[type] || '';
   }

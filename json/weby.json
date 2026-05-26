@@ -1,102 +1,1050 @@
 {
   "meta": {
     "title": "Webové technologie",
-    "version": 1,
-    "questionCount": 5,
+    "version": 2,
+    "questionCount": 77,
     "uniqueQuestions": true
   },
   "categories": [
-    {
-      "id": "html",
-      "label": "HTML"
-    },
-    {
-      "id": "css",
-      "label": "CSS"
-    },
-    {
-      "id": "javascript",
-      "label": "JavaScript"
-    },
-    {
-      "id": "browser",
-      "label": "Prohlížeč"
-    },
-    {
-      "id": "http",
-      "label": "HTTP"
-    }
+    { "id": "http",          "label": "HTTP" },
+    { "id": "html",          "label": "HTML" },
+    { "id": "css",           "label": "CSS" },
+    { "id": "bootstrap",     "label": "Bootstrap" },
+    { "id": "javascript",    "label": "JavaScript" },
+    { "id": "js-frameworks", "label": "JS Frameworky" },
+    { "id": "php",           "label": "PHP" },
+    { "id": "laravel",       "label": "Laravel & OOP" }
   ],
   "questions": [
     {
       "type": "single",
       "difficulty": "easy",
-      "category": "html",
-      "question": "Který značkovací jazyk se používá pro strukturu webové stránky?",
+      "category": "http",
+      "question": "Co označuje HTTP stavový kód 404?",
       "answers": [
-        { "id": "a", "text": "CSS", "correct": false },
-        { "id": "b", "text": "HTML", "correct": true },
-        { "id": "c", "text": "JSON", "correct": false },
-        { "id": "d", "text": "SQL", "correct": false }
+        { "id": "a", "text": "Požadavek byl úspěšně zpracován", "correct": false },
+        { "id": "b", "text": "Stránka nebyla nalezena (Not Found)", "correct": true },
+        { "id": "c", "text": "Chyba na straně serveru", "correct": false },
+        { "id": "d", "text": "Požadavek je přesměrován", "correct": false }
       ],
-      "explanation": "HTML se používá pro strukturu a obsah webových stránek.",
+      "explanation": "HTTP 404 Not Found znamená, že požadovaný zdroj nebyl na serveru nalezen. 200 = OK, 500 = Server Error, 301/302 = přesměrování.",
       "id": "w_00001"
     },
     {
       "type": "single",
       "difficulty": "easy",
-      "category": "css",
-      "question": "Které pravidlo CSS změní barvu textu?",
+      "category": "http",
+      "question": "Která HTTP metóda slouží výhradně ke čtení dat a nemění stav servera (je bezpečná a idempotentní)?",
       "answers": [
-        { "id": "a", "text": "background-color", "correct": false },
-        { "id": "b", "text": "font-size", "correct": false },
-        { "id": "c", "text": "color", "correct": true },
-        { "id": "d", "text": "display", "correct": false }
+        { "id": "a", "text": "POST", "correct": false },
+        { "id": "b", "text": "PUT", "correct": false },
+        { "id": "c", "text": "DELETE", "correct": false },
+        { "id": "d", "text": "GET", "correct": true }
       ],
-      "explanation": "V CSS se pro barvu textu používá vlastnost color.",
+      "explanation": "GET je bezpečná (safe) a idempotentní metóda — načítá data, nemění stav servera. Opakované volání dává stejný výsledek.",
       "id": "w_00002"
     },
     {
       "type": "single",
       "difficulty": "medium",
-      "category": "javascript",
-      "question": "Jaký je správný způsob zápisu funkce v JavaScriptu?",
+      "category": "http",
+      "question": "Který transportní protokol využívá HTTP/3 místo TCP?",
       "answers": [
-        { "id": "a", "text": "function myFunc() {}", "correct": true },
-        { "id": "b", "text": "func myFunc() {}", "correct": false },
-        { "id": "c", "text": "function: myFunc() {}", "correct": false },
-        { "id": "d", "text": "def myFunc() {}", "correct": false }
+        { "id": "a", "text": "UDP přímo bez dalšího protokolu", "correct": false },
+        { "id": "b", "text": "QUIC (běží nad UDP)", "correct": true },
+        { "id": "c", "text": "TLS 1.3", "correct": false },
+        { "id": "d", "text": "FTP", "correct": false }
       ],
-      "explanation": "V JavaScriptu se funkce zapisuje pomocí klíčového slova function.",
+      "explanation": "HTTP/3 běží nad QUIC, který je postaven nad UDP. Toto je nejzásadnější změna v historii HTTP — eliminuje TCP Head-of-Line Blocking.",
       "id": "w_00003"
     },
     {
-      "type": "single",
-      "difficulty": "medium",
-      "category": "browser",
-      "question": "Který soubor zobrazuje prohlížeč při otevření webové stránky?",
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "HTTP metóda POST je idempotentní.",
       "answers": [
-        { "id": "a", "text": ".exe", "correct": false },
-        { "id": "b", "text": ".html", "correct": true },
-        { "id": "c", "text": ".docx", "correct": false },
-        { "id": "d", "text": ".mp3", "correct": false }
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
       ],
-      "explanation": "Prohlížeč načítá a vykresluje HTML soubory jako webové stránky.",
+      "explanation": "POST není idempotentní — odeslání formuláře N-krát vytvoří N nových záznamů. Idempotentní jsou: GET, HEAD, PUT, DELETE, OPTIONS.",
       "id": "w_00004"
     },
     {
       "type": "single",
       "difficulty": "medium",
       "category": "http",
-      "question": "Co znamená zkratka HTTP?",
+      "question": "Co je Head-of-Line Blocking (HOL Blocking) v HTTP/1.1?",
       "answers": [
-        { "id": "a", "text": "HyperText Transfer Protocol", "correct": true },
-        { "id": "b", "text": "High Transfer Text Process", "correct": false },
-        { "id": "c", "text": "Hyperlink Text Transfer Program", "correct": false },
-        { "id": "d", "text": "Home Tool Transfer Page", "correct": false }
+        { "id": "a", "text": "Limit na maximální velikost HTTP hlaviček", "correct": false },
+        { "id": "b", "text": "Situace, kdy pomalá odpověď blokuje ostatní čekající požadavky ve frontě", "correct": true },
+        { "id": "c", "text": "Chyba v syntaxi HTTP metódy HEAD", "correct": false },
+        { "id": "d", "text": "Blokování spojení firewallem", "correct": false }
       ],
-      "explanation": "HTTP znamená HyperText Transfer Protocol a je použit pro komunikaci mezi prohlížečem a serverem.",
+      "explanation": "Odpovědi musí přicházet ve stejném pořadí jako požadavky. Pokud odpověď A trvá dlouho, B a C musí čekat. HTTP/2 to řeší multiplexingem.",
       "id": "w_00005"
+    },
+    {
+      "type": "single",
+      "difficulty": "hard",
+      "category": "http",
+      "question": "Jaký byl hlavní přínos HTTP/2 oproti HTTP/1.1?",
+      "answers": [
+        { "id": "a", "text": "Přidalo stavové kódy (200, 404 atd.)", "correct": false },
+        { "id": "b", "text": "Multiplexing — více požadavků/odpovědí paralelně přes jedno TCP spojení", "correct": true },
+        { "id": "c", "text": "Zavedlo povinné HTTPS šifrování", "correct": false },
+        { "id": "d", "text": "Přidalo metódu POST a PUT", "correct": false }
+      ],
+      "explanation": "HTTP/2 přineslo: multiplexing (binární rámce), kompresi hlaviček HPACK a Server Push. Multiplexing odstraňuje HOL Blocking na aplikační vrstvě.",
+      "id": "w_00006"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Které z těchto HTTP metód jsou bezpečné (safe) — nemění stav servera?",
+      "answers": [
+        { "id": "a", "text": "GET", "correct": true },
+        { "id": "b", "text": "HEAD", "correct": true },
+        { "id": "c", "text": "POST", "correct": false },
+        { "id": "d", "text": "OPTIONS", "correct": true }
+      ],
+      "explanation": "Bezpečné (safe) metódy: GET, HEAD, OPTIONS, TRACE — pouze čtou data. POST, PUT, DELETE mění stav servera.",
+      "id": "w_00007"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Doplňte strukturu HTTP odpovědi (response) — vyplňte chybějící části.",
+      "code": "HTTP/1.1 ___1___ OK\nContent-Type: ___2___; charset=UTF-8\nContent-Length: 1024\n___3___: sessionId=abc123; HttpOnly\n\n[Tělo odpovědi]",
+      "blanks": ["200", "text/html", "Set-Cookie"],
+      "wordbank": ["200", "text/html", "Set-Cookie", "404", "application/json", "Authorization", "Accept", "Location"],
+      "explanation": "200 OK = úspěšně zpracováno. Content-Type: text/html = typ obsahu. Set-Cookie nastavuje cookie u klienta (HttpOnly = nelze číst přes JS).",
+      "id": "w_00008"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "html",
+      "question": "HTML je programovací jazyk.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "HTML je značkovací (markup) jazyk, nikoli programovací. Neobsahuje podmínky, cykly ani logiku. Je to aplikace SGML.",
+      "id": "w_00009"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "html",
+      "question": "Co definuje element <head> v HTML dokumentu?",
+      "answers": [
+        { "id": "a", "text": "Viditelný obsah stránky (text, obrázky)", "correct": false },
+        { "id": "b", "text": "Zápatí stránky", "correct": false },
+        { "id": "c", "text": "Metadata, propojení s CSS soubory a skripty", "correct": true },
+        { "id": "d", "text": "Navigaci stránky", "correct": false }
+      ],
+      "explanation": "<head> obsahuje metadata (charset, title, viewport), propojení s externími CSS (<link>) a skripty (<script>). Uživatel obsah <head> přímo nevidí.",
+      "id": "w_00010"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "html",
+      "question": "Jak se správně zapíše deklarace dokumentu HTML5 na prvním řádku souboru?",
+      "answers": [
+        { "id": "a", "text": "<html doctype=\"html\">", "correct": false },
+        { "id": "b", "text": "<!DOCTYPE html>", "correct": true },
+        { "id": "c", "text": "<doctype html>", "correct": false },
+        { "id": "d", "text": "<?xml version=\"1.0\"?>", "correct": false }
+      ],
+      "explanation": "<!DOCTYPE html> říká prohlížeči, že se jedná o HTML5 dokument. Musí být na úplně prvním řádku, před <html>.",
+      "id": "w_00011"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "html",
+      "question": "Které z těchto HTML elementů jsou nepárové (void elements — nemají uzavírací tag)?",
+      "answers": [
+        { "id": "a", "text": "<img>", "correct": true },
+        { "id": "b", "text": "<div>", "correct": false },
+        { "id": "c", "text": "<br>", "correct": true },
+        { "id": "d", "text": "<input>", "correct": true }
+      ],
+      "explanation": "Nepárové (void) elementy nemají uzavírací tag: <img>, <br>, <hr>, <input>, <meta>, <link>. Párové jako <div> a <p> mají otevírací i uzavírací tag.",
+      "id": "w_00012"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "html",
+      "question": "K čemu slouží atribut alt u elementu <img>?",
+      "answers": [
+        { "id": "a", "text": "Nastavuje velikost obrázku", "correct": false },
+        { "id": "b", "text": "Definuje alternativní text pro přístupnost a SEO", "correct": true },
+        { "id": "c", "text": "Určuje formát souboru obrázku", "correct": false },
+        { "id": "d", "text": "Nastavuje ohraničení obrázku", "correct": false }
+      ],
+      "explanation": "alt poskytuje alternativní text pro čtečky obrazovky (přístupnost/accessibility) a zobrazí se, pokud se obrázek nenačte. Důležité pro SEO.",
+      "id": "w_00013"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "easy",
+      "category": "html",
+      "question": "Doplňte chybějící atributy v základní struktuře HTML dokumentu.",
+      "code": "<!___1___ html>\n<html ___2___=\"cs\">\n<head>\n    <meta ___3___=\"UTF-8\">\n    <link ___4___=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n    <h1>Nadpis stránky</h1>\n</body>\n</html>",
+      "blanks": ["DOCTYPE", "lang", "charset", "rel"],
+      "wordbank": ["DOCTYPE", "lang", "charset", "rel", "type", "href", "name", "src"],
+      "explanation": "DOCTYPE = deklarace HTML5, lang = jazyk dokumentu, charset = kódování znaků (UTF-8), rel=\"stylesheet\" = typ vztahu s externím CSS souborem.",
+      "id": "w_00014"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "css",
+      "question": "Jaký CSS selektor vybírá element s atributem id=\"hlavni\"?",
+      "answers": [
+        { "id": "a", "text": ".hlavni", "correct": false },
+        { "id": "b", "text": "#hlavni", "correct": true },
+        { "id": "c", "text": "*hlavni", "correct": false },
+        { "id": "d", "text": "@hlavni", "correct": false }
+      ],
+      "explanation": "# (hash) označuje ID selektor. Každé ID musí být v dokumentu jedinečné. Tečka (.) označuje class selektor, který lze použít opakovaně.",
+      "id": "w_00015"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Jaký je správný způsob připojení externího CSS souboru do HTML dokumentu?",
+      "answers": [
+        { "id": "a", "text": "<style src=\"style.css\">", "correct": false },
+        { "id": "b", "text": "<script href=\"style.css\">", "correct": false },
+        { "id": "c", "text": "<link rel=\"stylesheet\" href=\"style.css\">", "correct": true },
+        { "id": "d", "text": "<css href=\"style.css\">", "correct": false }
+      ],
+      "explanation": "Externý CSS soubor se připojuje pomocí <link rel=\"stylesheet\" href=\"cesta.css\"> v sekci <head>. Je to nejlepší způsob (external stylesheet).",
+      "id": "w_00016"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "css",
+      "question": "CSS verze 4 (CSS4) je oficiální specifikací vydanou W3C.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "CSS4 neexistuje. CSS je dnes sada samostatných modulů (Flexbox, Grid, Color, atd.) s různou úrovní stability. Hovoříme o CSS Snapshot, ne o číslovaných verzích.",
+      "id": "w_00017"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Kde v kaskádě má vyšší specifičnost (prioritu) — inline styl nebo interní <style>?",
+      "answers": [
+        { "id": "a", "text": "<style> tag (interní nebo externí jsou stejné)", "correct": false },
+        { "id": "b", "text": "Inline styl (atribut style=\"...\")", "correct": true },
+        { "id": "c", "text": "Jsou vždy stejné, rozhoduje jen pořadí", "correct": false },
+        { "id": "d", "text": "Záleží na prohlížeči", "correct": false }
+      ],
+      "explanation": "Specifičnost: Inline styl > ID selektor > Class/atribut > Element. Inline styl v atributu style má vždy vyšší prioritu než pravidla v <style> nebo externím CSS.",
+      "id": "w_00018"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Doplňte CSS pravidlo pro centrování bloku v kontejneru s omezenou šířkou.",
+      "code": "___1___.container {\n    ___2___: auto;\n    ___3___: 0 20px;\n    max-___4___: 1200px;\n}",
+      "blanks": ["div", "margin", "padding", "width"],
+      "wordbank": ["div", "margin", "padding", "width", "height", "display", "span", "color"],
+      "explanation": "div selektor elementu, margin: auto centruje blok horizontálně (pokud má nastavenou šířku), padding přidává vnitřní odsazení, max-width omezuje maximální šířku.",
+      "id": "w_00019"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "bootstrap",
+      "question": "Na kolik sloupců je rozdělen Bootstrap grid systém?",
+      "answers": [
+        { "id": "a", "text": "8", "correct": false },
+        { "id": "b", "text": "10", "correct": false },
+        { "id": "c", "text": "12", "correct": true },
+        { "id": "d", "text": "16", "correct": false }
+      ],
+      "explanation": "Bootstrap používá 12-sloupcový grid systém. Sloupy se kombinují pomocí tříd col-*, např. col-6 = polovina šířky, col-4 = třetina.",
+      "id": "w_00020"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "bootstrap",
+      "question": "Co znamená 'mobile-first' přístup v Bootstrapu?",
+      "answers": [
+        { "id": "a", "text": "Bootstrap funguje pouze na mobilních zařízeních", "correct": false },
+        { "id": "b", "text": "Základní styly jsou pro nejmenší obrazovky, breakpointy přidávají styly pro větší", "correct": true },
+        { "id": "c", "text": "Mobilní verze stránky se načítá před desktopovou", "correct": false },
+        { "id": "d", "text": "Bootstrap automaticky ořezává obrázky pro mobily", "correct": false }
+      ],
+      "explanation": "Mobile-first = styly se píší od nejmenšího breakpointu (default) a pomocí media queries (@media min-width) se přidávají pro větší displeje.",
+      "id": "w_00021"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "bootstrap",
+      "question": "Bootstrap obsahuje pouze CSS třídy, žádné JavaScriptové komponenty.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "Bootstrap obsahuje CSS i JavaScript. JS komponenty zahrnují: modální okna (Modal), dropdown menu, carousely, tooltipy a další interaktivní prvky.",
+      "id": "w_00022"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "javascript",
+      "question": "Kdo je autorem jazyka JavaScript a v jakém roce vznikl?",
+      "answers": [
+        { "id": "a", "text": "Tim Berners-Lee, 1991", "correct": false },
+        { "id": "b", "text": "Linus Torvalds, 1991", "correct": false },
+        { "id": "c", "text": "Brendan Eich, 1995", "correct": true },
+        { "id": "d", "text": "Bjarne Stroustrup, 1985", "correct": false }
+      ],
+      "explanation": "JavaScript navrhl Brendan Eich v roce 1995 pro Netscape Navigator. Původně se jmenoval Mocha, pak LiveScript, a nakonec JavaScript.",
+      "id": "w_00023"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "javascript",
+      "question": "Co je DOM (Document Object Model) v kontextu JavaScriptu?",
+      "answers": [
+        { "id": "a", "text": "Databázový Object Model pro přístup k SQL", "correct": false },
+        { "id": "b", "text": "Stromová reprezentace HTML dokumentu v paměti, se kterou JS pracuje", "correct": true },
+        { "id": "c", "text": "Debugovací nástroj zabudovaný v prohlížeči", "correct": false },
+        { "id": "d", "text": "Formát pro ukládání dat (alternativa k JSON)", "correct": false }
+      ],
+      "explanation": "DOM je stromová reprezentace HTML dokumentu v paměti prohlížeče. JavaScript ho používá pro dynamické změny obsahu, struktury a stylu stránky.",
+      "id": "w_00024"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "javascript",
+      "question": "V JavaScriptu výraz typeof null vrací hodnotu 'object'.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": true },
+        { "id": "b", "text": "Nepravda", "correct": false }
+      ],
+      "explanation": "typeof null === 'object' je historický bug v JS z roku 1995. Null by správně měl být vlastní typ, ale tato chyba nebyla opravena kvůli zpětné kompatibilitě.",
+      "id": "w_00025"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "javascript",
+      "question": "Co přinesla verze ECMAScript 2015 (ES6)?",
+      "answers": [
+        { "id": "a", "text": "let a const pro deklaraci proměnných", "correct": true },
+        { "id": "b", "text": "Třídy (class syntax)", "correct": true },
+        { "id": "c", "text": "Promise pro asynchronní kód", "correct": true },
+        { "id": "d", "text": "TypeScript typový systém", "correct": false }
+      ],
+      "explanation": "ES2015 byl zlomový: let/const, classes, modules (import/export), Promise, arrow funkce, template literals, destructuring. TypeScript je samostatný jazyk od Microsoftu.",
+      "id": "w_00026"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "medium",
+      "category": "javascript",
+      "question": "Doplňte JavaScript kód — deklarace funkce, arrow funkce a výstup do konzole.",
+      "code": "// Klasická deklarace funkce\n___1___ soucet(a, b) {\n    ___2___ a + b;\n}\n\n// Arrow funkce\nconst nasobeni = (a, b) ___3___ a * b;\n\n// Výstup do konzole\n___4___.log(soucet(3, 4));",
+      "blanks": ["function", "return", "=>", "console"],
+      "wordbank": ["function", "return", "=>", "console", "let", "const", "print", "="],
+      "explanation": "function = klíčové slovo pro deklaraci funkce, return = vrátí hodnotu, => = arrow funkce (zkrácená syntaxe), console.log() = výstup do konzole prohlížeče.",
+      "id": "w_00027"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "js-frameworks",
+      "question": "Jak je správně klasifikován React?",
+      "answers": [
+        { "id": "a", "text": "Full-stack MVC framework (jako Laravel)", "correct": false },
+        { "id": "b", "text": "UI knižnica (library) pro tvorbu uživatelského rozhraní", "correct": true },
+        { "id": "c", "text": "CSS framework (jako Bootstrap)", "correct": false },
+        { "id": "d", "text": "Databázová ORM knihovna", "correct": false }
+      ],
+      "explanation": "React je UI knižnica (library), nikoli plný framework. Řeší pouze vrstvu View. Naopak Vue a Angular jsou frameworky, Next.js je metaframework nad Reactem.",
+      "id": "w_00028"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "js-frameworks",
+      "question": "Co je metaframework v kontextu JavaScriptových technologií?",
+      "answers": [
+        { "id": "a", "text": "Rozšíření JavaScriptu s typovým systémem (TypeScript)", "correct": false },
+        { "id": "b", "text": "Nástroj stojící nad UI frameworkem, přidávající routing, SSR, build a serverové funkce", "correct": true },
+        { "id": "c", "text": "Framework určený výhradně pro testování", "correct": false },
+        { "id": "d", "text": "Správce závislostí (npm, yarn)", "correct": false }
+      ],
+      "explanation": "Metaframeworky: Next.js (nad React), Nuxt (nad Vue), SvelteKit (nad Svelte). Přidávají SSR/SSG, routing, build tooling a serverové funkce k UI vrstvě.",
+      "id": "w_00029"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "js-frameworks",
+      "question": "Jaký mechanismus reaktivity primárně používá Vue 3 Composition API?",
+      "answers": [
+        { "id": "a", "text": "setState() a useEffect() jako React", "correct": false },
+        { "id": "b", "text": "ref() a reactive() pro reaktivní datové typy", "correct": true },
+        { "id": "c", "text": "Signal() a computed() jako Angular Signals", "correct": false },
+        { "id": "d", "text": "$state runes jako Svelte 5", "correct": false }
+      ],
+      "explanation": "Vue 3 Composition API používá ref() pro primitivní hodnoty a reactive() pro objekty. Změna hodnoty automaticky aktualizuje všechny části šablony, které ji používají.",
+      "id": "w_00030"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "php",
+      "question": "Kde se vykonává PHP kód?",
+      "answers": [
+        { "id": "a", "text": "V prohlížeči klienta (jako JavaScript)", "correct": false },
+        { "id": "b", "text": "Na serveru", "correct": true },
+        { "id": "c", "text": "V databázi", "correct": false },
+        { "id": "d", "text": "V CDN (Content Delivery Network)", "correct": false }
+      ],
+      "explanation": "PHP je server-side jazyk. Webserver předá požadavek PHP runtime, PHP spustí skript a vrátí výsledek (HTML/JSON). Zdrojový kód PHP zůstane skrytý před klientem.",
+      "id": "w_00031"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "php",
+      "question": "PHP je rekurzívna zkratka. Co znamená?",
+      "answers": [
+        { "id": "a", "text": "Personal Home Page", "correct": false },
+        { "id": "b", "text": "PHP: Hypertext Preprocessor", "correct": true },
+        { "id": "c", "text": "Parallel Hyperlink Protocol", "correct": false },
+        { "id": "d", "text": "Page Hosting Platform", "correct": false }
+      ],
+      "explanation": "PHP: Hypertext Preprocessor je rekurzívna zkratka (PHP je součástí vlastního rozvinutého názvu). Původně znamenalo Personal Home Page (1994, Rasmus Lerdorf).",
+      "id": "w_00032"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Co je PDO v PHP?",
+      "answers": [
+        { "id": "a", "text": "PHP Dataset Object — alternativa k formátu JSON v PHP", "correct": false },
+        { "id": "b", "text": "Standardní třída pro připojení k databázi a práci s ní", "correct": true },
+        { "id": "c", "text": "ORM systém pro mapování objektů z relační databáze", "correct": false },
+        { "id": "d", "text": "PHP verze Docker kontejneru", "correct": false }
+      ],
+      "explanation": "PDO (PHP Data Objects) je standardní rozhraní pro připojení k různým databázím (MySQL, PostgreSQL, SQLite...) pomocí bezpečných prepared statements.",
+      "id": "w_00033"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "php",
+      "question": "Je bezpečné ukládat hesla uživatelů jako čistý text (plain text) v databázi.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "Hesla se MUSÍ ukládat jako hashe (Argon2, bcrypt) s per-uživatelskou solí. Nikdy jako plain text — při úniku databáze by útočník znal všechna hesla.",
+      "id": "w_00034"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Doplňte PHP třídu Auto s konstruktorem a metodou info().",
+      "code": "___1___ Auto {\n    public string $znacka;\n\n    public function ___2___(string $znacka) {\n        ___3___->znacka = $znacka;\n    }\n\n    public function info(): ___4___ {\n        return \"Auto: \" . ___5___->znacka;\n    }\n}",
+      "blanks": ["class", "__construct", "$this", "string", "$this"],
+      "wordbank": ["class", "__construct", "$this", "string", "new", "public", "interface", "abstract"],
+      "explanation": "class definuje třídu, __construct je konstruktor (spustí se při new Auto()), $this odkazuje na aktuální objekt, string je návratový datový typ.",
+      "id": "w_00035"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Co je MVC (Model-View-Controller) architektura?",
+      "answers": [
+        { "id": "a", "text": "Způsob pojmenování souborů v PHP projektu", "correct": false },
+        { "id": "b", "text": "Vzor rozdělující aplikaci na 3 vrstvy: Model (data), View (šablona), Controller (logika)", "correct": true },
+        { "id": "c", "text": "Typ databázového ORM systému", "correct": false },
+        { "id": "d", "text": "JavaScript framework pro tvorbu SPA", "correct": false }
+      ],
+      "explanation": "MVC: Model = práce s DB/daty (app/Models), View = HTML šablona co vidí uživatel (resources/views), Controller = logika, zpracuje request, volá Model, vrátí View.",
+      "id": "w_00036"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Jak se v Laravelu pomocí Artisan vygeneruje nový Controller?",
+      "answers": [
+        { "id": "a", "text": "composer make:controller NazevController", "correct": false },
+        { "id": "b", "text": "php artisan make:controller NazevController", "correct": true },
+        { "id": "c", "text": "laravel create controller NazevController", "correct": false },
+        { "id": "d", "text": "php create:controller NazevController", "correct": false }
+      ],
+      "explanation": "Artisan je příkazový nástroj Laravelu. php artisan make:controller NazevController vytvoří soubor Controlleru s potřebnou strukturou v app/Http/Controllers/.",
+      "id": "w_00037"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "V moderním Laravelu (verze 8+) jsou Modely uloženy ve složce app/Models.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": true },
+        { "id": "b", "text": "Nepravda", "correct": false }
+      ],
+      "explanation": "Od Laravel 8+ jsou modely v app/Models/. Controllers jsou v app/Http/Controllers/, Views v resources/views/, Routes v routes/web.php.",
+      "id": "w_00038"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "hard",
+      "category": "laravel",
+      "question": "Doplňte metodu store() v Laravel Resource Controlleru pro uložení nového produktu.",
+      "code": "public function ___1___(Request $request)\n{\n    $newProduct = ___2___ Product();\n    $newProduct->name = $request->___3___;\n    $newProduct->price = $request->___4___;\n    $newProduct->___5___();\n    return redirect(route('products.index'));\n}",
+      "blanks": ["store", "new", "product_name", "product_price", "save"],
+      "wordbank": ["store", "new", "product_name", "product_price", "save", "index", "create", "delete", "name", "price"],
+      "explanation": "store() je Resource Controller metoda pro POST (vytvoření záznamu). new Product() vytvoří instanci Eloquent modelu, $request->pole čte data z formuláře, save() uloží do DB.",
+      "id": "w_00039"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Nejvyšší prioritu má v CSS styl, který je definovaný:",
+      "answers": [
+        { "id": "a", "text": "v externím CSS souboru (.css)", "correct": false },
+        { "id": "b", "text": "v tagu <style> v hlavičce HTML", "correct": false },
+        { "id": "c", "text": "jako výchozí styl prohlížeče (user agent)", "correct": false },
+        { "id": "d", "text": "pomocí atributu style přímo na elementu (inline styl)", "correct": true }
+      ],
+      "explanation": "Specificita CSS: inline (1,0,0,0) > ID (0,1,0,0) > class/atribut (0,0,1,0) > element (0,0,0,1) > výchozí styl prohlížeče. Inline styl v atributu style má vždy nejvyšší prioritu.",
+      "leaked": true,
+      "id": "w_00040"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Které CSS pravidlo správně zvětší element 2× horizontálně a 3× vertikálně?",
+      "answers": [
+        { "id": "a", "text": "scale: transform(2,3)", "correct": false },
+        { "id": "b", "text": "transform: scale(3,2);", "correct": false },
+        { "id": "c", "text": "transform: scale(1,1);", "correct": false },
+        { "id": "d", "text": "transform: scale(2,3);", "correct": true }
+      ],
+      "explanation": "CSS transform: scale(scaleX, scaleY). scale(2,3) = 2× šířka, 3× výška. Pořadí: první parametr = horizontální osa X, druhý = vertikální osa Y.",
+      "leaked": true,
+      "id": "w_00041"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Co vrátí volání fetchAll() s konstantou PDO::FETCH_CLASS?",
+      "answers": [
+        { "id": "a", "text": "Asociativní pole (klíč = název sloupce)", "correct": false },
+        { "id": "b", "text": "Indexované numerické pole", "correct": false },
+        { "id": "c", "text": "Objekty vybrané třídy (instance dané class)", "correct": true }
+      ],
+      "explanation": "PDO::FETCH_CLASS naplní každý řádek výsledku do instance zadané třídy. PDO::FETCH_ASSOC vrátí asociativní pole, PDO::FETCH_NUM indexované pole.",
+      "leaked": true,
+      "id": "w_00042"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "ORM je:",
+      "answers": [
+        { "id": "a", "text": "Kolekce pro práci s databází v PHP", "correct": false },
+        { "id": "b", "text": "Nástroj pro běžné serverové aplikace", "correct": false },
+        { "id": "c", "text": "Zkratka pro mapování dat z relační databáze na objekty v objektových programovacích jazycích", "correct": true }
+      ],
+      "explanation": "ORM = Object-Relational Mapping. Umožňuje pracovat s databázovými záznamy jako s objekty PHP tříd. V Laravelu je ORM implementací Eloquent.",
+      "leaked": true,
+      "id": "w_00043"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Návrhový vzor Singleton funguje díky tomu, že:",
+      "answers": [
+        { "id": "a", "text": "PHP je moderní programovací jazyk.", "correct": false },
+        { "id": "b", "text": "Instance vzniklé na základě Singleton třídy nesou stav vždy pouze jednou.", "correct": false },
+        { "id": "c", "text": "Třída může uchovávat stav pomocí statických proměnných (ne jen reálná instance nese data).", "correct": true }
+      ],
+      "explanation": "Singleton ukládá jedinou instanci do statické vlastnosti (static $instance). Statické vlastnosti patří třídě, ne objektu — existují v jediném exempláři bez ohledu na počet instancí.",
+      "leaked": true,
+      "id": "w_00044"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "hard",
+      "category": "laravel",
+      "question": "Doplňte metodu index() Resource Controlleru pro výpis všech produktů a odpovídající Blade @foreach.",
+      "code": "// ShopProductController.php\npublic function ___1___()\n{\n    $allShopProducts = ___2___ :: ___3___;\n    return view('shopProducts.index', ['products' => $___4___]);\n}\n\n// shopProducts/index.blade.php\n@foreach(___5___ as $shopProduct)\n    <li>{{ $shopProduct->name }}, {{ $shopProduct->price }}</li>\n@endforeach",
+      "blanks": ["index", "ShopProduct", "all()", "allShopProducts", "$allShopProducts"],
+      "wordbank": ["index", "ShopProduct", "all()", "allShopProducts", "$allShopProducts", "store", "create", "get()", "find()", "$products"],
+      "explanation": "index() zobrazuje seznam. ShopProduct::all() vrátí všechny záznamy z DB jako kolekci. Proměnná $allShopProducts se předá do view a Blade ji použije v @foreach.",
+      "leaked": true,
+      "id": "w_00045"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "hard",
+      "category": "laravel",
+      "question": "Ve FW Laravel máme formulář pro nový produkt. Formulář odesílá pole: product_name, description, product_price. Doplňte metodu store().",
+      "code": "public function store(Request ___1___)\n{\n    $newProduct = new ___2___();\n    $newProduct->name = $request->___3___;\n    $newProduct->description = $request->___4___;\n    $newProduct->price = $request->___5___;\n    $newProduct->___6___();\n    return redirect(route('products.index'));\n}",
+      "blanks": ["$request", "Product", "product_name", "description", "product_price", "save"],
+      "wordbank": ["$request", "Product", "product_name", "description", "product_price", "save", "create", "index", "store", "$this"],
+      "explanation": "store(Request $request) přijme POST data. new Product() vytvoří Eloquent model. $request->pole čte vstup formuláře. save() uloží do DB. redirect() přesměruje.",
+      "leaked": true,
+      "id": "w_00046"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Kdo je autorem protokolu HTTP a kde ho vytvořil?",
+      "answers": [
+        { "id": "a", "text": "Brendan Eich, Netscape", "correct": false },
+        { "id": "b", "text": "Linus Torvalds, Linux Foundation", "correct": false },
+        { "id": "c", "text": "Tim Berners-Lee, CERN", "correct": true },
+        { "id": "d", "text": "Vint Cerf, ARPA", "correct": false }
+      ],
+      "explanation": "Tim Berners-Lee navrhl HTTP v CERNu. Zároveň vytvořil HTML a první webový prohlížeč. IETF dnes HTTP standardizuje (HTTP/2, HTTP/3 spolutvořil Google).",
+      "id": "w_00047"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Co znamená HTTP stavový kód 401 (Unauthorized)?",
+      "answers": [
+        { "id": "a", "text": "Chybná syntaxe požadavku", "correct": false },
+        { "id": "b", "text": "Přístup trvale zamítnut bez ohledu na přihlášení", "correct": false },
+        { "id": "c", "text": "Zdroj vyžaduje autentizaci (přihlášení) — uživatel není přihlášen", "correct": true },
+        { "id": "d", "text": "Požadovaný zdroj byl přesunut", "correct": false }
+      ],
+      "explanation": "401 = nutná autentizace (přihlas se). 403 Forbidden = jsi přihlášen, ale nemáš oprávnění. 400 Bad Request = chybná syntaxe požadavku. 301 = trvalé přesměrování.",
+      "id": "w_00048"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "HTTP metóda DELETE je idempotentní.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": true },
+        { "id": "b", "text": "Nepravda", "correct": false }
+      ],
+      "explanation": "DELETE je idempotentní — opakované DELETE /users/15 vrátí 404 (záznam neexistuje), ale stav serveru se nemění. Idempotentní: GET, HEAD, PUT, DELETE, OPTIONS. Není: POST.",
+      "id": "w_00049"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "html",
+      "question": "Která organizace dnes vyvíjí a udržuje HTML Living Standard?",
+      "answers": [
+        { "id": "a", "text": "W3C (World Wide Web Consortium)", "correct": false },
+        { "id": "b", "text": "WHATWG (Web Hypertext Application Technology Working Group)", "correct": true },
+        { "id": "c", "text": "IETF (Internet Engineering Task Force)", "correct": false },
+        { "id": "d", "text": "ISO (International Organization for Standardization)", "correct": false }
+      ],
+      "explanation": "WHATWG udržuje HTML Living Standard — průběžný vývoj bez číslovaných verzí. IETF standardizuje HTTP. W3C byl dříve hlavní organizací pro HTML, dnes s WHATWG spolupracuje.",
+      "id": "w_00050"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "html",
+      "question": "Které z těchto HTML elementů jsou sémantické (nesou vlastní věcný význam)?",
+      "answers": [
+        { "id": "a", "text": "<nav>", "correct": true },
+        { "id": "b", "text": "<div>", "correct": false },
+        { "id": "c", "text": "<article>", "correct": true },
+        { "id": "d", "text": "<span>", "correct": false }
+      ],
+      "explanation": "<nav> = navigace, <article> = samostatný obsah — sémantické elementy HTML5. <div> a <span> jsou nesémantické (neutrální kontejnery). Sémantika je klíčová pro přístupnost a SEO.",
+      "id": "w_00051"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "html",
+      "question": "Změny provedené JavaScriptem v DOM (v paměti prohlížeče) se automaticky zapíší zpět do HTML souboru na serveru.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "DOM je jen stromová reprezentace v paměti prohlížeče. JS mění DOM v paměti, HTML soubor na serveru zůstává nezměněný. Po refreshi stránky se DOM sestaví znovu ze zdrojového HTML.",
+      "id": "w_00052"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Jaká je specificita inline stylu oproti ID selektoru (#id) v CSS?",
+      "answers": [
+        { "id": "a", "text": "Mají stejnou váhu, rozhoduje pořadí v souboru", "correct": false },
+        { "id": "b", "text": "ID selektor má vyšší váhu než inline styl", "correct": false },
+        { "id": "c", "text": "Inline styl má vyšší váhu než ID selektor", "correct": true },
+        { "id": "d", "text": "Záleží na verzi prohlížeče", "correct": false }
+      ],
+      "explanation": "Specificita (a,b,c,d): inline = (1,0,0,0), #id = (0,1,0,0), .class = (0,0,1,0), element = (0,0,0,1). Inline styl vždy přepíše ID selektor (i složený).",
+      "id": "w_00053"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "css",
+      "question": "Co dělá CSS pseudo-třída :hover?",
+      "answers": [
+        { "id": "a", "text": "Aplikuje styl na první potomek elementu", "correct": false },
+        { "id": "b", "text": "Skryje element po kliknutí", "correct": false },
+        { "id": "c", "text": "Aplikuje styl při najetí myší na element", "correct": true },
+        { "id": "d", "text": "Označuje navštívený odkaz", "correct": false }
+      ],
+      "explanation": ":hover = najetí myší. :visited = navštívený odkaz. :focus = aktivní element (přes klávesnici/myš). :first-letter = první písmeno. Pseudo-třídy mají specificitu (0,0,1,0).",
+      "id": "w_00054"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "javascript",
+      "question": "Jaký je rozdíl ve scope (platnosti) mezi const/let a var v JavaScriptu?",
+      "answers": [
+        { "id": "a", "text": "const/let mají funkční scope, var má blokový scope", "correct": false },
+        { "id": "b", "text": "const/let mají blokový scope, var má funkční scope", "correct": true },
+        { "id": "c", "text": "Všechny tři mají totožný scope", "correct": false },
+        { "id": "d", "text": "const je globální, let a var jsou lokální", "correct": false }
+      ],
+      "explanation": "const a let mají blokový scope (platí jen uvnitř {} bloku). var má funkční scope (platí v celé funkci) a je hoistován. V moderním JS preferuj const, pak let. var nepoužívej.",
+      "id": "w_00055"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "javascript",
+      "question": "async/await je syntaktický cukr nad Promises — async funkce pod kapotou stále vrací Promise.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": true },
+        { "id": "b", "text": "Nepravda", "correct": false }
+      ],
+      "explanation": "async funkce vždy vrací Promise. await pozastaví beh uvnitř async funkce bez blokování ostatního kódu. Je to čitelnější alternativa k .then()/.catch() řetězení.",
+      "id": "w_00056"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "php",
+      "question": "Kdo a kdy vytvořil jazyk PHP?",
+      "answers": [
+        { "id": "a", "text": "Brendan Eich, 1995", "correct": false },
+        { "id": "b", "text": "Rasmus Lerdorf, 1994", "correct": true },
+        { "id": "c", "text": "Guido van Rossum, 1991", "correct": false },
+        { "id": "d", "text": "James Gosling, 1995", "correct": false }
+      ],
+      "explanation": "PHP vytvořil Rasmus Lerdorf v roce 1994 jako sadu skriptů pro svůj osobní web (Personal Home Page Tools). Brendan Eich = JavaScript (1995), Guido van Rossum = Python, James Gosling = Java.",
+      "id": "w_00057"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "php",
+      "question": "Co označuje klíčové slovo $this uvnitř PHP třídy?",
+      "answers": [
+        { "id": "a", "text": "Odkaz na rodičovskou třídu", "correct": false },
+        { "id": "b", "text": "Odkaz na aktuální objekt (instanci třídy)", "correct": true },
+        { "id": "c", "text": "Statická vlastnost třídy", "correct": false },
+        { "id": "d", "text": "Konstruktor třídy", "correct": false }
+      ],
+      "explanation": "$this odkazuje na aktuální objekt — podobně jako 'já sám'. $this->vlastnost přistupuje k proměnné objektu. parent:: odkazuje na rodičovskou třídu. static:: na statické členy.",
+      "id": "w_00058"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Co znamená modifikátor přístupu protected u vlastnosti PHP třídy?",
+      "answers": [
+        { "id": "a", "text": "Přístupná odkudkoli (i mimo třídu)", "correct": false },
+        { "id": "b", "text": "Přístupná jen uvnitř dané třídy a jejích potomků (dědičných tříd)", "correct": true },
+        { "id": "c", "text": "Přístupná jen uvnitř dané třídy, nikde jinde", "correct": false },
+        { "id": "d", "text": "Nedostupná ani uvnitř třídy", "correct": false }
+      ],
+      "explanation": "public = odkudkoli. protected = jen z třídy a child tříd. private = jen z dané třídy. Modifikátory zajišťují zapouzdření (Encapsulation) — skrývají implementaci.",
+      "id": "w_00059"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "php",
+      "question": "K čemu slouží klíčové slovo extends v PHP?",
+      "answers": [
+        { "id": "a", "text": "Implementuje rozhraní (interface)", "correct": false },
+        { "id": "b", "text": "Definuje abstraktní třídu", "correct": false },
+        { "id": "c", "text": "Třída dědí vlastnosti a metody jiné třídy (dědičnost)", "correct": true },
+        { "id": "d", "text": "Importuje třídu z jiného souboru", "correct": false }
+      ],
+      "explanation": "extends = dědičnost: class Auto extends Vozidlo — Auto zdědí vše od Vozidlo a může přidávat vlastní metody nebo přepisovat rodičovské. implements se používá pro interface.",
+      "id": "w_00060"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "php",
+      "question": "Kdy se v PHP automaticky volá metoda __construct()?",
+      "answers": [
+        { "id": "a", "text": "Při zavolání echo na objekt", "correct": false },
+        { "id": "b", "text": "Při zrušení objektu (na konci skriptu)", "correct": false },
+        { "id": "c", "text": "Při vytvoření nové instance třídy pomocí new", "correct": true },
+        { "id": "d", "text": "Při přístupu k statickým vlastnostem třídy", "correct": false }
+      ],
+      "explanation": "__construct() je konstruktor — zavolá se automaticky vždy při new NazevTridy(). Slouží k inicializaci objektu (nastavení vlastností). __destruct() se volá při zrušení objektu.",
+      "id": "w_00061"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Kde jsou v Laravel projektu definovány webové routy (URL adresy pro prohlížeč)?",
+      "answers": [
+        { "id": "a", "text": "app/Http/routes.php", "correct": false },
+        { "id": "b", "text": "resources/routes.php", "correct": false },
+        { "id": "c", "text": "routes/web.php", "correct": true },
+        { "id": "d", "text": "app/Routing/web.php", "correct": false }
+      ],
+      "explanation": "routes/web.php = webové routy (pro prohlížeč). routes/api.php = API routy. Controllery: app/Http/Controllers/. Modely: app/Models/. Blade šablony: resources/views/.",
+      "id": "w_00062"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Direktíva @csrf je v Laravelu povinná pro každý HTML formulář s metodou POST.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": true },
+        { "id": "b", "text": "Nepravda", "correct": false }
+      ],
+      "explanation": "@csrf generuje skrytý token chránící před CSRF útokem (Cross-Site Request Forgery). Laravel ověřuje token při každém POST/PUT/DELETE. Bez @csrf Laravel formulář odmítne s 419 chybou.",
+      "id": "w_00063"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "K čemu slouží direktíva @yield('content') v Blade layoutu?",
+      "answers": [
+        { "id": "a", "text": "Definuje sekci s obsahem podstránky", "correct": false },
+        { "id": "b", "text": "Označuje místo v layoutu, kam se vloží obsah z @section('content')", "correct": true },
+        { "id": "c", "text": "Zobrazí hodnotu PHP proměnné", "correct": false },
+        { "id": "d", "text": "Vloží jiný Blade soubor jako partial", "correct": false }
+      ],
+      "explanation": "@yield('content') = zástupné místo v layoutu. Podstránka vyplní toto místo pomocí @section('content') ... @endsection. @include vkládá partial. {{ $var }} vypíše proměnnou.",
+      "id": "w_00064"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Kolik rout automaticky vytvoří Route::resource('products', ProductController::class)?",
+      "answers": [
+        { "id": "a", "text": "4 (základní CRUD)", "correct": false },
+        { "id": "b", "text": "5", "correct": false },
+        { "id": "c", "text": "7", "correct": true },
+        { "id": "d", "text": "10", "correct": false }
+      ],
+      "explanation": "Resource route vytvoří 7 rout: index (GET /), create (GET /create), store (POST /), show (GET /{id}), edit (GET /{id}/edit), update (PUT /{id}), destroy (DELETE /{id}).",
+      "id": "w_00065"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Jaká je hlavní výhoda pojmenovaných rout v Laravelu (->name('users.index'))?",
+      "answers": [
+        { "id": "a", "text": "Jsou rychlejší při zpracování požadavku", "correct": false },
+        { "id": "b", "text": "Pokud změníš URL, stačí ji upravit na jednom místě — v šablonách používáš jméno routy", "correct": true },
+        { "id": "c", "text": "Automaticky přidají autentizaci na routu", "correct": false },
+        { "id": "d", "text": "Umožňují cachování HTTP odpovědí", "correct": false }
+      ],
+      "explanation": "route('users.index') v Blade šablonách místo hardkódované URL '/users'. Pokud URL změníš (např. /uzivatel), aktualizuješ jen definici routy — šablony a redirecty zůstanou funkční.",
+      "id": "w_00066"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Co vrátí $request->only(['name', 'email']) v Laravel Controlleru?",
+      "answers": [
+        { "id": "a", "text": "Všechna data z formuláře", "correct": false },
+        { "id": "b", "text": "Pouze pole 'name' a 'email' z požadavku", "correct": true },
+        { "id": "c", "text": "Všechna data kromě 'name' a 'email'", "correct": false },
+        { "id": "d", "text": "Automaticky validovaná data", "correct": false }
+      ],
+      "explanation": "$request->only(['name', 'email']) vrátí asociativní pole jen s vybranými klíči — chrání před mass assignment. $request->except([...]) vrátí vše kromě určených. $request->all() vrátí vše.",
+      "id": "w_00067"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Doplňte Blade šablonu — dědičnost layoutu, sekce, podmínka a cyklus.",
+      "code": "@___1___('layouts.app')\n\n@___2___('content')\n    <h1>Uživatelé</h1>\n\n    @___3___ (count($users) > 0)\n        @foreach ($users ___4___ $user)\n            <p>{{ $user->name }}</p>\n        @endforeach\n    @___5___\n@endsection",
+      "blanks": ["extends", "section", "if", "as", "endif"],
+      "wordbank": ["extends", "section", "if", "as", "endif", "yield", "foreach", "include", "while"],
+      "explanation": "@extends dědí layout, @section definuje sekci obsahu, @if podmínka, as klíčové slovo pro foreach iteraci, @endif uzavírá podmínku.",
+      "id": "w_00068"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Jaký je rozdíl mezi {{ $promenna }} a {!! $promenna !!} v Blade šabloně?",
+      "answers": [
+        { "id": "a", "text": "Žádný — obě syntaxe dělají totéž", "correct": false },
+        { "id": "b", "text": "{{ }} escapuje HTML (bezpečné), {!! !!} vypíše HTML bez escapování (nebezpečné — XSS)", "correct": true },
+        { "id": "c", "text": "{{ }} je pro proměnné, {!! !!} je pro volání PHP funkcí", "correct": false },
+        { "id": "d", "text": "{!! !!} je novější a vždy bezpečnější varianta", "correct": false }
+      ],
+      "explanation": "{{ $var }} aplikuje htmlspecialchars() — ochrání před XSS. {!! $var !!} vypíše raw HTML bez escapování — používej jen u důvěryhodného obsahu (HTML z editoru, který sám escapuje).",
+      "id": "w_00069"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Které z těchto jsou platná validační pravidla v $request->validate() v Laravelu?",
+      "answers": [
+        { "id": "a", "text": "'required'", "correct": true },
+        { "id": "b", "text": "'email'", "correct": true },
+        { "id": "c", "text": "'unique:users'", "correct": true },
+        { "id": "d", "text": "'notnull'", "correct": false }
+      ],
+      "explanation": "required, email, unique:tabulka jsou platná pravidla. 'notnull' neexistuje — pro nullable pole se používá 'nullable'. Pravidla se kombinují: 'required|email|unique:users|max:255'.",
+      "id": "w_00070"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Kde jsou v Laravel projektu uloženy Blade šablony (view soubory)?",
+      "answers": [
+        { "id": "a", "text": "app/views/", "correct": false },
+        { "id": "b", "text": "public/views/", "correct": false },
+        { "id": "c", "text": "resources/views/", "correct": true },
+        { "id": "d", "text": "app/Http/Views/", "correct": false }
+      ],
+      "explanation": "Blade šablony jsou v resources/views/ s příponou .blade.php. Controllers: app/Http/Controllers/. Models: app/Models/. Routes: routes/web.php. DB migrace: database/migrations/.",
+      "id": "w_00071"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Jaký příkaz Artisan spustí databázové migrace v Laravelu?",
+      "answers": [
+        { "id": "a", "text": "php artisan db:migrate", "correct": false },
+        { "id": "b", "text": "php artisan migrate", "correct": true },
+        { "id": "c", "text": "composer migrate", "correct": false },
+        { "id": "d", "text": "php artisan schema:run", "correct": false }
+      ],
+      "explanation": "php artisan migrate spustí neaplikované migrace — vytvoří/změní tabulky v DB. php artisan make:migration vytvoří nový migrační soubor. php artisan migrate:rollback vrátí poslední migraci.",
+      "id": "w_00072"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Co jsou migrace v Laravelu?",
+      "answers": [
+        { "id": "a", "text": "Soubory pro přesun dat mezi servery", "correct": false },
+        { "id": "b", "text": "PHP soubory popisující změny struktury databáze (vytvoření/úprava tabulek)", "correct": true },
+        { "id": "c", "text": "Konfigurační soubory pro Docker", "correct": false },
+        { "id": "d", "text": "Šablony pro přesun projektu mezi frameworky", "correct": false }
+      ],
+      "explanation": "Migrace jsou PHP soubory v database/migrations/. Popisují strukturu DB pomocí kódu (Schema::create). Umožňují verzování DB schématu v gitu — celý tým sdílí stejnou strukturu DB.",
+      "id": "w_00073"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Které ze čtyř pilířů OOP jsou správně vysvětleny? (vyber všechny správné)",
+      "answers": [
+        { "id": "a", "text": "Zapouzdření (Encapsulation) — skrytí stavu, přístup jen přes metody (private + gettery)", "correct": true },
+        { "id": "b", "text": "Dědičnost (Inheritance) — třída přebírá vlastnosti rodičovské třídy (extends)", "correct": true },
+        { "id": "c", "text": "Polymorfismus — různé třídy reagují na stejnou metodu jinak", "correct": true },
+        { "id": "d", "text": "Abstrakce — definuje konkrétní implementaci každé metody třídy", "correct": false }
+      ],
+      "explanation": "Zapouzdření = private + gettery. Dědičnost = extends. Polymorfismus = Pes i Kočka mají zvuk(), ale každý jinak. Abstrakce = skrytí složitosti (řídíš auto, neznáš motor) — ne konkrétní implementace.",
+      "id": "w_00074"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Co vrátí helper old('name') v Blade šabloně?",
+      "answers": [
+        { "id": "a", "text": "Výchozí hodnotu z databáze pro pole 'name'", "correct": false },
+        { "id": "b", "text": "Předchozí hodnotu zadanou uživatelem, pokud validace selhala", "correct": true },
+        { "id": "c", "text": "Jméno přihlášeného uživatele", "correct": false },
+        { "id": "d", "text": "Historii změn formulářového pole", "correct": false }
+      ],
+      "explanation": "old('name') vrátí předchozí hodnotu po neúspěšné validaci — aby uživatel nemusel vyplňovat formulář znovu. Při prvním načtení formuláře vrátí null (nebo zadanou výchozí hodnotu).",
+      "id": "w_00075"
+    },
+    {
+      "type": "fillcode",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Doplňte PHP třídu s dědičností — třída Auto dědí od Vozidlo.",
+      "code": "class Vozidlo {\n    public string $znacka;\n\n    public function ___1___(string $znacka) {\n        $this->znacka = $znacka;\n    }\n\n    public function info(): string {\n        return \"Vozidlo: {$this->znacka}\";\n    }\n}\n\nclass Auto ___2___ Vozidlo {\n    public function popis(): string {\n        return \"{$___3___->znacka} je osobní auto.\";\n    }\n}\n\n$auto = ___4___ Auto(\"Škoda\");\necho $auto->info();",
+      "blanks": ["__construct", "extends", "this", "new"],
+      "wordbank": ["__construct", "extends", "this", "new", "implements", "parent", "static", "abstract"],
+      "explanation": "__construct je konstruktor (volá se při new). extends definuje dědičnost. $this odkazuje na aktuální objekt. new vytváří instanci třídy.",
+      "id": "w_00076"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "javascript",
+      "question": "Jaký je vztah TypeScriptu a JavaScriptu?",
+      "answers": [
+        { "id": "a", "text": "TypeScript nahrazuje JavaScript — prohlížeče spouštějí TypeScript přímo", "correct": false },
+        { "id": "b", "text": "TypeScript je nadmnožina JavaScriptu — kompilátor přeloží TS → JS, který spouští prohlížeč", "correct": true },
+        { "id": "c", "text": "TypeScript a JavaScript jsou zcela oddělené jazyky od různých výrobců", "correct": false },
+        { "id": "d", "text": "TypeScript je serverová varianta JavaScriptu (jako Node.js)", "correct": false }
+      ],
+      "explanation": "TypeScript (od Microsoftu) přidává statické typování k JavaScriptu. tsc kompilátor přeloží .ts → .js, které spouští prohlížeč/Node.js. TypeScript je superset JS — každý JS je validní TS.",
+      "id": "w_00077"
     }
   ]
 }
