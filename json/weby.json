@@ -2,7 +2,7 @@
   "meta": {
     "title": "Webové technologie",
     "version": 2,
-    "questionCount": 130,
+    "questionCount": 150,
     "uniqueQuestions": true
   },
   "categories": [
@@ -1778,6 +1778,271 @@
       ],
       "explanation": "Front Controller = jeden vstupní bod (single entry point). V Laravelu je to public/index.php — všechny požadavky jdou přes něj (Apache/Nginx RewriteRule). index.php bootstrapuje framework, který pak předá požadavek routeru → controlleru.",
       "id": "w_00130"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Která HTTP metoda je vhodná pro načtení seznamu uživatelů z API bez změny dat na serveru?",
+      "answers": [
+        { "id": "a", "text": "POST", "correct": false },
+        { "id": "b", "text": "DELETE", "correct": false },
+        { "id": "c", "text": "GET", "correct": true },
+        { "id": "d", "text": "PUT", "correct": false }
+      ],
+      "explanation": "Pro čtení dat bez změny stavu serveru se používá GET. POST, PUT a DELETE jsou metody, které ovlivňují stav serveru.",
+      "id": "w_00131"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Které organizace nebo skupiny se objevují mezi subjekty souvisejícími s rozvojem Internetu?",
+      "answers": [
+        { "id": "a", "text": "ICANN", "correct": true },
+        { "id": "b", "text": "IETF", "correct": true },
+        { "id": "c", "text": "Laravel", "correct": false },
+        { "id": "d", "text": "Bootstrap", "correct": false }
+      ],
+      "explanation": "Mezi klíčové subjekty rozvoje Internetu patří ICANN a IETF. Laravel a Bootstrap jsou frameworky, ne internetové organizace.",
+      "id": "w_00132"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Které možnosti představují běžné CSS selektory nebo jejich části?",
+      "answers": [
+        { "id": "a", "text": "Pseudo-třída :hover", "correct": true },
+        { "id": "b", "text": "Třída class", "correct": true },
+        { "id": "c", "text": "PHP session cookie HttpOnly", "correct": false },
+        { "id": "d", "text": "HTTP metoda POST", "correct": false }
+      ],
+      "explanation": "Pseudo-třída :hover a třída class jsou běžné CSS koncepty. HttpOnly a POST nejsou CSS selektory.",
+      "id": "w_00133"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Které oblasti patří mezi běžné použití PHP?",
+      "answers": [
+        { "id": "a", "text": "Tvorba API vracejícího JSON", "correct": true },
+        { "id": "b", "text": "Stylování HTML elementů pomocí CSS kaskády", "correct": false },
+        { "id": "c", "text": "Multiplexing streamů v HTTP/2", "correct": false },
+        { "id": "d", "text": "Server-side rendering šablon", "correct": true }
+      ],
+      "explanation": "PHP se běžně používá na tvorbu API a server-side rendering šablon. CSS stylování a HTTP/2 multiplexing do něj nepatří.",
+      "id": "w_00134"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "html",
+      "question": "Který atribut je určen pro opakované použití stejného stylového označení na více elementech?",
+      "answers": [
+        { "id": "a", "text": "class", "correct": true },
+        { "id": "b", "text": "href", "correct": false },
+        { "id": "c", "text": "id", "correct": false }
+      ],
+      "explanation": "Atribut class se používá pro opakované stylování více elementů. id má být jedinečné a href je odkaz.",
+      "id": "w_00135"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "bootstrap",
+      "question": "Tvrzení: Bootstrap je navržen tak, aby jej bylo možné přizpůsobit pomocí Sass proměnných a mixinů.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": true },
+        { "id": "b", "text": "Nepravda", "correct": false }
+      ],
+      "explanation": "Bootstrap skutečně nabízí možnost přizpůsobení přes Sass proměnné a mixiny.",
+      "id": "w_00136"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "javascript",
+      "question": "Tvrzení: V moderním JavaScriptu je vhodné preferovat var před const a let.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "V moderním JavaScriptu se doporučuje používat const a let, var se považuje za zastaralé.",
+      "id": "w_00137"
+    },
+    {
+      "type": "multi",
+      "difficulty": "easy",
+      "category": "javascript",
+      "question": "Která tvrzení platí pro JavaScript?",
+      "answers": [
+        { "id": "a", "text": "Je pouze značkovací jazyk bez logiky", "correct": false },
+        { "id": "b", "text": "Podporuje více stylů programování", "correct": true },
+        { "id": "c", "text": "Je dynamicky typovaný", "correct": true },
+        { "id": "d", "text": "Běží výhradně jako PHP runtime na serveru", "correct": false }
+      ],
+      "explanation": "JavaScript je dynamicky typovaný a podporuje více stylů programování. Není čistě značkovací jazyk a neběží pouze na serveru.",
+      "id": "w_00138"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "bootstrap",
+      "question": "K čemu slouží mřížkový systém Bootstrapu?",
+      "answers": [
+        { "id": "a", "text": "K bezpečnému hashování hesel na serveru", "correct": false },
+        { "id": "b", "text": "K verzování REST API pomocí URL", "correct": false },
+        { "id": "c", "text": "K tvorbě layoutů pomocí řad a sloupců", "correct": true }
+      ],
+      "explanation": "Bootstrap grid je určen pro tvorbu layoutů pomocí řádků a sloupců.",
+      "id": "w_00139"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Která tvrzení platí pro seeding v Laravelu?",
+      "answers": [
+        { "id": "a", "text": "Definuje HTTP metodu GET", "correct": false },
+        { "id": "b", "text": "Slouží k vložení testovacích dat", "correct": true },
+        { "id": "c", "text": "Lze spustit příkazem php artisan db:seed", "correct": true },
+        { "id": "d", "text": "Slouží k připojení externího CSS souboru", "correct": false }
+      ],
+      "explanation": "Seeding v Laravelu slouží k vložení testovacích dat a spouští se příkazem php artisan db:seed.",
+      "id": "w_00140"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Která činnost patří mezi typické schopnosti PHP v server-side vývoji?",
+      "answers": [
+        { "id": "a", "text": "Definice CSS pseudo-tříd v prohlížeči", "correct": false },
+        { "id": "b", "text": "Zpracování dat z HTML formulářů a validace vstupů", "correct": true },
+        { "id": "c", "text": "Multiplexing HTTP/2 streamů", "correct": false }
+      ],
+      "explanation": "PHP se běžně používá pro zpracování formulářů a validaci vstupu na serveru.",
+      "id": "w_00141"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Tvrzení: Příkaz php artisan migrate slouží ke spuštění migrací.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": true },
+        { "id": "b", "text": "Nepravda", "correct": false }
+      ],
+      "explanation": "Příkaz php artisan migrate skutečně spouští migrace databáze.",
+      "id": "w_00142"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Co znamená inverze kontroly ve frameworku?",
+      "answers": [
+        { "id": "a", "text": "Vývojář musí ručně modifikovat jádro frameworku", "correct": false },
+        { "id": "b", "text": "Databáze sama rozhoduje o routování HTTP požadavků", "correct": false },
+        { "id": "c", "text": "Framework řídí lifecycle aplikace a volá aplikační kód ve správný okamžik", "correct": true }
+      ],
+      "explanation": "Inverze kontroly znamená, že framework ovládá lifecycle a volá aplikační kód, ne naopak.",
+      "id": "w_00143"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Která část patří mezi základní části HTTP požadavku?",
+      "answers": [
+        { "id": "a", "text": "Selektor CSS", "correct": false },
+        { "id": "b", "text": "Migrační soubor databáze", "correct": false },
+        { "id": "c", "text": "HTTP metoda", "correct": true }
+      ],
+      "explanation": "HTTP požadavek obsahuje mimo jiné metodu, cestu a hlavičky. CSS selektor ani migrace databáze k němu nepatří.",
+      "id": "w_00144"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Proč je špatnou praxí mazat uživatele přes GET URL typu /users/1?action=delete?",
+      "answers": [
+        { "id": "a", "text": "GET požadavek a query parametry nemají měnit stav serveru", "correct": true },
+        { "id": "b", "text": "GET neumí přenášet žádné parametry v URL", "correct": false },
+        { "id": "c", "text": "DELETE nelze v REST API použít pro zdroje", "correct": false }
+      ],
+      "explanation": "GET by neměl měnit stav serveru, proto je mazání přes GET bezpečnostní a semantická chyba.",
+      "id": "w_00145"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Které položky patří do HTTP odpovědi?",
+      "answers": [
+        { "id": "a", "text": "Metoda up() migrace", "correct": false },
+        { "id": "b", "text": "CSS specifita", "correct": false },
+        { "id": "c", "text": "Stavový kód a zpráva", "correct": true },
+        { "id": "d", "text": "Hlavičky", "correct": true }
+      ],
+      "explanation": "HTTP odpověď obsahuje stavový kód, zprávu a hlavičky. Migrace a CSS specifita k HTTP odpovědi nepatří.",
+      "id": "w_00146"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Která kritéria dávají smysl při výběru server-side frameworku?",
+      "answers": [
+        { "id": "a", "text": "Dokumentace, komunita a ekosystém", "correct": true },
+        { "id": "b", "text": "Bezpečnost a pravidelné aktualizace", "correct": true },
+        { "id": "c", "text": "Počet písmen v názvu frameworku", "correct": false },
+        { "id": "d", "text": "Náhodná barva loga frameworku", "correct": false }
+      ],
+      "explanation": "Při výběru frameworku má smysl zaměřit se na dokumentaci, komunitu, bezpečnost a udržitelnost projektu.",
+      "id": "w_00147"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "php",
+      "question": "Tvrzení: PHP běží přímo v prohlížeči a reaguje na kliknutí uživatele stejně jako JavaScript bez nového požadavku.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "PHP běží na serveru a k jeho spuštění je potřeba nový HTTP požadavek. JavaScript běží v prohlížeči na straně klienta.",
+      "id": "w_00148"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Která tvrzení platí pro OOCSS nebo SMACSS?",
+      "answers": [
+        { "id": "a", "text": "OOCSS usiluje o oddělení struktury a vzhledu", "correct": true },
+        { "id": "b", "text": "SMACSS rozděluje CSS do kategorií Base, Layout, Module, State a Theme", "correct": true },
+        { "id": "c", "text": "OOCSS je HTTP metoda pro upload souboru", "correct": false },
+        { "id": "d", "text": "SMACSS je PHP správce závislostí", "correct": false }
+      ],
+      "explanation": "OOCSS se zaměřuje na oddělení struktury a vzhledu, SMACSS rozděluje CSS do kategorií. Ostatní tvrzení jsou nesmysl.",
+      "id": "w_00149"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Co znamená API v kontextu webových systémů?",
+      "answers": [
+        { "id": "a", "text": "Šablonovací jazyk pro generování HTML", "correct": false },
+        { "id": "b", "text": "Rozhraní pro komunikaci mezi různými systémy", "correct": true },
+        { "id": "c", "text": "Prohlížečový engine pro vykreslení CSS", "correct": false }
+      ],
+      "explanation": "API je rozhraní pro komunikaci mezi různými systémy, typicky přes HTTP.",
+      "id": "w_00150"
     }
   ]
 }

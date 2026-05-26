@@ -1,0 +1,259 @@
+
+Přejít k hlavnímu obsahu
+
+brand
+
+Šimon RausŠR
+
+    Titulní stránka
+    Moje kurzy
+    AUIUI/AP4TW#2025 [] [Prezenční] [LS]
+    8. května - 14. května
+    Závěrečný test 2026
+
+Závěrečný test 2026: Náhled pokusu
+Započetí testu	Úterý, 26. května 2026, 12.06
+Stav	Dokončeno
+Dokončení testu	Úterý, 26. května 2026, 12.12
+Délka pokusu	5 min. 23 sekund
+Body	17,50/20,00
+Známka	8,75 z možných 10,00 (87,5%)
+Komentář	
+
+B
+Úloha 1Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Která HTTP metoda je vhodná pro načtení seznamu uživatelů z API bez změny dat na serveru?
+a.
+POST
+b.
+DELETE
+c.
+GET
+Úloha 2Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Které organizace nebo skupiny se objevují mezi subjekty souvisejícími s rozvojem Internetu?
+a.
+ICANN
+b.
+IETF
+c.
+Laravel
+d.
+Bootstrap
+Úloha 3Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Které možnosti představují běžné CSS selektory nebo jejich části?
+a.
+Pseudo-třída :hover
+b.
+Třída class
+c.
+PHP session cookie HttpOnly
+d.
+HTTP metoda POST
+Úloha 4Částečně správně
+Bodů 0,50 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Které oblasti patří mezi běžné použití PHP?
+a.
+Tvorba API vracejícího JSON
+b.
+Stylování HTML elementů pomocí CSS kaskády
+c.
+Multiplexing streamů v HTTP/2
+d.
+Server-side rendering šablon
+Úloha 5Nesprávně
+Bodů 0,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Který atribut je určen pro opakované použití stejného stylového označení na více elementech?
+a.
+class
+b.
+href
+c.
+id
+Úloha 6Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Tvrzení: Bootstrap je navržen tak, aby jej bylo možné přizpůsobit pomocí Sass proměnných a mixinů.
+Vyberte jednu z nabízených možností:
+Pravda
+Nepravda
+Úloha 7Nesprávně
+Bodů 0,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Tvrzení: V moderním JavaScriptu je vhodné preferovat var před const a let.
+Vyberte jednu z nabízených možností:
+Pravda
+Nepravda
+Úloha 8Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Která tvrzení platí pro JavaScript?
+a.
+Je pouze značkovací jazyk bez logiky
+b.
+Podporuje více stylů programování
+c.
+Je dynamicky typovaný
+d.
+Běží výhradně jako PHP runtime na serveru
+Úloha 9Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+K čemu slouží mřížkový systém Bootstrapu?
+a.
+K bezpečnému hashování hesel na serveru
+b.
+K verzování REST API pomocí URL
+c.
+K tvorbě layoutů pomocí řad a sloupců
+Úloha 10Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Která tvrzení platí pro seeding v Laravelu?
+a.
+Definuje HTTP metodu GET
+b.
+Slouží k vložení testovacích dat
+c.
+Lze spustit příkazem php artisan db:seed
+d.
+Slouží k připojení externího CSS souboru
+Úloha 11Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Která činnost patří mezi typické schopnosti PHP v server-side vývoji?
+a.
+Definice CSS pseudo-tříd v prohlížeči
+b.
+Zpracování dat z HTML formulářů a validace vstupů
+c.
+Multiplexing HTTP/2 streamů
+Úloha 12Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Tvrzení: Příkaz php artisan migrate slouží ke spuštění migrací.
+Vyberte jednu z nabízených možností:
+Pravda
+Nepravda
+Úloha 13Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Co znamená inverze kontroly ve frameworku?
+a.
+Vývojář musí ručně modifikovat jádro frameworku
+b.
+Databáze sama rozhoduje o routování HTTP požadavků
+c.
+Framework řídí lifecycle aplikace a volá aplikační kód ve správný okamžik
+Úloha 14Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Která část patří mezi základní části HTTP požadavku?
+a.
+Selektor CSS
+b.
+Migrační soubor databáze
+c.
+HTTP metoda
+Úloha 15Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Proč je špatnou praxí mazat uživatele přes GET URL typu /users/1?action=delete?
+a.
+GET požadavek a query parametry nemají měnit stav serveru
+b.
+GET neumí přenášet žádné parametry v URL
+c.
+DELETE nelze v REST API použít pro zdroje
+Úloha 16Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Které položky patří do HTTP odpovědi?
+a.
+Metoda up() migrace
+b.
+CSS specifita
+c.
+Stavový kód a zpráva
+d.
+Hlavičky
+Úloha 17Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Která kritéria dávají smysl při výběru server-side frameworku?
+a.
+Dokumentace, komunita a ekosystém
+b.
+Bezpečnost a pravidelné aktualizace
+c.
+Počet písmen v názvu frameworku
+d.
+Náhodná barva loga frameworku
+Úloha 18Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Tvrzení: PHP běží přímo v prohlížeči a reaguje na kliknutí uživatele stejně jako JavaScript bez nového požadavku.
+Vyberte jednu z nabízených možností:
+Pravda
+Nepravda
+Úloha 19Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Která tvrzení platí pro OOCSS nebo SMACSS?
+a.
+OOCSS usiluje o oddělení struktury a vzhledu
+b.
+SMACSS rozděluje CSS do kategorií Base, Layout, Module, State a Theme
+c.
+OOCSS je HTTP metoda pro upload souboru
+d.
+SMACSS je PHP správce závislostí
+Úloha 20Správně
+Bodů 1,00 / 1,00
+Úloha s vlaječkou
+Text úlohy
+Co znamená API v kontextu webových systémů?
+a.
+Šablonovací jazyk pro generování HTML
+b.
+Rozhraní pro komunikaci mezi různými systémy
+c.
+Prohlížečový engine pro vykreslení CSS
+Dokončit prohlídku
+Přeskočit: Navigace testu
+Navigace testu
+Zobrazovat po stránkách
+Dokončit prohlídku
+
+© 2026 ALL RIGHTS RESERVED.
+2026 Univerzita Tomáše Bati ve Zlíně
+Ochrana osobních údajů
+
+
+Souhrn uchovávaných dat
