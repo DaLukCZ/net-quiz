@@ -42,20 +42,22 @@ Heslo (asi):
 
 ## Webové technologie
 
-**130 otázek** pokrývajících celou látku:
+**165 otázek** pokrývajících celou látku:
 
 | Kategorie | Otázky |
 |-----------|--------|
-| HTTP | 33 |
-| HTML | 8 |
-| CSS | 15 |
-| Bootstrap | 3 |
-| JavaScript | 8 |
-| JS Frameworky | 5 |
-| PHP & OOP | 12 |
-| Laravel & OOP | 46 |
+| HTTP | 45 |
+| HTML | 12 |
+| CSS | 20 |
+| Bootstrap | 6 |
+| JavaScript | 13 |
+| JS Frameworky | 7 |
+| PHP | 19 |
+| Laravel & OOP | 43 |
 
----
+> **35 otázek odpovídá 1:1 leaknutému testu** - zbývající otázky pocházejí z dalších leaků nebo byly dogenerovány AI.
+
+--- 
 
 # Spuštění
 
