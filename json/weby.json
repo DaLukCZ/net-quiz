@@ -34,14 +34,14 @@
       "type": "single",
       "difficulty": "easy",
       "category": "http",
-      "question": "Která HTTP metóda slouží výhradně ke čtení dat a nemění stav servera (je bezpečná a idempotentní)?",
+      "question": "Která HTTP metoda slouží výhradně ke čtení dat a nemění stav serveru (je bezpečná a idempotentní)?",
       "answers": [
         { "id": "a", "text": "POST", "correct": false },
         { "id": "b", "text": "PUT", "correct": false },
         { "id": "c", "text": "DELETE", "correct": false },
         { "id": "d", "text": "GET", "correct": true }
       ],
-      "explanation": "GET je bezpečná (safe) a idempotentní metóda — načítá data, nemění stav servera. Opakované volání dává stejný výsledek.",
+      "explanation": "GET je bezpečná (safe) a idempotentní metoda — načítá data, nemění stav serveru. Opakované volání dává stejný výsledek.",
       "id": "w_00002"
     },
     {
@@ -62,7 +62,7 @@
       "type": "boolean",
       "difficulty": "easy",
       "category": "http",
-      "question": "HTTP metóda POST je idempotentní.",
+      "question": "HTTP metoda POST je idempotentní.",
       "answers": [
         { "id": "a", "text": "Pravda", "correct": false },
         { "id": "b", "text": "Nepravda", "correct": true }
@@ -78,7 +78,7 @@
       "answers": [
         { "id": "a", "text": "Limit na maximální velikost HTTP hlaviček", "correct": false },
         { "id": "b", "text": "Situace, kdy pomalá odpověď blokuje ostatní čekající požadavky ve frontě", "correct": true },
-        { "id": "c", "text": "Chyba v syntaxi HTTP metódy HEAD", "correct": false },
+        { "id": "c", "text": "Chyba v syntaxi HTTP metody HEAD", "correct": false },
         { "id": "d", "text": "Blokování spojení firewallem", "correct": false }
       ],
       "explanation": "Odpovědi musí přicházet ve stejném pořadí jako požadavky. Pokud odpověď A trvá dlouho, B a C musí čekat. HTTP/2 to řeší multiplexingem.",
@@ -93,7 +93,7 @@
         { "id": "a", "text": "Přidalo stavové kódy (200, 404 atd.)", "correct": false },
         { "id": "b", "text": "Multiplexing — více požadavků/odpovědí paralelně přes jedno TCP spojení", "correct": true },
         { "id": "c", "text": "Zavedlo povinné HTTPS šifrování", "correct": false },
-        { "id": "d", "text": "Přidalo metódu POST a PUT", "correct": false }
+        { "id": "d", "text": "Přidalo metodu POST a PUT", "correct": false }
       ],
       "explanation": "HTTP/2 přineslo: multiplexing (binární rámce), kompresi hlaviček HPACK a Server Push. Multiplexing odstraňuje HOL Blocking na aplikační vrstvě.",
       "id": "w_00006"
@@ -102,14 +102,14 @@
       "type": "multi",
       "difficulty": "medium",
       "category": "http",
-      "question": "Které z těchto HTTP metód jsou bezpečné (safe) — nemění stav servera?",
+      "question": "Které z těchto HTTP metod jsou bezpečné (safe) — nemění stav serveru?",
       "answers": [
         { "id": "a", "text": "GET", "correct": true },
         { "id": "b", "text": "HEAD", "correct": true },
         { "id": "c", "text": "POST", "correct": false },
         { "id": "d", "text": "OPTIONS", "correct": true }
       ],
-      "explanation": "Bezpečné (safe) metódy: GET, HEAD, OPTIONS, TRACE — pouze čtou data. POST, PUT, DELETE mění stav servera.",
+      "explanation": "Bezpečné (safe) metody: GET, HEAD, OPTIONS, TRACE — pouze čtou data. POST, PUT, DELETE mění stav serveru.",
       "id": "w_00007"
     },
     {
@@ -227,7 +227,7 @@
         { "id": "c", "text": "<link rel=\"stylesheet\" href=\"style.css\">", "correct": true },
         { "id": "d", "text": "<css href=\"style.css\">", "correct": false }
       ],
-      "explanation": "Externý CSS soubor se připojuje pomocí <link rel=\"stylesheet\" href=\"cesta.css\"> v sekci <head>. Je to nejlepší způsob (external stylesheet).",
+      "explanation": "Externí CSS soubor se připojuje pomocí <link rel=\"stylesheet\" href=\"cesta.css\"> v sekci <head>. Je to nejlepší způsob (external stylesheet).",
       "id": "w_00016"
     },
     {
@@ -379,11 +379,11 @@
       "question": "Jak je správně klasifikován React?",
       "answers": [
         { "id": "a", "text": "Full-stack MVC framework (jako Laravel)", "correct": false },
-        { "id": "b", "text": "UI knižnica (library) pro tvorbu uživatelského rozhraní", "correct": true },
+        { "id": "b", "text": "UI knihovna (library) pro tvorbu uživatelského rozhraní", "correct": true },
         { "id": "c", "text": "CSS framework (jako Bootstrap)", "correct": false },
         { "id": "d", "text": "Databázová ORM knihovna", "correct": false }
       ],
-      "explanation": "React je UI knižnica (library), nikoli plný framework. Řeší pouze vrstvu View. Naopak Vue a Angular jsou frameworky, Next.js je metaframework nad Reactem.",
+      "explanation": "React je UI knihovna (library), nikoli plný framework. Řeší pouze vrstvu View. Naopak Vue a Angular jsou frameworky, Next.js je metaframework nad Reactem.",
       "id": "w_00028"
     },
     {
@@ -432,14 +432,14 @@
       "type": "single",
       "difficulty": "easy",
       "category": "php",
-      "question": "PHP je rekurzívna zkratka. Co znamená?",
+      "question": "PHP je rekurzivní zkratka. Co znamená?",
       "answers": [
         { "id": "a", "text": "Personal Home Page", "correct": false },
         { "id": "b", "text": "PHP: Hypertext Preprocessor", "correct": true },
         { "id": "c", "text": "Parallel Hyperlink Protocol", "correct": false },
         { "id": "d", "text": "Page Hosting Platform", "correct": false }
       ],
-      "explanation": "PHP: Hypertext Preprocessor je rekurzívna zkratka (PHP je součástí vlastního rozvinutého názvu). Původně znamenalo Personal Home Page (1994, Rasmus Lerdorf).",
+      "explanation": "PHP: Hypertext Preprocessor je rekurzivní zkratka (PHP je součástí vlastního rozvinutého názvu). Původně znamenalo Personal Home Page (1994, Rasmus Lerdorf).",
       "id": "w_00032"
     },
     {
@@ -651,7 +651,7 @@
       "type": "boolean",
       "difficulty": "medium",
       "category": "http",
-      "question": "HTTP metóda DELETE je idempotentní.",
+      "question": "HTTP metoda DELETE je idempotentní.",
       "answers": [
         { "id": "a", "text": "Pravda", "correct": true },
         { "id": "b", "text": "Nepravda", "correct": false }
@@ -750,7 +750,7 @@
         { "id": "a", "text": "Pravda", "correct": true },
         { "id": "b", "text": "Nepravda", "correct": false }
       ],
-      "explanation": "async funkce vždy vrací Promise. await pozastaví beh uvnitř async funkce bez blokování ostatního kódu. Je to čitelnější alternativa k .then()/.catch() řetězení.",
+      "explanation": "async funkce vždy vrací Promise. await pozastaví běh uvnitř async funkce bez blokování ostatního kódu. Je to čitelnější alternativa k .then()/.catch() řetězení.",
       "id": "w_00056"
     },
     {
@@ -1178,20 +1178,6 @@
       "id": "w_00087"
     },
     {
-      "type": "multi",
-      "difficulty": "medium",
-      "category": "http",
-      "question": "Které HTTP stavové kódy patří do skupiny 4xx (chyby na straně klienta)?",
-      "answers": [
-        { "id": "a", "text": "400 Bad Request", "correct": true },
-        { "id": "b", "text": "401 Unauthorized", "correct": true },
-        { "id": "c", "text": "403 Forbidden", "correct": true },
-        { "id": "d", "text": "502 Bad Gateway", "correct": false }
-      ],
-      "explanation": "4xx = chyby klienta: 400, 401, 403, 404, 405, 408, 409, 422, 429 atd. 502 Bad Gateway je 5xx — chyba serveru (zpravidla reverzní proxy nebo load balancer).",
-      "id": "w_00088"
-    },
-    {
       "type": "fillcode",
       "difficulty": "medium",
       "category": "http",
@@ -1199,7 +1185,7 @@
       "code": "// Formulář odeslán, nový uživatel zaregistrován\nHTTP ___1___ Created\n\n// Smazání záznamu proběhlo, nic k vrácení\nHTTP ___2___ No Content\n\n// Stránka trvale přesunuta na novou adresu\nHTTP ___3___ Moved Permanently\n\n// Přihlášení vyžadováno (nepřihlášen)\nHTTP ___4___ Unauthorized",
       "blanks": ["201", "204", "301", "401"],
       "wordbank": ["200", "201", "204", "301", "302", "400", "401", "403", "404", "500"],
-      "explanation": "201 = Created (nový zdroj), 204 = No Content (úspěch bez těla), 301 = Moved Permanently (trvalý redirect), 401 = Unauthorized (nutná autentifikace).",
+      "explanation": "201 = Created (nový zdroj), 204 = No Content (úspěch bez těla), 301 = Moved Permanently (trvalý redirect), 401 = Unauthorized (nutná autentizace).",
       "id": "w_00089"
     },
     {
@@ -1213,21 +1199,21 @@
         { "id": "c", "text": "Databázový protokol pro přenos dat mezi systémy", "correct": false },
         { "id": "d", "text": "Bezpečnostní standard pro šifrování HTTP komunikace", "correct": false }
       ],
-      "explanation": "REST je architektonický styl (ne protokol ani jazyk) definovaný Roy Fieldingem v roce 2000. Využívá HTTP metódy, URL jako identifikátory zdrojů a stavové kódy. Laravel Route::apiResource() vytváří RESTful endpointy.",
+      "explanation": "REST je architektonický styl (ne protokol ani jazyk) definovaný Roy Fieldingem v roce 2000. Využívá HTTP metody, URL jako identifikátory zdrojů a stavové kódy. Laravel Route::apiResource() vytváří RESTful endpointy.",
       "id": "w_00090"
     },
     {
       "type": "single",
       "difficulty": "medium",
       "category": "http",
-      "question": "Jak mapuje RESTful API HTTP metódy na CRUD operace?",
+      "question": "Jak mapuje RESTful API HTTP metody na CRUD operace?",
       "answers": [
         { "id": "a", "text": "GET=Create, POST=Read, PUT=Update, DELETE=Delete", "correct": false },
         { "id": "b", "text": "GET=Read, POST=Create, PUT/PATCH=Update, DELETE=Delete", "correct": true },
         { "id": "c", "text": "POST=Read i Create, GET se v REST nepoužívá", "correct": false },
-        { "id": "d", "text": "REST nepoužívá HTTP metódy — má vlastní slovesa", "correct": false }
+        { "id": "d", "text": "REST nepoužívá HTTP metody — má vlastní slovesa", "correct": false }
       ],
-      "explanation": "REST CRUD: GET → Read, POST → Create, PUT/PATCH → Update, DELETE → Delete. V Laravelu Route::resource() automaticky mapuje všechny tyto operace na metódy resource controlleru.",
+      "explanation": "REST CRUD: GET → Read, POST → Create, PUT/PATCH → Update, DELETE → Delete. V Laravelu Route::resource() automaticky mapuje všechny tyto operace na metody resource controlleru.",
       "id": "w_00091"
     },
     {
@@ -1239,7 +1225,7 @@
         { "id": "a", "text": "Stateless — server neuchovává stav klienta mezi požadavky", "correct": true },
         { "id": "b", "text": "Cacheable — odpovědi mohou být označeny jako kešovatelné", "correct": true },
         { "id": "c", "text": "Povinné HTTPS šifrování všech komunikací", "correct": false },
-        { "id": "d", "text": "Uniform Interface — zdroje identifikovány URL, přístup přes standardní HTTP metódy", "correct": true }
+        { "id": "d", "text": "Uniform Interface — zdroje identifikovány URL, přístup přes standardní HTTP metody", "correct": true }
       ],
       "explanation": "REST má 6 principů: Client-Server, Stateless, Cacheable, Uniform Interface, Layered System, Code on Demand (volitelné). HTTPS není podmínkou REST — je to best practice, ale ne architektonický constraint.",
       "id": "w_00092"
@@ -1330,7 +1316,7 @@
       "type": "single",
       "difficulty": "easy",
       "category": "http",
-      "question": "K čemu slouží HTTP metóda HEAD?",
+      "question": "K čemu slouží HTTP metoda HEAD?",
       "answers": [
         { "id": "a", "text": "Vrátí záhlaví (<head>) stránky jako HTML", "correct": false },
         { "id": "b", "text": "Totéž jako GET, ale bez těla odpovědi — vrací pouze hlavičky (headers)", "correct": true },
@@ -1344,10 +1330,10 @@
       "type": "single",
       "difficulty": "medium",
       "category": "http",
-      "question": "K čemu slouží HTTP metóda OPTIONS a kde se s ní nejčastěji setkáme?",
+      "question": "K čemu slouží HTTP metoda OPTIONS a kde se s ní nejčastěji setkáme?",
       "answers": [
         { "id": "a", "text": "Slouží k admin konfiguraci serveru", "correct": false },
-        { "id": "b", "text": "Zjišťuje, jaké HTTP metódy server podporuje; automaticky ji odesílá prohlížeč jako CORS preflight", "correct": true },
+        { "id": "b", "text": "Zjišťuje, jaké HTTP metody server podporuje; automaticky ji odesílá prohlížeč jako CORS preflight", "correct": true },
         { "id": "c", "text": "Přenáší metadata požadavku místo jeho těla", "correct": false },
         { "id": "d", "text": "Slouží k nastavení HTTP hlaviček na serveru", "correct": false }
       ],
