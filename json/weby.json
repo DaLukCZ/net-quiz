@@ -2,7 +2,7 @@
   "meta": {
     "title": "Webové technologie",
     "version": 2,
-    "questionCount": 150,
+    "questionCount": 165,
     "uniqueQuestions": true
   },
   "categories": [
@@ -542,7 +542,6 @@
         { "id": "d", "text": "pomocí atributu style přímo na elementu (inline styl)", "correct": true }
       ],
       "explanation": "Specificita CSS: inline (1,0,0,0) > ID (0,1,0,0) > class/atribut (0,0,1,0) > element (0,0,0,1) > výchozí styl prohlížeče. Inline styl v atributu style má vždy nejvyšší prioritu.",
-      "leaked": true,
       "id": "w_00040"
     },
     {
@@ -557,7 +556,6 @@
         { "id": "d", "text": "transform: scale(2,3);", "correct": true }
       ],
       "explanation": "CSS transform: scale(scaleX, scaleY). scale(2,3) = 2× šířka, 3× výška. Pořadí: první parametr = horizontální osa X, druhý = vertikální osa Y.",
-      "leaked": true,
       "id": "w_00041"
     },
     {
@@ -571,7 +569,6 @@
         { "id": "c", "text": "Objekty vybrané třídy (instance dané class)", "correct": true }
       ],
       "explanation": "PDO::FETCH_CLASS naplní každý řádek výsledku do instance zadané třídy. PDO::FETCH_ASSOC vrátí asociativní pole, PDO::FETCH_NUM indexované pole.",
-      "leaked": true,
       "id": "w_00042"
     },
     {
@@ -585,7 +582,6 @@
         { "id": "c", "text": "Zkratka pro mapování dat z relační databáze na objekty v objektových programovacích jazycích", "correct": true }
       ],
       "explanation": "ORM = Object-Relational Mapping. Umožňuje pracovat s databázovými záznamy jako s objekty PHP tříd. V Laravelu je ORM implementací Eloquent.",
-      "leaked": true,
       "id": "w_00043"
     },
     {
@@ -599,7 +595,6 @@
         { "id": "c", "text": "Třída může uchovávat stav pomocí statických proměnných (ne jen reálná instance nese data).", "correct": true }
       ],
       "explanation": "Singleton ukládá jedinou instanci do statické vlastnosti (static $instance). Statické vlastnosti patří třídě, ne objektu — existují v jediném exempláři bez ohledu na počet instancí.",
-      "leaked": true,
       "id": "w_00044"
     },
     {
@@ -611,7 +606,6 @@
       "blanks": ["index", "ShopProduct", "all()", "allShopProducts", "$allShopProducts"],
       "wordbank": ["index", "ShopProduct", "all()", "allShopProducts", "$allShopProducts", "store", "create", "get()", "find()", "$products"],
       "explanation": "index() zobrazuje seznam. ShopProduct::all() vrátí všechny záznamy z DB jako kolekci. Proměnná $allShopProducts se předá do view a Blade ji použije v @foreach.",
-      "leaked": true,
       "id": "w_00045"
     },
     {
@@ -623,7 +617,6 @@
       "blanks": ["$request", "Product", "product_name", "description", "product_price", "save"],
       "wordbank": ["$request", "Product", "product_name", "description", "product_price", "save", "create", "index", "store", "$this"],
       "explanation": "store(Request $request) přijme POST data. new Product() vytvoří Eloquent model. $request->pole čte vstup formuláře. save() uloží do DB. redirect() přesměruje.",
-      "leaked": true,
       "id": "w_00046"
     },
     {
@@ -2043,6 +2036,202 @@
       ],
       "explanation": "API je rozhraní pro komunikaci mezi různými systémy, typicky přes HTTP.",
       "id": "w_00150"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "bootstrap",
+      "question": "Které tvrzení nejlépe charakterizuje Bootstrap?",
+      "answers": [
+        { "id": "a", "text": "Front-end framework pro rychlý vývoj responzivních webů", "correct": true },
+        { "id": "b", "text": "Server-side framework pro migrace databází", "correct": false },
+        { "id": "c", "text": "Standard jazyka JavaScript definovaný ECMA", "correct": false }
+      ],
+      "explanation": "Bootstrap je front-end framework (CSS + JS) určený k rychlému vytváření responzivních webových stránek. Není server-side a nemá vztah k ECMAScript standardu.",
+      "id": "w_00151"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Tvrzení: Internet má jednoho formálního vlastníka, který přímo spravuje všechny jeho sítě.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "Internet nemá jediného vlastníka. Je to decentralizovaná síť sítí — spravují ho tisíce poskytovatelů, organizací (ICANN, IETF) a vlád. Nikdo nedrží autoritu nad celkem.",
+      "id": "w_00152"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "laravel",
+      "question": "Tvrzení: Doporučeným způsobem přizpůsobení frameworku je upravovat přímo jeho jádro.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": false },
+        { "id": "b", "text": "Nepravda", "correct": true }
+      ],
+      "explanation": "Jádro frameworku by se nemělo upravovat. Správné přizpůsobení probíhá přes konfiguraci, rozšíření tříd (extends), eventy, middleware nebo balíčky — jinak se ztratí možnost aktualizace.",
+      "id": "w_00153"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "laravel",
+      "question": "Která tvrzení správně popisují vztah frameworku a CMS?",
+      "answers": [
+        { "id": "a", "text": "CMS je vhodné pro správu obsahu a publikaci", "correct": true },
+        { "id": "b", "text": "Framework je vhodný pro aplikační logiku a workflow", "correct": true },
+        { "id": "c", "text": "Kombinace přes API je vždy chybou", "correct": false },
+        { "id": "d", "text": "Role CMS a frameworku je vždy vhodné zcela smíchat", "correct": false }
+      ],
+      "explanation": "CMS (WordPress, Strapi) je optimalizovaný pro správu obsahu a publikaci. Framework (Laravel) je vhodný pro vlastní aplikační logiku. Jejich kombinace přes API (headless CMS + framework) je běžná a legitimní architektura.",
+      "id": "w_00154"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "js-frameworks",
+      "question": "Tvrzení: Vite je v materiálech uveden jako běžný nástroj moderního frontendového vývoje.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": true },
+        { "id": "b", "text": "Nepravda", "correct": false }
+      ],
+      "explanation": "Vite je moderní build tool a dev server pro frontendový vývoj. Nahrazuje pomalejší Webpack v nových projektech — je výrazně rychlejší díky nativním ES modulům a HMR (Hot Module Replacement).",
+      "id": "w_00155"
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Tvrzení: HTTP je bezstavový protokol.",
+      "answers": [
+        { "id": "a", "text": "Pravda", "correct": true },
+        { "id": "b", "text": "Nepravda", "correct": false }
+      ],
+      "explanation": "HTTP je bezstavový (stateless) protokol — server si nepamatuje předchozí požadavky od klienta. Každý požadavek je nezávislý. Stav se udržuje pomocí cookies, sessions nebo tokenů.",
+      "id": "w_00156"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Který endpoint lépe odpovídá doporučení používat podstatná jména v REST API?",
+      "answers": [
+        { "id": "a", "text": "/getAllCompanies", "correct": false },
+        { "id": "b", "text": "/createNewCompany", "correct": false },
+        { "id": "c", "text": "/companies", "correct": true }
+      ],
+      "explanation": "REST API by mělo používat podstatná jména (resources): /companies. Slovesa jako getAllCompanies nebo createNewCompany jsou anti-pattern — akci vyjadřuje HTTP metoda (GET /companies načte seznam, POST /companies vytvoří novou).",
+      "id": "w_00157"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "javascript",
+      "question": "Co umožňuje HTML DOM při práci s JavaScriptem?",
+      "answers": [
+        { "id": "a", "text": "Změnit HTTP/3 transport z UDP na TCP", "correct": false },
+        { "id": "b", "text": "Měnit text, atributy a CSS třídy", "correct": true },
+        { "id": "c", "text": "Spustit databázovou migraci v Laravelu", "correct": false },
+        { "id": "d", "text": "Vyhledat elementy v dokumentu", "correct": true }
+      ],
+      "explanation": "DOM API umožňuje manipulaci s dokumentem z JavaScriptu: vyhledávání elementů (querySelector, getElementById), změna textového obsahu, atributů a CSS tříd. HTTP transport ani Laravel migrace s DOM nesouvisí.",
+      "id": "w_00158"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Které technologie nebo přístupy patří k práci PHP s databází?",
+      "answers": [
+        { "id": "a", "text": "CSS pseudo-elementy", "correct": false },
+        { "id": "b", "text": "HTTP metoda TRACE", "correct": false },
+        { "id": "c", "text": "PDO prepared statements", "correct": true },
+        { "id": "d", "text": "MySQLi prepared statements", "correct": true }
+      ],
+      "explanation": "PHP pracuje s databází přes PDO (PHP Data Objects) nebo MySQLi, oba podporují prepared statements pro bezpečné dotazy. CSS pseudo-elementy patří do stylistiky a HTTP TRACE je diagnostická metoda.",
+      "id": "w_00159"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "css",
+      "question": "Které faktory ovlivňují výběr konečné CSS deklarace?",
+      "answers": [
+        { "id": "a", "text": "Pořadí pravidel při totožné váze", "correct": true },
+        { "id": "b", "text": "Počet HTTP status kódů v odpovědi", "correct": false },
+        { "id": "c", "text": "Název databázové tabulky v migraci", "correct": false },
+        { "id": "d", "text": "Specifičnost selektoru", "correct": true }
+      ],
+      "explanation": "CSS kaskáda rozhoduje na základě: 1) specifičnosti selektoru (ID > class > element), 2) pořadí pravidel při stejné specifičnosti (pozdější pravidlo vyhraje), 3) !important. HTTP kódy ani DB migrace na CSS vliv nemají.",
+      "id": "w_00161"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "http",
+      "question": "Která událost je spojena s rokem 1969 v historii Internetu?",
+      "answers": [
+        { "id": "a", "text": "Vydání prvního standardu ECMAScript", "correct": false },
+        { "id": "b", "text": "První úspěšná komunikace mezi dvěma počítači v síti ARPANET", "correct": true },
+        { "id": "c", "text": "Založení W3C jako organizace pro standardizaci Webu", "correct": false }
+      ],
+      "explanation": "V roce 1969 proběhla první úspěšná komunikace v síti ARPANET — předchůdci dnešního Internetu. W3C bylo založeno v roce 1994, ECMAScript 1.0 vyšel roku 1997.",
+      "id": "w_00162"
+    },
+    {
+      "type": "multi",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Které části požadavku je nutné považovat za potenciálně nedůvěryhodné?",
+      "answers": [
+        { "id": "a", "text": "Tělo požadavku", "correct": true },
+        { "id": "b", "text": "Pevně zapsaná struktura lokální migrace", "correct": false },
+        { "id": "c", "text": "Cookies", "correct": true },
+        { "id": "d", "text": "Název předmětu ve studijním plánu", "correct": false }
+      ],
+      "explanation": "Vše co přijde od klienta je potenciálně nedůvěryhodné: tělo požadavku (POST data), cookies, hlavičky, URL parametry — mohou být zfalšovány. Lokální migrace a statická data aplikace jsou důvěryhodné.",
+      "id": "w_00163"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "php",
+      "question": "Který přístup snižuje riziko SQL injection v PHP aplikaci?",
+      "answers": [
+        { "id": "a", "text": "Skládání SQL dotazu lepením textu z formuláře", "correct": false },
+        { "id": "b", "text": "Uložení SQL dotazu do HTML atributu", "correct": false },
+        { "id": "c", "text": "Použití parametrizovaných dotazů", "correct": true }
+      ],
+      "explanation": "Parametrizované dotazy (prepared statements) oddělují SQL kód od dat — útočník nemůže měnit strukturu dotazu. Skládání dotazu z uživatelského vstupu je klasický zdroj SQL injection.",
+      "id": "w_00164"
+    },
+    {
+      "type": "single",
+      "difficulty": "medium",
+      "category": "http",
+      "question": "Který HTTP status kód nejlépe odpovídá situaci, kdy API obdrží požadavek se špatným formátem nebo chybějícím povinným polem?",
+      "answers": [
+        { "id": "a", "text": "304 Not Modified", "correct": false },
+        { "id": "b", "text": "422 Unprocessable Entity", "correct": true },
+        { "id": "c", "text": "204 OK - zdroj úspěšně smazán", "correct": false }
+      ],
+      "explanation": "422 Unprocessable Entity = požadavek byl syntakticky přijat, ale sémantická validace selhala (chybí pole, špatný formát). 304 = cache nezměněna, 204 = úspěch bez těla odpovědi.",
+      "id": "w_00165"
+    },
+    {
+      "type": "single",
+      "difficulty": "easy",
+      "category": "js-frameworks",
+      "question": "Která dvojice nejlépe odpovídá vztahu UI framework a metaframework?",
+      "answers": [
+        { "id": "a", "text": "HTML + DOM", "correct": false },
+        { "id": "b", "text": "PHP + Composer", "correct": false },
+        { "id": "c", "text": "React + Next.js", "correct": true }
+      ],
+      "explanation": "React je UI framework (řeší pouze vrstvu View), Next.js je metaframework postavený nad Reactem — přidává routing, SSR/SSG, serverové funkce a build tooling. PHP + Composer je server-side jazyk + správce závislostí, HTML + DOM je základ prohlížeče.",
+      "id": "w_00166"
     }
   ]
 }
