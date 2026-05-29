@@ -16,7 +16,7 @@
 
 ## Počítačové sítě
 
-### 1. Projít `FULL_TAHAK_2025.pdf`
+### 1. Projít `Sítě_2026_tahák.pdf`
 
 Leaknuté otázky - ale nemusí být všechny správně nebo aktuální.
 
@@ -42,20 +42,7 @@ Heslo (asi):
 
 ## Webové technologie
 
-**165 otázek** pokrývajících celou látku:
-
-| Kategorie | Otázky |
-|-----------|--------|
-| HTTP | 45 |
-| HTML | 12 |
-| CSS | 20 |
-| Bootstrap | 6 |
-| JavaScript | 13 |
-| JS Frameworky | 7 |
-| PHP | 19 |
-| Laravel & OOP | 43 |
-
-> **35 otázek odpovídá 1:1 leaknutému testu** - zbývající otázky pocházejí z dalších leaků nebo byly dogenerovány AI.
+> **Všech 76 otázek je 1:1 z testu**
 
 --- 
 
