@@ -1,12 +1,12 @@
 # NetQuiz
 
-- Kvízová appka na opakování látky - aktuálně hlavně počítačové sítě, časem snad i webové technologie a další předměty.
+- Kvízová appka na opakování látky - počítačové sítě a webové technologie.
 - na fixy kdyžtak pište, nebo můžu dát collaboratora
 ---
 
 ## Důležité
 
-- Otázky nemusí být vždy správně - část vznikla pomocí AI analýzy z prezentací
+- Sítě otázky nemusí být vždy správně - část vznikla pomocí AI analýzy z prezentací
 - Učitel může otázky kdykoliv změnit, přidat nebo odebrat
 - Hodně otázek v appce má záměrně jasnou odpověď - jsou na naučení látky, ne na trénink zkoušky. Na přesnější simulaci zkoušky (1:1 odpovědi) je lepší projít tahak
 - DNS učitel řadí do 5. (relační) vrstvy, i když správně patří do aplikační - u zkoušky napiš relační (Internet ti řekne, že patří do aplikační)
